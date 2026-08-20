@@ -35,11 +35,12 @@ devsummit/
 └── <use-case>/        # one folder per sub-project
     ├── README.md      # detailed docs for this use case
     ├── input/         # read-only source data
-    └── output/        # generated artifacts only
+    └── output/        # generated artifacts only — committed
 ```
 
 Optional inside a use case, when needed: `src/`, `scripts/`, `tests/`,
-`prompts/` (for prompt templates used by the code itself).
+`prompts/` (for prompt templates used by the code itself), and `build/` for
+generated artifacts that stay out of git (see section 3).
 
 **Every new use case follows exactly this pattern.** Create
 `<name>/{input,output}` plus a `<name>/README.md` — no exceptions, no
@@ -57,19 +58,95 @@ Source data, seeds, schemas, real-world samples, prompt fixtures. Code may read
 from here but must never write, move or overwrite anything in `input/`. If a
 transformation needs an intermediate file, it goes to `output/`.
 
-**`output/` is disposable.**
+The one exception is a **documented one-off provisioning script** that creates an
+input fixture (downloading an open-data boundary, for example). It must be named
+as such in the README, must not be part of the generation pipeline, and must
+write source URL and licence into the fixture itself so the file carries its own
+attribution. Its output is committed, so it normally never runs again.
+
+**External data must carry an explicit, CC BY-compatible licence.**
+Check the licence *before* the geometry. An archived repository with no stated
+licence is unusable no matter how good its data is, and "derived from a
+well-known source" is not a licence. Record the source, the licence and the
+rejected alternatives in the use-case README — the rejection is talk material.
+
+**`output/` is generated, but committed.**
 Only generated artifacts. It must always be safe to delete the entire folder and
 regenerate its contents from `input/` plus the documented command. Never edit
 files in `output/` by hand — if the result is wrong, fix the generator.
 
+`output/` **is** under version control: the generated result is what a use case
+is about, and later use cases consume it as input. Keep committed artifacts
+small enough to stay readable.
+
+**`build/` and `dist/` are disposable and gitignored.**
+Generated code, scratch files, intermediate build products — anything that
+should not be versioned goes here, not into `output/`. Regenerable from the
+documented command, never referenced by another use case.
+
+**Keep LLM output raw next to any corrected version.**
+When generated data has to be corrected to be usable, commit both: the
+unedited LLM artifact (`<name>_llm_raw.csv`) as evidence, and the corrected
+file that downstream use cases actually read. State in the README exactly which
+columns or fields were corrected, and leave everything else byte-identical.
+The delta between the two files is the most valuable thing in the repository.
+
 **Large data sets.**
-Keep a small, committed sample (a few hundred rows / features) so the repository
-stays readable and demo-able. Full-size runs go to `output/` and may be
-gitignored. Always state the sample size and the full size in the README.
+Commit the real output as long as it stays in the low single-digit megabytes —
+a 10,000-row CSV at ~2 MB belongs in git, because the next use case needs the
+volume. Beyond that, commit a sample of a few hundred rows and send the full run
+to `build/`. Always state the committed size and the full size in the README.
 
 ---
 
-## 4. Tech-stack policy
+## 4. Geodata conventions
+
+Learned the hard way in `csv_data`. These apply to every use case that touches
+coordinates.
+
+- **Name the EPSG code explicitly**, in the README and in the column names.
+  "Coordinates" is not a specification. Note that "decimal degrees" and
+  "EPSG:3857" are mutually exclusive — decimal degrees are EPSG:4326, EPSG:3857
+  is metres. If a request mixes them, say so and resolve it explicitly instead
+  of picking one silently.
+- **Column naming follows the CRS**: `latitude`/`longitude` for a geographic
+  CRS, `x`/`y` (optionally suffixed, e.g. `x_3857`) for a projected one. Never
+  call a projected coordinate "lat"/"lon".
+- **Column order**: `latitude` before `longitude`, `x` before `y`. GeoJSON is
+  the exception and always `[longitude, latitude]` per RFC 7946 — flag that
+  wherever both appear.
+- **Every generated coordinate set ships a verification step**, and the
+  verification is code, not inspection. At minimum: axis order (a swap must
+  fail loudly), value range, and — if more than one CRS is present — a
+  recomputation of the projected values from the geographic ones.
+- **Never trust an LLM with a projection formula.** Anything containing a
+  logarithm, tangent or square root gets recomputed. The failure mode is a
+  systematic directional bias, not random noise, so it survives averaging and
+  spot-checks and looks entirely plausible in the data.
+- **A bounding box is not a boundary.** Sampling a rectangle around an
+  irregular region places a substantial share of the points outside it. Either
+  sample against a polygon, or measure and document the share that falls
+  outside. Measured in `csv_data`: 41 % outside NRW with a box, 0 % outside
+  Germany with rejection sampling against a polygon.
+- **Uniform in latitude is not uniform on the ground.** A degree of longitude
+  shortens towards the poles, so `uniform(lat_min, lat_max)` over-samples the
+  higher latitudes. Sample `sin(latitude)` uniformly for equal-area coverage,
+  and state which one was used.
+- **Round before projecting.** Store rounded geographic coordinates, then derive
+  projected values from the rounded numbers. Projecting first leaves every row
+  disagreeing with itself by the rounding step, and nothing but an independent
+  recomputation will notice.
+- **A verifier must not share its projection implementation with the generator
+  it checks.** Share plane geometry if useful, never the formula under test —
+  otherwise a bug passes both. Write the two forms differently on purpose
+  (`ln(tan(pi/4 + phi/2))` against `atanh(sin phi)`), so agreement is evidence.
+- **No convenient defaults on destructive arguments.** A verifier's
+  `--output` default once made checking one data set overwrite another. If a
+  flag writes a file, require the path.
+
+---
+
+## 5. Tech-stack policy
 
 **There is no global default stack.** Each use case picks whatever fits best —
 Python, Node/TypeScript, shell, SQL, a REST client, an MCP server, whatever the
@@ -90,15 +167,15 @@ Rules that do apply regardless of stack:
 
 ---
 
-## 5. Documentation duties — mandatory after every task
+## 6. Documentation duties — mandatory after every task
 
 After finishing any piece of work, update all four in this order. Do not wait
 to be asked; this is the standing instruction.
 
-1. **`PROMPT.md`** — append an entry using the format in section 6: the
+1. **`PROMPT.md`** — append an entry using the format in section 7: the
    prompt *verbatim* in German, an English translation, and what actually
    happened, including what failed. Skip this step only if the user explicitly
-   asked for the prompt not to be logged (see section 6).
+   asked for the prompt not to be logged (see section 7).
 2. **`<use-case>/README.md`** — purpose, stack, input, output, setup, usage,
    example output, notes for the talk.
 3. **`README.md` (root)** — keep the use-case index, the executables table and
@@ -112,7 +189,7 @@ exception stays the explicit "do not log this" instruction.
 
 ---
 
-## 6. `PROMPT.md` entry format
+## 7. `PROMPT.md` entry format
 
 Entries are appended chronologically, newest at the bottom, numbered
 sequentially.
@@ -170,7 +247,7 @@ which are noise for the talk narrative.
 
 ---
 
-## 7. Notes for the talk
+## 8. Notes for the talk
 
 Each use-case README ends with a `Notes for the talk` section capturing:
 
@@ -183,7 +260,7 @@ Write these down *while working*, not afterwards. Details get lost.
 
 ---
 
-## 8. Language rules
+## 9. Language rules
 
 - **Documentation, code, comments, identifiers, CLI texts, log output, commit
   messages: English.**
@@ -193,7 +270,7 @@ Write these down *while working*, not afterwards. Details get lost.
 
 ---
 
-## 9. Reproducibility
+## 10. Reproducibility
 
 Generated test data is only useful for a talk if it can be regenerated live.
 
@@ -209,7 +286,7 @@ Generated test data is only useful for a talk if it can be regenerated live.
 
 ---
 
-## 10. Git & publication
+## 11. Git & publication
 
 This repository is version-controlled with Git and is **intended for public
 release on GitHub** under the name `euro_dev_summit_26_test_data_ai`.
@@ -239,7 +316,7 @@ data is the very reason generated test data is needed.
 
 ---
 
-## 11. Working style
+## 12. Working style
 
 - Ask before restructuring existing use cases; new use cases can be created
   freely following the layout above.

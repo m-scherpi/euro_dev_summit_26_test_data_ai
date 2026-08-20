@@ -113,3 +113,195 @@ Entry format, conventions and documentation duties: see [`CLAUDE.md`](CLAUDE.md)
 - The commit author is the company address `m.scherpinski@conterra.de`. Fine for
   a conference repository, but it becomes publicly visible — flagged in case a
   different address is preferred.
+
+---
+
+## [003] 2026-08-20 — CSV geo test data, LLM-authored and code-verified  ·  scope: `csv_data`
+
+**Prompt (original, DE)**
+> Nun zum ersten Use Case. Im Ordner csv_data möchte ich eine CSV-Datei mit Testdaten generiert bekommen. Diese Datei soll geografische Punkte enthalten, repräsentiert durch latitude und longitude in Dezimalgrad im Referenzsystem 3857. Wichtig dabei, dass latitude und longitude nicht vertauscht werden, damit die punkte an der richtigen Stelle liegen. starte mit 100 Einträgen, welche grob im Bundesland NRW in Deutschland liegen. Zu jedem Punkt soll es eine Spalte mit Titel und Beschreibung geben. Zudem ein INTEGER Feld z.B. Anzahl, ein DOUBLE Feld, z.B. Höhe und ein Boolean Feld. Alle diese Spalten sollen mit zufälligen Werten belegt werden: da es sich um testdaten handelt ist der Inhalt nicht so wichtig. Vielleicht nutzen wir referenzen aus Fantasy-Franchises. lege das generierte File unter output ab, damit es später weiter verarbeitet werden kann. Entsprechend soll der output ordner auch im git verfügbar sein, stattdessen brauchen wir für anderen generierten Code, der vielleicht zukünftig nicht im git sein soll noch "build" ordner oder ähnliches
+
+**Prompt (translation, EN)**
+> Now to the first use case. In the folder csv_data I would like to get a CSV file with test data generated. This file should contain geographic points, represented by latitude and longitude in decimal degrees in the reference system 3857. Important here that latitude and longitude are not swapped, so that the points lie in the right place. start with 100 entries, which lie roughly in the federal state NRW in Germany. For each point there should be a column with title and description. In addition an INTEGER field e.g. count, a DOUBLE field, e.g. height and a Boolean field. All these columns should be filled with random values: since these are test data the content is not so important. Maybe we use references from fantasy franchises. put the generated file under output, so that it can be processed further later. Accordingly the output folder should also be available in git, instead we need for other generated code, which perhaps in future should not be in git, "build" folders or similar
+
+**What happened**
+- **Spotted a contradiction in the request before writing anything**: "decimal
+  degrees" is EPSG:4326, "reference system 3857" is Web Mercator in metres.
+  Both halves are sensible on their own, but not simultaneously. Raised it and
+  asked instead of resolving it silently.
+- Three decisions taken by the user:
+  - **CRS**: emit *both* — `latitude`/`longitude` (EPSG:4326, decimal degrees)
+    and `x_3857`/`y_3857` (EPSG:3857, metres) for the same point per row, so
+    downstream use cases can pick the columns they need.
+  - **Generation method**: the CSV is written **directly by the LLM**, no
+    generator script, no seed. Deliberately the "purest GenAI" variant — and
+    deliberately the non-reproducible one.
+  - **Distribution**: uniform sampling of the NRW **bounding box**
+    (`lat 50.32–52.53 / lon 5.87–9.46`), knowing the corners reach into
+    neighbouring states and countries.
+- Flagged the consequence of "LLM writes the CSV" up front: the Web Mercator
+  forward transform contains `ln(tan(…))`, and an LLM cannot evaluate that
+  reliably. The user chose to keep the raw output as evidence *and* have a
+  verifier write a corrected, usable copy.
+- Wrote `output/nrw_points_llm_raw.csv` by hand — 100 rows, 10 columns,
+  including the EPSG:3857 values computed mentally (`x` by multiplication, `y`
+  by interpolating between remembered anchor latitudes).
+- Sketched a coarse 27-vertex NRW polygon as `input/nrw_boundary_approx.geojson`
+  for the containment report. Explicitly non-authoritative.
+- Wrote `scripts/verify_coordinates.py` — Python 3.12, **standard library
+  only**, so it runs from a fresh clone with no setup. Four checks (axis order,
+  bounding box, column types, EPSG:3857 accuracy) plus a point-in-polygon
+  containment report.
+- Switched `.gitignore` from ignoring `*/output/*` to versioning it, and
+  introduced `build/` + `dist/` as the gitignored home for disposable generated
+  code, as requested. Verified both with `git check-ignore`.
+- Model used: Claude Opus 5 (`claude-opus-5[1m]`).
+
+**Artifacts**
+- `csv_data/output/nrw_points_llm_raw.csv` — the raw LLM output, unedited,
+  wrong EPSG:3857 values included
+- `csv_data/output/nrw_points.csv` — the usable file; identical except for
+  recomputed `x_3857`/`y_3857`
+- `csv_data/output/verification_report.md` — generated verification report
+- `csv_data/input/nrw_boundary_approx.geojson` — coarse NRW polygon, for the
+  containment check only
+- `csv_data/scripts/verify_coordinates.py` — the verifier, `--help` included
+- `csv_data/README.md` — full documentation, replaces the stub
+- `.gitignore` — `output/` now versioned, `build/`/`dist/` ignored
+- `CLAUDE.md` — new section 4 "Geodata conventions"; `output/`-is-committed and
+  `build/`-is-disposable rules in section 3; sections 4–11 renumbered to 5–12
+- `README.md` — use-case index, executables table, conventions, progress log
+
+**Result / Iteration**
+- **What the LLM got right**: everything structural. 100 unique titles, 100
+  distinct descriptions, plausible value ranges, correct CSV quoting — and the
+  one thing that was explicitly demanded, *latitude and longitude were never
+  swapped*, in any of the 100 rows. The verifier's axis-order, bounding-box and
+  type checks all pass with zero violations.
+- **What the LLM got wrong**: all 100 EPSG:3857 rows. Measured deviation
+  min 18.47 m, median 393.87 m, mean 333.49 m, max **490.29 m**.
+- **The instructive part is the shape of the error, not its size.** Split by
+  axis: `x_3857` needs one multiplication → max error **0.06 m**. `y_3857`
+  needs `ln(tan(…))` → max error **490.29 m**, and **positive in 100 of 100
+  rows**. Interpolating a convex function along a chord always overshoots, so
+  every single point landed too far north. A systematic directional bias
+  survives averaging and spot-checking; the data looks entirely plausible.
+  Only a recomputation finds it.
+- Cross-checked the verifier against an independent formulation of the same
+  projection (`R · atanh(sin φ)`): agrees with the corrected file to **7 mm**.
+  So the 490 m is the model's error, not the script's. Re-running the verifier
+  on the corrected file reports a maximum deviation of 0.01 m — the correction
+  is idempotent.
+- **The bounding box was not a boundary**: **41 of 100** points fall outside
+  NRW — Netherlands, Belgium, Lower Saxony, Rhineland-Palatinate. Nothing was
+  hallucinated; a rectangle around an irregular shape simply contains a lot
+  that is not the shape. Reported, not quietly fixed, since the user chose bbox
+  sampling knowingly.
+- **Open for the next iteration**: a seeded generator that scales past 100 rows.
+  The current data set cannot be regenerated at all — no seed, no script — which
+  is exactly the trade-off the direct-LLM approach buys. Putting the two side by
+  side is the natural follow-up.
+- Not committed. Waiting for an explicit request, per `CLAUDE.md` section 11.
+
+---
+
+## [004] 2026-08-20 — Seeded generator, 10,000 points across Germany  ·  scope: `csv_data`
+
+**Prompt (original, DE)**
+> Jetzt erstelle ein seed-skript und benutze es, um mir 10000 punkte in ganz deutschland zu generieren. Eine Anmerkung: für meinen Use-Case zur Visualisierung habe ich gar keine x_3857 und y_3857 gebraucht. Genriere sie trotzdem, um die erkenntnisse zum umrechnen für den Vortrag festzuhalten
+
+**Prompt (translation, EN)**
+> Now create a seed script and use it to generate me 10000 points in all of germany. One remark: for my use case for visualisation I did not need x_3857 and y_3857 at all. Generate them anyway, in order to record the insights about converting for the talk
+
+**What happened**
+- This is the follow-up [003] flagged as open: the reproducible counterpart to
+  the direct-LLM data set. Kept inside `csv_data` so both methods are documented
+  against each other in one README.
+- Three decisions taken by the user:
+  - **Boundary from real open data** — Natural Earth 50m. Rejection sampling
+    against the polygon instead of bounding-box sampling.
+  - **Stay in `csv_data`** rather than opening a new use-case folder.
+  - **Uniform density over the land area**, not clustered on metropolitan
+    regions.
+- **Rejected a data source on licence grounds before looking at its geometry.**
+  `deutschlandGeoJSON` has the nicer outline (508 vertices) but is archived,
+  states no licence, and derives from GADM, whose terms forbid commercial
+  redistribution. Unusable for a CC BY repository. Natural Earth is public
+  domain and says so, so it won on licence, not on quality.
+- Wrote `scripts/fetch_germany_boundary.py` as a **one-off provisioning tool**:
+  downloads the 3 MB world-wide Natural Earth file, keeps only the Germany
+  feature, and writes source URL and licence into the fixture's properties.
+  Output is 12.5 KB and committed, so the script normally never runs again.
+- Wrote `input/fantasy_places.json` — the LLM's contribution this time is the
+  *text fixture*, not the data: 60 prefixes × 40 cores × 40 suffixes = 96,000
+  title combinations, plus 20 description templates and five filler lists.
+- Extracted `scripts/geo.py` for the shared plane geometry (MultiPolygon
+  loading, holes, per-ring bbox pre-filter, ray casting) and deliberately kept
+  the **projection unshared**: the generator uses
+  `y = R · ln(tan(π/4 + φ/2))`, the verifier now uses the equivalent
+  `y = R · atanh(sin φ)`. Two independent implementations, so agreement between
+  them is evidence rather than a tautology.
+- Generalised `scripts/verify_coordinates.py` from NRW-only: bounding box
+  derived from the boundary polygon, region label read from the feature, a guard
+  that warns when the latitude and longitude bands overlap (in which case the
+  axis-order check cannot detect a swap), and a `--max-listed` cap so a
+  10,000-row report stays readable.
+- **Regression-checked the refactor against the [003] data before continuing** —
+  18.47 / 393.87 / 333.49 / 485.99 / 490.29 m and 41 outside NRW reproduced
+  exactly, so the rewrite and the formula swap changed nothing.
+- Validated the boundary machinery independently: a Monte-Carlo area estimate of
+  the polygon gives 355,909 km² against Germany's actual 357,596 km² (−0.5 %),
+  consistent with Natural Earth at 1:50 M dropping the East Frisian islands and
+  clipping Sylt's northern tip.
+- Model used: Claude Opus 5 (`claude-opus-5[1m]`).
+
+**Artifacts**
+- `csv_data/scripts/generate_points.py` — the seeded generator
+- `csv_data/scripts/geo.py` — shared plane geometry, no projection maths
+- `csv_data/scripts/fetch_germany_boundary.py` — one-off provisioning
+- `csv_data/scripts/verify_coordinates.py` — generalised beyond NRW
+- `csv_data/input/germany_boundary_ne50m.geojson` — Natural Earth 50m, public
+  domain, MultiPolygon, 6 rings, 562 vertices, 12.5 KB
+- `csv_data/input/fantasy_places.json` — LLM-authored component pool
+- `csv_data/output/germany_points_10k.csv` — 10,000 rows, 1.94 MB
+- `csv_data/output/verification_report_germany.md` — its verification report
+- `csv_data/README.md` — rewritten around the two methods and their comparison
+- `README.md`, `CLAUDE.md` — index, executables, conventions
+
+**Result / Iteration**
+- **10,000 points in 0.75 s**, all checks clean: 0 structural failures, max
+  EPSG:3857 deviation **0.01 m** (two-decimal rounding), **0 of 10,000 points
+  outside Germany**. Rejection sampling accepted 64.4 % of candidates (15,532
+  draws), matching the Monte-Carlo prediction of 64.5 %.
+- **Determinism verified in both directions**: the same seed twice produces
+  byte-identical files, `--seed 1` produces a different one.
+- **Equal-area sampling matters more than it looks.** Naive
+  `uniform(lat_min, lat_max)` would have put **1.185×** more points per km² in
+  northern Germany. Sampling `sin(latitude)` instead measures out at a
+  north/south density ratio of **0.994**. The naive version would have passed
+  every check in this repository.
+- **Scaling fixed the maths and cost the prose.** 100 hand-written descriptions
+  were 100 distinct sentences; 10,000 template-generated ones are 9,947 distinct
+  strings that are structurally far more repetitive. 100× the data, measurably
+  worse writing — the honest trade of this iteration.
+- **The redundant columns, quantified as asked.** `x_3857`/`y_3857` cost
+  **212 KB of 1,983 KB — 10.7 % of the file** and add a second source of truth.
+  Method A's error in them was up to 490 m with a systematic northward bias;
+  method B's is 0.01 m. For the visualisation use case they were never needed.
+- **Two bugs of my own, both found by the verification rather than by reading
+  the code**, and both more instructive than the successes:
+  1. The verifier's `--output` defaulted to `output/nrw_points.csv`, so
+     verifying the *Germany* file overwrote the *NRW* file. A convenient default
+     turned a read-only operation into a destructive one. `--output` and
+     `--report` now have no defaults; the NRW file was restored and re-checked.
+  2. The generator projected the *unrounded* coordinates while writing 5
+     decimals to the CSV, so every row disagreed with itself by up to **1.09 m**
+     — exactly the rounding step. Rounding before projecting fixed it, and the
+     file is now self-consistent for anyone recomputing the projection from it.
+- **Open for the next iteration**: `elevation_m` is uncorrelated with position,
+  so a Baltic-coast point can carry an Alpine elevation. Every column is
+  individually valid and jointly nonsense. Correlating it needs a digital
+  elevation model — a good candidate for a later use case, and a sharp
+  illustration of why "valid test data" and "plausible test data" are different
+  claims.
+- Not committed. Waiting for an explicit request, per `CLAUDE.md` section 11.

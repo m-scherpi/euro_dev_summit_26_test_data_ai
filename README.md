@@ -33,7 +33,7 @@ README. There is no shared build and nothing to install at root level.
 
 | Folder | Use case | Approach / stack | Status | Docs |
 |---|---|---|---|---|
-| [`csv_data/`](csv_data/) | Generating tabular test data (CSV) | tbd | 🕓 planned | [README](csv_data/README.md) |
+| [`csv_data/`](csv_data/) | Geo points as CSV, two ways: 100 written directly by the LLM vs. 10,000 from a seeded generator — coordinates verified by code either way | Python 3.12, stdlib only | ✅ done | [README](csv_data/README.md) |
 | [`opensearch/`](opensearch/) | Test data for OpenSearch (indexing / geo queries) | tbd | 🕓 planned | [README](opensearch/README.md) |
 | [`python_import/`](python_import/) | Importing / converting generated data via Python | tbd | 🕓 planned | [README](python_import/README.md) |
 
@@ -43,24 +43,31 @@ Status legend: 🕓 planned · 🚧 in progress · ✅ done
 
 ## Usage / executables
 
-Central index of everything runnable produced in this repository. Empty until
-the first use case is implemented — details always live in the use-case README.
+Central index of everything runnable produced in this repository. Details
+always live in the use-case README.
 
 | Tool | Use case | Example command | Docs |
 |---|---|---|---|
-| _none yet_ | — | — | — |
+| `generate_points.py` | `csv_data` | `cd csv_data && python3 scripts/generate_points.py --count 10000 --seed 20260820` | [README](csv_data/README.md#usage) |
+| `verify_coordinates.py` | `csv_data` | `cd csv_data && python3 scripts/verify_coordinates.py --input output/nrw_points.csv` | [README](csv_data/README.md#usage) |
+| `fetch_germany_boundary.py` | `csv_data` | `cd csv_data && python3 scripts/fetch_germany_boundary.py` (one-off, needs network) | [README](csv_data/README.md#input) |
 
 ---
 
 ## Conventions (short version)
 
 - `input/` is **read-only** — source data, seeds, schemas. Code never writes here.
-- `output/` is **disposable** — generated artifacts only, always reproducible
-  from `input/` plus the documented command. Never edited by hand.
+- `output/` is **generated but committed** — artifacts only, reproducible from
+  `input/` plus the documented command, never edited by hand. Committed because
+  later use cases consume them as input.
+- `build/` and `dist/` are **disposable and gitignored** — the place for
+  generated code and scratch artifacts that should not be versioned.
 - Dependencies are **isolated per use case** (local venv / local `package.json`).
 - Every executable supports `--help` and ships a copy-pasteable example command.
 - Seeds are fixed and configurable; model and date of any GenAI-assisted
   generation are recorded.
+- External data needs an explicit, CC BY-compatible licence, recorded in the
+  use-case README — the licence check comes before the quality check.
 - Documentation language is English.
 
 Full details: [`CLAUDE.md`](CLAUDE.md).
@@ -101,5 +108,7 @@ to depend on.
 | 2026-08-20 | Repository scaffolding: conventions (`CLAUDE.md`), overview (`README.md`), prompt log (`PROMPT.md`), use-case README stubs |
 | 2026-08-20 | Git repository initialised (`main`), publication conventions documented |
 | 2026-08-20 | CC BY 4.0 licence added |
+| 2026-08-20 | Use case `csv_data`: 100 geo points written directly by the LLM; coordinate verifier found a systematic 490 m EPSG:3857 error, `output/` switched to versioned, `build/` introduced |
+| 2026-08-20 | Use case `csv_data`, iteration 2: seeded generator, 10,000 points across Germany with a public-domain boundary; reproducible, 0 points outside Germany, projection exact — the LLM's contribution moved from the data to the text fixtures |
 
 Detailed, prompt-by-prompt history: [`PROMPT.md`](PROMPT.md).
