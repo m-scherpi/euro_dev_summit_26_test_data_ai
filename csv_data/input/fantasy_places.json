@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "purpose": "Component pool for combinatorial place names and descriptions.",
+    "authored_by": "Claude Opus 5 (claude-opus-5[1m]), 2026-08-20",
+    "read_only": true,
+    "note": "This is the LLM's contribution to the seeded generator. The numeric columns come from the seeded RNG; the prose comes from here. Titles are prefix + core + ' ' + suffix, which yields prefix*core*suffix unique combinations.",
+    "licence": "Original text, published under the repository licence (CC BY 4.0). Fantasy-genre allusions only - no trademarked names, no real persons."
+  },
+  "title_prefixes": [
+    "Deep", "Raven", "Silver", "Thorn", "Ember", "Grim", "Wyrm", "Frost",
+    "Hollow", "Dusk", "Amber", "North", "Bramble", "Stone", "Willow", "Marsh",
+    "Ash", "High", "Elder", "Grey", "Shade", "Cold", "Iron", "Thistle",
+    "Gloam", "Bright", "West", "Hearth", "Nettle", "Moon", "Oaken", "Storm",
+    "Fen", "Sun", "Mist", "Gold", "Dread", "Whisper", "Black", "Still",
+    "Wolf", "Wind", "Copper", "Green", "East", "Briar", "Reed", "Elm",
+    "Star", "Salt", "Rook", "Flint", "Glass", "Hawthorn", "Bittern", "Larch",
+    "Sable", "Quill", "Cinder", "Tarn"
+  ],
+  "title_cores": [
+    "delve", "hollow", "mere", "briar", "watch", "reach", "fell", "barrow",
+    "shade", "spire", "ford", "brook", "wold", "moor", "vale", "crag",
+    "gate", "warden", "fall", "mark", "holt", "thorn", "cairn", "bend",
+    "wick", "haven", "garth", "scar", "beck", "combe", "dale", "run",
+    "keep", "stead", "weir", "burn", "rise", "hythe", "sett", "grove"
+  ],
+  "title_suffixes": [
+    "Gate", "Watchpost", "Archive", "Chapel", "Quarter", "Ferry", "Ridge",
+    "Spring", "Tower", "Cascade", "Barrow", "Gatehouse", "Pass", "Landing",
+    "Beacon", "Summit", "Crossing", "Ruin", "Grove", "Weir", "Camp", "Fields",
+    "Waystone", "Hamlet", "Locks", "Cairnfield", "Inn", "Bridge", "Shallows",
+    "Heath", "Mill", "Overlook", "Causeway", "Clearing", "Toll", "Outpost",
+    "Orchard", "Quay", "Hide", "Downs"
+  ],
+  "description_templates": [
+    "A {adjective} {feature} {situation}, {detail}.",
+    "The {feature} here is {adjective}, and {detail}.",
+    "{article_cap} {adjective} {feature} {situation}; {detail}.",
+    "Locals avoid this {feature} {situation}, because {detail}.",
+    "A {feature} {situation} that is {adjective} in every season, though {detail}.",
+    "Once a {feature} of some importance, now {adjective} and {situation} - {detail}.",
+    "This {adjective} {feature} {situation} is mapped, surveyed and still {detail}.",
+    "Travellers reach this {feature} {situation} rarely, which is why {detail}.",
+    "A {feature} {situation}, {adjective} enough that {detail}.",
+    "The {adjective} {feature} {situation} has one recorded peculiarity: {detail}.",
+    "Nothing marks this {feature} {situation} except that it is {adjective}, and {detail}.",
+    "A {feature} {situation} whose {adjective} reputation rests entirely on one fact: {detail}.",
+    "Charted as a {adjective} {feature}, {situation}; the survey notes add that {detail}.",
+    "A {feature} {situation}. It is {adjective}, and {detail}.",
+    "Two roads meet at this {adjective} {feature} {situation}, and {detail}.",
+    "Abandoned, {adjective} and {situation}, this {feature} is remembered because {detail}.",
+    "The last {feature} {situation} before the border, {adjective} and unstaffed - {detail}.",
+    "A {adjective} {feature} {situation}, kept in repair by nobody, and {detail}.",
+    "Visitors describe this {feature} {situation} as {adjective}; the guides add that {detail}.",
+    "Below the {feature} {situation} lies something {adjective}, and {detail}."
+  ],
+  "description_fillers": {
+    "adjective": [
+      "roofless", "half-flooded", "wind-scoured", "overgrown", "unlit",
+      "sunken", "crooked", "silent", "warm to the touch", "ice-rimed",
+      "moss-covered", "unfinished", "twice-rebuilt", "briar-grown",
+      "soot-blackened", "waterlogged", "sun-bleached", "root-cracked",
+      "lichen-spotted", "unaccountably tidy", "improbably intact",
+      "conspicuously avoided", "poorly documented", "stubbornly dry"
+    ],
+    "feature": [
+      "watchtower", "ford", "chapel", "millhouse", "burial mound", "gatehouse",
+      "spring", "quarry", "causeway", "beacon", "weir", "boundary stone",
+      "toll house", "cistern", "footbridge", "signal cairn", "boathouse",
+      "hermitage", "smithy", "lock keeper's hut", "standing stone",
+      "drovers' shelter", "lime kiln", "well head"
+    ],
+    "situation": [
+      "on the northern slope", "at the edge of the marsh", "above the river bend",
+      "in the middle of open farmland", "where three tracks converge",
+      "below the old embankment", "at the head of the valley",
+      "beside a dry stream bed", "on the boundary of two parishes",
+      "at the end of a sunken lane", "on a low island in the flood plain",
+      "against the forest edge", "in a clearing nobody planted",
+      "under a stand of nine poplars", "at the foot of the escarpment",
+      "on ground that drains the wrong way"
+    ],
+    "detail": [
+      "the bell is rung by wind alone", "no two surveys agree on its height",
+      "the frost holds there until midsummer",
+      "the well is warmer than the air above it",
+      "every offering left there is gone by morning",
+      "the shadows fall inward rather than outward",
+      "the stones are counted differently each year",
+      "the water runs clear in drought and cloudy in rain",
+      "birds nest everywhere around it but never on it",
+      "the door has no hinges and opens anyway",
+      "sound arrives there twice",
+      "the moss grows only on the southern face",
+      "the path to it is shorter on the way back",
+      "it appears on maps drawn before it was built",
+      "the roof timbers came from somewhere considerably older",
+      "nothing planted there has ever taken root",
+      "the inscription is legible only when wet",
+      "the ferry is always just about to leave",
+      "the reflection arrives before its owner",
+      "the toll is a riddle rather than a coin",
+      "the fire needs neither wood nor thanks",
+      "the reeds part for boats and close behind them",
+      "the bell can be heard but not found",
+      "the wolfsbane refuses to grow within sight of it"
+    ],
+    "article_cap": ["A", "An unremarkable", "One more", "Another"]
+  }
+}
