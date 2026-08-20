@@ -1,0 +1,450 @@
+ds100,name,district,latitude,longitude,x_3857,y_3857,source_rows,position_spread_m
+KA,Aachen Hbf,Kreis Städteregion Aachen,50.76756,6.09124,678073.74,6580280.31,3,632.1
+KAW,Aachen West,Kreis Städteregion Aachen,50.78038,6.07104,675825.08,6582537.05,3,594.1
+KARE,Aachen-Rothe Erde,Kreis Städteregion Aachen,50.76830,6.11329,680528.33,6580410.56,2,314.7
+EAHS,Ahaus,Kreis Borken,52.08199,7.01647,781069.87,6814963.90,2,224.3
+EAHL,Ahlen (Westf),Kreis Warendorf,51.77246,7.91680,881294.14,6759087.41,2,1943.0
+KWIS,Alfter-Witterschlick,Kreis Rhein-Sieg-Kreis,50.68967,7.02618,782150.78,6566582.44,1,0.0
+EALN,Altena (Westf),Kreis Märkischer Kreis,51.30188,7.66881,853688.02,6674867.52,1,0.0
+HA,Altenbeken,Kreis Paderborn,51.76668,8.94279,995506.83,6758047.65,3,703.9
+EABG,Altenberge,Kreis Steinfurt,52.05241,7.48116,832798.92,6809607.41,1,0.0
+EARB,Arnsberg (Westf),Kreis Hochsauerlandkreis,51.40541,8.06692,898005.43,6693321.80,1,0.0
+EASB,Ascheberg (Westf),Kreis Coesfeld,51.78298,7.60074,846110.51,6760980.17,1,0.0
+EAT,Attendorn,Kreis Olpe,51.12470,7.90872,880394.68,6643381.42,1,0.0
+KAU,Au (Sieg),Kreis Rhein-Sieg-Kreis,50.77376,7.65666,852335.49,6581371.64,2,294.3
+KBAG,Baal Gbf,Kreis Heinsberg,51.03620,6.28140,699242.25,6627699.58,1,0.0
+HHZH,Bad Holzhausen,Kreis Minden-Lübbecke,52.28913,8.54598,951334.14,6852573.65,1,0.0
+ELSP,Bad Laasphe,Kreis Siegen-Wittgenstein,50.92928,8.42051,937366.89,6608793.69,1,0.0
+HOYG,Bad Oeynhausen Gbf,Kreis Minden-Lübbecke,52.20776,8.82685,982600.45,6837778.66,2,778.1
+EBSU,Bad Salzuflen,Kreis Lippe,52.08153,8.74059,972998.03,6814880.57,1,0.0
+EBAV,Balve,Kreis Märkischer Kreis,51.33244,7.86282,875285.12,6680310.53,1,0.0
+KBE,Bedburg (Erft),Kreis Rhein-Erft-Kreis,50.98747,6.57286,731687.43,6619077.61,2,9.4
+KBH,Bedburg-Hau,Kreis Kleve,51.75795,6.17343,687223.08,6756477.48,1,0.0
+EBEE,Beelen,Kreis Warendorf,51.92930,8.11614,903484.57,6787352.07,1,0.0
+HBNS,Benhausen,Kreis Paderborn,51.72800,8.80662,980348.45,6751093.00,1,0.0
+EBEH,Benninghausen,Kreis Soest,51.64277,8.25825,919304.18,6735789.64,1,0.0
+KBEE,Bergheim (Erft),Kreis Rhein-Erft-Kreis,50.95176,6.64627,739859.39,6612765.06,1,0.0
+HBHE,Bergheim (Westf),Kreis Höxter,51.83067,9.05540,1008042.52,6769566.14,1,0.0
+KBGG,Bergisch Gladbach,Kreis Rheinisch-Bergischer Kreis,50.99168,7.12519,793172.52,6619822.14,1,0.0
+EBKM,Bergkamen,Kreis Unna,51.63416,7.64923,851508.39,6734245.28,1,0.0
+EBWG,Bestwig,Kreis Hochsauerlandkreis,51.36186,8.39766,934823.24,6685553.91,1,0.0
+EBIL,Bielefeld Hbf,Kreisfreie Stadt Bielefeld,52.02945,8.53273,949859.16,6805452.14,3,46.6
+EBIO,Bielefeld Ost,Kreisfreie Stadt Bielefeld,52.02392,8.55943,952831.39,6804451.65,1,0.0
+EBIG,Bigge,Kreis Hochsauerlandkreis,51.35829,8.47533,943469.42,6684917.47,1,0.0
+EBB,Billerbeck,Kreis Coesfeld,51.98135,7.29746,812349.53,6796754.00,1,0.0
+EBIN,Binolen,Kreis Märkischer Kreis,51.37215,7.85945,874909.97,6687388.64,1,0.0
+KBLB,Blankenberg (Sieg),Kreis Rhein-Sieg-Kreis,50.76847,7.34839,818019.03,6580440.48,1,0.0
+KBLH,Blankenheim (Wald),Kreis Euskirchen,50.44179,6.59336,733969.48,6523140.56,1,0.0
+EBCH,Bocholt,Kreis Borken,51.82422,6.61236,736084.55,6768404.37,2,1128.8
+EBO,Bochum Hbf,Kreisfreie Stadt Bochum,51.47849,7.22322,804085.17,6706373.52,6,723.6
+EBNO,Bochum Nord,Kreisfreie Stadt Bochum,51.48313,7.22522,804307.81,6707202.91,1,0.0
+EBDA,Bochum-Dahlhausen,Kreisfreie Stadt Bochum,51.42634,7.14141,794978.12,6697057.66,3,1498.7
+EBLA,Bochum-Langendreer,Kreisfreie Stadt Bochum,51.47740,7.31795,814630.47,6706178.70,4,1291.3
+EBRI,Bochum-Riemke,Kreisfreie Stadt Bochum,51.49556,7.20087,801597.18,6709425.15,2,673.3
+EBCK,Bockum-Hövel,Kreisfreie Stadt Hamm,51.70480,7.77451,865454.49,6746924.50,1,0.0
+KBOI,Boisheim,Kreis Viersen,51.27429,6.27464,698489.73,6669956.62,1,0.0
+HBNB,Bonenburg,Kreis Höxter,51.55772,9.05006,1007448.07,6720547.25,1,0.0
+KB,Bonn Hbf,Kreisfreie Stadt Bonn,50.73203,7.09671,790002.14,6574029.12,2,17.0
+KNEW,Bonn Neuer Weg,Kreisfreie Stadt Bonn,50.65353,7.19607,801062.85,6560234.52,1,0.0
+KBBG,Bonn-Bad Godesberg,Kreisfreie Stadt Bonn,50.68380,7.15969,797013.05,6565551.05,1,0.0
+KBBN,Bonn-Bad Godesberg Nord,Kreisfreie Stadt Bonn,50.69526,7.14185,795027.11,6567564.75,1,0.0
+KBB,Bonn-Beuel,Kreisfreie Stadt Bonn,50.73853,7.12769,793450.82,6575172.38,1,0.0
+KBM,Bonn-Mehlem,Kreisfreie Stadt Bonn,50.66902,7.18149,799439.81,6562954.71,1,0.0
+KBO,Bonn-Oberkassel,Kreisfreie Stadt Bonn,50.71501,7.15933,796972.97,6571036.28,1,0.0
+EBOK,Bork (Westf),Kreis Unna,51.66951,7.45621,830021.50,6740587.80,1,0.0
+EBK,Borken (Westf),Kreis Borken,51.84782,6.86696,764426.49,6772655.99,1,0.0
+EBTH,Bottrop Hbf,Kreisfreie Stadt Bottrop,51.51667,6.94687,773322.03,6713200.60,4,1325.9
+EBTS,Bottrop Süd,Kreisfreie Stadt Bottrop,51.50979,6.94788,773434.46,6711969.94,2,208.3
+EBWE,Brackwede,Kreisfreie Stadt Bielefeld,51.99724,8.49822,946017.52,6799626.43,4,32.3
+EBRA,Brake (b Bielefeld),Kreisfreie Stadt Bielefeld,52.06965,8.60481,957883.07,6812728.88,1,0.0
+KBRY,Breyell,Kreis Viersen,51.29456,6.24116,694762.75,6673564.31,1,0.0
+EGG,Brilon Egger,Kreis Hochsauerlandkreis,51.41272,8.60691,958116.84,6694626.39,1,0.0
+EBRS,Brilon Stadt,Kreis Hochsauerlandkreis,51.39931,8.57545,954614.73,6692233.32,1,0.0
+EBRW,Brilon Wald,Kreis Hochsauerlandkreis,51.34912,8.57612,954689.31,6683282.91,3,40.6
+KBR,Brühl,Kreis Rhein-Erft-Kreis,50.82925,6.91266,769513.79,6591145.42,1,0.0
+HBUK,Buke,Kreis Paderborn,51.73309,8.95040,996353.97,6752007.84,1,0.0
+EBUR,Burbach (Kr Siegen),Kreis Siegen-Wittgenstein,50.74896,8.07767,899202.11,6577007.21,1,0.0
+EBEO,Bönen,Kreis Unna,51.61458,7.76854,864789.92,6730734.35,2,1999.0
+EBSL,Bösensell,Kreis Coesfeld,51.90687,7.48693,833441.24,6783303.84,1,0.0
+HBDE,Bünde (Westf),Kreis Herford,52.20196,8.57296,954337.54,6836725.11,2,9.7
+ECP,Capelle (Westf),Kreis Coesfeld,51.73618,7.61091,847242.63,6752563.26,1,0.0
+ECA,Castrop-Rauxel Hbf,Kreis Recklinghausen,51.57368,7.30463,813147.69,6723405.37,1,0.0
+ECMF,Coesfeld (Westf),Kreis Coesfeld,51.93944,7.16405,797498.40,6789182.83,2,63.3
+EDAB,Dahlbruch,Kreis Siegen-Wittgenstein,50.97048,8.05383,896548.25,6616073.64,1,0.0
+KDAL,Dalheim,Kreis Heinsberg,51.14896,6.17934,687880.98,6647685.44,1,0.0
+EDAT,Datteln,Kreis Recklinghausen,51.62403,7.32057,814922.12,6732428.66,1,0.0
+EDVB,Davensberg,Kreis Coesfeld,51.81879,7.59864,845876.74,6767426.45,1,0.0
+EDTM,Detmold,Kreis Lippe,51.94061,8.87325,987765.67,6789394.10,1,0.0
+EDEU,Deuten,Kreis Recklinghausen,51.71285,6.97092,775999.26,6748370.65,1,0.0
+EDIN,Dinslaken,Kreis Wesel,51.56749,6.73825,750098.56,6722296.75,1,0.0
+KDO,Dormagen,Kreis Rhein-Kreis Neuss,51.09981,6.81442,758577.76,6638967.98,1,0.0
+KDOS,Dorsfeld,Kreis Rhein-Erft-Kreis,50.88250,6.62612,737616.30,6600535.59,1,0.0
+EDRN,Dorsten,Kreis Recklinghausen,51.65829,6.97075,775980.34,6738574.17,2,1078.4
+EDOB,Dortmund Bbf,Kreisfreie Stadt Dortmund,51.52218,7.49140,833938.83,6714186.33,2,453.8
+EDO,Dortmund Hbf,Kreisfreie Stadt Dortmund,51.51778,7.45928,830363.25,6713399.16,9,1209.3
+EDWH,Dortmund Signal Iduna Park,Kreisfreie Stadt Dortmund,51.49072,7.45768,830185.14,6708559.78,3,1020.2
+EDOS,Dortmund Süd,Kreisfreie Stadt Dortmund,51.50879,7.47465,832074.23,6711791.08,2,0.2
+EDOZ,Dortmund Zinkhütte,Kreisfreie Stadt Dortmund,51.52256,7.49367,834191.53,6714254.31,1,0.0
+EDAP,Dortmund-Aplerbeck,Kreisfreie Stadt Dortmund,51.49019,7.55129,840605.76,6708465.03,1,0.0
+EDAS,Dortmund-Asseln,Kreisfreie Stadt Dortmund,51.52825,7.59808,845814.40,6715272.38,1,0.0
+EDBK,Dortmund-Brackel,Kreisfreie Stadt Dortmund,51.52077,7.55011,840474.40,6713934.07,1,0.0
+EDBH,Dortmund-Bövinghausen,Kreisfreie Stadt Dortmund,51.51991,7.32739,815681.32,6713780.21,1,0.0
+EDD,Dortmund-Derne,Kreisfreie Stadt Dortmund,51.56713,7.52852,838071.01,6722232.28,1,0.0
+EDDP,Dortmund-Dorstfeld,Kreisfreie Stadt Dortmund,51.50852,7.42694,826763.18,6711742.79,7,1433.5
+EDEV,Dortmund-Eving,Kreisfreie Stadt Dortmund,51.53670,7.48062,832738.81,6716784.51,1,0.0
+EDHK,Dortmund-Huckarde Süd,Kreisfreie Stadt Dortmund,51.52619,7.40765,824615.83,6714903.79,3,27.7
+EDH,Dortmund-Hörde,Kreisfreie Stadt Dortmund,51.48794,7.49914,834800.45,6708062.77,2,13.1
+EDKU,Dortmund-Kurl,Kreisfreie Stadt Dortmund,51.55700,7.58538,844400.64,6720418.33,1,0.0
+EDLU,Dortmund-Lütgendortmund Gbf,Kreisfreie Stadt Dortmund,51.49704,7.36481,819846.90,6709689.79,1,0.0
+EDMR,Dortmund-Marten,Kreisfreie Stadt Dortmund,51.51451,7.37445,820920.02,6712814.21,1,0.0
+EDMG,Dortmund-Mengede,Kreisfreie Stadt Dortmund,51.57026,7.37428,820901.09,6722792.83,2,58.0
+EDOE,Dortmund-Obereving,Kreisfreie Stadt Dortmund,51.54073,7.47953,832617.47,6717505.77,2,51.3
+EDSH,Dortmund-Scharnhorst,Kreisfreie Stadt Dortmund,51.54086,7.54350,839738.58,6717529.04,2,525.4
+HDRO,Drohne,Kreis Minden-Lübbecke,52.41789,8.32669,926922.89,6876040.90,1,0.0
+EDG,Duisburg Hbf,Kreisfreie Stadt Duisburg,51.42852,6.77481,754168.40,6697446.88,9,1080.6
+EDHM,Duisburg Mannesmann,Kreisfreie Stadt Duisburg,51.36943,6.72968,749144.55,6686903.62,1,0.0
+EDBG,Duisburg-Beeck Gbf,Kreisfreie Stadt Duisburg,51.47325,6.71564,747581.63,6705436.99,1,0.0
+EDGR,Duisburg-Großenbaum,Kreisfreie Stadt Duisburg,51.36477,6.77755,754473.41,6686072.73,4,31.2
+EDHB,Duisburg-Hamborn,Kreisfreie Stadt Duisburg,51.50277,6.77233,753892.33,6710714.44,1,0.0
+EDHD,Duisburg-Hochfeld Süd,Kreisfreie Stadt Duisburg,51.41332,6.78264,755040.03,6694733.48,5,1468.6
+EDME,Duisburg-Meiderich Süd,Kreisfreie Stadt Duisburg,51.46879,6.77999,754745.03,6704639.95,3,714.3
+EDRH,Duisburg-Ruhrort Hafen,Kreisfreie Stadt Duisburg,51.46162,6.79976,756945.82,6703358.77,4,412.8
+EDWM,Duisburg-Wanheim,Kreisfreie Stadt Duisburg,51.38992,6.74925,751323.07,6690558.05,1,0.0
+EDWD,Duisburg-Wedau,Kreisfreie Stadt Duisburg,51.40665,6.79887,756846.75,6693543.09,4,963.9
+EDUL,Dülmen,Kreis Coesfeld,51.83044,7.29101,811631.52,6769524.71,2,448.3
+KDN,Düren,Kreis Düren,50.80946,6.48231,721607.45,6587658.36,4,1490.0
+KDA,Düsseldorf Abstellbahnhof,Kreisfreie Stadt Düsseldorf,51.20642,6.81140,758241.58,6657888.58,3,161.5
+KDFF,Düsseldorf Flughafen,Kreisfreie Stadt Düsseldorf,51.29155,6.78697,755522.04,6673028.48,1,0.0
+KDF,Düsseldorf Flughafen Terminal,Kreisfreie Stadt Düsseldorf,51.27765,6.76600,753187.67,6670554.53,2,1259.4
+KD,Düsseldorf Hbf,Kreisfreie Stadt Düsseldorf,51.21935,6.79468,756380.32,6660186.30,10,1066.8
+KDW,Düsseldorf Wehrhahn,Kreisfreie Stadt Düsseldorf,51.22848,6.79820,756772.16,6661809.14,1,0.0
+KDBI,Düsseldorf-Bilk,Kreisfreie Stadt Düsseldorf,51.20786,6.77484,754171.74,6658144.44,1,0.0
+KDD,Düsseldorf-Derendorf,Kreisfreie Stadt Düsseldorf,51.25174,6.79331,756227.81,6665945.00,4,1424.5
+KDE,Düsseldorf-Eller,Kreisfreie Stadt Düsseldorf,51.20279,6.85201,762762.26,6657243.62,4,21.1
+KDGE,Düsseldorf-Gerresheim,Kreisfreie Stadt Düsseldorf,51.22038,6.86488,764194.95,6660369.37,4,956.5
+KDR,Düsseldorf-Rath,Kreisfreie Stadt Düsseldorf,51.26416,6.82131,759344.76,6668154.26,2,6.9
+KDU,Düsseldorf-Unterrath,Kreisfreie Stadt Düsseldorf,51.27659,6.78892,755739.12,6670365.90,5,2382.9
+KEIT,Eitorf,Kreis Rhein-Sieg-Kreis,50.77362,7.44725,829024.08,6581346.99,1,0.0
+EEM,Emmerich,Kreis Kleve,51.83424,6.25563,696373.55,6770209.23,1,0.0
+EEMP,Empel-Rees,Kreis Kleve,51.79814,6.41711,714349.42,6763708.55,1,0.0
+EEDT,Emsdetten,Kreis Steinfurt,52.17674,7.53152,838404.97,6832145.62,1,0.0
+KENL,Engelskirchen,Kreis Oberbergischer Kreis,50.98671,7.40770,824621.39,6618943.21,1,0.0
+EEPE,Epe (Westf),Kreis Borken,52.18345,7.03006,782582.70,6833363.78,1,0.0
+KEST,Erftstadt,Kreis Rhein-Erft-Kreis,50.80728,6.83303,760649.42,6587274.33,1,0.0
+EEK,Erndtebrück,Kreis Siegen-Wittgenstein,50.99086,8.25509,918952.42,6619677.12,2,4.8
+KE,Eschweiler Hbf,Kreis Städteregion Aachen,50.81354,6.25197,695966.12,6588377.15,1,0.0
+HEKP,Espelkamp,Kreis Minden-Lübbecke,52.37917,8.61324,958821.49,6868976.77,1,0.0
+EE,Essen Hbf,Kreisfreie Stadt Essen,51.45152,7.01384,780777.10,6701554.39,8,1426.4
+EENW,Essen West,Kreisfreie Stadt Essen,51.45440,6.98017,777028.97,6702068.86,3,34.9
+EEAL,Essen-Altenessen,Kreisfreie Stadt Essen,51.48321,7.00206,779465.75,6707217.21,2,375.0
+EEBE,Essen-Bergeborbeck,Kreisfreie Stadt Essen,51.48034,6.97785,776770.71,6706704.20,2,15.8
+EEDO,Essen-Dellwig Ost,Kreisfreie Stadt Essen,51.48997,6.92422,770800.64,6708425.69,2,316.9
+EEKN,Essen-Kray Nord,Kreisfreie Stadt Essen,51.46947,7.08069,788218.81,6704761.47,3,16.3
+EESA,Essen-Stadtwald,Kreisfreie Stadt Essen,51.42238,7.02330,781830.18,6696350.70,1,0.0
+EEST,Essen-Steele,Kreisfreie Stadt Essen,51.45032,7.07609,787706.74,6701340.03,5,1578.0
+EEVL,Essen-Vogelheim,Kreisfreie Stadt Essen,51.48478,6.98412,777468.68,6707497.86,1,0.0
+EEWD,Essen-Werden,Kreisfreie Stadt Essen,51.38690,6.99784,778995.99,6690019.32,2,0.0
+KEU,Euskirchen,Kreis Euskirchen,50.65770,6.79231,756116.49,6560966.72,4,1676.7
+KKUH,Euskirchen-Kuchenheim,Kreis Euskirchen,50.65547,6.83368,760721.78,6560575.15,1,0.0
+EFER,Ferndorf (Kr Siegen),Kreis Siegen-Wittgenstein,50.95950,8.00899,891556.69,6614132.87,1,0.0
+EFP,Finnentrop,Kreis Olpe,51.17330,7.96455,886609.65,6652005.93,3,15.0
+EFRE,Freienohl,Kreis Hochsauerlandkreis,51.36640,8.16935,909407.88,6686363.35,1,0.0
+EFFD,Friedrichsfeld (Niederrhein),Kreis Wesel,51.62848,6.64548,739771.45,6733226.64,1,0.0
+HFLL,Frille,Kreis Minden-Lübbecke,52.33199,8.99396,1001203.05,6860377.55,1,0.0
+EFOE,Fröndenberg,Kreis Unna,51.47120,7.76184,864044.08,6705070.63,3,33.2
+KGEK,Geilenkirchen,Kreis Heinsberg,50.96103,6.12444,681769.54,6614403.27,1,0.0
+KGE,Geldern,Kreis Kleve,51.51329,6.31931,703462.37,6712595.98,1,0.0
+EG,Gelsenkirchen Hbf,Kreisfreie Stadt Gelsenkirchen,51.50488,7.10255,790652.25,6711091.78,6,65.4
+EGBK,Gelsenkirchen-Bismarck,Kreisfreie Stadt Gelsenkirchen,51.53720,7.10662,791105.32,6716873.99,3,3117.2
+EGBN,Gelsenkirchen-Buer Nord,Kreisfreie Stadt Gelsenkirchen,51.58454,7.04167,783875.12,6725350.76,2,249.8
+EGHN,Gelsenkirchen-Horst Nord,Kreis Recklinghausen,51.54013,7.01407,780802.70,6717398.38,1,0.0
+EGS,Gelsenkirchen-Schalke,Kreisfreie Stadt Gelsenkirchen,51.52599,7.07502,787587.62,6714868.00,1,0.0
+EGK,Geseke,Kreis Soest,51.64378,8.51535,947924.43,6735970.82,2,375.2
+KGVW,Gevelsberg West,Kreis Ennepe-Ruhr-Kreis,51.31711,7.31281,814058.29,6677579.67,2,6.5
+EGBW,Gladbeck West,Kreis Recklinghausen,51.57535,6.97680,776653.82,6723704.50,2,334.7
+KGO,Goch,Kreis Kleve,51.68178,6.16088,685826.02,6742790.45,1,0.0
+HGOF,Gohfeld,Kreis Herford,52.20023,8.75961,975115.32,6836410.89,1,0.0
+KG,Gremberg,Kreisfreie Stadt Köln,50.90008,7.04626,784386.08,6603638.03,4,3875.5
+EGRV,Greven,Kreis Steinfurt,52.08999,7.59937,845958.00,6816413.18,1,0.0
+KGRB,Grevenbroich,Kreis Rhein-Kreis Neuss,51.09325,6.58029,732514.53,6637805.17,2,10.8
+KERW,Grevenbroich Erftwerk,Kreis Rhein-Kreis Neuss,51.08225,6.61846,736763.60,6635855.71,1,0.0
+EGRN,Gronau (Westf),Kreis Borken,52.21502,7.02249,781740.01,6839097.59,2,16.2
+KGU,Gummersbach,Kreis Oberbergischer Kreis,51.02334,7.56642,842290.02,6625423.34,1,0.0
+KDI,Gummersbach-Dieringhausen,Kreis Oberbergischer Kreis,50.99028,7.55116,840591.29,6619574.55,2,831.8
+KGUS,Gustorf,Kreis Rhein-Kreis Neuss,51.06696,6.56988,731355.70,6633146.73,1,0.0
+EGLO,Gütersloh Hbf,Kreis Gütersloh,51.90679,8.38524,933440.65,6783289.41,2,24.9
+KGUI,Haan-Gruiten,Kreis Mettmann,51.21451,7.01122,780485.44,6659326.13,4,416.6
+EHGG,Hagen Gbf,Kreisfreie Stadt Hagen,51.38667,7.45306,829670.84,6689978.30,2,1351.5
+EHG,Hagen Hbf,Kreisfreie Stadt Hagen,51.36270,7.46060,830510.19,6685703.67,6,98.3
+EHGH,Hagen-Halden,Kreisfreie Stadt Hagen,51.38129,7.52025,837150.40,6689018.67,1,0.0
+EHGP,Hagen-Haspe,Kreisfreie Stadt Hagen,51.34319,7.42190,826202.13,6682226.06,2,13.7
+EHGI,Hagen-Heubing,Kreisfreie Stadt Hagen,51.35239,7.42351,826381.35,6683865.75,2,698.4
+EHGK,Hagen-Kabel,Kreisfreie Stadt Hagen,51.40352,7.48861,833628.25,6692984.54,3,374.8
+EHGV,Hagen-Vorhalle,Kreisfreie Stadt Hagen,51.38767,7.43419,827570.25,6690156.68,7,2440.0
+EHAL,Halle (Westf),Kreis Gütersloh,52.05705,8.35838,930450.61,6810447.41,1,0.0
+EHLT,Haltern am See,Kreis Recklinghausen,51.73750,7.18419,799740.37,6752800.54,1,0.0
+EHM,Hamm (Westf) Pbf,Kreisfreie Stadt Hamm,51.67812,7.80802,869184.81,6742133.37,7,127.1
+EHRB,Hamm (Westf) Rbf,Kreisfreie Stadt Hamm,51.65840,7.80069,868368.84,6738593.91,10,3591.1
+EHK,Hamminkeln,Kreis Wesel,51.73526,6.60169,734896.77,6752397.89,1,0.0
+EHAT,Hattingen (Ruhr),Kreis Ennepe-Ruhr-Kreis,51.40067,7.16633,797752.21,6692475.98,2,347.6
+EHBK,Havixbeck,Kreis Coesfeld,51.96672,7.40770,824621.39,6794110.24,1,0.0
+EHE,Heessen,Kreisfreie Stadt Hamm,51.69189,7.81011,869417.47,6744605.80,2,868.2
+HHMS,Heimsen,Kreis Minden-Lübbecke,52.46214,9.04620,1007018.38,6884121.54,1,0.0
+KHEN,Hennef (Sieg),Kreis Rhein-Sieg-Kreis,50.77317,7.28569,811039.30,6581267.78,1,0.0
+KHEC,Herchen,Kreis Rhein-Sieg-Kreis,50.77120,7.52139,837277.30,6580921.01,1,0.0
+EHCK,Herdecke,Kreis Ennepe-Ruhr-Kreis,51.40462,7.43248,827379.89,6693180.83,2,9.4
+EHFD,Herford,Kreis Herford,52.11973,8.66368,964436.45,6821803.19,4,52.6
+EHER,Herne,Kreisfreie Stadt Herne,51.54676,7.22699,804504.85,6718585.11,6,2610.7
+EHEO,Herne-Rottbruch,Kreisfreie Stadt Herne,51.53482,7.20634,802206.10,6716448.06,3,321.7
+KHEZ,Herzogenrath,Kreis Städteregion Aachen,50.87097,6.09428,678412.15,6598501.47,2,15.1
+EHIB,Hilchenbach,Kreis Siegen-Wittgenstein,50.99214,8.10691,902457.09,6619903.50,1,0.0
+KHI,Hilden,Kreis Mettmann,51.16691,6.92191,770543.50,6650871.44,3,20.8
+EHIG,Hillegossen,Kreisfreie Stadt Bielefeld,52.00041,8.61157,958635.59,6800199.59,1,0.0
+HHIG,Himmighausen,Kreis Höxter,51.80395,8.99397,1001204.16,6764754.43,2,14.3
+KHOF,Hoffnungsthal,Kreis Rheinisch-Bergischer Kreis,50.91128,7.19659,801120.73,6605615.16,1,0.0
+EHOG,Hohenlimburg,Kreisfreie Stadt Hagen,51.34884,7.57170,842877.79,6683233.00,1,0.0
+KHOZ,Holzheim (b Neuss),Kreis Rhein-Kreis Neuss,51.16561,6.66462,741902.10,6650640.66,1,0.0
+EHZW,Holzwickede,Kreis Unna,51.50460,7.61968,848218.90,6711041.71,2,17.4
+EHBM,Horn-Bad Meinberg,Kreis Lippe,51.88184,8.95493,996858.25,6778788.74,1,0.0
+KHR,Horrem,Kreis Rhein-Erft-Kreis,50.91712,6.71323,747313.35,6606646.28,4,462.9
+EHOS,Hösel,Kreis Mettmann,51.34151,6.89325,767353.08,6681926.67,1,0.0
+EHOV,Hövelhof,Kreis Paderborn,51.82367,8.66203,964252.77,6768305.31,1,0.0
+HHX,Höxter,Kreis Höxter,51.77721,9.39503,1045849.96,6759941.98,1,0.0
+HOTT,Höxter-Ottbergen,Kreis Höxter,51.71109,9.30544,1035876.84,6748054.45,2,28.6
+KKAS,Hürth-Kalscheuren,Kreis Rhein-Erft-Kreis,50.87558,6.91010,769228.81,6599314.70,4,395.7
+HI,Ibbenbüren,Kreis Steinfurt,52.27685,7.72150,859553.45,6850339.12,1,0.0
+HESH,Ibbenbüren-Esch,Kreis Steinfurt,52.29977,7.65581,852240.87,6854510.26,1,0.0
+KIMI,Immigrath,Kreis Mettmann,51.11723,6.96305,775123.18,6642056.61,1,0.0
+ELE,Iserlohn-Letmathe,Kreis Märkischer Kreis,51.36352,7.62358,848653.04,6685849.86,2,395.6
+KKAK,Kaldenkirchen,Kreis Viersen,51.32718,6.20324,690541.52,6679373.42,1,0.0
+KKAL,Kall,Kreis Euskirchen,50.53861,6.55695,729916.34,6540081.43,2,23.4
+EKAL,Kalthof (Kr Iserlohn),Kreis Märkischer Kreis,51.42496,7.67245,854093.23,6696811.29,1,0.0
+EKAM,Kamen,Kreis Unna,51.58516,7.66102,852820.85,6725461.84,1,0.0
+EKV,Kattenvenne,Kreis Steinfurt,52.11324,7.86027,875001.25,6820626.65,1,0.0
+KKEM,Kempen (Niederrhein),Kreis Viersen,51.36787,6.42533,715264.46,6686625.46,1,0.0
+EKG,Kettwig,Kreisfreie Stadt Essen,51.36327,6.95362,774073.44,6685805.29,1,0.0
+KKEV,Kevelaer,Kreis Kleve,51.58101,6.25222,695993.95,6724718.37,1,0.0
+EKIE,Kierspe,Kreis Märkischer Kreis,51.13078,7.61633,847845.98,6644459.88,1,0.0
+EWSE,Kirchhundem Welschen Ennest,Kreis Olpe,51.04205,8.00374,890972.26,6628735.25,1,0.0
+HKLG,Kirchlengern,Kreis Herford,52.19672,8.64398,962243.45,6835773.41,2,535.7
+KKLE,Kleinenbroich,Kreis Rhein-Kreis Neuss,51.19563,6.55217,729384.23,6655971.63,1,0.0
+KKLV,Kleve,Kreis Kleve,51.78967,6.14625,684197.42,6762184.07,1,0.0
+KKOS,Kohlscheid,Kreis Städteregion Aachen,50.82730,6.07205,675937.51,6590801.76,1,0.0
+KKOI,Korschenbroich,Kreis Rhein-Kreis Neuss,51.19561,6.51187,724898.05,6655968.08,1,0.0
+KKR,Krefeld Hbf,Kreisfreie Stadt Krefeld,51.32558,6.56996,731364.60,6679088.38,3,61.5
+KKRL,Krefeld-Linn,Kreisfreie Stadt Krefeld,51.33679,6.62951,737993.68,6681085.59,3,712.7
+KKRU,Krefeld-Uerdingen,Kreisfreie Stadt Krefeld,51.36562,6.65445,740769.99,6686224.28,3,727.6
+EKT,Kreuztal,Kreis Siegen-Wittgenstein,50.95602,7.99184,889647.56,6613517.85,2,274.0
+EKRU,Krummenerl,Kreis Märkischer Kreis,51.08012,7.75564,863353.90,6635478.28,1,0.0
+KKBT,Köln Bonntor,Kreisfreie Stadt Köln,50.91815,6.94788,773434.46,6606828.16,3,790.4
+KKE,Köln Eifeltor,Kreisfreie Stadt Köln,50.90840,6.93052,771501.96,6605106.71,2,385.6
+KK,Köln Hbf,Kreisfreie Stadt Köln,50.94647,6.95523,774252.66,6611830.34,9,1406.1
+KKDZ,Köln Messe/Deutz,Kreisfreie Stadt Köln,50.94105,6.97460,776408.92,6610872.77,10,861.1
+KKDT,Köln Messe/Deutz (tief),Kreisfreie Stadt Köln,50.94073,6.97488,776440.09,6610816.23,1,0.0
+KKS,Köln Süd,Kreisfreie Stadt Köln,50.92697,6.93845,772384.72,6608385.71,2,13.2
+KKW,Köln West,Kreisfreie Stadt Köln,50.94335,6.93399,771888.24,6611279.10,5,1328.1
+KKCN,Köln-Chorweiler Nord,Kreisfreie Stadt Köln,51.02810,6.89277,767299.65,6626265.79,1,0.0
+KKDB,Köln-Dellbrück,Kreisfreie Stadt Köln,50.98143,7.07011,787041.05,6618009.56,1,0.0
+KKER,Köln-Ehrenfeld,Kreisfreie Stadt Köln,50.95034,6.90557,768724.54,6612514.14,6,4047.1
+KKA,Köln-Kalk,Kreisfreie Stadt Köln,50.93198,7.00550,779848.69,6609270.58,3,509.1
+KKAN,Köln-Kalk Nord,Kreisfreie Stadt Köln,50.93967,7.01562,780975.25,6610628.97,7,2368.2
+KKL,Köln-Longerich,Kreisfreie Stadt Köln,50.99790,6.90194,768320.45,6620922.27,3,49.7
+KLOV,Köln-Lövenich,Kreisfreie Stadt Köln,50.94308,6.83526,760897.66,6611231.40,1,0.0
+KKM,Köln-Mülheim,Kreisfreie Stadt Köln,50.95851,7.01546,780957.43,6613957.90,15,1895.0
+KKN,Köln-Nippes,Kreisfreie Stadt Köln,50.98446,6.92183,770534.59,6618545.34,2,3240.8
+KKWO,Köln-Worringen,Kreisfreie Stadt Köln,51.05236,6.85203,762764.49,6630560.83,2,16.8
+KFKB,Köln/Bonn Flughafen,Kreisfreie Stadt Köln,50.87890,7.11926,792512.40,6599900.43,1,0.0
+KKOW,Königswinter,Kreis Rhein-Sieg-Kreis,50.67879,7.19339,800764.51,6564670.87,1,0.0
+ELAG,Lage (Lippe),Kreis Lippe,51.99166,8.80134,979760.69,6798617.62,3,16.0
+HLAN,Langeland,Kreis Höxter,51.77194,8.98690,1000417.13,6758993.86,2,13.9
+KLA,Langenfeld (Rheinl),Kreis Mettmann,51.09865,6.94098,772666.36,6638762.35,2,10.9
+KLAW,Langerwehe,Kreis Düren,50.81764,6.35474,707406.42,6589099.52,1,0.0
+ELSD,Langschede,Kreis Unna,51.47651,7.70519,857737.83,6706019.63,1,0.0
+KLEL,Leichlingen,Kreis Rheinisch-Bergischer Kreis,51.10741,7.00533,779829.77,6640315.35,1,0.0
+ELEN,Lengerich (Westf),Kreis Steinfurt,52.17575,7.87846,877026.16,6831965.90,1,0.0
+EA,Lennestadt-Altenhundem,Kreis Olpe,51.10481,8.07179,898547.55,6639854.38,1,0.0
+EGVB,Lennestadt-Grevenbrück,Kreis Olpe,51.14174,8.01780,892537.41,6646404.29,1,0.0
+EMEG,Lennestadt-Meggen,Kreis Olpe,51.12252,8.06551,897848.47,6642994.77,1,0.0
+ELEO,Leopoldstal,Kreis Lippe,51.84450,8.97116,998664.96,6772057.75,1,0.0
+KLMI,Leverkusen Mitte,Kreisfreie Stadt Leverkusen,51.03242,6.99125,778262.39,6627030.45,2,111.8
+KLM,Leverkusen Morsbroich,Kreisfreie Stadt Leverkusen,51.03249,7.02622,782155.23,6627042.84,1,0.0
+KLS,Leverkusen-Manfort,Kreisfreie Stadt Leverkusen,51.03187,7.01516,780924.04,6626933.09,1,0.0
+KLD,Lindern,Kreis Heinsberg,50.99714,6.20874,691153.78,6620787.84,2,150.7
+ELIT,Lintorf (Niederrhein),Kreis Mettmann,51.33436,6.82673,759948.11,6680652.61,1,0.0
+ELPP,Lippstadt,Kreis Soest,51.67071,8.34875,929378.60,6740803.20,2,384.1
+ELUT,Lutum,Kreis Coesfeld,51.98211,7.22593,804386.85,6796891.36,1,0.0
+HL,Löhne (Westf) Pbf,Kreis Herford,52.19667,8.71336,969966.80,6835764.33,5,60.2
+HLBB,Lübbecke (Westf),Kreis Minden-Lübbecke,52.30636,8.60573,957985.48,6855709.96,1,0.0
+EBRU,Lüdenscheid-Brügge,Kreis Märkischer Kreis,51.20859,7.56771,842433.62,6658274.15,2,315.0
+ELDH,Lüdinghausen,Kreis Coesfeld,51.76189,7.43159,827280.81,6757186.09,1,0.0
+ELUE,Lünen Hbf,Kreis Unna,51.61701,7.52889,838112.20,6731170.00,3,789.8
+EPRN,Lünen Preußen,Kreis Unna,51.59807,7.53664,838974.93,6727775.09,2,1130.8
+ELUS,Lünen Süd,Kreis Unna,51.60775,7.51870,836977.86,6729510.01,2,507.7
+ELUZ,Lützel,Kreis Siegen-Wittgenstein,50.96699,8.17392,909916.61,6615456.71,1,0.0
+KMAH,Marienheide,Kreis Oberbergischer Kreis,51.08070,7.53174,838429.46,6635581.05,1,0.0
+EMSI,Marl-Sinsen,Kreis Recklinghausen,51.66783,7.17346,798545.91,6740286.27,1,0.0
+EMAR,Marsberg,Kreis Hochsauerlandkreis,51.46273,8.85485,985717.39,6703557.10,1,0.0
+KMCH,Mechernich,Kreis Euskirchen,50.59138,6.64256,739446.40,6549329.40,1,0.0
+KMCK,Meckenheim (Bz Köln),Kreis Rhein-Sieg-Kreis,50.62744,7.01473,780876.17,6555654.89,1,0.0
+EMEK,Mecklenbeck,Kreisfreie Stadt Münster,51.92401,7.57999,843800.63,6786397.13,3,347.4
+KMBO,Meerbusch-Osterath,Kreis Rhein-Kreis Neuss,51.26915,6.62588,737589.59,6669042.05,1,0.0
+EMHO,Mehrhoog,Kreis Wesel,51.73916,6.51776,725553.72,6753098.95,1,0.0
+EMZH,Meinerzhagen,Kreis Märkischer Kreis,51.10809,7.63384,849795.18,6640435.91,2,10.6
+KMD,Menden (Rheinl),Kreis Rhein-Sieg-Kreis,50.77990,7.14953,795882.04,6582452.54,1,0.0
+EMED,Menden (Sauerland),Kreis Märkischer Kreis,51.43413,7.79489,867723.19,6698448.56,2,220.2
+EHOK,Menden Horlecke,Kreis Märkischer Kreis,51.42550,7.81133,869553.28,6696907.70,1,0.0
+EMES,Mersch (Westf),Kreis Warendorf,51.76206,7.73740,861323.43,6757216.67,1,0.0
+EMSD,Meschede,Kreis Hochsauerlandkreis,51.34957,8.27909,921624.08,6683363.11,1,0.0
+EMSN,Messinghausen,Kreis Hochsauerlandkreis,51.39312,8.67983,966234.26,6691128.92,1,0.0
+KMIL,Millingen,Kreis Wesel,51.55996,6.55680,729899.64,6720948.33,1,0.0
+HM,Minden (Westf),Kreis Minden-Lübbecke,52.29047,8.93481,994618.50,6852817.52,3,2154.3
+KMO,Moers,Kreis Wesel,51.45084,6.64164,739343.98,6701432.92,1,0.0
+EMOE,Möllen (Niederrhein),Kreis Wesel,51.57981,6.68810,744515.89,6724503.41,1,0.0
+KM,Mönchengladbach Hbf,Kreisfreie Stadt Mönchengladbach,51.19647,6.44622,717589.93,6656120.85,3,68.9
+KMR,Mönchengladbach-Rheindahlen,Kreisfreie Stadt Mönchengladbach,51.15068,6.35787,707754.85,6647990.68,1,0.0
+EMRS,Mülheim (Ruhr)-Speldorf,Kreisfreie Stadt Mülheim an der Ruhr,51.42662,6.85055,762599.74,6697107.65,2,961.7
+EMRY,Mülheim (Ruhr)-Styrum,Kreisfreie Stadt Mülheim an der Ruhr,51.44918,6.85263,762831.28,6701136.40,6,544.7
+EMST,Münster (Westf) Hbf,Kreisfreie Stadt Münster,51.95651,7.63592,850026.73,6792265.72,6,93.3
+EKAN,Münster (Westf) Kanal,Kreisfreie Stadt Münster,51.92856,7.65451,852096.16,6787218.48,2,9.4
+EEMS,Münster Ems,Kreisfreie Stadt Münster,52.01532,7.71800,859163.83,6802895.98,1,0.0
+EAML,Münster-Amelsbüren,Kreisfreie Stadt Münster,51.88217,7.59885,845900.11,6778848.26,1,0.0
+EHIT,Münster-Hiltrup,Kreisfreie Stadt Münster,51.90460,7.65435,852078.34,6782894.26,1,0.0
+ENHH,Neheim-Hüsten,Kreis Hochsauerlandkreis,51.43798,7.97003,887219.68,6699136.06,1,0.0
+KNEH,Nettersheim,Kreis Euskirchen,50.49227,6.63035,738087.19,6531968.86,1,0.0
+ENBM,Neubeckum,Kreis Warendorf,51.80194,8.02134,892931.48,6764392.59,3,51.3
+ENK,Neunkirchen (Kr Siegen),Kreis Siegen-Wittgenstein,50.78467,8.00612,891237.20,6583292.36,1,0.0
+KNG,Neuss Gbf,Kreis Rhein-Kreis Neuss,51.20630,6.68534,744208.64,6657867.25,1,0.0
+KN,Neuss Hbf,Kreis Rhein-Kreis Neuss,51.20456,6.68419,744080.63,6657558.10,8,710.6
+ENHF,Nevinghof/Münster Zentrum Nord,Kreisfreie Stadt Münster,51.98485,7.63824,850284.99,6797386.60,2,11.6
+ENDI,Niederdielfen,Kreis Siegen-Wittgenstein,50.85378,8.09674,901324.97,6595469.74,1,0.0
+KND,Niederdollendorf,Kreis Rhein-Sieg-Kreis,50.69509,7.18090,799374.13,6567534.87,1,0.0
+KNIK,Nieukerk,Kreis Kleve,51.45805,6.37559,709727.43,6702720.94,1,0.0
+KNIV,Nievenheim,Kreis Rhein-Kreis Neuss,51.12365,6.78222,754993.28,6643195.19,1,0.0
+KNO,Norf,Kreis Rhein-Kreis Neuss,51.16116,6.73040,749224.70,6649850.72,1,0.0
+EAPH,Nottuln-Appelhülsen,Kreis Coesfeld,51.89212,7.42631,826693.05,6780642.82,1,0.0
+EOD,Oberaden,Kreis Unna,51.61635,7.57862,843648.12,6731051.67,1,0.0
+EOB,Oberhausen Hbf,Kreisfreie Stadt Oberhausen,51.47553,6.85276,762845.75,6705844.48,12,1782.2
+EOBR,Oberhausen West,Kreisfreie Stadt Oberhausen,51.47668,6.83248,760588.19,6706050.01,7,1479.7
+EOBU,Oberhausen-Buschhausen,Kreisfreie Stadt Oberhausen,51.49627,6.82596,759862.39,6709552.10,1,0.0
+EOS,Oberhausen-Osterfeld,Kreisfreie Stadt Oberhausen,51.49983,6.88510,766445.83,6710188.68,5,3725.7
+EOSD,Oberhausen-Sterkrade,Kreisfreie Stadt Oberhausen,51.50594,6.84588,762079.88,6711281.36,2,725.7
+EOP,Ochtrup,Kreis Steinfurt,52.20160,7.18401,799720.34,6836659.72,1,0.0
+EOEL,Oelde,Kreis Warendorf,51.82924,8.14297,906471.27,6769308.55,2,20.8
+EOER,Oerlinghausen,Kreis Lippe,51.97873,8.66611,964706.95,6796280.48,1,0.0
+KOPL,Opladen,Kreisfreie Stadt Leverkusen,51.06612,7.00924,780265.03,6632997.93,3,946.1
+HOE,Osnabrück-Eversburg,Kreis Steinfurt,52.30738,7.98927,889361.47,6855895.66,1,0.0
+EBRO,Ostbevern,Kreis Warendorf,52.07011,7.80926,869322.85,6812812.18,1,0.0
+KOV,Overath,Kreis Rheinisch-Bergischer Kreis,50.93263,7.28887,811393.30,6609385.39,2,10.8
+EPD,Paderborn Hbf,Kreis Paderborn,51.71294,8.74093,973035.88,6748386.82,3,29.9
+EPDN,Paderborn Nord,Kreis Paderborn,51.72804,8.75893,975039.63,6751100.19,2,15.1
+EPK,Pelkum,Kreisfreie Stadt Hamm,51.64131,7.74915,862631.43,6735527.74,1,0.0
+HLAD,Petershagen-Lahde,Kreis Minden-Lübbecke,52.36814,9.00975,1002960.78,6866965.57,1,0.0
+EPLT,Plettenberg,Kreis Märkischer Kreis,51.23190,7.86879,875949.70,6662417.12,1,0.0
+KPR,Porz (Rhein),Kreisfreie Stadt Köln,50.87873,7.06713,786709.31,6599870.43,2,171.7
+KPH,Porz-Heumar,Kreisfreie Stadt Köln,50.91660,7.07561,787653.30,6606554.47,2,1797.1
+KPW,Porz-Wahn,Kreisfreie Stadt Köln,50.85629,7.07985,788125.30,6595912.35,6,1266.3
+KPUL,Pulheim,Kreis Rhein-Erft-Kreis,50.99802,6.79709,756648.60,6620943.49,1,0.0
+EQL,Quelle,Kreisfreie Stadt Bielefeld,52.00036,8.46106,941880.89,6800190.55,1,0.0
+HRAH,Rahden,Kreis Minden-Lübbecke,52.43370,8.62374,959990.35,6878927.09,1,0.0
+KRAO,Ratingen Ost,Kreis Mettmann,51.29545,6.86378,764072.49,6673722.75,1,0.0
+KRAW,Ratingen West,Kreis Mettmann,51.29898,6.83866,761276.15,6674351.20,1,0.0
+ERFE,Reckenfeld,Kreis Steinfurt,52.13383,7.56464,842091.87,6824359.90,1,0.0
+ERE,Recklinghausen Hbf,Kreis Recklinghausen,51.61605,7.20343,801882.16,6730997.89,3,17.0
+ERHO,Recklinghausen Ost,Kreis Recklinghausen,51.59906,7.21800,803504.08,6727952.51,3,325.6
+ERES,Recklinghausen Süd,Kreis Recklinghausen,51.56203,7.19555,801004.96,6721318.99,4,137.3
+EREK,Reken,Kreis Borken,51.80181,7.04992,784793.50,6764369.18,1,0.0
+ERMH,Remmighausen (Lippe),Kreis Lippe,51.91276,8.90702,991524.93,6784366.69,1,0.0
+KRG,Remscheid Güldenwerth,Kreisfreie Stadt Remscheid,51.16917,7.16311,797393.76,6651272.67,1,0.0
+KR,Remscheid Hbf,Kreisfreie Stadt Remscheid,51.17722,7.19959,801454.69,6652701.96,3,461.4
+KRB,Remscheid-Bliedinghausen,Kreisfreie Stadt Remscheid,51.16745,7.20630,802201.65,6650967.31,1,0.0
+KRL,Remscheid-Lennep,Kreisfreie Stadt Remscheid,51.19082,7.25284,807382.46,6655117.24,2,546.3
+ERHA,Rhade,Kreis Recklinghausen,51.75102,6.94836,773487.90,6755231.27,1,0.0
+ERDW,Rheda-Wiedenbrück,Kreis Gütersloh,51.85712,8.28654,922453.41,6774332.03,3,33.3
+KRBA,Rheinbach,Kreis Rhein-Sieg-Kreis,50.62924,6.94790,773436.69,6555970.77,1,0.0
+KRBE,Rheinberg (Rheinl),Kreis Wesel,51.54207,6.59258,733882.65,6717745.61,1,0.0
+HR,Rheine,Kreis Steinfurt,52.27636,7.43442,827595.85,6850249.97,3,57.0
+KRH,Rheinhausen,Kreisfreie Stadt Duisburg,51.39369,6.70623,746534.11,6691230.61,2,23.0
+KRHK,Rheinkamp,Kreis Wesel,51.50345,6.62461,737448.21,6710836.04,1,0.0
+KRY,Rheydt Hbf,Kreisfreie Stadt Mönchengladbach,51.16302,6.43941,716831.84,6650180.89,4,1269.7
+KRYO,Rheydt-Odenkirchen,Kreisfreie Stadt Mönchengladbach,51.13760,6.44603,717568.78,6645669.76,1,0.0
+ERHY,Rhynern,Kreisfreie Stadt Hamm,51.64393,7.87561,876708.89,6735997.73,1,0.0
+KRHD,Rhöndorf,Kreis Rhein-Sieg-Kreis,50.65808,7.20998,802611.30,6561033.45,1,0.0
+ERIG,Ringel,Kreis Steinfurt,52.13762,7.87726,876892.57,6825047.27,1,0.0
+ERIK,Rinkerode,Kreis Warendorf,51.84437,7.68937,855976.75,6772034.32,1,0.0
+KROI,Roisdorf,Kreis Rhein-Sieg-Kreis,50.75317,7.01604,781022.00,6577747.95,1,0.0
+KROM,Rommerskirchen,Kreis Rhein-Kreis Neuss,51.03974,6.70058,745905.15,6628326.28,2,14.8
+EROL,Rummenohl,Kreisfreie Stadt Hagen,51.27777,7.52836,838053.20,6670575.88,1,0.0
+KROE,Rösrath,Kreis Rheinisch-Bergischer Kreis,50.90135,7.18272,799576.73,6603862.20,1,0.0
+KRUN,Ründeroth,Kreis Oberbergischer Kreis,50.99531,7.46542,831046.75,6620464.16,1,0.0
+ESZK,Salzkotten,Kreis Paderborn,51.67251,8.59957,957299.75,6741126.29,1,0.0
+KSA,Satzvey,Kreis Euskirchen,50.62306,6.71322,747312.23,6554886.31,1,0.0
+HSCD,Scherfede,Kreis Höxter,51.52474,9.04642,1007042.87,6714644.35,1,0.0
+HSCI,Schieder,Kreis Lippe,51.92237,9.15310,1018918.43,6786101.11,1,0.0
+KSLA,Schladern (Sieg),Kreis Rhein-Sieg-Kreis,50.80701,7.59226,845166.52,6587226.76,1,0.0
+ESHO,Schloß Holte,Kreis Gütersloh,51.90869,8.61043,958508.68,6783632.24,1,0.0
+KSWE,Schwelm,Kreis Ennepe-Ruhr-Kreis,51.29058,7.28966,811481.24,6672855.81,4,433.9
+ESRT,Schwerte (Ruhr),Kreis Unna,51.44232,7.55885,841447.33,6699911.13,5,222.4
+ESRO,Schwerte (Ruhr) Ost,Kreis Unna,51.45132,7.58911,844815.86,6701518.66,3,628.2
+KSEC,Sechtem,Kreis Rhein-Sieg-Kreis,50.79541,6.95776,774534.30,6585183.60,1,0.0
+ESEL,Sennelager,Kreis Paderborn,51.77006,8.71388,970024.68,6758655.66,1,0.0
+ESES,Sennestadt,Kreisfreie Stadt Bielefeld,51.94045,8.56779,953762.02,6789365.20,1,0.0
+ESIH,Siedlinghausen,Kreis Hochsauerlandkreis,51.25825,8.47385,943304.67,6667102.92,1,0.0
+KSIB,Siegburg/Bonn,Kreis Rhein-Sieg-Kreis,50.79391,7.20258,801787.54,6584919.43,3,413.4
+ESIE,Siegen Hbf,Kreis Siegen-Wittgenstein,50.87567,8.01585,892320.34,6599330.58,2,19.8
+ESIG,Siegen Ost Gbf,Kreis Siegen-Wittgenstein,50.87669,8.04642,895723.38,6599510.53,2,17.2
+EHTG,Siegen-Geisweid,Kreis Siegen-Wittgenstein,50.91559,8.01433,892151.13,6606376.13,1,0.0
+ESW,Siegen-Weidenau,Kreis Siegen-Wittgenstein,50.89121,8.03011,893907.76,6602072.55,2,527.3
+KSIU,Sindorf,Kreis Rhein-Erft-Kreis,50.90370,6.68119,743746.67,6604277.01,1,0.0
+ESOT,Soest,Kreis Soest,51.57847,8.10463,902203.28,6724263.37,3,16.0
+KSO,Solingen Hbf,Kreisfreie Stadt Solingen,51.16076,7.00435,779720.68,6649779.72,3,33.6
+KSM,Solingen Mitte,Kreisfreie Stadt Solingen,51.16570,7.08872,789112.70,6650656.64,1,0.0
+ESPN,Spellen (Niederrhein),Kreis Wesel,51.61165,6.63963,739120.23,6730209.10,1,0.0
+EBGO,Steinfurt-Borghorst,Kreis Steinfurt,52.11869,7.39763,823500.40,6821614.65,1,0.0
+EBFT,Steinfurt-Burgsteinfurt,Kreis Steinfurt,52.14737,7.32935,815899.51,6826815.83,1,0.0
+ESTG,Steinhagen (Westf),Kreis Gütersloh,52.01741,8.42095,937415.87,6803274.02,1,0.0
+HSTM,Steinheim (Westf),Kreis Höxter,51.86838,9.08859,1011737.21,6776361.77,1,0.0
+KST,Stolberg (Rheinl) Hbf,Kreis Städteregion Aachen,50.79490,6.21829,692216.88,6585093.78,1,0.0
+ESDM,Sudmühle,Kreisfreie Stadt Münster,51.98825,7.67489,854364.85,6798001.18,2,20.7
+KODE,Swisttal-Odendorf,Kreis Rhein-Sieg-Kreis,50.65091,6.88094,765982.74,6559774.51,1,0.0
+ESYB,Sythen Bbf,Kreis Recklinghausen,51.78736,7.24494,806503.03,6761768.36,1,0.0
+ETEL,Telgte,Kreis Warendorf,51.98116,7.78114,866192.54,6796719.66,1,0.0
+KT,Troisdorf,Kreis Rhein-Sieg-Kreis,50.81366,7.15073,796015.62,6588398.29,3,46.9
+KTR,Trompet,Kreisfreie Stadt Duisburg,51.41320,6.66920,742411.95,6694712.07,3,36.3
+EUN,Unna,Kreis Unna,51.53898,7.69221,856292.90,6717192.56,4,355.9
+EUK,Unna-Königsborn,Kreis Unna,51.55176,7.68030,854967.09,6719480.19,2,541.5
+ELBG,Velbert-Langenberg,Kreis Mettmann,51.35445,7.12220,792839.68,6684232.94,1,0.0
+HVEP,Velpe (Westf),Kreis Steinfurt,52.26780,7.86541,875573.44,6848692.73,1,0.0
+HVTH,Veltheim (b Rinteln),Kreis Minden-Lübbecke,52.19095,8.95964,997382.56,6834725.58,1,0.0
+HVBK,Vennebeck,Kreis Minden-Lübbecke,52.22132,8.87180,987604.26,6840242.30,1,0.0
+KV,Viersen,Kreis Viersen,51.25487,6.40369,712855.51,6666501.71,2,16.7
+KVH,Viersen-Helenabrunn,Kreis Viersen,51.23382,6.43704,716568.02,6662758.46,2,14.9
+HVLO,Vlotho,Kreis Herford,52.17246,8.86396,986731.51,6831368.70,1,0.0
+EWLS,Walsum,Kreisfreie Stadt Duisburg,51.53450,6.71871,747923.38,6716390.79,1,0.0
+EWAN,Wanne-Eickel Hbf,Kreisfreie Stadt Herne,51.53007,7.16702,797829.02,6715598.04,12,3012.9
+HWAR,Warburg (Westf),Kreis Höxter,51.49298,9.16387,1020117.34,6708963.85,2,6.4
+EWAF,Warendorf,Kreis Warendorf,51.94997,7.98523,888911.74,6791084.44,1,0.0
+KWEE,Weeze,Kreis Kleve,51.62432,6.19785,689941.51,6732480.66,1,0.0
+KWEG,Wegberg,Kreis Heinsberg,51.14514,6.28152,699255.61,6647007.58,1,0.0
+KDEK,Weilerswist-Derkum,Kreis Euskirchen,50.70498,6.81672,758833.80,6569273.08,1,0.0
+EWGO,Wengern Ost,Kreis Ennepe-Ruhr-Kreis,51.40012,7.35022,818222.75,6692377.85,2,13.7
+EWMN,Wennemen,Kreis Hochsauerlandkreis,51.35215,8.19130,911851.34,6683822.97,1,0.0
+EWHL,Werdohl,Kreis Märkischer Kreis,51.25948,7.75793,863608.82,6667321.72,1,0.0
+EWER,Werl,Kreis Soest,51.55802,7.91375,880954.62,6720600.96,1,0.0
+EWRN,Werne (a d Lippe),Kreis Unna,51.66923,7.62291,848578.46,6740537.55,1,0.0
+EWES,Wesel,Kreis Wesel,51.65580,6.62713,737728.74,6738127.36,3,231.6
+EWSH,Westerholt,Kreis Recklinghausen,51.60236,7.08316,788493.76,6728543.93,1,0.0
+EWEF,Westhofen (Westf),Kreis Unna,51.41697,7.51937,837052.44,6695384.97,2,14.2
+EWIC,Wickede (Ruhr),Kreis Soest,51.49316,7.86974,876055.45,6708996.03,1,0.0
+HWBD,Willebadessen,Kreis Höxter,51.62157,9.01214,1003226.84,6731987.57,1,0.0
+ERUD,Wilnsdorf-Rudersdorf,Kreis Siegen-Wittgenstein,50.83921,8.14395,906580.37,6592900.97,1,0.0
+HWDH,Windheim (Weser),Kreis Minden-Lübbecke,52.40681,9.02305,1004441.33,6874018.82,1,0.0
+EWTB,Winterberg (Westf),Kreis Hochsauerlandkreis,51.19846,8.53238,949820.20,6656474.36,1,0.0
+EWIT,Witten Hbf,Kreis Ennepe-Ruhr-Kreis,51.43538,7.32933,815897.28,6698671.77,3,36.8
+KW,Wuppertal Hbf,Kreisfreie Stadt Wuppertal,51.25429,7.15021,795957.74,6666398.54,3,1883.0
+KWZ,Wuppertal Zoologischer Garten,Kreisfreie Stadt Wuppertal,51.24350,7.10710,791158.75,6664479.61,1,0.0
+KWO,Wuppertal-Oberbarmen,Kreisfreie Stadt Wuppertal,51.27160,7.23785,805713.78,6669477.97,6,1322.3
+KWRO,Wuppertal-Ronsdorf,Kreisfreie Stadt Wuppertal,51.22623,7.21549,803224.67,6661409.17,1,0.0
+KWU,Wuppertal-Unterbarmen,Kreisfreie Stadt Wuppertal,51.25880,7.17118,798292.11,6667200.75,1,0.0
+KWV,Wuppertal-Vohwinkel,Kreisfreie Stadt Wuppertal,51.23394,7.07185,787234.74,6662779.79,3,107.7
+EWGD,Würgendorf,Kreis Siegen-Wittgenstein,50.76006,8.14183,906344.37,6578960.36,1,0.0
+KX,Xanten,Kreis Wesel,51.65973,6.44526,717483.06,6738832.58,1,0.0

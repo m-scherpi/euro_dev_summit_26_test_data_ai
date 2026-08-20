@@ -1,0 +1,894 @@
+ds100,name,route_number,latitude,longitude,distance_to_mean_m,is_medoid
+KA,Aachen Hbf,2550,50.76772,6.09115,214.3,false
+KA,Aachen Hbf,2564,50.76616,6.09978,417.8,false
+KA,Aachen Hbf,2600,50.76756,6.09124,203.8,true
+KAW,Aachen West,2550,50.78033,6.07072,199.9,false
+KAW,Aachen West,2552,50.78038,6.07104,195.1,true
+KAW,Aachen West,2553,50.77548,6.07423,394.4,false
+KARE,Aachen-Rothe Erde,2564,50.76830,6.11329,157.4,true
+KARE,Aachen-Rothe Erde,2600,50.77026,6.11651,157.4,false
+EAHS,Ahaus,2100,52.08199,7.01647,112.2,true
+EAHS,Ahaus,9204,52.08401,7.01660,112.2,false
+EAHL,Ahlen (Westf),1700,51.76110,7.89537,971.5,false
+EAHL,Ahlen (Westf),2990,51.77246,7.91680,971.5,true
+KWIS,Alfter-Witterschlick,2645,50.68967,7.02618,0.0,true
+EALN,Altena (Westf),2800,51.30188,7.66881,0.0,true
+HA,Altenbeken,1760,51.76668,8.94279,230.5,true
+HA,Altenbeken,2970,51.76628,8.94283,238.1,false
+HA,Altenbeken,2971,51.76800,8.95266,466.5,false
+EABG,Altenberge,2014,52.05241,7.48116,0.0,true
+EARB,Arnsberg (Westf),2550,51.40541,8.06692,0.0,true
+EASB,Ascheberg (Westf),2000,51.78298,7.60074,0.0,true
+EAT,Attendorn,2864,51.12470,7.90872,0.0,true
+KAU,Au (Sieg),2651,50.77376,7.65666,147.2,true
+KAU,Au (Sieg),3032,50.77345,7.65251,147.2,false
+KBAG,Baal Gbf,2550,51.03620,6.28140,0.0,true
+HHZH,Bad Holzhausen,2982,52.28913,8.54598,0.0,true
+ELSP,Bad Laasphe,2870,50.92928,8.42051,0.0,true
+HOYG,Bad Oeynhausen Gbf,1700,52.20776,8.82685,389.0,true
+HOYG,Bad Oeynhausen Gbf,2990,52.20697,8.81552,389.0,false
+EBSU,Bad Salzuflen,2980,52.08153,8.74059,0.0,true
+EBAV,Balve,2853,51.33244,7.86282,0.0,true
+KBE,Bedburg (Erft),2580,50.98746,6.57273,4.7,false
+KBE,Bedburg (Erft),2581,50.98747,6.57286,4.7,true
+KBH,Bedburg-Hau,2610,51.75795,6.17343,0.0,true
+EBEE,Beelen,2013,51.92930,8.11614,0.0,true
+HBNS,Benhausen,1760,51.72800,8.80662,0.0,true
+EBEH,Benninghausen,1760,51.64277,8.25825,0.0,true
+KBEE,Bergheim (Erft),2581,50.95176,6.64627,0.0,true
+HBHE,Bergheim (Westf),1760,51.83067,9.05540,0.0,true
+KBGG,Bergisch Gladbach,2663,50.99168,7.12519,0.0,true
+EBKM,Bergkamen,2250,51.63416,7.64923,0.0,true
+EBWG,Bestwig,2550,51.36186,8.39766,0.0,true
+EBIL,Bielefeld Hbf,1700,52.02945,8.53273,3.4,true
+EBIL,Bielefeld Hbf,2984,52.02929,8.53305,24.8,false
+EBIL,Bielefeld Hbf,2990,52.02952,8.53248,21.8,false
+EBIO,Bielefeld Ost,2984,52.02392,8.55943,0.0,true
+EBIG,Bigge,2854,51.35829,8.47533,0.0,true
+EBB,Billerbeck,2265,51.98135,7.29746,0.0,true
+EBIN,Binolen,2853,51.37215,7.85945,0.0,true
+KBLB,Blankenberg (Sieg),2651,50.76847,7.34839,0.0,true
+KBLH,Blankenheim (Wald),2631,50.44179,6.59336,0.0,true
+EBCH,Bocholt,2263,51.82422,6.61236,564.4,true
+EBCH,Bocholt,2265,51.83328,6.61973,564.4,false
+EBO,Bochum Hbf,2150,51.47872,7.22301,117.8,false
+EBO,Bochum Hbf,2158,51.47849,7.22322,117.0,false
+EBO,Bochum Hbf,2160,51.47849,7.22322,117.0,true
+EBO,Bochum Hbf,2190,51.47827,7.22350,128.0,false
+EBO,Bochum Hbf,2194,51.47614,7.21364,597.5,false
+EBO,Bochum Hbf,2291,51.47827,7.22350,128.0,false
+EBNO,Bochum Nord,2151,51.48313,7.22522,0.0,true
+EBDA,Bochum-Dahlhausen,2165,51.43191,7.12210,991.7,false
+EBDA,Bochum-Dahlhausen,2167,51.42612,7.14160,507.0,false
+EBDA,Bochum-Dahlhausen,2400,51.42634,7.14141,484.8,true
+EBLA,Bochum-Langendreer,2140,51.47972,7.32783,425.1,false
+EBLA,Bochum-Langendreer,2142,51.47942,7.33007,573.9,false
+EBLA,Bochum-Langendreer,2151,51.47740,7.31795,319.2,true
+EBLA,Bochum-Langendreer,2158,51.47927,7.31144,720.5,false
+EBRI,Bochum-Riemke,2152,51.49556,7.20087,336.7,true
+EBRI,Bochum-Riemke,2153,51.50161,7.20065,336.7,false
+EBCK,Bockum-Hövel,2931,51.70480,7.77451,0.0,true
+KBOI,Boisheim,2510,51.27429,6.27464,0.0,true
+HBNB,Bonenburg,2970,51.55772,9.05006,0.0,true
+KB,Bonn Hbf,2630,50.73203,7.09671,8.5,true
+KB,Bonn Hbf,2645,50.73188,7.09665,8.5,false
+KNEW,Bonn Neuer Weg,2630,50.65353,7.19607,0.0,true
+KBBG,Bonn-Bad Godesberg,2630,50.68380,7.15969,0.0,true
+KBBN,Bonn-Bad Godesberg Nord,2630,50.69526,7.14185,0.0,true
+KBB,Bonn-Beuel,2324,50.73853,7.12769,0.0,true
+KBM,Bonn-Mehlem,2630,50.66902,7.18149,0.0,true
+KBO,Bonn-Oberkassel,2324,50.71501,7.15933,0.0,true
+EBOK,Bork (Westf),2100,51.66951,7.45621,0.0,true
+EBK,Borken (Westf),2236,51.84782,6.86696,0.0,true
+EBTH,Bottrop Hbf,2242,51.51808,6.94973,725.0,false
+EBTH,Bottrop Hbf,2246,51.51667,6.94687,475.9,true
+EBTH,Bottrop Hbf,2248,51.50940,6.93661,600.9,false
+EBTH,Bottrop Hbf,2250,51.50939,6.93668,599.3,false
+EBTS,Bottrop Süd,2206,51.50979,6.94788,104.1,true
+EBTS,Bottrop Süd,2243,51.50889,6.94524,104.1,false
+EBWE,Brackwede,1700,51.99722,8.49853,15.2,false
+EBWE,Brackwede,2950,51.99733,8.49809,17.4,false
+EBWE,Brackwede,2960,51.99722,8.49841,7.7,false
+EBWE,Brackwede,2990,51.99724,8.49822,6.4,true
+EBRA,Brake (b Bielefeld),2990,52.06965,8.60481,0.0,true
+KBRY,Breyell,2510,51.29456,6.24116,0.0,true
+EGG,Brilon Egger,2961,51.41272,8.60691,0.0,true
+EBRS,Brilon Stadt,2961,51.39931,8.57545,0.0,true
+EBRW,Brilon Wald,2550,51.34912,8.57612,1.8,true
+EBRW,Brilon Wald,2961,51.34916,8.57585,19.9,false
+EBRW,Brilon Wald,3944,51.34911,8.57643,20.6,false
+KBR,Brühl,2630,50.82925,6.91266,0.0,true
+HBUK,Buke,2970,51.73309,8.95040,0.0,true
+EBUR,Burbach (Kr Siegen),2651,50.74896,8.07767,0.0,true
+EBEO,Bönen,2910,51.61458,7.76854,999.5,true
+EBEO,Bönen,2932,51.59803,7.75730,999.5,false
+EBSL,Bösensell,2200,51.90687,7.48693,0.0,true
+HBDE,Bünde (Westf),2982,52.20189,8.57304,4.8,false
+HBDE,Bünde (Westf),2992,52.20196,8.57296,4.8,true
+ECP,Capelle (Westf),2000,51.73618,7.61091,0.0,true
+ECA,Castrop-Rauxel Hbf,2650,51.57368,7.30463,0.0,true
+ECMF,Coesfeld (Westf),2100,51.93889,7.16430,31.6,false
+ECMF,Coesfeld (Westf),2273,51.93944,7.16405,31.6,true
+EDAB,Dahlbruch,2870,50.97048,8.05383,0.0,true
+KDAL,Dalheim,2524,51.14896,6.17934,0.0,true
+EDAT,Datteln,2250,51.62403,7.32057,0.0,true
+EDVB,Davensberg,2000,51.81879,7.59864,0.0,true
+EDTM,Detmold,2980,51.94061,8.87325,0.0,true
+EDEU,Deuten,2236,51.71285,6.97092,0.0,true
+EDIN,Dinslaken,2270,51.56749,6.73825,0.0,true
+KDO,Dormagen,2610,51.09981,6.81442,0.0,true
+KDOS,Dorsfeld,2600,50.88250,6.62612,0.0,true
+EDRN,Dorsten,2236,51.65829,6.97075,539.2,true
+EDRN,Dorsten,2273,51.66793,6.97240,539.2,false
+EDOB,Dortmund Bbf,2106,51.52218,7.49140,226.9,true
+EDOB,Dortmund Bbf,2650,51.52114,7.48506,226.9,false
+EDO,Dortmund Hbf,2100,51.51841,7.45916,115.7,false
+EDO,Dortmund Hbf,2103,51.51653,7.45287,382.0,false
+EDO,Dortmund Hbf,2106,51.51904,7.46894,767.0,false
+EDO,Dortmund Hbf,2125,51.51768,7.45931,83.2,false
+EDO,Dortmund Hbf,2158,51.51778,7.45928,82.9,true
+EDO,Dortmund Hbf,2190,51.51752,7.45931,83.4,false
+EDO,Dortmund Hbf,2210,51.51684,7.45184,442.4,false
+EDO,Dortmund Hbf,2650,51.51796,7.45926,89.4,false
+EDO,Dortmund Hbf,2801,51.51662,7.45305,367.3,false
+EDWH,Dortmund Signal Iduna Park,2103,51.49072,7.45768,191.4,true
+EDWH,Dortmund Signal Iduna Park,2120,51.49211,7.44648,603.2,false
+EDWH,Dortmund Signal Iduna Park,2423,51.49115,7.46112,418.2,false
+EDOS,Dortmund Süd,2112,51.50879,7.47465,0.1,true
+EDOS,Dortmund Süd,2126,51.50879,7.47464,0.1,false
+EDOZ,Dortmund Zinkhütte,2650,51.52256,7.49367,0.0,true
+EDAP,Dortmund-Aplerbeck,2103,51.49019,7.55129,0.0,true
+EDAS,Dortmund-Asseln,2112,51.52825,7.59808,0.0,true
+EDBK,Dortmund-Brackel,2112,51.52077,7.55011,0.0,true
+EDBH,Dortmund-Bövinghausen,2210,51.51991,7.32739,0.0,true
+EDD,Dortmund-Derne,2100,51.56713,7.52852,0.0,true
+EDDP,Dortmund-Dorstfeld,2120,51.50852,7.42694,21.8,true
+EDDP,Dortmund-Dorstfeld,2121,51.50134,7.43353,905.1,false
+EDDP,Dortmund-Dorstfeld,2122,51.51050,7.41899,596.0,false
+EDDP,Dortmund-Dorstfeld,2126,51.50928,7.42757,116.7,false
+EDDP,Dortmund-Dorstfeld,2190,51.50988,7.42913,233.6,false
+EDDP,Dortmund-Dorstfeld,2191,51.50930,7.42719,111.1,false
+EDDP,Dortmund-Dorstfeld,2213,51.50948,7.42461,201.4,false
+EDEV,Dortmund-Eving,2100,51.53670,7.48062,0.0,true
+EDHK,Dortmund-Huckarde Süd,2122,51.52619,7.40765,7.7,true
+EDHK,Dortmund-Huckarde Süd,2130,51.52635,7.40747,15.9,false
+EDHK,Dortmund-Huckarde Süd,2191,51.52610,7.40751,12.7,false
+EDH,Dortmund-Hörde,2103,51.48794,7.49914,6.6,true
+EDH,Dortmund-Hörde,2113,51.48782,7.49910,6.6,false
+EDKU,Dortmund-Kurl,2650,51.55700,7.58538,0.0,true
+EDLU,Dortmund-Lütgendortmund Gbf,2151,51.49704,7.36481,0.0,true
+EDMR,Dortmund-Marten,2210,51.51451,7.37445,0.0,true
+EDMG,Dortmund-Mengede,2191,51.57026,7.37428,29.0,true
+EDMG,Dortmund-Mengede,2650,51.57053,7.37357,29.0,false
+EDOE,Dortmund-Obereving,2102,51.54073,7.47953,25.7,true
+EDOE,Dortmund-Obereving,2132,51.54052,7.47888,25.7,false
+EDSH,Dortmund-Scharnhorst,2132,51.54086,7.54350,262.7,true
+EDSH,Dortmund-Scharnhorst,2650,51.53850,7.53693,262.7,false
+HDRO,Drohne,2200,52.41789,8.32669,0.0,true
+EDG,Duisburg Hbf,2184,51.42941,6.77571,220.6,false
+EDG,Duisburg Hbf,2290,51.42967,6.77606,250.5,false
+EDG,Duisburg Hbf,2310,51.42056,6.77486,767.4,false
+EDG,Duisburg Hbf,2311,51.42011,6.77482,816.9,false
+EDG,Duisburg Hbf,2312,51.42965,6.77620,249.5,false
+EDG,Duisburg Hbf,2320,51.42852,6.77481,133.5,true
+EDG,Duisburg Hbf,2326,51.42981,6.77534,265.8,false
+EDG,Duisburg Hbf,2650,51.42963,6.77650,251.6,false
+EDG,Duisburg Hbf,2670,51.42954,6.77640,240.7,false
+EDHM,Duisburg Mannesmann,2315,51.36943,6.72968,0.0,true
+EDBG,Duisburg-Beeck Gbf,2331,51.47325,6.71564,0.0,true
+EDGR,Duisburg-Großenbaum,2310,51.36481,6.77731,18.3,false
+EDGR,Duisburg-Großenbaum,2317,51.36477,6.77766,6.4,false
+EDGR,Duisburg-Großenbaum,2650,51.36478,6.77776,13.0,false
+EDGR,Duisburg-Großenbaum,2670,51.36477,6.77755,2.3,true
+EDHB,Duisburg-Hamborn,2271,51.50277,6.77233,0.0,true
+EDHD,Duisburg-Hochfeld Süd,2315,51.41074,6.76844,1005.0,false
+EDHD,Duisburg-Hochfeld Süd,2320,51.41415,6.78888,463.8,false
+EDHD,Duisburg-Hochfeld Süd,2323,51.41353,6.78348,86.1,false
+EDHD,Duisburg-Hochfeld Süd,2326,51.41411,6.78848,435.9,false
+EDHD,Duisburg-Hochfeld Süd,2505,51.41332,6.78264,24.6,true
+EDME,Duisburg-Meiderich Süd,2274,51.46879,6.77999,37.3,true
+EDME,Duisburg-Meiderich Süd,2301,51.46878,6.77404,375.7,false
+EDME,Duisburg-Meiderich Süd,2331,51.46890,6.78434,338.7,false
+EDRH,Duisburg-Ruhrort Hafen,2302,51.46025,6.79442,203.3,false
+EDRH,Duisburg-Ruhrort Hafen,2303,51.46166,6.79992,209.5,false
+EDRH,Duisburg-Ruhrort Hafen,2307,51.46025,6.79442,203.3,false
+EDRH,Duisburg-Ruhrort Hafen,2327,51.46162,6.79976,197.2,true
+EDWM,Duisburg-Wanheim,2315,51.38992,6.74925,0.0,true
+EDWD,Duisburg-Wedau,2320,51.40754,6.79817,500.9,false
+EDWD,Duisburg-Wedau,2321,51.40665,6.79887,391.7,true
+EDWD,Duisburg-Wedau,2324,51.39946,6.80318,463.0,false
+EDWD,Duisburg-Wedau,2326,51.39978,6.80318,429.6,false
+EDUL,Dülmen,2100,51.83044,7.29101,224.2,true
+EDUL,Dülmen,2200,51.82742,7.29533,224.2,false
+KDN,Düren,2584,50.80541,6.47752,653.9,false
+KDN,Düren,2585,50.81615,6.49017,836.3,false
+KDN,Düren,2600,50.80946,6.48231,91.3,true
+KDN,Düren,2622,50.80934,6.48257,92.9,false
+KDA,Düsseldorf Abstellbahnhof,2414,51.20546,6.81209,92.9,false
+KDA,Düsseldorf Abstellbahnhof,2415,51.20642,6.81140,24.3,true
+KDA,Düsseldorf Abstellbahnhof,2419,51.20677,6.81112,68.6,false
+KDFF,Düsseldorf Flughafen,2650,51.29155,6.78697,0.0,true
+KDF,Düsseldorf Flughafen Terminal,2406,51.27765,6.76600,629.7,true
+KDF,Düsseldorf Flughafen Terminal,2408,51.28158,6.78296,629.7,false
+KD,Düsseldorf Hbf,2400,51.21948,6.79440,160.9,false
+KD,Düsseldorf Hbf,2412,51.22004,6.79327,205.6,false
+KD,Düsseldorf Hbf,2413,51.21948,6.79440,160.9,false
+KD,Düsseldorf Hbf,2414,51.21056,6.79104,865.1,false
+KD,Düsseldorf Hbf,2416,51.22004,6.79327,205.6,false
+KD,Düsseldorf Hbf,2419,51.21380,6.79052,527.2,false
+KD,Düsseldorf Hbf,2525,51.21958,6.79422,165.6,false
+KD,Düsseldorf Hbf,2550,51.21984,6.79370,184.7,false
+KD,Düsseldorf Hbf,2650,51.21935,6.79468,158.9,true
+KD,Düsseldorf Hbf,2670,51.21975,6.79404,180.3,false
+KDW,Düsseldorf Wehrhahn,2400,51.22848,6.79820,0.0,true
+KDBI,Düsseldorf-Bilk,2550,51.20786,6.77484,0.0,true
+KDD,Düsseldorf-Derendorf,2401,51.24686,6.79439,400.9,false
+KDD,Düsseldorf-Derendorf,2410,51.24525,6.79499,585.2,false
+KDD,Düsseldorf-Derendorf,2416,51.25782,6.79120,839.3,false
+KDD,Düsseldorf-Derendorf,2670,51.25174,6.79331,147.6,true
+KDE,Düsseldorf-Eller,2324,51.20278,6.85220,13.0,false
+KDE,Düsseldorf-Eller,2413,51.20265,6.85199,8.6,false
+KDE,Düsseldorf-Eller,2418,51.20279,6.85201,8.0,true
+KDE,Düsseldorf-Eller,2676,51.20265,6.85199,8.6,false
+KDGE,Düsseldorf-Gerresheim,2420,51.22036,6.85567,560.7,false
+KDGE,Düsseldorf-Gerresheim,2423,51.22074,6.86938,396.5,false
+KDGE,Düsseldorf-Gerresheim,2525,51.22023,6.86492,87.0,false
+KDGE,Düsseldorf-Gerresheim,2550,51.22038,6.86488,81.8,true
+KDR,Düsseldorf-Rath,2324,51.26416,6.82131,3.4,true
+KDR,Düsseldorf-Rath,2400,51.26417,6.82121,3.4,false
+KDU,Düsseldorf-Unterrath,2406,51.27866,6.78857,326.7,false
+KDU,Düsseldorf-Unterrath,2407,51.27659,6.78892,96.0,true
+KDU,Düsseldorf-Unterrath,2408,51.28396,6.78765,919.8,false
+KDU,Düsseldorf-Unterrath,2416,51.26263,6.79047,1463.2,false
+KDU,Düsseldorf-Unterrath,2670,51.27682,6.78862,121.8,false
+KEIT,Eitorf,2651,50.77362,7.44725,0.0,true
+EEM,Emmerich,2270,51.83424,6.25563,0.0,true
+EEMP,Empel-Rees,2270,51.79814,6.41711,0.0,true
+EEDT,Emsdetten,2931,52.17674,7.53152,0.0,true
+KENL,Engelskirchen,2657,50.98671,7.40770,0.0,true
+EEPE,Epe (Westf),2100,52.18345,7.03006,0.0,true
+KEST,Erftstadt,2631,50.80728,6.83303,0.0,true
+EEK,Erndtebrück,2870,50.99085,8.25516,2.4,false
+EEK,Erndtebrück,2871,50.99086,8.25509,2.4,true
+KE,Eschweiler Hbf,2600,50.81354,6.25197,0.0,true
+HEKP,Espelkamp,2982,52.37917,8.61324,0.0,true
+EE,Essen Hbf,2160,51.45134,7.01388,174.5,false
+EE,Essen Hbf,2161,51.45100,7.01407,180.2,false
+EE,Essen Hbf,2163,51.45147,7.01363,187.0,false
+EE,Essen Hbf,2164,51.45626,7.03269,1241.2,false
+EE,Essen Hbf,2169,51.45152,7.01384,171.0,true
+EE,Essen Hbf,2175,51.45115,7.01388,183.0,false
+EE,Essen Hbf,2291,51.45111,7.01397,180.0,false
+EE,Essen Hbf,2300,51.45134,7.01388,174.5,false
+EENW,Essen West,2280,51.45440,6.98017,1.5,true
+EENW,Essen West,2291,51.45426,6.98014,16.8,false
+EENW,Essen West,2300,51.45457,6.98024,18.1,false
+EEAL,Essen-Altenessen,2277,51.48321,7.00206,187.5,true
+EEAL,Essen-Altenessen,2650,51.48429,7.00718,187.5,false
+EEBE,Essen-Bergeborbeck,2277,51.48034,6.97785,7.9,true
+EEBE,Essen-Bergeborbeck,2650,51.48021,6.97779,7.9,false
+EEDO,Essen-Dellwig Ost,2248,51.48997,6.92422,158.4,true
+EEDO,Essen-Dellwig Ost,2280,51.48774,6.92705,158.4,false
+EEKN,Essen-Kray Nord,2163,51.46947,7.08068,5.4,false
+EEKN,Essen-Kray Nord,2168,51.46947,7.08069,5.4,true
+EEKN,Essen-Kray Nord,2505,51.46938,7.08086,10.8,false
+EESA,Essen-Stadtwald,2161,51.42238,7.02330,0.0,true
+EEST,Essen-Steele,2165,51.44292,7.09087,898.4,false
+EEST,Essen-Steele,2169,51.45150,7.07277,680.2,false
+EEST,Essen-Steele,2193,51.45050,7.07609,430.1,false
+EEST,Essen-Steele,2195,51.44449,7.08789,627.8,false
+EEST,Essen-Steele,2291,51.45032,7.07609,417.3,true
+EEVL,Essen-Vogelheim,2253,51.48478,6.98412,0.0,true
+EEWD,Essen-Werden,2161,51.38690,6.99784,0.0,false
+EEWD,Essen-Werden,2400,51.38690,6.99784,0.0,true
+KEU,Euskirchen,2585,50.65630,6.78546,672.0,false
+KEU,Euskirchen,2631,50.65784,6.79218,170.0,false
+KEU,Euskirchen,2634,50.66043,6.80831,1004.9,false
+KEU,Euskirchen,2645,50.65770,6.79231,164.4,true
+KKUH,Euskirchen-Kuchenheim,2645,50.65547,6.83368,0.0,true
+EFER,Ferndorf (Kr Siegen),2870,50.95950,8.00899,0.0,true
+EFP,Finnentrop,2800,51.17327,7.96476,10.0,false
+EFP,Finnentrop,2861,51.17330,7.96455,5.0,false
+EFP,Finnentrop,2864,51.17330,7.96455,5.0,true
+EFRE,Freienohl,2550,51.36640,8.16935,0.0,true
+EFFD,Friedrichsfeld (Niederrhein),2270,51.62848,6.64548,0.0,true
+HFLL,Frille,1741,52.33199,8.99396,0.0,true
+EFOE,Fröndenberg,2550,51.47140,7.76219,22.1,false
+EFOE,Fröndenberg,2850,51.47120,7.76184,11.0,true
+EFOE,Fröndenberg,2852,51.47120,7.76184,11.1,false
+KGEK,Geilenkirchen,2550,50.96103,6.12444,0.0,true
+KGE,Geldern,2610,51.51329,6.31931,0.0,true
+EG,Gelsenkirchen Hbf,2168,51.50472,7.10238,13.2,false
+EG,Gelsenkirchen Hbf,2230,51.50506,7.10239,31.4,false
+EG,Gelsenkirchen Hbf,2231,51.50451,7.10271,34.1,false
+EG,Gelsenkirchen Hbf,2237,51.50502,7.10243,26.0,false
+EG,Gelsenkirchen Hbf,2239,51.50458,7.10272,27.4,false
+EG,Gelsenkirchen Hbf,2650,51.50488,7.10255,9.3,true
+EGBK,Gelsenkirchen-Bismarck,2153,51.53720,7.10662,376.3,true
+EGBK,Gelsenkirchen-Bismarck,2204,51.54157,7.13641,1745.2,false
+EGBK,Gelsenkirchen-Bismarck,2236,51.53610,7.09226,1372.2,false
+EGBN,Gelsenkirchen-Buer Nord,2250,51.58454,7.04167,124.9,true
+EGBN,Gelsenkirchen-Buer Nord,2252,51.58529,7.04507,124.9,false
+EGHN,Gelsenkirchen-Horst Nord,2246,51.54013,7.01407,0.0,true
+EGS,Gelsenkirchen-Schalke,2206,51.52599,7.07502,0.0,true
+EGK,Geseke,1760,51.64512,8.51037,187.6,false
+EGK,Geseke,2963,51.64378,8.51535,187.6,true
+KGVW,Gevelsberg West,2143,51.31705,7.31285,3.3,false
+KGVW,Gevelsberg West,2423,51.31711,7.31281,3.3,true
+EGBW,Gladbeck West,2250,51.57535,6.97680,167.3,true
+EGBW,Gladbeck West,2251,51.57802,6.97903,167.3,false
+KGO,Goch,2610,51.68178,6.16088,0.0,true
+HGOF,Gohfeld,2990,52.20023,8.75961,0.0,true
+KG,Gremberg,2324,50.91422,7.01861,1589.5,false
+KG,Gremberg,2324,50.89090,7.05948,2280.0,false
+KG,Gremberg,2656,50.91421,7.01847,1596.7,false
+KG,Gremberg,2666,50.90008,7.04626,911.5,true
+EGRV,Greven,2931,52.08999,7.59937,0.0,true
+KGRB,Grevenbroich,2580,51.09325,6.58029,5.4,true
+KGRB,Grevenbroich,2611,51.09321,6.58043,5.4,false
+KERW,Grevenbroich Erftwerk,2611,51.08225,6.61846,0.0,true
+EGRN,Gronau (Westf),2014,52.21516,7.02244,8.1,false
+EGRN,Gronau (Westf),2100,52.21502,7.02249,8.1,true
+KGU,Gummersbach,2810,51.02334,7.56642,0.0,true
+KDI,Gummersbach-Dieringhausen,2657,50.98535,7.54224,415.9,false
+KDI,Gummersbach-Dieringhausen,2810,50.99028,7.55116,415.9,true
+KGUS,Gustorf,2580,51.06696,6.56988,0.0,true
+EGLO,Gütersloh Hbf,1700,51.90693,8.38497,12.4,false
+EGLO,Gütersloh Hbf,2990,51.90679,8.38524,12.4,true
+KGUI,Haan-Gruiten,2730,51.21451,7.01122,97.5,false
+KGUI,Haan-Gruiten,2731,51.21451,7.01122,97.5,true
+KGUI,Haan-Gruiten,2732,51.21454,7.01103,110.8,false
+KGUI,Haan-Gruiten,2733,51.21448,7.01700,305.7,false
+EHGG,Hagen Gbf,2803,51.38667,7.45306,675.8,true
+EHGG,Hagen Gbf,2811,51.37520,7.45945,675.8,false
+EHG,Hagen Hbf,2400,51.36277,7.46003,24.8,false
+EHG,Hagen Hbf,2550,51.36270,7.46060,15.2,true
+EHG,Hagen Hbf,2800,51.36267,7.46109,49.6,false
+EHG,Hagen Hbf,2801,51.36266,7.46085,33.5,false
+EHG,Hagen Hbf,2804,51.36277,7.45968,48.7,false
+EHG,Hagen Hbf,2819,51.36277,7.46003,24.8,false
+EHGH,Hagen-Halden,2800,51.38129,7.52025,0.0,true
+EHGP,Hagen-Haspe,2550,51.34319,7.42190,6.9,true
+EHGP,Hagen-Haspe,2816,51.34331,7.42185,6.9,false
+EHGI,Hagen-Heubing,2423,51.35239,7.42351,349.2,true
+EHGI,Hagen-Heubing,2804,51.35318,7.43348,349.2,false
+EHGK,Hagen-Kabel,2800,51.40353,7.48880,127.1,false
+EHGK,Hagen-Kabel,2820,51.40352,7.48861,120.9,true
+EHGK,Hagen-Kabel,2844,51.40625,7.48562,247.7,false
+EHGV,Hagen-Vorhalle,2400,51.38811,7.43359,181.9,false
+EHGV,Hagen-Vorhalle,2801,51.38822,7.43363,193.9,false
+EHGV,Hagen-Vorhalle,2803,51.38803,7.43375,182.0,false
+EHGV,Hagen-Vorhalle,2820,51.38806,7.43364,180.1,false
+EHGV,Hagen-Vorhalle,2821,51.38944,7.44282,802.3,false
+EHGV,Hagen-Vorhalle,2824,51.37783,7.41303,1656.1,false
+EHGV,Hagen-Vorhalle,2825,51.38767,7.43419,176.9,true
+EHAL,Halle (Westf),2950,52.05705,8.35838,0.0,true
+EHLT,Haltern am See,2200,51.73750,7.18419,0.0,true
+EHM,Hamm (Westf) Pbf,1700,51.67803,7.80737,32.1,false
+EHM,Hamm (Westf) Pbf,2250,51.67811,7.80687,64.4,false
+EHM,Hamm (Westf) Pbf,2650,51.67804,7.80743,27.9,false
+EHM,Hamm (Westf) Pbf,2923,51.67837,7.80866,64.8,false
+EHM,Hamm (Westf) Pbf,2930,51.67816,7.80825,31.0,false
+EHM,Hamm (Westf) Pbf,2931,51.67812,7.80802,14.9,true
+EHM,Hamm (Westf) Pbf,2932,51.67812,7.80802,14.9,false
+EHRB,Hamm (Westf) Rbf,2250,51.65952,7.80199,222.7,false
+EHRB,Hamm (Westf) Rbf,2650,51.66188,7.80493,476.2,false
+EHRB,Hamm (Westf) Rbf,2910,51.64809,7.78637,1571.0,false
+EHRB,Hamm (Westf) Rbf,2911,51.65840,7.80069,210.8,true
+EHRB,Hamm (Westf) Rbf,2912,51.64755,7.78458,1690.3,false
+EHRB,Hamm (Westf) Rbf,2913,51.65831,7.79490,323.9,false
+EHRB,Hamm (Westf) Rbf,2920,51.67103,7.80728,1370.2,false
+EHRB,Hamm (Westf) Rbf,2921,51.65560,7.79565,526.2,false
+EHRB,Hamm (Westf) Rbf,2923,51.66200,7.80468,467.7,false
+EHRB,Hamm (Westf) Rbf,2990,51.67662,7.80712,1947.8,false
+EHK,Hamminkeln,2263,51.73526,6.60169,0.0,true
+EHAT,Hattingen (Ruhr),2292,51.40068,7.17134,173.8,false
+EHAT,Hattingen (Ruhr),2400,51.40067,7.16633,173.8,true
+EHBK,Havixbeck,2265,51.96672,7.40770,0.0,true
+EHE,Heessen,1700,51.69189,7.81011,434.1,true
+EHE,Heessen,2990,51.69818,7.81753,434.1,false
+HHMS,Heimsen,1741,52.46214,9.04620,0.0,true
+KHEN,Hennef (Sieg),2651,50.77317,7.28569,0.0,true
+KHEC,Herchen,2651,50.77120,7.52139,0.0,true
+EHCK,Herdecke,2423,51.40462,7.43248,4.7,true
+EHCK,Herdecke,2821,51.40461,7.43262,4.7,false
+EHFD,Herford,1700,52.11973,8.66368,9.1,true
+EHFD,Herford,2980,52.11955,8.66402,23.4,false
+EHFD,Herford,2981,52.11957,8.66385,12.7,false
+EHFD,Herford,2990,52.11975,8.66332,29.3,false
+EHER,Herne,2208,51.54356,7.21777,546.9,false
+EHER,Herne,2210,51.54676,7.22699,184.2,true
+EHER,Herne,2211,51.55539,7.24982,2033.4,false
+EHER,Herne,2212,51.54338,7.21786,551.5,false
+EHER,Herne,2221,51.54333,7.21747,577.2,false
+EHER,Herne,2650,51.54363,7.21778,542.0,false
+EHEO,Herne-Rottbruch,2153,51.53381,7.20654,145.0,false
+EHEO,Herne-Rottbruch,2202,51.53482,7.20634,32.7,true
+EHEO,Herne-Rottbruch,2212,51.53670,7.20641,176.8,false
+KHEZ,Herzogenrath,2543,50.87097,6.09428,7.6,true
+KHEZ,Herzogenrath,2550,50.87089,6.09446,7.6,false
+EHIB,Hilchenbach,2870,50.99214,8.10691,0.0,true
+KHI,Hilden,2324,51.16709,6.92198,13.8,false
+KHI,Hilden,2671,51.16691,6.92191,6.9,false
+KHI,Hilden,2676,51.16691,6.92191,6.9,true
+EHIG,Hillegossen,2984,52.00041,8.61157,0.0,true
+HHIG,Himmighausen,1760,51.80382,8.99396,7.1,false
+HHIG,Himmighausen,2980,51.80395,8.99397,7.1,true
+KHOF,Hoffnungsthal,2655,50.91128,7.19659,0.0,true
+EHOG,Hohenlimburg,2800,51.34884,7.57170,0.0,true
+KHOZ,Holzheim (b Neuss),2580,51.16561,6.66462,0.0,true
+EHZW,Holzwickede,2103,51.50475,7.61957,8.7,false
+EHZW,Holzwickede,2840,51.50460,7.61968,8.7,true
+EHBM,Horn-Bad Meinberg,2980,51.88184,8.95493,0.0,true
+KHR,Horrem,2600,50.91634,6.71337,127.0,false
+KHR,Horrem,2601,50.91712,6.71323,99.0,true
+KHR,Horrem,2602,50.91896,6.71842,333.7,false
+KHR,Horrem,2622,50.91617,6.71353,133.5,false
+EHOS,Hösel,2400,51.34151,6.89325,0.0,true
+EHOV,Hövelhof,2960,51.82367,8.66203,0.0,true
+HHX,Höxter,2974,51.77721,9.39503,0.0,true
+HOTT,Höxter-Ottbergen,2974,51.71109,9.30544,14.3,true
+HOTT,Höxter-Ottbergen,2975,51.71083,9.30548,14.3,false
+KKAS,Hürth-Kalscheuren,2630,50.87558,6.91010,97.1,true
+KKAS,Hürth-Kalscheuren,2631,50.87572,6.90954,105.4,false
+KKAS,Hürth-Kalscheuren,2632,50.87223,6.90843,294.2,false
+KKAS,Hürth-Kalscheuren,2640,50.87555,6.91031,100.1,false
+HI,Ibbenbüren,2992,52.27685,7.72150,0.0,true
+HESH,Ibbenbüren-Esch,2992,52.29977,7.65581,0.0,true
+KIMI,Immigrath,2324,51.11723,6.96305,0.0,true
+ELE,Iserlohn-Letmathe,2800,51.36271,7.61804,197.8,false
+ELE,Iserlohn-Letmathe,2850,51.36352,7.62358,197.8,true
+KKAK,Kaldenkirchen,2510,51.32718,6.20324,0.0,true
+KKAL,Kall,2631,50.53856,6.55727,11.7,false
+KKAL,Kall,2635,50.53861,6.55695,11.7,true
+EKAL,Kalthof (Kr Iserlohn),2841,51.42496,7.67245,0.0,true
+EKAM,Kamen,2650,51.58516,7.66102,0.0,true
+EKV,Kattenvenne,2200,52.11324,7.86027,0.0,true
+KKEM,Kempen (Niederrhein),2610,51.36787,6.42533,0.0,true
+EKG,Kettwig,2400,51.36327,6.95362,0.0,true
+KKEV,Kevelaer,2610,51.58101,6.25222,0.0,true
+EKIE,Kierspe,2810,51.13078,7.61633,0.0,true
+EWSE,Kirchhundem Welschen Ennest,2800,51.04205,8.00374,0.0,true
+HKLG,Kirchlengern,2981,52.19580,8.65169,267.9,false
+HKLG,Kirchlengern,2992,52.19672,8.64398,267.9,true
+KKLE,Kleinenbroich,2550,51.19563,6.55217,0.0,true
+KKLV,Kleve,2610,51.78967,6.14625,0.0,true
+KKOS,Kohlscheid,2550,50.82730,6.07205,0.0,true
+KKOI,Korschenbroich,2550,51.19561,6.51187,0.0,true
+KKR,Krefeld Hbf,2500,51.32522,6.57023,35.3,false
+KKR,Krefeld Hbf,2520,51.32574,6.56990,26.3,false
+KKR,Krefeld Hbf,2610,51.32558,6.56996,9.1,true
+KKRL,Krefeld-Linn,2500,51.33679,6.62951,235.2,true
+KKRL,Krefeld-Linn,2504,51.34264,6.63356,473.9,false
+KKRL,Krefeld-Linn,2505,51.33678,6.62940,238.7,false
+KKRU,Krefeld-Uerdingen,2342,51.36739,6.65638,321.6,false
+KKRU,Krefeld-Uerdingen,2504,51.36185,6.65082,406.0,false
+KKRU,Krefeld-Uerdingen,2505,51.36562,6.65445,84.6,true
+EKT,Kreuztal,2800,50.95602,7.99184,137.0,true
+EKT,Kreuztal,2870,50.95832,7.99042,137.0,false
+EKRU,Krummenerl,2815,51.08012,7.75564,0.0,true
+KKBT,Köln Bonntor,2641,50.91584,6.95842,524.5,false
+KKBT,Köln Bonntor,2642,50.91821,6.94781,266.0,false
+KKBT,Köln Bonntor,2643,50.91815,6.94788,258.5,true
+KKE,Köln Eifeltor,2640,50.90840,6.93052,192.8,true
+KKE,Köln Eifeltor,2643,50.90496,6.92997,192.8,false
+KK,Köln Hbf,2600,50.94647,6.95523,179.3,true
+KK,Köln Hbf,2616,50.94275,6.95905,314.5,false
+KK,Köln Hbf,2617,50.94958,6.95143,616.9,false
+KK,Köln Hbf,2620,50.94302,6.95970,315.6,false
+KK,Köln Hbf,2622,50.95386,6.94954,1090.4,false
+KK,Köln Hbf,2630,50.94278,6.95912,314.1,false
+KK,Köln Hbf,2633,50.94260,6.95864,316.3,false
+KK,Köln Hbf,2639,50.94270,6.95888,313.8,false
+KK,Köln Hbf,2670,50.94302,6.95970,315.6,false
+KKDZ,Köln Messe/Deutz,2633,50.94115,6.97174,302.3,false
+KKDZ,Köln Messe/Deutz,2639,50.94089,6.97455,102.9,false
+KKDZ,Köln Messe/Deutz,2650,50.94087,6.97454,103.0,false
+KKDZ,Köln Messe/Deutz,2651,50.94089,6.97455,102.9,false
+KKDZ,Köln Messe/Deutz,2652,50.94081,6.97451,105.1,false
+KKDZ,Köln Messe/Deutz,2653,50.94105,6.97460,102.8,true
+KKDZ,Köln Messe/Deutz,2654,50.93971,6.98380,559.4,false
+KKDZ,Köln Messe/Deutz,2658,50.94122,6.97464,107.1,false
+KKDZ,Köln Messe/Deutz,2659,50.94109,6.97461,104.1,false
+KKDZ,Köln Messe/Deutz,2668,50.94018,6.98253,462.7,false
+KKDT,Köln Messe/Deutz (tief),2660,50.94073,6.97488,0.0,true
+KKS,Köln Süd,2630,50.92689,6.93832,6.6,false
+KKS,Köln Süd,2642,50.92697,6.93845,6.6,true
+KKW,Köln West,2613,50.94335,6.93399,65.6,true
+KKW,Köln West,2615,50.94788,6.93849,644.1,false
+KKW,Köln West,2617,50.94214,6.93321,97.0,false
+KKW,Köln West,2630,50.94364,6.93389,98.1,false
+KKW,Köln West,2640,50.93686,6.93122,689.8,false
+KKCN,Köln-Chorweiler Nord,2620,51.02810,6.89277,0.0,true
+KKDB,Köln-Dellbrück,2663,50.98143,7.07011,0.0,true
+KKER,Köln-Ehrenfeld,2600,50.95166,6.91722,883.6,false
+KKER,Köln-Ehrenfeld,2611,50.94821,6.87781,1906.6,false
+KKER,Köln-Ehrenfeld,2612,50.94847,6.87667,1981.9,false
+KKER,Köln-Ehrenfeld,2613,50.95034,6.90557,66.7,true
+KKER,Köln-Ehrenfeld,2614,50.95348,6.93383,2066.0,false
+KKER,Köln-Ehrenfeld,2622,50.95153,6.91726,884.6,false
+KKA,Köln-Kalk,2621,50.93197,7.00588,178.0,false
+KKA,Köln-Kalk,2641,50.93363,6.99911,331.1,false
+KKA,Köln-Kalk,2651,50.93198,7.00550,153.2,true
+KKAN,Köln-Kalk Nord,2324,50.93966,7.01638,158.8,false
+KKAN,Köln-Kalk Nord,2641,50.93022,7.01601,921.4,false
+KKAN,Köln-Kalk Nord,2664,50.95001,7.01240,1298.8,false
+KKAN,Köln-Kalk Nord,2665,50.93967,7.01562,137.9,false
+KKAN,Köln-Kalk Nord,2666,50.92883,7.01548,1073.9,false
+KKAN,Köln-Kalk Nord,2667,50.93967,7.01562,137.9,true
+KKAN,Köln-Kalk Nord,2669,50.94125,7.01433,314.3,false
+KKL,Köln-Longerich,2610,50.99798,6.90208,20.8,false
+KKL,Köln-Longerich,2615,50.99770,6.90152,28.9,false
+KKL,Köln-Longerich,2620,50.99790,6.90194,8.2,true
+KLOV,Köln-Lövenich,2600,50.94308,6.83526,0.0,true
+KKM,Köln-Mülheim,2324,50.95851,7.01546,171.2,true
+KKM,Köln-Mülheim,2624,50.96679,7.02062,854.0,false
+KKM,Köln-Mülheim,2650,50.95770,7.01307,287.7,false
+KKM,Köln-Mülheim,2652,50.95756,7.01322,297.8,false
+KKM,Köln-Mülheim,2653,50.95390,7.00914,792.5,false
+KKM,Köln-Mülheim,2658,50.95771,7.01280,296.6,false
+KKM,Köln-Mülheim,2659,50.95776,7.01290,288.0,false
+KKM,Köln-Mülheim,2660,50.95752,7.01300,308.8,false
+KKM,Köln-Mülheim,2661,50.96685,7.02071,863.0,false
+KKM,Köln-Mülheim,2662,50.96768,7.02104,955.7,false
+KKM,Köln-Mülheim,2663,50.96449,7.01850,558.6,false
+KKM,Köln-Mülheim,2664,50.96125,7.01684,192.5,false
+KKM,Köln-Mülheim,2665,50.96143,7.01712,220.6,false
+KKM,Köln-Mülheim,2669,50.95348,7.00615,952.7,false
+KKM,Köln-Mülheim,2670,50.95749,7.01340,299.9,false
+KKN,Köln-Nippes,2615,50.98446,6.92183,1620.3,true
+KKN,Köln-Nippes,2620,50.95816,6.94165,1620.3,false
+KKWO,Köln-Worringen,2610,51.05232,6.85180,8.4,false
+KKWO,Köln-Worringen,2620,51.05236,6.85203,8.4,true
+KFKB,Köln/Bonn Flughafen,2691,50.87890,7.11926,0.0,true
+KKOW,Königswinter,2324,50.67879,7.19339,0.0,true
+ELAG,Lage (Lippe),2980,51.99166,8.80126,6.9,false
+ELAG,Lage (Lippe),2983,51.99175,8.80144,9.2,false
+ELAG,Lage (Lippe),2984,51.99166,8.80134,3.2,true
+HLAN,Langeland,1760,51.77194,8.98690,7.0,true
+HLAN,Langeland,2974,51.77182,8.98697,7.0,false
+KLA,Langenfeld (Rheinl),2650,51.09865,6.94098,5.4,true
+KLA,Langenfeld (Rheinl),2670,51.09859,6.94085,5.4,false
+KLAW,Langerwehe,2600,50.81764,6.35474,0.0,true
+ELSD,Langschede,2550,51.47651,7.70519,0.0,true
+KLEL,Leichlingen,2730,51.10741,7.00533,0.0,true
+ELEN,Lengerich (Westf),2200,52.17575,7.87846,0.0,true
+EA,Lennestadt-Altenhundem,2800,51.10481,8.07179,0.0,true
+EGVB,Lennestadt-Grevenbrück,2800,51.14174,8.01780,0.0,true
+EMEG,Lennestadt-Meggen,2800,51.12252,8.06551,0.0,true
+ELEO,Leopoldstal,2980,51.84450,8.97116,0.0,true
+KLMI,Leverkusen Mitte,2650,51.03147,6.99177,55.9,false
+KLMI,Leverkusen Mitte,2670,51.03242,6.99125,55.9,true
+KLM,Leverkusen Morsbroich,2324,51.03249,7.02622,0.0,true
+KLS,Leverkusen-Manfort,2730,51.03187,7.01516,0.0,true
+KLD,Lindern,2542,50.99777,6.21065,75.4,false
+KLD,Lindern,2550,50.99714,6.20874,75.4,true
+ELIT,Lintorf (Niederrhein),2324,51.33436,6.82673,0.0,true
+ELPP,Lippstadt,1760,51.67071,8.34875,192.1,true
+ELPP,Lippstadt,2951,51.67098,8.35430,192.1,false
+ELUT,Lutum,2265,51.98211,7.22593,0.0,true
+HL,Löhne (Westf) Pbf,1700,52.19659,8.71376,30.9,false
+HL,Löhne (Westf) Pbf,1820,52.19667,8.71336,8.9,true
+HL,Löhne (Westf) Pbf,2990,52.19682,8.71329,10.4,false
+HL,Löhne (Westf) Pbf,2992,52.19667,8.71336,8.9,false
+HL,Löhne (Westf) Pbf,2993,52.19700,8.71320,31.1,false
+HLBB,Lübbecke (Westf),2982,52.30636,8.60573,0.0,true
+EBRU,Lüdenscheid-Brügge,2810,51.20771,7.57200,157.5,false
+EBRU,Lüdenscheid-Brügge,2813,51.20859,7.56771,157.5,true
+ELDH,Lüdinghausen,2100,51.76189,7.43159,0.0,true
+ELUE,Lünen Hbf,2000,51.61729,7.53002,270.4,false
+ELUE,Lünen Hbf,2100,51.61701,7.52889,257.7,true
+ELUE,Lünen Hbf,2900,51.61030,7.53201,521.5,false
+EPRN,Lünen Preußen,2100,51.58810,7.53974,565.4,false
+EPRN,Lünen Preußen,2901,51.59807,7.53664,565.4,true
+ELUS,Lünen Süd,2250,51.60775,7.51870,253.8,true
+ELUS,Lünen Süd,2900,51.60778,7.52605,253.8,false
+ELUZ,Lützel,2870,50.96699,8.17392,0.0,true
+KMAH,Marienheide,2810,51.08070,7.53174,0.0,true
+EMSI,Marl-Sinsen,2200,51.66783,7.17346,0.0,true
+EMAR,Marsberg,2550,51.46273,8.85485,0.0,true
+KMCH,Mechernich,2631,50.59138,6.64256,0.0,true
+KMCK,Meckenheim (Bz Köln),2645,50.62744,7.01473,0.0,true
+EMEK,Mecklenbeck,2010,51.92477,7.58465,225.9,false
+EMEK,Mecklenbeck,2200,51.92401,7.57999,104.7,true
+EMEK,Mecklenbeck,2265,51.92408,7.57971,121.6,false
+KMBO,Meerbusch-Osterath,2610,51.26915,6.62588,0.0,true
+EMHO,Mehrhoog,2270,51.73916,6.51776,0.0,true
+EMZH,Meinerzhagen,2810,51.10809,7.63384,5.3,true
+EMZH,Meinerzhagen,2815,51.10800,7.63381,5.3,false
+KMD,Menden (Rheinl),2324,50.77990,7.14953,0.0,true
+EMED,Menden (Sauerland),2850,51.43524,7.79227,110.1,false
+EMED,Menden (Sauerland),2853,51.43413,7.79489,110.1,true
+EHOK,Menden Horlecke,2853,51.42550,7.81133,0.0,true
+EMES,Mersch (Westf),2931,51.76206,7.73740,0.0,true
+EMSD,Meschede,2550,51.34957,8.27909,0.0,true
+EMSN,Messinghausen,2550,51.39312,8.67983,0.0,true
+KMIL,Millingen,2330,51.55996,6.55680,0.0,true
+HM,Minden (Westf),1700,52.29047,8.93481,687.4,true
+HM,Minden (Westf),1741,52.29510,8.96483,1420.7,false
+HM,Minden (Westf),2990,52.29065,8.93404,733.6,false
+KMO,Moers,2330,51.45084,6.64164,0.0,true
+EMOE,Möllen (Niederrhein),2271,51.57981,6.68810,0.0,true
+KM,Mönchengladbach Hbf,2520,51.19670,6.44577,36.5,false
+KM,Mönchengladbach Hbf,2521,51.19632,6.44654,32.4,false
+KM,Mönchengladbach Hbf,2550,51.19647,6.44622,4.2,true
+KMR,Mönchengladbach-Rheindahlen,2524,51.15068,6.35787,0.0,true
+EMRS,Mülheim (Ruhr)-Speldorf,2324,51.42414,6.83727,480.8,false
+EMRS,Mülheim (Ruhr)-Speldorf,2505,51.42662,6.85055,480.8,true
+EMRY,Mülheim (Ruhr)-Styrum,2183,51.44918,6.85263,90.8,true
+EMRY,Mülheim (Ruhr)-Styrum,2184,51.44901,6.85249,92.1,false
+EMRY,Mülheim (Ruhr)-Styrum,2187,51.45112,6.84543,453.3,false
+EMRY,Mülheim (Ruhr)-Styrum,2290,51.44930,6.85271,92.1,false
+EMRY,Mülheim (Ruhr)-Styrum,2291,51.44904,6.85254,92.4,false
+EMRY,Mülheim (Ruhr)-Styrum,2300,51.44934,6.85274,93.0,false
+EMST,Münster (Westf) Hbf,2000,51.95649,7.63608,16.6,false
+EMST,Münster (Westf) Hbf,2004,51.95646,7.63647,43.8,false
+EMST,Münster (Westf) Hbf,2013,51.95649,7.63608,16.6,false
+EMST,Münster (Westf) Hbf,2200,51.95651,7.63592,5.8,true
+EMST,Münster (Westf) Hbf,2265,51.95662,7.63514,49.5,false
+EMST,Münster (Westf) Hbf,2931,51.95657,7.63536,33.2,false
+EKAN,Münster (Westf) Kanal,2010,51.92856,7.65451,4.7,true
+EKAN,Münster (Westf) Kanal,2011,51.92857,7.65465,4.7,false
+EEMS,Münster Ems,2200,52.01532,7.71800,0.0,true
+EAML,Münster-Amelsbüren,2000,51.88217,7.59885,0.0,true
+EHIT,Münster-Hiltrup,2931,51.90460,7.65435,0.0,true
+ENHH,Neheim-Hüsten,2550,51.43798,7.97003,0.0,true
+KNEH,Nettersheim,2631,50.49227,6.63035,0.0,true
+ENBM,Neubeckum,1700,51.80194,8.02134,3.2,true
+ENBM,Neubeckum,2943,51.80219,8.02116,27.2,false
+ENBM,Neubeckum,2990,51.80176,8.02143,24.2,false
+ENK,Neunkirchen (Kr Siegen),2651,50.78467,8.00612,0.0,true
+KNG,Neuss Gbf,2531,51.20630,6.68534,0.0,true
+KN,Neuss Hbf,2525,51.20456,6.68419,186.8,true
+KN,Neuss Hbf,2530,51.20222,6.68004,202.1,false
+KN,Neuss Hbf,2531,51.20161,6.67553,506.5,false
+KN,Neuss Hbf,2533,51.20471,6.68399,189.3,false
+KN,Neuss Hbf,2536,51.20205,6.67938,249.9,false
+KN,Neuss Hbf,2550,51.20448,6.68438,191.8,false
+KN,Neuss Hbf,2580,51.20407,6.68480,195.8,false
+KN,Neuss Hbf,2610,51.20399,6.68498,205.4,false
+ENHF,Nevinghof/Münster Zentrum Nord,2014,51.98485,7.63824,5.8,true
+ENHF,Nevinghof/Münster Zentrum Nord,2931,51.98485,7.63841,5.8,false
+ENDI,Niederdielfen,2800,50.85378,8.09674,0.0,true
+KND,Niederdollendorf,2324,50.69509,7.18090,0.0,true
+KNIK,Nieukerk,2610,51.45805,6.37559,0.0,true
+KNIV,Nievenheim,2610,51.12365,6.78222,0.0,true
+KNO,Norf,2610,51.16116,6.73040,0.0,true
+EAPH,Nottuln-Appelhülsen,2200,51.89212,7.42631,0.0,true
+EOD,Oberaden,2250,51.61635,7.57862,0.0,true
+EOB,Oberhausen Hbf,2183,51.47481,6.85169,415.1,false
+EOB,Oberhausen Hbf,2270,51.47553,6.85276,324.0,true
+EOB,Oberhausen Hbf,2271,51.47491,6.85150,406.7,false
+EOB,Oberhausen Hbf,2272,51.49061,6.85108,1362.1,false
+EOB,Oberhausen Hbf,2274,51.47504,6.85134,396.7,false
+EOB,Oberhausen Hbf,2275,51.47491,6.85150,406.7,false
+EOB,Oberhausen Hbf,2277,51.47471,6.85202,420.7,false
+EOB,Oberhausen Hbf,2278,51.48178,6.86233,743.6,false
+EOB,Oberhausen Hbf,2282,51.48161,6.85702,448.1,false
+EOB,Oberhausen Hbf,2283,51.47509,6.85116,395.3,false
+EOB,Oberhausen Hbf,2321,51.48763,6.85195,1026.1,false
+EOB,Oberhausen Hbf,2650,51.47462,6.85220,429.4,false
+EOBR,Oberhausen West,2278,51.48304,6.84940,785.8,false
+EOBR,Oberhausen West,2281,51.47668,6.83248,584.8,true
+EOBR,Oberhausen West,2283,51.48284,6.85125,886.6,false
+EOBR,Oberhausen West,2302,51.47683,6.83230,587.2,false
+EOBR,Oberhausen West,2304,51.47656,6.83243,594.1,false
+EOBR,Oberhausen West,2320,51.47655,6.83254,588.0,false
+EOBR,Oberhausen West,2321,51.48260,6.84811,684.0,false
+EOBU,Oberhausen-Buschhausen,2271,51.49627,6.82596,0.0,true
+EOS,Oberhausen-Osterfeld,2206,51.49976,6.88511,1103.0,false
+EOS,Oberhausen-Osterfeld,2246,51.50416,6.92841,1937.3,false
+EOS,Oberhausen-Osterfeld,2250,51.49983,6.88510,1102.3,true
+EOS,Oberhausen-Osterfeld,2253,51.50394,6.92934,1996.9,false
+EOS,Oberhausen-Osterfeld,2320,51.49892,6.87618,1728.7,false
+EOSD,Oberhausen-Sterkrade,2206,51.50594,6.84588,362.9,true
+EOSD,Oberhausen-Sterkrade,2270,51.51230,6.84354,362.9,false
+EOP,Ochtrup,2014,52.20160,7.18401,0.0,true
+EOEL,Oelde,1700,51.82924,8.14297,10.4,true
+EOEL,Oelde,2990,51.82906,8.14303,10.4,false
+EOER,Oerlinghausen,2984,51.97873,8.66611,0.0,true
+KOPL,Opladen,2324,51.05766,7.00853,629.5,false
+KOPL,Opladen,2674,51.06612,7.00924,313.5,true
+KOPL,Opladen,2730,51.06616,7.00877,316.9,false
+HOE,Osnabrück-Eversburg,9208,52.30738,7.98927,0.0,true
+EBRO,Ostbevern,2200,52.07011,7.80926,0.0,true
+KOV,Overath,2655,50.93272,7.28881,5.4,false
+KOV,Overath,2657,50.93263,7.28887,5.4,true
+EPD,Paderborn Hbf,1760,51.71305,8.74081,14.8,false
+EPD,Paderborn Hbf,2960,51.71294,8.74093,0.3,true
+EPD,Paderborn Hbf,2961,51.71282,8.74105,15.0,false
+EPDN,Paderborn Nord,2960,51.72804,8.75893,7.5,true
+EPDN,Paderborn Nord,2962,51.72812,8.75911,7.5,false
+EPK,Pelkum,2250,51.64131,7.74915,0.0,true
+HLAD,Petershagen-Lahde,1741,52.36814,9.00975,0.0,true
+EPLT,Plettenberg,2800,51.23190,7.86879,0.0,true
+KPR,Porz (Rhein),2324,50.88009,7.06599,85.9,false
+KPR,Porz (Rhein),2651,50.87873,7.06713,85.9,true
+KPH,Porz-Heumar,2655,50.91660,7.07561,898.5,true
+KPH,Porz-Heumar,2692,50.91515,7.05010,898.5,false
+KPW,Porz-Wahn,2324,50.85925,7.07735,361.9,false
+KPW,Porz-Wahn,2651,50.85812,7.07925,186.8,false
+KPW,Porz-Wahn,2690,50.84947,7.08656,905.3,false
+KPW,Porz-Wahn,2691,50.85629,7.07985,40.8,true
+KPW,Porz-Wahn,2693,50.85816,7.07935,188.7,false
+KPW,Porz-Wahn,2694,50.85808,7.07911,186.6,false
+KPUL,Pulheim,2611,50.99802,6.79709,0.0,true
+EQL,Quelle,2950,52.00036,8.46106,0.0,true
+HRAH,Rahden,2982,52.43370,8.62374,0.0,true
+KRAO,Ratingen Ost,2400,51.29545,6.86378,0.0,true
+KRAW,Ratingen West,2324,51.29898,6.83866,0.0,true
+ERFE,Reckenfeld,2931,52.13383,7.56464,0.0,true
+ERE,Recklinghausen Hbf,2200,51.61608,7.20328,9.1,false
+ERE,Recklinghausen Hbf,2223,51.61605,7.20343,2.9,true
+ERE,Recklinghausen Hbf,2224,51.61609,7.20353,8.0,false
+ERHO,Recklinghausen Ost,2222,51.59914,7.21494,179.1,false
+ERHO,Recklinghausen Ost,2224,51.59906,7.21800,32.6,true
+ERHO,Recklinghausen Ost,2250,51.59896,7.21964,146.6,false
+ERES,Recklinghausen Süd,2200,51.56203,7.19555,27.5,true
+ERES,Recklinghausen Süd,2221,51.56211,7.19570,36.9,false
+ERES,Recklinghausen Süd,2222,51.56211,7.19570,36.9,false
+ERES,Recklinghausen Süd,2225,51.56089,7.19543,100.5,false
+EREK,Reken,2273,51.80181,7.04992,0.0,true
+ERMH,Remmighausen (Lippe),2980,51.91276,8.90702,0.0,true
+KRG,Remscheid Güldenwerth,2675,51.16917,7.16311,0.0,true
+KR,Remscheid Hbf,2675,51.17597,7.19331,307.2,false
+KR,Remscheid Hbf,2705,51.17722,7.19959,153.2,true
+KR,Remscheid Hbf,2706,51.17708,7.19968,154.4,false
+KRB,Remscheid-Bliedinghausen,2706,51.16745,7.20630,0.0,true
+KRL,Remscheid-Lennep,2700,51.19082,7.25284,273.2,true
+KRL,Remscheid-Lennep,2705,51.18592,7.25343,273.2,false
+ERHA,Rhade,2236,51.75102,6.94836,0.0,true
+ERDW,Rheda-Wiedenbrück,1700,51.85730,8.28643,18.1,false
+ERDW,Rheda-Wiedenbrück,2013,51.85702,8.28659,15.2,false
+ERDW,Rheda-Wiedenbrück,2990,51.85712,8.28654,2.9,true
+KRBA,Rheinbach,2645,50.62924,6.94790,0.0,true
+KRBE,Rheinberg (Rheinl),2330,51.54207,6.59258,0.0,true
+HR,Rheine,2273,52.27623,7.43381,33.5,false
+HR,Rheine,2931,52.27636,7.43442,10.1,true
+HR,Rheine,2992,52.27642,7.43459,23.5,false
+KRH,Rheinhausen,2330,51.39369,6.70623,11.5,true
+KRH,Rheinhausen,2505,51.39352,6.70642,11.5,false
+KRHK,Rheinkamp,2330,51.50345,6.62461,0.0,true
+KRY,Rheydt Hbf,2522,51.15279,6.43196,947.0,false
+KRY,Rheydt Hbf,2524,51.16302,6.43941,305.9,true
+KRY,Rheydt Hbf,2550,51.16303,6.43985,319.1,false
+KRY,Rheydt Hbf,2611,51.16305,6.43991,322.8,false
+KRYO,Rheydt-Odenkirchen,2611,51.13760,6.44603,0.0,true
+ERHY,Rhynern,2930,51.64393,7.87561,0.0,true
+KRHD,Rhöndorf,2324,50.65808,7.20998,0.0,true
+ERIG,Ringel,2200,52.13762,7.87726,0.0,true
+ERIK,Rinkerode,2931,51.84437,7.68937,0.0,true
+KROI,Roisdorf,2630,50.75317,7.01604,0.0,true
+KROM,Rommerskirchen,2601,51.03974,6.70058,7.4,true
+KROM,Rommerskirchen,2611,51.03984,6.70072,7.4,false
+EROL,Rummenohl,2810,51.27777,7.52836,0.0,true
+KROE,Rösrath,2655,50.90135,7.18272,0.0,true
+KRUN,Ründeroth,2657,50.99531,7.46542,0.0,true
+ESZK,Salzkotten,1760,51.67251,8.59957,0.0,true
+KSA,Satzvey,2631,50.62306,6.71322,0.0,true
+HSCD,Scherfede,2550,51.52474,9.04642,0.0,true
+HSCI,Schieder,1760,51.92237,9.15310,0.0,true
+KSLA,Schladern (Sieg),2651,50.80701,7.59226,0.0,true
+ESHO,Schloß Holte,2960,51.90869,8.61043,0.0,true
+KSWE,Schwelm,2143,51.29081,7.29329,235.9,false
+KSWE,Schwelm,2525,51.29044,7.28967,21.1,false
+KSWE,Schwelm,2550,51.29058,7.28966,19.6,true
+KSWE,Schwelm,2701,51.29032,7.28711,198.0,false
+ESRT,Schwerte (Ruhr),2113,51.44232,7.55885,37.5,false
+ESRT,Schwerte (Ruhr),2550,51.44222,7.55934,56.5,false
+ESRT,Schwerte (Ruhr),2840,51.44226,7.55910,44.5,false
+ESRT,Schwerte (Ruhr),2841,51.44232,7.55885,37.5,true
+ESRT,Schwerte (Ruhr),2843,51.44099,7.55680,168.5,false
+ESRO,Schwerte (Ruhr) Ost,2550,51.45123,7.58918,210.4,false
+ESRO,Schwerte (Ruhr) Ost,2842,51.45007,7.58032,417.9,false
+ESRO,Schwerte (Ruhr) Ost,2843,51.45132,7.58911,207.7,true
+KSEC,Sechtem,2630,50.79541,6.95776,0.0,true
+ESEL,Sennelager,2960,51.77006,8.71388,0.0,true
+ESES,Sennestadt,2960,51.94045,8.56779,0.0,true
+ESIH,Siedlinghausen,2854,51.25825,8.47385,0.0,true
+KSIB,Siegburg/Bonn,2651,50.79416,7.20265,143.7,false
+KSIB,Siegburg/Bonn,2657,50.79138,7.20655,269.9,false
+KSIB,Siegburg/Bonn,2690,50.79391,7.20258,127.2,true
+ESIE,Siegen Hbf,2880,50.87567,8.01585,9.9,true
+ESIE,Siegen Hbf,2881,50.87550,8.01595,9.9,false
+ESIG,Siegen Ost Gbf,2800,50.87659,8.04623,8.6,false
+ESIG,Siegen Ost Gbf,2881,50.87669,8.04642,8.6,true
+EHTG,Siegen-Geisweid,2800,50.91559,8.01433,0.0,true
+ESW,Siegen-Weidenau,2800,50.89594,8.02978,263.6,false
+ESW,Siegen-Weidenau,2880,50.89121,8.03011,263.6,true
+KSIU,Sindorf,2622,50.90370,6.68119,0.0,true
+ESOT,Soest,1760,51.57847,8.10463,5.3,false
+ESOT,Soest,2103,51.57834,8.10454,10.6,false
+ESOT,Soest,2930,51.57847,8.10463,5.3,true
+KSO,Solingen Hbf,2671,51.16077,7.00448,14.1,false
+KSO,Solingen Hbf,2675,51.16076,7.00435,5.6,true
+KSO,Solingen Hbf,2730,51.16080,7.00400,19.5,false
+KSM,Solingen Mitte,2675,51.16570,7.08872,0.0,true
+ESPN,Spellen (Niederrhein),2271,51.61165,6.63963,0.0,true
+EBGO,Steinfurt-Borghorst,2014,52.11869,7.39763,0.0,true
+EBFT,Steinfurt-Burgsteinfurt,2014,52.14737,7.32935,0.0,true
+ESTG,Steinhagen (Westf),2950,52.01741,8.42095,0.0,true
+HSTM,Steinheim (Westf),1760,51.86838,9.08859,0.0,true
+KST,Stolberg (Rheinl) Hbf,2600,50.79490,6.21829,0.0,true
+ESDM,Sudmühle,2010,51.98816,7.67516,10.3,false
+ESDM,Sudmühle,2200,51.98825,7.67489,10.3,true
+KODE,Swisttal-Odendorf,2645,50.65091,6.88094,0.0,true
+ESYB,Sythen Bbf,2200,51.78736,7.24494,0.0,true
+ETEL,Telgte,2013,51.98116,7.78114,0.0,true
+KT,Troisdorf,2324,50.81357,7.15049,21.7,false
+KT,Troisdorf,2651,50.81390,7.15090,25.5,false
+KT,Troisdorf,2695,50.81366,7.15073,6.3,true
+KTR,Trompet,2330,51.41338,6.66888,22.1,false
+KTR,Trompet,2332,51.41317,6.66928,14.3,false
+KTR,Trompet,2340,51.41320,6.66920,7.8,true
+EUN,Unna,2103,51.53901,7.69225,90.0,false
+EUN,Unna,2852,51.53898,7.69221,88.1,true
+EUN,Unna,2932,51.53913,7.69225,88.7,false
+EUN,Unna,2933,51.53946,7.68716,265.9,false
+EUK,Unna-Königsborn,2112,51.55326,7.68775,270.8,false
+EUK,Unna-Königsborn,2933,51.55176,7.68030,270.8,true
+ELBG,Velbert-Langenberg,2723,51.35445,7.12220,0.0,true
+HVEP,Velpe (Westf),2992,52.26780,7.86541,0.0,true
+HVTH,Veltheim (b Rinteln),1820,52.19095,8.95964,0.0,true
+HVBK,Vennebeck,2990,52.22132,8.87180,0.0,true
+KV,Viersen,2510,51.25487,6.40369,8.4,true
+KV,Viersen,2520,51.25501,6.40379,8.4,false
+KVH,Viersen-Helenabrunn,2520,51.23382,6.43704,7.5,true
+KVH,Viersen-Helenabrunn,2522,51.23384,6.43683,7.5,false
+HVLO,Vlotho,1820,52.17246,8.86396,0.0,true
+EWLS,Walsum,2271,51.53450,6.71871,0.0,true
+EWAN,Wanne-Eickel Hbf,2154,51.53090,7.16602,322.3,false
+EWAN,Wanne-Eickel Hbf,2200,51.53109,7.16596,342.2,false
+EWAN,Wanne-Eickel Hbf,2201,51.53802,7.18651,1861.5,false
+EWAN,Wanne-Eickel Hbf,2202,51.53422,7.17827,1150.6,false
+EWAN,Wanne-Eickel Hbf,2204,51.53007,7.16702,265.5,true
+EWAN,Wanne-Eickel Hbf,2205,51.52005,7.15434,1154.7,false
+EWAN,Wanne-Eickel Hbf,2208,51.53106,7.16653,349.7,false
+EWAN,Wanne-Eickel Hbf,2230,51.52530,7.16027,445.7,false
+EWAN,Wanne-Eickel Hbf,2231,51.51986,7.15426,1175.1,false
+EWAN,Wanne-Eickel Hbf,2232,51.51985,7.15433,1173.0,false
+EWAN,Wanne-Eickel Hbf,2239,51.52557,7.15877,508.1,false
+EWAN,Wanne-Eickel Hbf,2650,51.53111,7.16630,350.4,false
+HWAR,Warburg (Westf),2550,51.49292,9.16383,3.2,false
+HWAR,Warburg (Westf),2970,51.49298,9.16387,3.2,true
+EWAF,Warendorf,2013,51.94997,7.98523,0.0,true
+KWEE,Weeze,2610,51.62432,6.19785,0.0,true
+KWEG,Wegberg,2524,51.14514,6.28152,0.0,true
+KDEK,Weilerswist-Derkum,2631,50.70498,6.81672,0.0,true
+EWGO,Wengern Ost,2144,51.40008,7.35004,6.8,false
+EWGO,Wengern Ost,2400,51.40012,7.35022,6.8,true
+EWMN,Wennemen,2550,51.35215,8.19130,0.0,true
+EWHL,Werdohl,2800,51.25948,7.75793,0.0,true
+EWER,Werl,2103,51.55802,7.91375,0.0,true
+EWRN,Werne (a d Lippe),2000,51.66923,7.62291,0.0,true
+EWES,Wesel,2002,51.65373,6.62715,153.6,false
+EWES,Wesel,2263,51.65581,6.62734,78.2,false
+EWES,Wesel,2270,51.65580,6.62713,76.1,true
+EWSH,Westerholt,2250,51.60236,7.08316,0.0,true
+EWEF,Westhofen (Westf),2550,51.41685,7.51945,7.1,false
+EWEF,Westhofen (Westf),2843,51.41697,7.51937,7.1,true
+EWIC,Wickede (Ruhr),2550,51.49316,7.86974,0.0,true
+HWBD,Willebadessen,2970,51.62157,9.01214,0.0,true
+ERUD,Wilnsdorf-Rudersdorf,2800,50.83921,8.14395,0.0,true
+HWDH,Windheim (Weser),1741,52.40681,9.02305,0.0,true
+EWTB,Winterberg (Westf),2854,51.19846,8.53238,0.0,true
+EWIT,Witten Hbf,2140,51.43538,7.32933,6.3,true
+EWIT,Witten Hbf,2143,51.43533,7.32923,15.3,false
+EWIT,Witten Hbf,2801,51.43551,7.32968,21.5,false
+KW,Wuppertal Hbf,2525,51.25429,7.15021,622.9,true
+KW,Wuppertal Hbf,2550,51.25458,7.15009,630.3,false
+KW,Wuppertal Hbf,2726,51.24663,7.12623,1252.7,false
+KWZ,Wuppertal Zoologischer Garten,2525,51.24350,7.10710,0.0,true
+KWO,Wuppertal-Oberbarmen,2525,51.27372,7.22155,762.5,false
+KWO,Wuppertal-Oberbarmen,2550,51.27397,7.22148,770.9,false
+KWO,Wuppertal-Oberbarmen,2700,51.27160,7.23785,406.8,true
+KWO,Wuppertal-Oberbarmen,2701,51.27649,7.24002,657.7,false
+KWO,Wuppertal-Oberbarmen,2702,51.27635,7.23995,644.8,false
+KWO,Wuppertal-Oberbarmen,2703,51.26567,7.23376,818.0,false
+KWRO,Wuppertal-Ronsdorf,2700,51.22623,7.21549,0.0,true
+KWU,Wuppertal-Unterbarmen,2525,51.25880,7.17118,0.0,true
+KWV,Wuppertal-Vohwinkel,2525,51.23370,7.07212,46.5,false
+KWV,Wuppertal-Vohwinkel,2550,51.23394,7.07185,15.5,true
+KWV,Wuppertal-Vohwinkel,2723,51.23458,7.07147,61.3,false
+EWGD,Würgendorf,2651,50.76006,8.14183,0.0,true
+KX,Xanten,2330,51.65973,6.44526,0.0,true
