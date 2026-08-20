@@ -24,7 +24,12 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Generated artifacts: keep folder structure, ignore bulk output.
-# Commit small samples explicitly with `git add -f <path>`.
-*/output/*
-!*/output/.gitkeep
+# Generated artifacts.
+# `output/` IS committed: it holds the generated results a use case is about,
+# and later use cases consume them as input. Keep committed samples small.
+# Disposable generated code and scratch artifacts go to `build/` or `dist/`
+# instead - never committed, always regenerable from the documented command.
+build/
+*/build/
+dist/
+*/dist/
