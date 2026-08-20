@@ -1,0 +1,23 @@
+# Direct dependencies of this use case, pinned. Install into a local venv:
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#
+# Why each one is here - the reason matters more than the version:
+#
+# requests  - the provisioning scripts download a 27 MB ZIP and a 2.5 MB ZIP.
+#             `fetch_nrw_boundary_ne10m.py` still uses stdlib urllib, to stay a
+#             drop-in twin of its csv_data ancestor; the two current fetchers
+#             stream to disk, which requests does without ceremony.
+# shapely   - point-in-polygon in the builder. GEOS, not hand-written geometry.
+# pyshp     - reads the authoritative NRW boundary, which OpenGeodata.NRW ships
+#             as Shapefile only. Pure Python, no GDAL on the machine required.
+# pyproj    - two jobs. It reprojects that boundary from EPSG:25832 to EPSG:4326
+#             during provisioning, and it is the *independent* projection
+#             implementation the verifier checks the builder against: the builder
+#             hand-writes spherical Web Mercator, PROJ recomputes it from a
+#             separate code base. That independence is the whole reason a
+#             dependency is justified here - a verifier calling the generator's
+#             own formula proves nothing.
+requests==2.34.2
+shapely==2.1.2
+pyshp==3.1.6
+pyproj==3.7.2

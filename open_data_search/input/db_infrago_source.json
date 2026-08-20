@@ -1,0 +1,70 @@
+{
+  "source": "DB InfraGO AG / Deutsche Bahn AG - Infrastrukturdaten der DB InfraGO",
+  "source_offer_url": "https://mobilithek.info/offers/922109165921083392",
+  "source_url": "https://mobilithek.info/mdp-api/files/aux/922109165921083392/Infrastrukturdaten.zip",
+  "licence": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "attribution_required": true,
+  "attribution": "Data source: DB InfraGO AG / Deutsche Bahn AG - Infrastrukturdaten der DB InfraGO, licensed under CC BY 4.0. Modified: filtered and reprojected, see ../README.md.",
+  "retrieved": "2026-08-20",
+  "zip_bytes": 27944910,
+  "zip_sha256": "1fa5267cab954d8393878f7bb2396bf9ebb16f914701733c145c073f7e707f36",
+  "csv_member": "M1 Betriebsstellen.csv",
+  "csv_encoding": "utf-8-sig",
+  "csv_delimiter": ";",
+  "decimal_separator": ",",
+  "csv_rows_total": 10632,
+  "filter_applied": "Bundesland == 'Nordrhein-Westfalen'",
+  "rows_kept": 1671,
+  "columns": [
+    "Streckennummer",
+    "Richtung",
+    "km_von_l",
+    "km_bis_l",
+    "km_von_i",
+    "km_bis_i",
+    "km_von_km",
+    "km_von_m",
+    "km_bis_km",
+    "km_bis_m",
+    "Streckenkurzname",
+    "Bezeichnung",
+    "km_lage_l",
+    "km_lage_i",
+    "km_lage_km",
+    "km_lage_m",
+    "Art",
+    "Art lang",
+    "Kürzel",
+    "Betriebszustand",
+    "Bundesland",
+    "Kreis",
+    "GK Rechtswert (EPSG 31467)",
+    "GK Hochwert (EPSG 31467)",
+    "Geographische Länge (EPSG 4326)",
+    "Geographische Breite (EPSG 4326)",
+    "UTM Rechtswert (EPSG 25832)",
+    "UTM Hochwert (EPSG 25832)",
+    "WKT GK (EPSG 31467)",
+    "WKT WGS84 (EPSG 4326)",
+    "WKT UTM 32N (EPSG 25832)"
+  ],
+  "epsg_columns": {
+    "4326": [
+      "Geographische Länge (EPSG 4326)",
+      "Geographische Breite (EPSG 4326)",
+      "WKT WGS84 (EPSG 4326)"
+    ],
+    "25832": [
+      "UTM Rechtswert (EPSG 25832)",
+      "UTM Hochwert (EPSG 25832)",
+      "WKT UTM 32N (EPSG 25832)"
+    ],
+    "31467": [
+      "GK Rechtswert (EPSG 31467)",
+      "GK Hochwert (EPSG 31467)",
+      "WKT GK (EPSG 31467)"
+    ]
+  },
+  "note": "Read-only fixture. Field values are byte-identical to the source, including German decimal commas; only rows outside the filter were dropped. The full download is disposable and lives in build/.",
+  "extracted_by": "scripts/fetch_infrago_source.py"
+}
