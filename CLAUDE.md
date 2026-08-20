@@ -70,6 +70,39 @@ licence is unusable no matter how good its data is, and "derived from a
 well-known source" is not a licence. Record the source, the licence and the
 rejected alternatives in the use-case README — the rejection is talk material.
 
+"Open" is not one licence. The ladder, shortest leash to longest:
+
+| Licence | Attribution | Share-alike | Usable here |
+|---|---|---|---|
+| CC0 1.0, dl-de/zero-2-0, public domain | no | no | yes |
+| CC BY 4.0, dl-de/by-2-0 | yes | no | yes — record the attribution notice |
+| **ODbL 1.0** (OpenStreetMap) | yes | **yes** | **no** |
+
+**ODbL is the trap, and it is worth understanding rather than just avoiding.**
+OpenStreetMap is usually the best data available, and it cannot go into this
+repository. The ODbL distinguishes a **Produced Work** (a map image, aggregate
+statistics — attribution only) from a **Derivative Database** (extracted,
+filtered or enriched rows — share-alike bites). A CSV of features pulled out of
+OSM is the second kind, so it must itself be ODbL and cannot be relicensed as
+CC BY. Publishing it on GitHub is perfectly legal; putting it in a CC BY
+repository is not. Querying an OSM-backed *service* for a one-off answer that
+never gets committed (a reverse-geocoding lookup to settle a single case) is
+fine — nothing is redistributed.
+
+If a source is rejected purely on licence grounds, say so explicitly in the
+README, including what it would have been good at. "The best data set was
+unusable for legal reasons" is one of the more useful things this repository has
+to say.
+
+**Open-data portals rot — commit the slice, not just the URL.**
+Measured in `open_data_search`: the download URL that every tutorial and every
+GitHub mirror still names for DB station data no longer resolves at all, and its
+successor portal is mid-migration. A documented command is not reproducibility if
+the document outlives the host. Commit the subset actually used, verbatim, plus a
+manifest recording source URL, retrieval date, licence, attribution text and the
+**SHA-256** of the exact file it came from. That is what turns "we used this
+version" into a checkable claim, and it lets the pipeline run offline on stage.
+
 **`output/` is generated, but committed.**
 Only generated artifacts. It must always be safe to delete the entire folder and
 regenerate its contents from `input/` plus the documented command. Never edit
@@ -143,6 +176,52 @@ coordinates.
 - **No convenient defaults on destructive arguments.** A verifier's
   `--output` default once made checking one data set overwrite another. If a
   flag writes a file, require the path.
+- **Your reference data is data too.** Boundaries, gazetteers and lookup tables
+  get verified with the same suspicion as the payload. In `open_data_search` a
+  generalised 1:10 M outline placed a station 1.3 km outside its own federal
+  state; the authoritative boundary put it 117 m inside. The check fired
+  correctly and the conclusion drawn from it was wrong. **When a cross-check
+  fails on exactly one record, suspect the check before the data.** Match the
+  precision of the reference to the precision of the question — a generalised
+  outline cannot answer a 100 m question — and prefer the authoritative source
+  when the answer has to hold up in public.
+- **An attribute filter is not a spatial filter, and the cross-check is worth
+  keeping even when it finds nothing.** Filter on `Bundesland`/`region`/`country`
+  if the column exists, then have the geometry referee it. Measured: across all
+  5,367 in-service stations of the German DB InfraGO data set, the attribute and
+  the authoritative polygon disagree zero times in either direction — and "zero"
+  is only a result because it was measured.
+- **One real-world feature may carry several source positions.** Route-centric
+  data sets emit one row per route through a station, each with that route's
+  own coordinate. Measured in `open_data_search`: 893 rows for 449 stations,
+  median spread 326 m among the multi-row ones, worst case 4,047 m, up to 15
+  rows for one station. `dict[key] = row` therefore picks an arbitrary point up
+  to ~2 km off and leaves a data set that looks immaculate. **Measure the
+  intra-feature spread before deduplicating**, pick the **medoid** (a position
+  somebody actually published, still traceable) rather than the first row or a
+  computed mean, and carry the spread into the output as a column — dropping the
+  uncertainty is how it gets forgotten.
+- **Redundant coordinate columns tell you which one to distrust.** When a source
+  publishes the same point in several CRS, recompute them against each other.
+  Measured: the DB InfraGO EPSG:25832 columns agree with its EPSG:4326 columns
+  to 1 mm, while its `WKT WGS84` column disagrees with both by a median of
+  1.27 m. Two representations would only have shown a conflict; three showed
+  which one to believe.
+- **For sourced data, verify provenance, not plausibility.** "Is this value
+  plausible?" is the wrong question about data somebody else published. Assert
+  instead that every coordinate in `output/` exists, unmodified, in a source row
+  with the same identity key. A single coordinate changed to a plausible spot
+  inside the region passes the bounding box, the polygon, the axis check and the
+  projection check; only the provenance check catches it. It is about fifteen
+  lines, and it is what makes "nothing was invented" verifiable rather than
+  asserted.
+- **Prefer a genuinely independent implementation over a second formula.** Two
+  hand-written forms of the same projection are the fallback when a use case must
+  run without dependencies. When a use case may have dependencies, spend one on
+  this: let the generator hand-write the maths and the verifier call a
+  third-party library (`pyproj`/PROJ), and do the same for containment
+  (`shapely` on one side, ray casting on the other). Agreement between separate
+  code bases is stronger evidence than agreement between two of your own lines.
 
 ---
 
@@ -318,6 +397,16 @@ data is the very reason generated test data is needed.
 
 ## 12. Working style
 
+- **Agree the verification depth up front — do not default to rigour.** This is
+  a real cost, observed in `open_data_search`: adjudicating *one row out of 449*
+  consumed a reverse-geocoding query, an authoritative Shapefile download, a
+  fourth dependency and a Germany-wide re-run. For data that is real, published
+  and attributed, that was the right call and produced the best finding in the
+  folder. For test data destined for a staging database it would be
+  over-engineering. The two situations look identical from inside the task, so
+  **ask which one it is** — "plausible is enough" versus "must be defensible in
+  public" — and let the answer decide how far the checks go. When in doubt,
+  state the assumption and the cost rather than silently picking either one.
 - Ask before restructuring existing use cases; new use cases can be created
   freely following the layout above.
 - Keep sub-project READMEs skimmable — the root README is the index, details

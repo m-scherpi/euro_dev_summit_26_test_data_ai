@@ -34,6 +34,7 @@ README. There is no shared build and nothing to install at root level.
 | Folder | Use case | Approach / stack | Status | Docs |
 |---|---|---|---|---|
 | [`csv_data/`](csv_data/) | Geo points as CSV, two ways: 100 written directly by the LLM vs. 10,000 from a seeded generator — coordinates verified by code either way | Python 3.12, stdlib only | ✅ done | [README](csv_data/README.md) |
+| [`open_data_search/`](open_data_search/) | The inverse: the LLM searches, triages licences and writes code, but invents no data — 449 real NRW railway stations from DB InfraGO open data, every coordinate traceable to its source | Python 3.12 + venv (`requests`, `shapely`, `pyshp`, `pyproj`) | ✅ done | [README](open_data_search/README.md) |
 | [`opensearch/`](opensearch/) | Test data for OpenSearch (indexing / geo queries) | tbd | 🕓 planned | [README](opensearch/README.md) |
 | [`python_import/`](python_import/) | Importing / converting generated data via Python | tbd | 🕓 planned | [README](python_import/README.md) |
 
@@ -51,6 +52,11 @@ always live in the use-case README.
 | `generate_points.py` | `csv_data` | `cd csv_data && python3 scripts/generate_points.py --count 10000 --seed 20260820` | [README](csv_data/README.md#usage) |
 | `verify_coordinates.py` | `csv_data` | `cd csv_data && python3 scripts/verify_coordinates.py --input output/nrw_points.csv` | [README](csv_data/README.md#usage) |
 | `fetch_germany_boundary.py` | `csv_data` | `cd csv_data && python3 scripts/fetch_germany_boundary.py` (one-off, needs network) | [README](csv_data/README.md#input) |
+| `build_stations.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/build_stations.py` | [README](open_data_search/README.md#usage) |
+| `verify_stations.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/verify_stations.py --report output/verification_report.md` | [README](open_data_search/README.md#verification) |
+| `fetch_infrago_source.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_infrago_source.py` (one-off, needs network) | [README](open_data_search/README.md#provisioning) |
+| `fetch_nrw_boundary.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_nrw_boundary.py` (one-off, needs network) | [README](open_data_search/README.md#provisioning) |
+| `fetch_nrw_boundary_ne10m.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_nrw_boundary_ne10m.py` (one-off, superseded, kept as evidence) | [README](open_data_search/README.md#provisioning) |
 
 ---
 
@@ -67,7 +73,16 @@ always live in the use-case README.
 - Seeds are fixed and configurable; model and date of any GenAI-assisted
   generation are recorded.
 - External data needs an explicit, CC BY-compatible licence, recorded in the
-  use-case README — the licence check comes before the quality check.
+  use-case README — the licence check comes before the quality check. CC0,
+  dl-de/zero-2-0 and public domain are free; CC BY costs an attribution notice;
+  **ODbL is out**, because its share-alike clause does not fit a CC BY
+  repository.
+- Reference data — boundaries, gazetteers, lookup tables — is data too, and gets
+  checked as such. A generalised outline is not a yardstick for a question asked
+  in metres.
+- How far verification goes is agreed up front, not defaulted to. "Plausible is
+  enough" and "must be defensible in public" lead to very different amounts of
+  work.
 - Documentation language is English.
 
 Full details: [`CLAUDE.md`](CLAUDE.md).
@@ -110,5 +125,6 @@ to depend on.
 | 2026-08-20 | CC BY 4.0 licence added |
 | 2026-08-20 | Use case `csv_data`: 100 geo points written directly by the LLM; coordinate verifier found a systematic 490 m EPSG:3857 error, `output/` switched to versioned, `build/` introduced |
 | 2026-08-20 | Use case `csv_data`, iteration 2: seeded generator, 10,000 points across Germany with a public-domain boundary; reproducible, 0 points outside Germany, projection exact — the LLM's contribution moved from the data to the text fixtures |
+| 2026-08-20 | Use case `open_data_search`: LLM-driven web search and licence triage across seven open-data candidates; 449 real NRW railway stations built from DB InfraGO (CC BY 4.0), OSM rejected on ODbL share-alike grounds, a generalised boundary caught misclassifying correct data and replaced by the authoritative Geobasis NRW outline |
 
 Detailed, prompt-by-prompt history: [`PROMPT.md`](PROMPT.md).
