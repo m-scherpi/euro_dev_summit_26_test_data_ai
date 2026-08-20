@@ -1,0 +1,101 @@
+id,title,description,latitude,longitude,x_3857,y_3857,visitor_count,elevation_m,is_enchanted
+1,Deepdelve Mine Gate,"The eastern gate of an abandoned dwarven mine, sealed for nine ages.",51.51264,7.46531,831034.5,6712970.0,18342,146.5,true
+2,Ravenhollow Watchpost,"A crumbling watchpost above the river, staffed only by crows.",50.94120,6.95733,774486.4,6611002.6,4127,58.2,false
+3,Silverquill Archive,"A riverside archive where every book insists on being read aloud.",51.22770,6.77346,754018.1,6662013.7,22910,41.8,true
+4,Thornwake Chapel,"A roofless chapel, its bell rung by wind alone since the long winter.",51.95060,7.62570,848889.0,6791291.1,913,62.4,false
+5,Emberforge Quarter,"An old smithing quarter, still warm to the touch after centuries.",51.45680,7.01160,780527.7,6702984.0,15604,84.7,true
+6,Grimhollow Ferry,"A ferry crossing where the toll is a riddle, not a coin.",50.73740,7.09800,790145.7,6575334.0,7488,52.9,false
+7,Wyrmspire Ridge,"A ridge shaped like a sleeping serpent, best avoided at dusk.",52.02110,8.53470,950078.5,6803982.4,2044,214.3,true
+8,Frostmere Spring,"A spring that never freezes, ringed by nine standing stones.",50.77530,6.08390,677256.7,6581967.2,11276,266.1,true
+9,Hollowbrook Ford,"A shallow ford, the only dry route through the marsh in autumn.",51.47770,7.55510,841029.9,6706721.6,3391,101.2,false
+10,Duskwarden Tower,"A watchtower manned by a warden who has forgotten the password.",51.36000,8.53000,949555.3,6685673.1,9820,438.6,true
+11,Amberfall Cascade,"A waterfall the colour of old honey, loud enough to drown out lies.",50.55420,8.03210,894129.3,6543270.7,17055,392.0,false
+12,Northreach Barrow,"A burial mound on open farmland, ploughed around but never through.",52.28900,8.04600,895676.6,6852951.8,624,88.3,true
+13,Bramblehold Gate,"A thorn-grown gatehouse, its portcullis rusted permanently half-open.",51.71880,8.75440,974535.3,6749837.9,5713,143.9,false
+14,Stonefang Pass,"A narrow pass between two toothlike crags, snowbound five months a year.",50.32500,6.44000,716897.5,6503156.6,1408,624.7,true
+15,Willowmere Landing,"A boat landing on still water, where reflections arrive before their owners.",51.68000,6.14000,683501.7,6742899.3,13962,26.4,true
+16,Marshlight Beacon,"A beacon lit against the marsh lights, which are not friendly.",52.41000,7.31000,813745.5,6875069.4,2867,14.2,false
+17,Ashvale Hollow,"A wooded hollow where nothing has burned, though everything looks it.",50.60000,7.62000,848254.5,6551286.5,6304,318.5,true
+18,Highcairn Summit,"A summit cairn that gains one stone every year, placed by no one.",51.05000,8.91000,991856.7,6630235.3,8175,701.3,true
+19,Elderford Crossing,"An ancient stone crossing, wide enough for two carts and one argument.",52.15000,6.62000,736935.0,6827544.0,10433,17.8,false
+20,Greymantle Ruin,"A keep reduced to one standing wall, still casting a full shadow.",50.88000,9.12000,1015233.8,6600291.6,3592,512.9,true
+21,Silvershade Grove,"A grove of pale trees, silent even in a gale.",51.90000,9.24000,1028592.1,6782242.2,7261,236.7,true
+22,Coldwater Weir,"A weir on slow water, colder in summer than in winter.",52.50000,8.66000,964026.8,6891520.5,1985,32.6,false
+23,Ironroot Camp,"A logging camp abandoned after the roots pushed back.",50.41000,5.94000,661237.8,6518033.1,932,451.4,true
+24,Thistledown Fields,"Open fields where the seed heads drift upward instead of down.",51.13000,5.99000,666803.8,6644541.8,14688,29.3,false
+25,Ravensmoor Waystone,"A waystone at a five-way junction, with six directions carved on it.",52.34000,9.38000,1044176.8,6862274.1,2130,74.5,true
+26,Gloamfell Hamlet,"A hamlet of eleven houses and twelve chimneys.",50.99000,7.83000,871631.6,6619543.5,5049,278.1,true
+27,Brightwater Locks,"Three locks in sequence, the middle one always full.",51.58000,9.02000,1004101.8,6725016.1,11840,196.4,false
+28,Westmarch Cairnfield,"A field of low cairns, arranged in a pattern visible only from above.",52.07000,5.88000,654558.6,6812920.8,1673,8.9,true
+29,Hearthglow Inn,"An inn with a fire that needs no wood and no thanks.",50.46000,8.47000,942876.1,6526784.0,19427,347.2,true
+30,Nettleford Bridge,"A footbridge of woven withies, replaced every spring for nine hundred years.",51.34000,6.31000,702426.0,6682096.5,8916,34.7,false
+31,Moonmere Shallows,"Shallow water that shows the moon at midday.",51.83000,7.19000,800387.1,6769724.0,4508,48.5,true
+32,Oakenshield Barrow,"A barrow said to hold a shield, though every dig finds only acorns.",52.22000,8.29000,922838.6,6840339.3,3244,109.6,true
+33,Emberdown Heath,"Heathland that smoulders after rain and steams in drought.",50.68000,6.71000,746953.8,6565288.0,6721,412.8,true
+34,Willowbend Mill,"A mill whose wheel turns against the current.",51.02000,6.42000,714671.1,6624870.3,12309,42.1,true
+35,Stormcrag Overlook,"An overlook where the weather arrives from below.",51.47000,8.11000,902801.1,6705344.6,7883,586.4,false
+36,Fenwatch Causeway,"A raised causeway across the fen, one stone shorter each crossing.",52.45000,6.95000,773670.5,6882381.0,2596,11.5,true
+37,Sunspire Ruins,"Ruins of a tower that tracked a sun no longer in that position.",50.53000,9.31000,1036384.5,6539035.3,4160,668.2,true
+38,Hollowoak Clearing,"A clearing around one hollow oak, large enough to hold a council.",51.26000,7.74000,861612.9,6667789.9,9057,167.3,false
+39,Northgate Toll,"A toll gate on a road that no longer leads anywhere.",51.99000,6.38000,710218.4,6798337.1,1841,22.7,false
+40,Mistfen Outpost,"An outpost visible only when you are not looking for it.",52.31000,7.66000,852707.3,6856790.4,3018,19.4,true
+41,Goldbriar Orchard,"An orchard whose fruit is sweetest on the branches out of reach.",50.79000,8.22000,915046.2,6584539.9,16542,371.9,true
+42,Duskfall Quay,"A quay where every departure is scheduled for sunset.",51.61000,6.05000,673482.9,6730381.0,10218,24.8,false
+43,Frostbarrow Hill,"A hill that holds frost until midsummer on its northern face.",51.19000,9.09000,1011894.2,6655271.7,5327,483.5,true
+44,Thornmere Bog,"A bog crossed by a single plank, laid by no living hand.",52.11000,8.94000,995196.2,6820232.4,742,37.2,true
+45,Grimwold Marches,"Border country where the maps of both sides show the same gap.",50.35000,7.28000,810405.9,6507532.1,1290,299.6,false
+46,Silverbeck Springs,"Seven springs, each a different temperature, none explicable.",51.75000,8.41000,936196.9,6755417.5,8604,183.7,true
+47,Icewatch Station,"A station kept against a winter that arrives from the wrong direction.",52.53000,7.02000,781462.8,6897004.2,1524,9.3,false
+48,Elmshadow Copse,"A copse of elms whose shadows fall inward.",50.92000,5.91000,657898.2,6607292.3,3877,64.9,true
+49,Eastreach Ridge,"The easternmost ridge of the province, and it knows it.",51.41000,9.44000,1050856.0,6694614.7,6193,521.8,false
+50,Reedwater Hide,"A birdwatching hide occupied by something larger than birds.",52.19000,6.16000,685728.1,6834855.6,2708,13.6,true
+51,Whisperwind Downs,"Rolling downs where conversations carry for miles.",50.63000,7.95000,884989.9,6556537.1,7412,406.2,true
+52,Blackbriar Hollow,"A hollow ringed by black briars, in flower all year.",51.08000,8.66000,964026.8,6635600.2,4936,459.1,true
+53,Stillmere Crossing,"A crossing over water so still it holds footprints.",51.87000,5.97000,664577.3,6776877.3,11507,21.5,true
+54,Ironhold Rampart,"A rampart of set stone, without a gate on either side.",52.37000,8.78000,977385.1,6867757.8,2381,96.8,false
+55,Hearthstone Pass,"A pass with a warm stone at its highest point, and no explanation.",50.49000,6.27000,697973.2,6532034.6,5648,547.3,true
+56,Wolfsbane Meadow,"A meadow where the wolfsbane refuses to grow, unlike everywhere near it.",51.30000,7.38000,821537.8,6674943.2,9273,124.6,false
+57,Sunken Bell Chapel,"A chapel whose bell can be heard but not found.",51.66000,9.19000,1023026.1,6739322.6,6810,271.4,true
+58,Windmoor Flats,"Flat ground where the wind arrives before the weather that made it.",52.26000,6.49000,722463.5,6847650.9,1937,15.7,false
+59,Amberhold Keep,"A keep of amber-coloured stone, warm at night and cold at noon.",50.85000,8.05000,896121.9,6595041.0,13284,388.5,true
+60,Willowford Bank,"A riverbank where the willows lean upstream.",51.16000,6.58000,732482.2,6649906.8,15731,31.9,false
+61,Greenmantle Wood,"Woodland that appears larger on the way out than on the way in.",51.94000,7.87000,876084.4,6789395.5,8459,54.3,true
+62,Northwatch Cairn,"The last cairn on the northern road, and the first on the way back.",52.48000,9.26000,1030818.5,6887864.7,1146,68.2,true
+63,Copperfall Gorge,"A gorge stained green by the water that cut it.",50.58000,5.99000,666803.8,6547786.2,4023,478.6,false
+64,Ashenmoor Shrine,"A roadside shrine where offerings are removed before they are seen.",51.38000,8.33000,927291.4,6689249.8,7096,502.7,true
+65,Elderwood Verge,"The edge of an old wood, marked by a line no one drew.",51.79000,6.86000,763651.7,6762570.7,10874,39.4,false
+66,Eastwatch Beacon,"A beacon that answers signals nobody sent.",52.03000,9.41000,1047516.4,6805609.2,2854,148.9,true
+67,Highbriar Ruins,"Ruins reclaimed by briars, which have organised themselves into rooms.",50.71000,8.59000,956234.4,6570538.5,3617,533.4,true
+68,Silverford Crossing,"A ford whose stones glitter, though nobody has ever found silver.",51.11000,7.22000,803726.7,6640965.2,12046,72.6,false
+69,Marshreed Landing,"A landing hidden in the reeds, with a boat always tied up.",51.55000,6.24000,694633.6,6719651.1,5482,27.1,true
+70,Coldfen Outpost,"An outpost where the well is warmer than the air.",52.42000,8.15000,907253.8,6876897.3,1739,23.8,false
+71,Emberhollow Forge,"A forge in a hollow, its chimney smoking with no fire lit.",50.44000,7.51000,836009.4,6523283.7,6935,364.1,true
+72,Thornspire Overlook,"An overlook on a spire of rock, reachable only by the long way round.",51.23000,8.87000,987403.9,6662425.0,4271,617.5,true
+73,Reedmere Shallows,"Shallows where the reeds part for boats and close behind them.",51.97000,6.71000,746953.8,6794760.5,9648,18.3,true
+74,Westgate Waystone,"A waystone facing west, though the road runs north.",52.14000,7.44000,828217.0,6825716.1,2517,26.9,false
+75,Highfell Cairn,"A cairn on high fell ground, visible from three valleys and no roads.",50.97000,9.05000,1007441.4,6616043.2,3184,724.6,true
+76,Willowshade Bridge,"A bridge shaded by willows, cool even in drought.",51.49000,5.93000,660124.6,6708921.2,11392,20.4,false
+77,Duskmere Weir,"A weir that runs loudest an hour after sunset.",51.71000,7.66000,852707.3,6748264.2,7523,45.8,true
+78,Northfen Barrow,"A barrow in wet ground, dry inside for reasons unexplored.",52.35000,6.34000,705765.6,6864102.0,1268,12.4,true
+79,Sunwatch Ridge,"A ridge that catches first light, and holds it slightly too long.",50.66000,9.36000,1041950.4,6561787.6,5794,692.1,true
+80,Elmford Quarter,"A town quarter of elm-framed houses, none of them square.",51.05000,6.11000,680162.1,6630235.3,17208,36.5,false
+81,Bramblewatch Post,"A watch post overgrown to the point of camouflage, which suits it.",51.85000,8.49000,945102.5,6773300.7,3946,201.3,true
+82,Frostwood Clearing,"A clearing where the frost forms a perfect circle.",52.09000,7.89000,878310.8,6816576.6,2093,61.7,true
+83,Stonemere Quarry,"A flooded quarry, deeper than it was ever dug.",50.39000,8.72000,970706.0,6514532.8,4682,326.9,true
+84,Riverbend Mill,"A mill at a bend in the river that was straight last century.",51.43000,6.66000,741387.8,6698191.3,14075,33.2,false
+85,Thornhollow Grove,"A grove of thorn trees planted in rows by nobody.",51.63000,8.21000,913933.0,6733957.7,6357,176.8,true
+86,Northreach Beacon,"A beacon at the northern reach, kept lit against nothing in particular.",52.29000,9.13000,1016346.9,6852951.8,1892,113.5,false
+87,Emberford Crossing,"A crossing where the water runs warm in midwinter.",50.81000,6.37000,709105.2,6588040.3,8236,187.4,true
+88,Greymoor Waystone,"A waystone on grey moorland, its inscription readable only when wet.",51.33000,7.09000,789255.2,6680308.2,5015,155.6,true
+89,Eastmere Landing,"A landing on the eastern water, where the ferry is always just leaving.",51.91000,9.32000,1037497.7,6784030.6,3428,242.9,false
+90,Icereach Outpost,"The northern outpost, iced over for reasons of altitude it does not have.",52.51000,6.05000,673482.9,6893348.4,1057,7.6,true
+91,Whisperfen Hide,"A hide in the fen where sound arrives twice.",50.51000,7.71000,858273.3,6535534.9,2946,341.7,true
+92,Highhollow Shrine,"A shrine in a high hollow, the offerings always exactly one short.",51.02000,8.44000,939536.5,6624870.3,6584,494.2,true
+93,Willowreach Bank,"A stretch of bank where the willows have agreed on a height.",51.77000,5.90000,656785.0,6758994.1,10693,19.7,false
+94,Stormwatch Cairn,"A cairn built to watch storms, which now arrive to watch it.",52.17000,8.61000,958460.8,6831199.8,2261,104.8,true
+95,Ashford Hollow,"A hollow of pale ash trees, none of them ever struck by lightning.",50.76000,7.33000,815971.9,6579289.4,7841,229.5,false
+96,Nettlemere Shallows,"Shallows edged with nettles that sting only the impatient.",51.28000,6.05000,673482.9,6671366.6,12967,28.6,true
+97,Highbeacon Tor,"A tor topped by a beacon, lit by whoever gets there first.",51.59000,8.98000,999649.0,6726804.4,5236,573.9,true
+98,Coldreach Ford,"A ford so cold that crossings are counted, not timed.",52.24000,7.17000,798160.7,6843995.1,1683,21.3,false
+99,Emberdale Quarter,"A quarter of the old town where the streetlamps predate electricity.",50.89000,6.62000,736935.0,6602041.7,19863,67.4,true
+100,Northspire Watch,"The northernmost watch, kept by rota since the rota was lost.",52.45000,9.19000,1023026.1,6882381.0,1315,131.2,false
