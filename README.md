@@ -18,6 +18,7 @@ devsummit/
 ├── CLAUDE.md          # working instructions & conventions
 ├── README.md          # this file — overview and index
 ├── PROMPT.md          # chronological log of prompts and work steps
+├── slides/            # the conference talk itself, as code (not a use case)
 └── <use-case>/
     ├── README.md      # detailed docs for this use case
     ├── input/         # read-only source data
@@ -26,6 +27,9 @@ devsummit/
 
 Each use case is independent: its own stack, its own dependencies, its own
 README. There is no shared build and nothing to install at root level.
+
+`slides/` is the one folder that is not a use case: it holds the presentation
+built from these findings, in Markdown, deployed to GitHub Pages.
 
 ---
 
@@ -39,6 +43,15 @@ README. There is no shared build and nothing to install at root level.
 | [`python_import/`](python_import/) | Importing / converting generated data via Python | tbd | 🕓 planned | [README](python_import/README.md) |
 
 Status legend: 🕓 planned · 🚧 in progress · ✅ done
+
+## The talk
+
+| Folder | What | Stack | Status | Docs |
+|---|---|---|---|---|
+| [`slides/`](slides/) | The conference presentation as code — four named rules, each proven by one measured number and one screenshot, in a hard 15-minute slot | Slidev 52 (Markdown + Vue), GitHub Pages via Actions | ✅ first draft | [README](slides/README.md) |
+
+Live deck: **https://m-scherpi.github.io/euro_dev_summit_26_test_data_ai/**
+(available once the repository is public).
 
 ---
 
@@ -61,6 +74,9 @@ always live in the use-case README.
 | `run_opensearch.sh` / `.bat` | `opensearch` | `cd opensearch && ./scripts/run_opensearch.sh start` (also `stop`, `status`, `logs`) | [README](opensearch/README.md#setup) |
 | `index_stations.py` | `opensearch` | `cd opensearch && python3 scripts/index_stations.py --recreate --host https://localhost:9200 --ca-cert build/tls/root-ca.pem` | [README](opensearch/README.md#usage) |
 | `verify_index.py` | `opensearch` | `cd opensearch && python3 scripts/verify_index.py --host https://localhost:9200 --ca-cert build/tls/root-ca.pem --report output/verification_report.md` | [README](opensearch/README.md#verify) |
+| `npm run dev` | `slides` | `cd slides && npm install && npm run dev` | [README](slides/README.md#usage) |
+| `npm run build` | `slides` | `cd slides && npm run build -- --base /euro_dev_summit_26_test_data_ai/` | [README](slides/README.md#usage) |
+| `sync_assets.mjs` | `slides` | `cd slides && npm run sync-assets` (runs automatically before dev/build) | [README](slides/README.md#input-the-screenshots) |
 
 ---
 
@@ -93,6 +109,11 @@ always live in the use-case README.
 - Third-party server binaries live in `build/`; git gets the manifest with
   version, URL and checksum. Pin the version the *client* certifies, not the
   latest one.
+- The talk has a **hard 15-minute slot**, so the deck is built to leave things
+  out: a core deck of four rules, and a backup section that new findings land in
+  first. A new use case enters the core deck only by displacing a weaker one.
+- Published screenshots keep their **basemap attribution** bar. That rules out
+  full-bleed background images, which are cropped to fill.
 - Documentation language is English.
 
 Full details: [`CLAUDE.md`](CLAUDE.md).
@@ -136,6 +157,7 @@ to depend on.
 | 2026-08-20 | Use case `csv_data`: 100 geo points written directly by the LLM; coordinate verifier found a systematic 490 m EPSG:3857 error, `output/` switched to versioned, `build/` introduced |
 | 2026-08-20 | Use case `csv_data`, iteration 2: seeded generator, 10,000 points across Germany with a public-domain boundary; reproducible, 0 points outside Germany, projection exact — the LLM's contribution moved from the data to the text fixtures |
 | 2026-08-20 | Use case `open_data_search`: LLM-driven web search and licence triage across seven open-data candidates; 449 real NRW railway stations built from DB InfraGO (CC BY 4.0), OSM rejected on ODbL share-alike grounds, a generalised boundary caught misclassifying correct data and replaced by the authoritative Geobasis NRW outline |
+| 2026-08-21 | `slides/`: the talk as code — Slidev deck deployed to GitHub Pages by Actions, first draft of the 12-minute narrative (four rules, three screenshots) plus eight backup slides. Rendering every slide to PNG found two overflowing slides and one broken layout that the build reported as success |
 | 2026-08-21 | Use case `opensearch`: the 449 stations as a script-provisioned OpenSearch 2.12 index for ArcGIS Pro 3.7 / Enterprise 12.1. The `geo_point` format ArcGIS cannot read is the one every tutorial shows, and an index using it fails only 1 of 12 checks; the certified release's demo TLS root CA expired in 2023; the OpenSearch SQL plugin accepts only the format Esri forbids |
 
 Detailed, prompt-by-prompt history: [`PROMPT.md`](PROMPT.md).

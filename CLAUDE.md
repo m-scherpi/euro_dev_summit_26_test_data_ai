@@ -49,6 +49,12 @@ alternative folder names.
 Folder naming: lowercase, `snake_case`, descriptive of the use case
 (`csv_data`, `opensearch`, `python_import`).
 
+**`slides/` is the one exception, and it is not a use case.** It holds the
+conference presentation itself (Slidev, Markdown, deployed to GitHub Pages), so
+it has no `input/` and no `output/` and generates no test data. Treat it as
+documentation infrastructure: it *reads* from the use cases and never writes to
+them. Do not create further non-use-case folders without asking.
+
 ---
 
 ## 3. Data conventions
@@ -102,6 +108,24 @@ the document outlives the host. Commit the subset actually used, verbatim, plus 
 manifest recording source URL, retrieval date, licence, attribution text and the
 **SHA-256** of the exact file it came from. That is what turns "we used this
 version" into a checkable claim, and it lets the pipeline run offline on stage.
+
+**A screenshot of a result belongs in `input/`, not `output/`.**
+Counter-intuitive but forced by the rules above: a capture from ArcGIS Pro or a
+similar client is made by hand and cannot be regenerated from the documented
+command, so `output/` — which must always be safe to delete and rebuild — is the
+wrong place for it. It is an external artifact the use case consumes, like any
+other fixture. Name it after the data set it shows
+(`csv_data/input/nrw_points.png`), and let anything that displays it read from
+there rather than keeping a second copy.
+
+**Never crop the attribution out of a published screenshot.**
+A basemap capture carries its provider notice burnt into the bottom edge
+(`Esri | TomTom | Garmin | USGS | FAO | NOAA`, plus the state agency for an
+official basemap). Publishing the image redistributes it, and that notice is the
+condition. Practically: always `object-fit: contain` in an `<img>`, never
+`background-size: cover` — a background image is cropped to fill, and the first
+thing cropped off a map capture is exactly that bar. This rules out the
+best-looking option more than once, which is the point.
 
 **`output/` is generated, but committed.**
 Only generated artifacts. It must always be safe to delete the entire folder and
@@ -380,6 +404,31 @@ which are noise for the talk narrative.
 ---
 
 ## 8. Notes for the talk
+
+**The slot is a hard constraint, and the deck is built around leaving things
+out.** The talk is **15 minutes including questions** — about 12 minutes of
+speaking, so roughly fourteen slides. The repository grows; the slot does not.
+`slides/` therefore has two tiers:
+
+- a **core deck** of four named rules, each proven by *one* measured number and
+  *one* image, and
+- a **backup section** after the end, written out but not shown — reachable by
+  arrow key during questions and readable in the repository.
+
+**A new use case lands in the backup first.** It enters the core deck only by
+displacing a rule whose finding is weaker. Never widen the core deck to
+accommodate new material, and never leave a finding undocumented because it did
+not make the cut — the backup is where it goes.
+
+**Verify a deck the way you verify data: against its consumer.** A green Slidev
+build says nothing about whether a slide is readable. Render the slides to PNG
+(`npm install --no-save playwright-chromium`, then
+`slidev export --format png`) and look at every one. Measured while building the
+first draft: three real defects that the build reported as success — two slides
+overflowing past the bottom edge with the punchline cut off, and Slidev's
+`two-cols-header` layout running a long left column underneath the image in the
+right column. Prefer an explicit CSS grid over that layout, and keep dense
+slides under test.
 
 Each use-case README ends with a `Notes for the talk` section capturing:
 

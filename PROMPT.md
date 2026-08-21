@@ -488,3 +488,81 @@ Two follow-up prompts arrived while the work was running:
 - Cluster health is `yellow` and stays that way: the security plugin's system index wants a
   replica a single node never assigns. The station index itself is `green`.
 - Not committed. Waiting for an explicit request, per `CLAUDE.md` section 11.
+
+---
+
+## [007] 2026-08-21 — The talk as code: Slidev deck and GitHub Pages  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> Den letzten Use Case (opensearch) habe ich noch nicht getestet. Ich möchte jedoch schon an einer anderen Stelle weiter machen. Es geht um die Präsentation für den Talk und einen ersten Wurf dazu. Mir schwebt vor, statt klassischer Powerpoint irgendein JS / HTML basiertes Präsentationsformat zu wählen und die Präsentation dann auch "as Code" im repository zu haben. Da es ja auf Github gehostet ist, könnte ich mir eine Variante über Github Pages oder ähnliches vorstellen. Helfe mir dabei, ein Setup aufzusetzen und lass uns schon einen ersten Entwurf mit den bisherigen Erkenntnissen machen (die gewünschte Visualisierung für die CSV-Daten hat funktioniert. In den jeweiligen Input Ordnern habe ich Screenshots mit den Ergebnissen abgelegt)
+
+**Prompt (translation, EN)**
+> I have not tested the last use case (opensearch) yet. But I would like to move on somewhere else already. It is about the presentation for the talk and a first draft of it. What I have in mind is choosing some JS / HTML based presentation format instead of classic PowerPoint and then also having the presentation "as code" in the repository. Since it is hosted on GitHub, I could imagine a variant via GitHub Pages or similar. Help me set up a setup and let us do a first draft with the findings so far (the desired visualisation for the CSV data worked. In the respective input folders I have put screenshots with the results)
+
+**Follow-up answer that reshaped the task (original, DE)**
+> Ich habe mit Fragen leider nur 15 minuten zeit. es kann also wirklich nicht sehr umfangreich werden. und neben den 3 fertigen usecases kommen vermutlich noch 1-2 dazu. vermutlich wird es keine live demo geben, screenshots als proof müssen vermutlich ausreichen. wir müssen also fokussieren
+
+**Follow-up answer (translation, EN)**
+> Unfortunately I only have 15 minutes including questions. So it really cannot be very extensive. And besides the 3 finished use cases there will probably be 1-2 more. There will probably be no live demo, screenshots as proof will probably have to be enough. So we have to focus.
+
+**What happened**
+- Clarified four decisions up front via a question round: framework (**Slidev**,
+  recommended over reveal.js and Marp for its code presentation), deck language
+  (**English**), scope, and narrative shape (**chronological, thematically
+  clamped** — the use-case journey as backbone, each act ending on a named rule).
+- The scope answer changed the whole design: **15 minutes including questions**
+  is ~12 minutes of speaking, i.e. ~14 slides, for three finished use cases and
+  one or two more coming. So the deck was designed as a mechanism for *leaving
+  things out*: a core deck of **four named rules**, each proven by one measured
+  number and one image, plus a **backup section** written out but not shown.
+- Set up `slides/` with Slidev 52, theme `seriph`, local dependencies only.
+  Entry `slides.md` plus six `pages/*.md` includes, one per act. `style.css` is
+  ~60 lines.
+- Wrote `scripts/sync_assets.mjs` (no dependencies) to copy the three ArcGIS
+  screenshots out of the use-case `input/` folders into `public/img/`, which is
+  gitignored — Vite cannot serve assets from outside the project root, and there
+  is no reason for a second copy of 4.8 MB of PNG in git. Wired to `predev` /
+  `prebuild`, so it cannot be forgotten.
+- `scripts/make_qr.mjs` generates the closing slide's QR code once; the 1.9 kB
+  SVG is committed.
+- Added `.github/workflows/deploy-slides.yml`: builds `slides/` on every push to
+  `main` touching the deck or a screenshot, `--base` derived from the repository
+  name, publishes `slides/dist` to Pages.
+- Verified visually, not just by exit code: no browser was available, so the
+  deck was rendered to PNG with `playwright-chromium` (installed
+  `--no-save`, so CI never downloads it) and every slide was inspected.
+
+**Artifacts**
+- `slides/slides.md`, `slides/pages/*.md` — 22 slides: 14 core, 8 backup
+- `slides/style.css` — `.rule`, `.metric`, `.cols`, `.checks`, `.cover-bg`
+- `slides/scripts/sync_assets.mjs`, `slides/scripts/make_qr.mjs`
+- `slides/public/qr-repo.svg` — committed, regenerated only on a rename
+- `slides/README.md` — stack, commands, time budget per slide, house rule
+- `.github/workflows/deploy-slides.yml` — Pages deploy from a subfolder
+- `.gitignore`, `README.md`, `CLAUDE.md` — updated
+
+**Result / Iteration**
+- **The first build was green and three slides were broken.** Rendering to PNG
+  and looking at them found: the act-3 comparison slide cut its own punchline
+  ("5 of 12 red" / "1 of 12 red") off the bottom edge; the rule-4 slide cut the
+  last word of the rule; and Slidev's `two-cols-header` layout let a long left
+  column run *underneath* the screenshot in the right column, clipping words
+  mid-sentence. Fixed by replacing that layout with an explicit CSS grid, by
+  cutting text, and by a modest global font reduction. Same lesson as act 3 of
+  the talk itself: verify against the consumer, and the consumer here is a
+  projector.
+- **The repository's own licence rule killed its prettiest slide.** The obvious
+  cover is the 10,000-point map full-bleed behind the title. A background image
+  is cropped to fill, and the first thing cropped off an ArcGIS capture is the
+  `Esri | TomTom | Garmin | USGS | FAO | NOAA` attribution bar. Replaced with a
+  plain gradient; the screenshots now appear only as `object-contain` images with
+  the bar intact. Written into `CLAUDE.md` as a convention.
+- Open, and deliberately not resolved here: the deck is a **first draft** and has
+  not been rehearsed against a clock. The per-slide budgets sum to ~11 minutes on
+  paper only.
+- Not yet verifiable: the Pages deployment. Actions-based Pages needs a public
+  repository, so the workflow cannot be proven until publication — the build job
+  will succeed and the deploy job will fail until then.
+- Unchanged: no use-case folder was touched. Code snippets in the deck are inline
+  rather than imported with Slidev's `<<< @/path` syntax, because the useful form
+  of that would require adding `#region` markers to existing use-case scripts.
