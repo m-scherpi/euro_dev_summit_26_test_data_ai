@@ -416,3 +416,75 @@ Two follow-up prompts arrived while the work was running:
   substring match would have been the wrong fix, since it would also pull in the
   `Haltepunkt` compounds.
 - Not committed. Waiting for an explicit request, per `CLAUDE.md` section 11.
+
+---
+
+## [006] 2026-08-21 — OpenSearch as an ArcGIS data source  ·  scope: `opensearch`
+
+**Prompt (original, DE)**
+> Jetzt zu einem weiteren Use Case. Ich möchte die Daten in einem anderen Format bereitstellen. ArcGIS Enterprise und ArcGIS Pro  unterstützen inzwischen das Darstellen von sogenannten View Layers mit OpenSearch bzw. ElasticSearch als Datenquelle. Ziel soll es sein, eine OpenSearch-Executable zu haben (kein Docker, per .sh bzw. .bat aus dem Dateisystem ausführbar für lokale Tests auf VMs), welche einen Index enthält, in dem die vorher in der CSV abgelegten Bahnhofsdaten abgelegt sind und als View Layer in ArcGIS Pro 3.7 dargestellt werden können und nach ArcGIS Enterprise 12.1 publiziert werden können. Ich kenne mich überhaupt nicht damit aus, und weiß nur, dass das gehen soll. Neben der Datenablage möchte ich OpenSearch nicht ins Git einchecken. Es soll Skripte geben, die eine Installation herunterladen und dann den Index erstellen und befüllen. Dann will ich OpenSearch per Skript ausführen können und die DB in ArcGIS Pro einbinden.
+
+**Prompt (translation, EN)**
+> Now on to another use case. I want to provide the data in a different format. ArcGIS Enterprise and ArcGIS Pro  now support displaying so-called view layers with OpenSearch or ElasticSearch as a data source. The goal is to have an OpenSearch executable (no Docker, runnable from the file system via .sh or .bat for local tests on VMs) which contains an index in which the station data previously stored in the CSV is stored and which can be displayed as a view layer in ArcGIS Pro 3.7 and published to ArcGIS Enterprise 12.1. I don't know anything about this at all, and only know that it is supposed to work. Besides the data storage I don't want to check OpenSearch into git. There should be scripts that download an installation and then create and fill the index. Then I want to be able to run OpenSearch via script and connect the DB in ArcGIS Pro.
+
+**What happened**
+- Research first, because "I only know that it is supposed to work" is the whole starting
+  point. Esri's documentation for Pro 3.7 / Enterprise 12.1 produced five constraints that
+  shaped every design decision: **only OpenSearch 2.12 is certified** (one minor release,
+  not the 2.x line), the spatial reference is **fixed at EPSG:4326**, only **basic auth** is
+  supported, the field-type mapping is a fixed table, and — the important one — *"The
+  geopoint format that uses an object with a latitude and longitude is not supported with
+  ArcGIS"*, i.e. `{"lat": …, "lon": …}`, the form in every OpenSearch tutorial.
+- Four decisions agreed with the user up front: both platforms equally (`.sh` + `.bat`,
+  Linux tested here, Windows written from documentation), TLS + basic auth as the default
+  with `--insecure` as a flag, medium verification depth plus the axis-swap counter-test,
+  and only the 449 NRW stations.
+- Stack: shell/batch for provisioning, Python 3.12 **stdlib only** for indexing and
+  verification — no venv, no `pip install`, so the use case comes up on a bare VM.
+  Deliberately unlike `open_data_search`, which spends four dependencies on independence.
+- Version, URLs and the OpenSearch-published SHA-512 for three platforms went into
+  `input/opensearch_dist.json`; the ~820 MB archive goes to gitignored `build/`.
+- Ran the whole chain on Linux: download, checksum, certificate generation, start, index,
+  verify, stop. Then measured the negative cases on purpose — indices built with swapped
+  axes and with the object format — to prove the checks fire.
+- The user permitted committed demo credentials for this test cluster as an explicit
+  exception. Turned out `admin/admin` is not available anyway: since 2.12 the demo
+  installer runs the password through a strength check and rejects it.
+
+**Artifacts**
+- `opensearch/input/opensearch_dist.json` — pinned distribution manifest with checksums and the ArcGIS compatibility facts behind the pin
+- `opensearch/scripts/setup_opensearch.sh` / `.bat` — download, verify, unpack, configure, generate CA + HTTPS certificate
+- `opensearch/scripts/run_opensearch.sh` / `.bat` — start/stop/status/logs, waits for `_cluster/health`
+- `opensearch/scripts/index_stations.py` — mapping + bulk payload + load, `--geo-format`, `--dry-run`
+- `opensearch/scripts/verify_index.py` — 12 checks against the running index, Markdown report, exit code
+- `opensearch/scripts/osclient.py` — stdlib REST client, HTTP/auth/TLS only, deliberately no geometry logic
+- `opensearch/output/nrw_stations_mapping.json`, `nrw_stations_bulk.ndjson`, `verification_report.md`
+- `opensearch/README.md` — five findings, setup, ArcGIS instructions
+
+**Result / Iteration**
+- Works: index `nrw_stations`, 449 documents, `green`, 12 of 12 checks passing, reachable
+  over HTTPS with certificate verification on.
+- **The finding of the folder, measured rather than argued.** An index built with the
+  `{lat, lon}` object format fails **1 of 12** checks. Count, bounding box, `geo_distance`
+  against an independent haversine, coordinate provenance — all green. Only the check that
+  knows what the *client* needs catches it. Swapped axes, by comparison, fail 5 of 12 and
+  put the stations in Somalia. The loud error is the harmless one.
+- **Three failures on the way, all instructive.** (1) The demo TLS configuration of the
+  certified release is expired: `root-ca.pem` was issued 2023-08-29 with a **30-day**
+  validity and died 2023-09-28, while the node certificate it signed runs to 2033 — so the
+  documented quick start is dead and every client says `certificate has expired`. Fixed by
+  generating a CA with the bundled JDK's `keytool`. (2) The first fix, a single self-signed
+  certificate with `CA:true`, failed with `No certificates found in http.p12 with alias
+  http` — OpenSearch Security filters CA certificates out of the server chain, so a real
+  two-level chain is required. (3) The OpenSearch **SQL plugin reads only** the object
+  format (`geo point must in format of {"lat": number, "lon": number}`) for array, string,
+  WKT and geohash alike — exactly the format Esri forbids. ArcGIS query layers are SQL, so
+  if ArcGIS delegates to the plugin there is no working representation at all. Reported as
+  INFO, never as a failure, because whether ArcGIS uses the plugin cannot be determined
+  from this side.
+- Honest gap: the ArcGIS side is **documented, not tested** — no ArcGIS installation here.
+  Same for the `.bat` scripts, which are written from the Windows documentation. Both are
+  marked as such in the README rather than implied to work.
+- Cluster health is `yellow` and stays that way: the security plugin's system index wants a
+  replica a single node never assigns. The station index itself is `green`.
+- Not committed. Waiting for an explicit request, per `CLAUDE.md` section 11.

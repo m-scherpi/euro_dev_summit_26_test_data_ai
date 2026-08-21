@@ -1,0 +1,53 @@
+{
+  "_comment": [
+    "Pinned OpenSearch distribution used by this use case. Not downloaded into git:",
+    "setup_opensearch.sh / .bat reads this manifest, fetches the archive for the",
+    "current platform into build/dist/ and refuses to continue on a checksum mismatch.",
+    "",
+    "Why the version is pinned and not tracked to 'latest': ArcGIS Pro 3.7 and",
+    "ArcGIS Enterprise 12.1 certify exactly OpenSearch 2.12 - not the 2.x series.",
+    "See https://doc.esri.com/en/arcgis-pro/latest/help/data/databases/database-reqs-opensearch.html",
+    "",
+    "The sha512 values are the ones OpenSearch publishes next to each archive",
+    "(<archive>.sha512), retrieved on the date below - not hashes computed here."
+  ],
+  "product": "OpenSearch",
+  "version": "2.12.0",
+  "licence": "Apache-2.0",
+  "licence_url": "https://github.com/opensearch-project/OpenSearch/blob/main/LICENSE.txt",
+  "attribution_required": false,
+  "vendor": "OpenSearch Software Foundation",
+  "release_notes": "https://github.com/opensearch-project/opensearch-build/blob/main/release-notes/opensearch-release-notes-2.12.0.md",
+  "base_url": "https://artifacts.opensearch.org/releases/bundle/opensearch/2.12.0",
+  "retrieved": "2026-08-21",
+  "checksum_algorithm": "sha512",
+  "bundled_jdk": true,
+  "distributions": {
+    "linux-x64": {
+      "file": "opensearch-2.12.0-linux-x64.tar.gz",
+      "url": "https://artifacts.opensearch.org/releases/bundle/opensearch/2.12.0/opensearch-2.12.0-linux-x64.tar.gz",
+      "bytes": 863011174,
+      "sha512": "02af3abe0488279d9ba29cde8f69924344fdcef0bd59b13cec53e80121972469168c7479f4ffea645224c4e17d552b99408d5a217bdfe4851c143bde34afca90"
+    },
+    "linux-arm64": {
+      "file": "opensearch-2.12.0-linux-arm64.tar.gz",
+      "url": "https://artifacts.opensearch.org/releases/bundle/opensearch/2.12.0/opensearch-2.12.0-linux-arm64.tar.gz",
+      "bytes": 855535649,
+      "sha512": "33838c1a6374338641288df7bd97c17bbab739cc1ae8137ea9fcd9a0e4c6f6bb9b5c3a677a2c181d73dc513526018b7eed1e0db4ed3c12f93586727afa22fce1"
+    },
+    "windows-x64": {
+      "file": "opensearch-2.12.0-windows-x64.zip",
+      "url": "https://artifacts.opensearch.org/releases/bundle/opensearch/2.12.0/opensearch-2.12.0-windows-x64.zip",
+      "bytes": 813985498,
+      "sha512": "df2157c77de01a024b2bfb5ecf44f497f608fa907b9be570f22d5343a39eb7e2b608412813a08a07a47df912be8d95cff2816e5cce773e054b651dad6642db30"
+    }
+  },
+  "arcgis_compatibility": {
+    "arcgis_pro": "3.7",
+    "arcgis_enterprise": "12.1",
+    "certified_opensearch_release": "2.12",
+    "spatial_reference": "EPSG:4326 (fixed, not configurable)",
+    "authentication": "basic only",
+    "unsupported_geopoint_format": "object with lat/lon keys"
+  }
+}

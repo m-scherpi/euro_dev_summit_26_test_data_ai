@@ -1,0 +1,898 @@
+{"index": {"_id": "KA", "_index": "nrw_stations"}}
+{"station_oid": 1, "ds100": "KA", "name": "Aachen Hbf", "district": "Kreis Städteregion Aachen", "latitude": 50.76756, "longitude": 6.09124, "location": [6.09124, 50.76756], "x_3857": 678073.74, "y_3857": 6580280.31, "source_rows": 3, "position_spread_m": 632.1}
+{"index": {"_id": "KAW", "_index": "nrw_stations"}}
+{"station_oid": 2, "ds100": "KAW", "name": "Aachen West", "district": "Kreis Städteregion Aachen", "latitude": 50.78038, "longitude": 6.07104, "location": [6.07104, 50.78038], "x_3857": 675825.08, "y_3857": 6582537.05, "source_rows": 3, "position_spread_m": 594.1}
+{"index": {"_id": "KARE", "_index": "nrw_stations"}}
+{"station_oid": 3, "ds100": "KARE", "name": "Aachen-Rothe Erde", "district": "Kreis Städteregion Aachen", "latitude": 50.7683, "longitude": 6.11329, "location": [6.11329, 50.7683], "x_3857": 680528.33, "y_3857": 6580410.56, "source_rows": 2, "position_spread_m": 314.7}
+{"index": {"_id": "EAHS", "_index": "nrw_stations"}}
+{"station_oid": 4, "ds100": "EAHS", "name": "Ahaus", "district": "Kreis Borken", "latitude": 52.08199, "longitude": 7.01647, "location": [7.01647, 52.08199], "x_3857": 781069.87, "y_3857": 6814963.9, "source_rows": 2, "position_spread_m": 224.3}
+{"index": {"_id": "EAHL", "_index": "nrw_stations"}}
+{"station_oid": 5, "ds100": "EAHL", "name": "Ahlen (Westf)", "district": "Kreis Warendorf", "latitude": 51.77246, "longitude": 7.9168, "location": [7.9168, 51.77246], "x_3857": 881294.14, "y_3857": 6759087.41, "source_rows": 2, "position_spread_m": 1943.0}
+{"index": {"_id": "KWIS", "_index": "nrw_stations"}}
+{"station_oid": 6, "ds100": "KWIS", "name": "Alfter-Witterschlick", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.68967, "longitude": 7.02618, "location": [7.02618, 50.68967], "x_3857": 782150.78, "y_3857": 6566582.44, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EALN", "_index": "nrw_stations"}}
+{"station_oid": 7, "ds100": "EALN", "name": "Altena (Westf)", "district": "Kreis Märkischer Kreis", "latitude": 51.30188, "longitude": 7.66881, "location": [7.66881, 51.30188], "x_3857": 853688.02, "y_3857": 6674867.52, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HA", "_index": "nrw_stations"}}
+{"station_oid": 8, "ds100": "HA", "name": "Altenbeken", "district": "Kreis Paderborn", "latitude": 51.76668, "longitude": 8.94279, "location": [8.94279, 51.76668], "x_3857": 995506.83, "y_3857": 6758047.65, "source_rows": 3, "position_spread_m": 703.9}
+{"index": {"_id": "EABG", "_index": "nrw_stations"}}
+{"station_oid": 9, "ds100": "EABG", "name": "Altenberge", "district": "Kreis Steinfurt", "latitude": 52.05241, "longitude": 7.48116, "location": [7.48116, 52.05241], "x_3857": 832798.92, "y_3857": 6809607.41, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EARB", "_index": "nrw_stations"}}
+{"station_oid": 10, "ds100": "EARB", "name": "Arnsberg (Westf)", "district": "Kreis Hochsauerlandkreis", "latitude": 51.40541, "longitude": 8.06692, "location": [8.06692, 51.40541], "x_3857": 898005.43, "y_3857": 6693321.8, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EASB", "_index": "nrw_stations"}}
+{"station_oid": 11, "ds100": "EASB", "name": "Ascheberg (Westf)", "district": "Kreis Coesfeld", "latitude": 51.78298, "longitude": 7.60074, "location": [7.60074, 51.78298], "x_3857": 846110.51, "y_3857": 6760980.17, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EAT", "_index": "nrw_stations"}}
+{"station_oid": 12, "ds100": "EAT", "name": "Attendorn", "district": "Kreis Olpe", "latitude": 51.1247, "longitude": 7.90872, "location": [7.90872, 51.1247], "x_3857": 880394.68, "y_3857": 6643381.42, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KAU", "_index": "nrw_stations"}}
+{"station_oid": 13, "ds100": "KAU", "name": "Au (Sieg)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.77376, "longitude": 7.65666, "location": [7.65666, 50.77376], "x_3857": 852335.49, "y_3857": 6581371.64, "source_rows": 2, "position_spread_m": 294.3}
+{"index": {"_id": "KBAG", "_index": "nrw_stations"}}
+{"station_oid": 14, "ds100": "KBAG", "name": "Baal Gbf", "district": "Kreis Heinsberg", "latitude": 51.0362, "longitude": 6.2814, "location": [6.2814, 51.0362], "x_3857": 699242.25, "y_3857": 6627699.58, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HHZH", "_index": "nrw_stations"}}
+{"station_oid": 15, "ds100": "HHZH", "name": "Bad Holzhausen", "district": "Kreis Minden-Lübbecke", "latitude": 52.28913, "longitude": 8.54598, "location": [8.54598, 52.28913], "x_3857": 951334.14, "y_3857": 6852573.65, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELSP", "_index": "nrw_stations"}}
+{"station_oid": 16, "ds100": "ELSP", "name": "Bad Laasphe", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.92928, "longitude": 8.42051, "location": [8.42051, 50.92928], "x_3857": 937366.89, "y_3857": 6608793.69, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HOYG", "_index": "nrw_stations"}}
+{"station_oid": 17, "ds100": "HOYG", "name": "Bad Oeynhausen Gbf", "district": "Kreis Minden-Lübbecke", "latitude": 52.20776, "longitude": 8.82685, "location": [8.82685, 52.20776], "x_3857": 982600.45, "y_3857": 6837778.66, "source_rows": 2, "position_spread_m": 778.1}
+{"index": {"_id": "EBSU", "_index": "nrw_stations"}}
+{"station_oid": 18, "ds100": "EBSU", "name": "Bad Salzuflen", "district": "Kreis Lippe", "latitude": 52.08153, "longitude": 8.74059, "location": [8.74059, 52.08153], "x_3857": 972998.03, "y_3857": 6814880.57, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBAV", "_index": "nrw_stations"}}
+{"station_oid": 19, "ds100": "EBAV", "name": "Balve", "district": "Kreis Märkischer Kreis", "latitude": 51.33244, "longitude": 7.86282, "location": [7.86282, 51.33244], "x_3857": 875285.12, "y_3857": 6680310.53, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBE", "_index": "nrw_stations"}}
+{"station_oid": 20, "ds100": "KBE", "name": "Bedburg (Erft)", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.98747, "longitude": 6.57286, "location": [6.57286, 50.98747], "x_3857": 731687.43, "y_3857": 6619077.61, "source_rows": 2, "position_spread_m": 9.4}
+{"index": {"_id": "KBH", "_index": "nrw_stations"}}
+{"station_oid": 21, "ds100": "KBH", "name": "Bedburg-Hau", "district": "Kreis Kleve", "latitude": 51.75795, "longitude": 6.17343, "location": [6.17343, 51.75795], "x_3857": 687223.08, "y_3857": 6756477.48, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBEE", "_index": "nrw_stations"}}
+{"station_oid": 22, "ds100": "EBEE", "name": "Beelen", "district": "Kreis Warendorf", "latitude": 51.9293, "longitude": 8.11614, "location": [8.11614, 51.9293], "x_3857": 903484.57, "y_3857": 6787352.07, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HBNS", "_index": "nrw_stations"}}
+{"station_oid": 23, "ds100": "HBNS", "name": "Benhausen", "district": "Kreis Paderborn", "latitude": 51.728, "longitude": 8.80662, "location": [8.80662, 51.728], "x_3857": 980348.45, "y_3857": 6751093.0, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBEH", "_index": "nrw_stations"}}
+{"station_oid": 24, "ds100": "EBEH", "name": "Benninghausen", "district": "Kreis Soest", "latitude": 51.64277, "longitude": 8.25825, "location": [8.25825, 51.64277], "x_3857": 919304.18, "y_3857": 6735789.64, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBEE", "_index": "nrw_stations"}}
+{"station_oid": 25, "ds100": "KBEE", "name": "Bergheim (Erft)", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.95176, "longitude": 6.64627, "location": [6.64627, 50.95176], "x_3857": 739859.39, "y_3857": 6612765.06, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HBHE", "_index": "nrw_stations"}}
+{"station_oid": 26, "ds100": "HBHE", "name": "Bergheim (Westf)", "district": "Kreis Höxter", "latitude": 51.83067, "longitude": 9.0554, "location": [9.0554, 51.83067], "x_3857": 1008042.52, "y_3857": 6769566.14, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBGG", "_index": "nrw_stations"}}
+{"station_oid": 27, "ds100": "KBGG", "name": "Bergisch Gladbach", "district": "Kreis Rheinisch-Bergischer Kreis", "latitude": 50.99168, "longitude": 7.12519, "location": [7.12519, 50.99168], "x_3857": 793172.52, "y_3857": 6619822.14, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBKM", "_index": "nrw_stations"}}
+{"station_oid": 28, "ds100": "EBKM", "name": "Bergkamen", "district": "Kreis Unna", "latitude": 51.63416, "longitude": 7.64923, "location": [7.64923, 51.63416], "x_3857": 851508.39, "y_3857": 6734245.28, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBWG", "_index": "nrw_stations"}}
+{"station_oid": 29, "ds100": "EBWG", "name": "Bestwig", "district": "Kreis Hochsauerlandkreis", "latitude": 51.36186, "longitude": 8.39766, "location": [8.39766, 51.36186], "x_3857": 934823.24, "y_3857": 6685553.91, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBIL", "_index": "nrw_stations"}}
+{"station_oid": 30, "ds100": "EBIL", "name": "Bielefeld Hbf", "district": "Kreisfreie Stadt Bielefeld", "latitude": 52.02945, "longitude": 8.53273, "location": [8.53273, 52.02945], "x_3857": 949859.16, "y_3857": 6805452.14, "source_rows": 3, "position_spread_m": 46.6}
+{"index": {"_id": "EBIO", "_index": "nrw_stations"}}
+{"station_oid": 31, "ds100": "EBIO", "name": "Bielefeld Ost", "district": "Kreisfreie Stadt Bielefeld", "latitude": 52.02392, "longitude": 8.55943, "location": [8.55943, 52.02392], "x_3857": 952831.39, "y_3857": 6804451.65, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBIG", "_index": "nrw_stations"}}
+{"station_oid": 32, "ds100": "EBIG", "name": "Bigge", "district": "Kreis Hochsauerlandkreis", "latitude": 51.35829, "longitude": 8.47533, "location": [8.47533, 51.35829], "x_3857": 943469.42, "y_3857": 6684917.47, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBB", "_index": "nrw_stations"}}
+{"station_oid": 33, "ds100": "EBB", "name": "Billerbeck", "district": "Kreis Coesfeld", "latitude": 51.98135, "longitude": 7.29746, "location": [7.29746, 51.98135], "x_3857": 812349.53, "y_3857": 6796754.0, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBIN", "_index": "nrw_stations"}}
+{"station_oid": 34, "ds100": "EBIN", "name": "Binolen", "district": "Kreis Märkischer Kreis", "latitude": 51.37215, "longitude": 7.85945, "location": [7.85945, 51.37215], "x_3857": 874909.97, "y_3857": 6687388.64, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBLB", "_index": "nrw_stations"}}
+{"station_oid": 35, "ds100": "KBLB", "name": "Blankenberg (Sieg)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.76847, "longitude": 7.34839, "location": [7.34839, 50.76847], "x_3857": 818019.03, "y_3857": 6580440.48, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBLH", "_index": "nrw_stations"}}
+{"station_oid": 36, "ds100": "KBLH", "name": "Blankenheim (Wald)", "district": "Kreis Euskirchen", "latitude": 50.44179, "longitude": 6.59336, "location": [6.59336, 50.44179], "x_3857": 733969.48, "y_3857": 6523140.56, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBCH", "_index": "nrw_stations"}}
+{"station_oid": 37, "ds100": "EBCH", "name": "Bocholt", "district": "Kreis Borken", "latitude": 51.82422, "longitude": 6.61236, "location": [6.61236, 51.82422], "x_3857": 736084.55, "y_3857": 6768404.37, "source_rows": 2, "position_spread_m": 1128.8}
+{"index": {"_id": "EBO", "_index": "nrw_stations"}}
+{"station_oid": 38, "ds100": "EBO", "name": "Bochum Hbf", "district": "Kreisfreie Stadt Bochum", "latitude": 51.47849, "longitude": 7.22322, "location": [7.22322, 51.47849], "x_3857": 804085.17, "y_3857": 6706373.52, "source_rows": 6, "position_spread_m": 723.6}
+{"index": {"_id": "EBNO", "_index": "nrw_stations"}}
+{"station_oid": 39, "ds100": "EBNO", "name": "Bochum Nord", "district": "Kreisfreie Stadt Bochum", "latitude": 51.48313, "longitude": 7.22522, "location": [7.22522, 51.48313], "x_3857": 804307.81, "y_3857": 6707202.91, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBDA", "_index": "nrw_stations"}}
+{"station_oid": 40, "ds100": "EBDA", "name": "Bochum-Dahlhausen", "district": "Kreisfreie Stadt Bochum", "latitude": 51.42634, "longitude": 7.14141, "location": [7.14141, 51.42634], "x_3857": 794978.12, "y_3857": 6697057.66, "source_rows": 3, "position_spread_m": 1498.7}
+{"index": {"_id": "EBLA", "_index": "nrw_stations"}}
+{"station_oid": 41, "ds100": "EBLA", "name": "Bochum-Langendreer", "district": "Kreisfreie Stadt Bochum", "latitude": 51.4774, "longitude": 7.31795, "location": [7.31795, 51.4774], "x_3857": 814630.47, "y_3857": 6706178.7, "source_rows": 4, "position_spread_m": 1291.3}
+{"index": {"_id": "EBRI", "_index": "nrw_stations"}}
+{"station_oid": 42, "ds100": "EBRI", "name": "Bochum-Riemke", "district": "Kreisfreie Stadt Bochum", "latitude": 51.49556, "longitude": 7.20087, "location": [7.20087, 51.49556], "x_3857": 801597.18, "y_3857": 6709425.15, "source_rows": 2, "position_spread_m": 673.3}
+{"index": {"_id": "EBCK", "_index": "nrw_stations"}}
+{"station_oid": 43, "ds100": "EBCK", "name": "Bockum-Hövel", "district": "Kreisfreie Stadt Hamm", "latitude": 51.7048, "longitude": 7.77451, "location": [7.77451, 51.7048], "x_3857": 865454.49, "y_3857": 6746924.5, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBOI", "_index": "nrw_stations"}}
+{"station_oid": 44, "ds100": "KBOI", "name": "Boisheim", "district": "Kreis Viersen", "latitude": 51.27429, "longitude": 6.27464, "location": [6.27464, 51.27429], "x_3857": 698489.73, "y_3857": 6669956.62, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HBNB", "_index": "nrw_stations"}}
+{"station_oid": 45, "ds100": "HBNB", "name": "Bonenburg", "district": "Kreis Höxter", "latitude": 51.55772, "longitude": 9.05006, "location": [9.05006, 51.55772], "x_3857": 1007448.07, "y_3857": 6720547.25, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KB", "_index": "nrw_stations"}}
+{"station_oid": 46, "ds100": "KB", "name": "Bonn Hbf", "district": "Kreisfreie Stadt Bonn", "latitude": 50.73203, "longitude": 7.09671, "location": [7.09671, 50.73203], "x_3857": 790002.14, "y_3857": 6574029.12, "source_rows": 2, "position_spread_m": 17.0}
+{"index": {"_id": "KNEW", "_index": "nrw_stations"}}
+{"station_oid": 47, "ds100": "KNEW", "name": "Bonn Neuer Weg", "district": "Kreisfreie Stadt Bonn", "latitude": 50.65353, "longitude": 7.19607, "location": [7.19607, 50.65353], "x_3857": 801062.85, "y_3857": 6560234.52, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBBG", "_index": "nrw_stations"}}
+{"station_oid": 48, "ds100": "KBBG", "name": "Bonn-Bad Godesberg", "district": "Kreisfreie Stadt Bonn", "latitude": 50.6838, "longitude": 7.15969, "location": [7.15969, 50.6838], "x_3857": 797013.05, "y_3857": 6565551.05, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBBN", "_index": "nrw_stations"}}
+{"station_oid": 49, "ds100": "KBBN", "name": "Bonn-Bad Godesberg Nord", "district": "Kreisfreie Stadt Bonn", "latitude": 50.69526, "longitude": 7.14185, "location": [7.14185, 50.69526], "x_3857": 795027.11, "y_3857": 6567564.75, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBB", "_index": "nrw_stations"}}
+{"station_oid": 50, "ds100": "KBB", "name": "Bonn-Beuel", "district": "Kreisfreie Stadt Bonn", "latitude": 50.73853, "longitude": 7.12769, "location": [7.12769, 50.73853], "x_3857": 793450.82, "y_3857": 6575172.38, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBM", "_index": "nrw_stations"}}
+{"station_oid": 51, "ds100": "KBM", "name": "Bonn-Mehlem", "district": "Kreisfreie Stadt Bonn", "latitude": 50.66902, "longitude": 7.18149, "location": [7.18149, 50.66902], "x_3857": 799439.81, "y_3857": 6562954.71, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBO", "_index": "nrw_stations"}}
+{"station_oid": 52, "ds100": "KBO", "name": "Bonn-Oberkassel", "district": "Kreisfreie Stadt Bonn", "latitude": 50.71501, "longitude": 7.15933, "location": [7.15933, 50.71501], "x_3857": 796972.97, "y_3857": 6571036.28, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBOK", "_index": "nrw_stations"}}
+{"station_oid": 53, "ds100": "EBOK", "name": "Bork (Westf)", "district": "Kreis Unna", "latitude": 51.66951, "longitude": 7.45621, "location": [7.45621, 51.66951], "x_3857": 830021.5, "y_3857": 6740587.8, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBK", "_index": "nrw_stations"}}
+{"station_oid": 54, "ds100": "EBK", "name": "Borken (Westf)", "district": "Kreis Borken", "latitude": 51.84782, "longitude": 6.86696, "location": [6.86696, 51.84782], "x_3857": 764426.49, "y_3857": 6772655.99, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBTH", "_index": "nrw_stations"}}
+{"station_oid": 55, "ds100": "EBTH", "name": "Bottrop Hbf", "district": "Kreisfreie Stadt Bottrop", "latitude": 51.51667, "longitude": 6.94687, "location": [6.94687, 51.51667], "x_3857": 773322.03, "y_3857": 6713200.6, "source_rows": 4, "position_spread_m": 1325.9}
+{"index": {"_id": "EBTS", "_index": "nrw_stations"}}
+{"station_oid": 56, "ds100": "EBTS", "name": "Bottrop Süd", "district": "Kreisfreie Stadt Bottrop", "latitude": 51.50979, "longitude": 6.94788, "location": [6.94788, 51.50979], "x_3857": 773434.46, "y_3857": 6711969.94, "source_rows": 2, "position_spread_m": 208.3}
+{"index": {"_id": "EBWE", "_index": "nrw_stations"}}
+{"station_oid": 57, "ds100": "EBWE", "name": "Brackwede", "district": "Kreisfreie Stadt Bielefeld", "latitude": 51.99724, "longitude": 8.49822, "location": [8.49822, 51.99724], "x_3857": 946017.52, "y_3857": 6799626.43, "source_rows": 4, "position_spread_m": 32.3}
+{"index": {"_id": "EBRA", "_index": "nrw_stations"}}
+{"station_oid": 58, "ds100": "EBRA", "name": "Brake (b Bielefeld)", "district": "Kreisfreie Stadt Bielefeld", "latitude": 52.06965, "longitude": 8.60481, "location": [8.60481, 52.06965], "x_3857": 957883.07, "y_3857": 6812728.88, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KBRY", "_index": "nrw_stations"}}
+{"station_oid": 59, "ds100": "KBRY", "name": "Breyell", "district": "Kreis Viersen", "latitude": 51.29456, "longitude": 6.24116, "location": [6.24116, 51.29456], "x_3857": 694762.75, "y_3857": 6673564.31, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGG", "_index": "nrw_stations"}}
+{"station_oid": 60, "ds100": "EGG", "name": "Brilon Egger", "district": "Kreis Hochsauerlandkreis", "latitude": 51.41272, "longitude": 8.60691, "location": [8.60691, 51.41272], "x_3857": 958116.84, "y_3857": 6694626.39, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBRS", "_index": "nrw_stations"}}
+{"station_oid": 61, "ds100": "EBRS", "name": "Brilon Stadt", "district": "Kreis Hochsauerlandkreis", "latitude": 51.39931, "longitude": 8.57545, "location": [8.57545, 51.39931], "x_3857": 954614.73, "y_3857": 6692233.32, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBRW", "_index": "nrw_stations"}}
+{"station_oid": 62, "ds100": "EBRW", "name": "Brilon Wald", "district": "Kreis Hochsauerlandkreis", "latitude": 51.34912, "longitude": 8.57612, "location": [8.57612, 51.34912], "x_3857": 954689.31, "y_3857": 6683282.91, "source_rows": 3, "position_spread_m": 40.6}
+{"index": {"_id": "KBR", "_index": "nrw_stations"}}
+{"station_oid": 63, "ds100": "KBR", "name": "Brühl", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.82925, "longitude": 6.91266, "location": [6.91266, 50.82925], "x_3857": 769513.79, "y_3857": 6591145.42, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HBUK", "_index": "nrw_stations"}}
+{"station_oid": 64, "ds100": "HBUK", "name": "Buke", "district": "Kreis Paderborn", "latitude": 51.73309, "longitude": 8.9504, "location": [8.9504, 51.73309], "x_3857": 996353.97, "y_3857": 6752007.84, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBUR", "_index": "nrw_stations"}}
+{"station_oid": 65, "ds100": "EBUR", "name": "Burbach (Kr Siegen)", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.74896, "longitude": 8.07767, "location": [8.07767, 50.74896], "x_3857": 899202.11, "y_3857": 6577007.21, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBEO", "_index": "nrw_stations"}}
+{"station_oid": 66, "ds100": "EBEO", "name": "Bönen", "district": "Kreis Unna", "latitude": 51.61458, "longitude": 7.76854, "location": [7.76854, 51.61458], "x_3857": 864789.92, "y_3857": 6730734.35, "source_rows": 2, "position_spread_m": 1999.0}
+{"index": {"_id": "EBSL", "_index": "nrw_stations"}}
+{"station_oid": 67, "ds100": "EBSL", "name": "Bösensell", "district": "Kreis Coesfeld", "latitude": 51.90687, "longitude": 7.48693, "location": [7.48693, 51.90687], "x_3857": 833441.24, "y_3857": 6783303.84, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HBDE", "_index": "nrw_stations"}}
+{"station_oid": 68, "ds100": "HBDE", "name": "Bünde (Westf)", "district": "Kreis Herford", "latitude": 52.20196, "longitude": 8.57296, "location": [8.57296, 52.20196], "x_3857": 954337.54, "y_3857": 6836725.11, "source_rows": 2, "position_spread_m": 9.7}
+{"index": {"_id": "ECP", "_index": "nrw_stations"}}
+{"station_oid": 69, "ds100": "ECP", "name": "Capelle (Westf)", "district": "Kreis Coesfeld", "latitude": 51.73618, "longitude": 7.61091, "location": [7.61091, 51.73618], "x_3857": 847242.63, "y_3857": 6752563.26, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ECA", "_index": "nrw_stations"}}
+{"station_oid": 70, "ds100": "ECA", "name": "Castrop-Rauxel Hbf", "district": "Kreis Recklinghausen", "latitude": 51.57368, "longitude": 7.30463, "location": [7.30463, 51.57368], "x_3857": 813147.69, "y_3857": 6723405.37, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ECMF", "_index": "nrw_stations"}}
+{"station_oid": 71, "ds100": "ECMF", "name": "Coesfeld (Westf)", "district": "Kreis Coesfeld", "latitude": 51.93944, "longitude": 7.16405, "location": [7.16405, 51.93944], "x_3857": 797498.4, "y_3857": 6789182.83, "source_rows": 2, "position_spread_m": 63.3}
+{"index": {"_id": "EDAB", "_index": "nrw_stations"}}
+{"station_oid": 72, "ds100": "EDAB", "name": "Dahlbruch", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.97048, "longitude": 8.05383, "location": [8.05383, 50.97048], "x_3857": 896548.25, "y_3857": 6616073.64, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDAL", "_index": "nrw_stations"}}
+{"station_oid": 73, "ds100": "KDAL", "name": "Dalheim", "district": "Kreis Heinsberg", "latitude": 51.14896, "longitude": 6.17934, "location": [6.17934, 51.14896], "x_3857": 687880.98, "y_3857": 6647685.44, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDAT", "_index": "nrw_stations"}}
+{"station_oid": 74, "ds100": "EDAT", "name": "Datteln", "district": "Kreis Recklinghausen", "latitude": 51.62403, "longitude": 7.32057, "location": [7.32057, 51.62403], "x_3857": 814922.12, "y_3857": 6732428.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDVB", "_index": "nrw_stations"}}
+{"station_oid": 75, "ds100": "EDVB", "name": "Davensberg", "district": "Kreis Coesfeld", "latitude": 51.81879, "longitude": 7.59864, "location": [7.59864, 51.81879], "x_3857": 845876.74, "y_3857": 6767426.45, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDTM", "_index": "nrw_stations"}}
+{"station_oid": 76, "ds100": "EDTM", "name": "Detmold", "district": "Kreis Lippe", "latitude": 51.94061, "longitude": 8.87325, "location": [8.87325, 51.94061], "x_3857": 987765.67, "y_3857": 6789394.1, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDEU", "_index": "nrw_stations"}}
+{"station_oid": 77, "ds100": "EDEU", "name": "Deuten", "district": "Kreis Recklinghausen", "latitude": 51.71285, "longitude": 6.97092, "location": [6.97092, 51.71285], "x_3857": 775999.26, "y_3857": 6748370.65, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDIN", "_index": "nrw_stations"}}
+{"station_oid": 78, "ds100": "EDIN", "name": "Dinslaken", "district": "Kreis Wesel", "latitude": 51.56749, "longitude": 6.73825, "location": [6.73825, 51.56749], "x_3857": 750098.56, "y_3857": 6722296.75, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDO", "_index": "nrw_stations"}}
+{"station_oid": 79, "ds100": "KDO", "name": "Dormagen", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.09981, "longitude": 6.81442, "location": [6.81442, 51.09981], "x_3857": 758577.76, "y_3857": 6638967.98, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDOS", "_index": "nrw_stations"}}
+{"station_oid": 80, "ds100": "KDOS", "name": "Dorsfeld", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.8825, "longitude": 6.62612, "location": [6.62612, 50.8825], "x_3857": 737616.3, "y_3857": 6600535.59, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDRN", "_index": "nrw_stations"}}
+{"station_oid": 81, "ds100": "EDRN", "name": "Dorsten", "district": "Kreis Recklinghausen", "latitude": 51.65829, "longitude": 6.97075, "location": [6.97075, 51.65829], "x_3857": 775980.34, "y_3857": 6738574.17, "source_rows": 2, "position_spread_m": 1078.4}
+{"index": {"_id": "EDOB", "_index": "nrw_stations"}}
+{"station_oid": 82, "ds100": "EDOB", "name": "Dortmund Bbf", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.52218, "longitude": 7.4914, "location": [7.4914, 51.52218], "x_3857": 833938.83, "y_3857": 6714186.33, "source_rows": 2, "position_spread_m": 453.8}
+{"index": {"_id": "EDO", "_index": "nrw_stations"}}
+{"station_oid": 83, "ds100": "EDO", "name": "Dortmund Hbf", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.51778, "longitude": 7.45928, "location": [7.45928, 51.51778], "x_3857": 830363.25, "y_3857": 6713399.16, "source_rows": 9, "position_spread_m": 1209.3}
+{"index": {"_id": "EDWH", "_index": "nrw_stations"}}
+{"station_oid": 84, "ds100": "EDWH", "name": "Dortmund Signal Iduna Park", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.49072, "longitude": 7.45768, "location": [7.45768, 51.49072], "x_3857": 830185.14, "y_3857": 6708559.78, "source_rows": 3, "position_spread_m": 1020.2}
+{"index": {"_id": "EDOS", "_index": "nrw_stations"}}
+{"station_oid": 85, "ds100": "EDOS", "name": "Dortmund Süd", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.50879, "longitude": 7.47465, "location": [7.47465, 51.50879], "x_3857": 832074.23, "y_3857": 6711791.08, "source_rows": 2, "position_spread_m": 0.2}
+{"index": {"_id": "EDOZ", "_index": "nrw_stations"}}
+{"station_oid": 86, "ds100": "EDOZ", "name": "Dortmund Zinkhütte", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.52256, "longitude": 7.49367, "location": [7.49367, 51.52256], "x_3857": 834191.53, "y_3857": 6714254.31, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDAP", "_index": "nrw_stations"}}
+{"station_oid": 87, "ds100": "EDAP", "name": "Dortmund-Aplerbeck", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.49019, "longitude": 7.55129, "location": [7.55129, 51.49019], "x_3857": 840605.76, "y_3857": 6708465.03, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDAS", "_index": "nrw_stations"}}
+{"station_oid": 88, "ds100": "EDAS", "name": "Dortmund-Asseln", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.52825, "longitude": 7.59808, "location": [7.59808, 51.52825], "x_3857": 845814.4, "y_3857": 6715272.38, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDBK", "_index": "nrw_stations"}}
+{"station_oid": 89, "ds100": "EDBK", "name": "Dortmund-Brackel", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.52077, "longitude": 7.55011, "location": [7.55011, 51.52077], "x_3857": 840474.4, "y_3857": 6713934.07, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDBH", "_index": "nrw_stations"}}
+{"station_oid": 90, "ds100": "EDBH", "name": "Dortmund-Bövinghausen", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.51991, "longitude": 7.32739, "location": [7.32739, 51.51991], "x_3857": 815681.32, "y_3857": 6713780.21, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDD", "_index": "nrw_stations"}}
+{"station_oid": 91, "ds100": "EDD", "name": "Dortmund-Derne", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.56713, "longitude": 7.52852, "location": [7.52852, 51.56713], "x_3857": 838071.01, "y_3857": 6722232.28, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDDP", "_index": "nrw_stations"}}
+{"station_oid": 92, "ds100": "EDDP", "name": "Dortmund-Dorstfeld", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.50852, "longitude": 7.42694, "location": [7.42694, 51.50852], "x_3857": 826763.18, "y_3857": 6711742.79, "source_rows": 7, "position_spread_m": 1433.5}
+{"index": {"_id": "EDEV", "_index": "nrw_stations"}}
+{"station_oid": 93, "ds100": "EDEV", "name": "Dortmund-Eving", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.5367, "longitude": 7.48062, "location": [7.48062, 51.5367], "x_3857": 832738.81, "y_3857": 6716784.51, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDHK", "_index": "nrw_stations"}}
+{"station_oid": 94, "ds100": "EDHK", "name": "Dortmund-Huckarde Süd", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.52619, "longitude": 7.40765, "location": [7.40765, 51.52619], "x_3857": 824615.83, "y_3857": 6714903.79, "source_rows": 3, "position_spread_m": 27.7}
+{"index": {"_id": "EDH", "_index": "nrw_stations"}}
+{"station_oid": 95, "ds100": "EDH", "name": "Dortmund-Hörde", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.48794, "longitude": 7.49914, "location": [7.49914, 51.48794], "x_3857": 834800.45, "y_3857": 6708062.77, "source_rows": 2, "position_spread_m": 13.1}
+{"index": {"_id": "EDKU", "_index": "nrw_stations"}}
+{"station_oid": 96, "ds100": "EDKU", "name": "Dortmund-Kurl", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.557, "longitude": 7.58538, "location": [7.58538, 51.557], "x_3857": 844400.64, "y_3857": 6720418.33, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDLU", "_index": "nrw_stations"}}
+{"station_oid": 97, "ds100": "EDLU", "name": "Dortmund-Lütgendortmund Gbf", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.49704, "longitude": 7.36481, "location": [7.36481, 51.49704], "x_3857": 819846.9, "y_3857": 6709689.79, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDMR", "_index": "nrw_stations"}}
+{"station_oid": 98, "ds100": "EDMR", "name": "Dortmund-Marten", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.51451, "longitude": 7.37445, "location": [7.37445, 51.51451], "x_3857": 820920.02, "y_3857": 6712814.21, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDMG", "_index": "nrw_stations"}}
+{"station_oid": 99, "ds100": "EDMG", "name": "Dortmund-Mengede", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.57026, "longitude": 7.37428, "location": [7.37428, 51.57026], "x_3857": 820901.09, "y_3857": 6722792.83, "source_rows": 2, "position_spread_m": 58.0}
+{"index": {"_id": "EDOE", "_index": "nrw_stations"}}
+{"station_oid": 100, "ds100": "EDOE", "name": "Dortmund-Obereving", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.54073, "longitude": 7.47953, "location": [7.47953, 51.54073], "x_3857": 832617.47, "y_3857": 6717505.77, "source_rows": 2, "position_spread_m": 51.3}
+{"index": {"_id": "EDSH", "_index": "nrw_stations"}}
+{"station_oid": 101, "ds100": "EDSH", "name": "Dortmund-Scharnhorst", "district": "Kreisfreie Stadt Dortmund", "latitude": 51.54086, "longitude": 7.5435, "location": [7.5435, 51.54086], "x_3857": 839738.58, "y_3857": 6717529.04, "source_rows": 2, "position_spread_m": 525.4}
+{"index": {"_id": "HDRO", "_index": "nrw_stations"}}
+{"station_oid": 102, "ds100": "HDRO", "name": "Drohne", "district": "Kreis Minden-Lübbecke", "latitude": 52.41789, "longitude": 8.32669, "location": [8.32669, 52.41789], "x_3857": 926922.89, "y_3857": 6876040.9, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDG", "_index": "nrw_stations"}}
+{"station_oid": 103, "ds100": "EDG", "name": "Duisburg Hbf", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.42852, "longitude": 6.77481, "location": [6.77481, 51.42852], "x_3857": 754168.4, "y_3857": 6697446.88, "source_rows": 9, "position_spread_m": 1080.6}
+{"index": {"_id": "EDHM", "_index": "nrw_stations"}}
+{"station_oid": 104, "ds100": "EDHM", "name": "Duisburg Mannesmann", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.36943, "longitude": 6.72968, "location": [6.72968, 51.36943], "x_3857": 749144.55, "y_3857": 6686903.62, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDBG", "_index": "nrw_stations"}}
+{"station_oid": 105, "ds100": "EDBG", "name": "Duisburg-Beeck Gbf", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.47325, "longitude": 6.71564, "location": [6.71564, 51.47325], "x_3857": 747581.63, "y_3857": 6705436.99, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDGR", "_index": "nrw_stations"}}
+{"station_oid": 106, "ds100": "EDGR", "name": "Duisburg-Großenbaum", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.36477, "longitude": 6.77755, "location": [6.77755, 51.36477], "x_3857": 754473.41, "y_3857": 6686072.73, "source_rows": 4, "position_spread_m": 31.2}
+{"index": {"_id": "EDHB", "_index": "nrw_stations"}}
+{"station_oid": 107, "ds100": "EDHB", "name": "Duisburg-Hamborn", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.50277, "longitude": 6.77233, "location": [6.77233, 51.50277], "x_3857": 753892.33, "y_3857": 6710714.44, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDHD", "_index": "nrw_stations"}}
+{"station_oid": 108, "ds100": "EDHD", "name": "Duisburg-Hochfeld Süd", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.41332, "longitude": 6.78264, "location": [6.78264, 51.41332], "x_3857": 755040.03, "y_3857": 6694733.48, "source_rows": 5, "position_spread_m": 1468.6}
+{"index": {"_id": "EDME", "_index": "nrw_stations"}}
+{"station_oid": 109, "ds100": "EDME", "name": "Duisburg-Meiderich Süd", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.46879, "longitude": 6.77999, "location": [6.77999, 51.46879], "x_3857": 754745.03, "y_3857": 6704639.95, "source_rows": 3, "position_spread_m": 714.3}
+{"index": {"_id": "EDRH", "_index": "nrw_stations"}}
+{"station_oid": 110, "ds100": "EDRH", "name": "Duisburg-Ruhrort Hafen", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.46162, "longitude": 6.79976, "location": [6.79976, 51.46162], "x_3857": 756945.82, "y_3857": 6703358.77, "source_rows": 4, "position_spread_m": 412.8}
+{"index": {"_id": "EDWM", "_index": "nrw_stations"}}
+{"station_oid": 111, "ds100": "EDWM", "name": "Duisburg-Wanheim", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.38992, "longitude": 6.74925, "location": [6.74925, 51.38992], "x_3857": 751323.07, "y_3857": 6690558.05, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EDWD", "_index": "nrw_stations"}}
+{"station_oid": 112, "ds100": "EDWD", "name": "Duisburg-Wedau", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.40665, "longitude": 6.79887, "location": [6.79887, 51.40665], "x_3857": 756846.75, "y_3857": 6693543.09, "source_rows": 4, "position_spread_m": 963.9}
+{"index": {"_id": "EDUL", "_index": "nrw_stations"}}
+{"station_oid": 113, "ds100": "EDUL", "name": "Dülmen", "district": "Kreis Coesfeld", "latitude": 51.83044, "longitude": 7.29101, "location": [7.29101, 51.83044], "x_3857": 811631.52, "y_3857": 6769524.71, "source_rows": 2, "position_spread_m": 448.3}
+{"index": {"_id": "KDN", "_index": "nrw_stations"}}
+{"station_oid": 114, "ds100": "KDN", "name": "Düren", "district": "Kreis Düren", "latitude": 50.80946, "longitude": 6.48231, "location": [6.48231, 50.80946], "x_3857": 721607.45, "y_3857": 6587658.36, "source_rows": 4, "position_spread_m": 1490.0}
+{"index": {"_id": "KDA", "_index": "nrw_stations"}}
+{"station_oid": 115, "ds100": "KDA", "name": "Düsseldorf Abstellbahnhof", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.20642, "longitude": 6.8114, "location": [6.8114, 51.20642], "x_3857": 758241.58, "y_3857": 6657888.58, "source_rows": 3, "position_spread_m": 161.5}
+{"index": {"_id": "KDFF", "_index": "nrw_stations"}}
+{"station_oid": 116, "ds100": "KDFF", "name": "Düsseldorf Flughafen", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.29155, "longitude": 6.78697, "location": [6.78697, 51.29155], "x_3857": 755522.04, "y_3857": 6673028.48, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDF", "_index": "nrw_stations"}}
+{"station_oid": 117, "ds100": "KDF", "name": "Düsseldorf Flughafen Terminal", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.27765, "longitude": 6.766, "location": [6.766, 51.27765], "x_3857": 753187.67, "y_3857": 6670554.53, "source_rows": 2, "position_spread_m": 1259.4}
+{"index": {"_id": "KD", "_index": "nrw_stations"}}
+{"station_oid": 118, "ds100": "KD", "name": "Düsseldorf Hbf", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.21935, "longitude": 6.79468, "location": [6.79468, 51.21935], "x_3857": 756380.32, "y_3857": 6660186.3, "source_rows": 10, "position_spread_m": 1066.8}
+{"index": {"_id": "KDW", "_index": "nrw_stations"}}
+{"station_oid": 119, "ds100": "KDW", "name": "Düsseldorf Wehrhahn", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.22848, "longitude": 6.7982, "location": [6.7982, 51.22848], "x_3857": 756772.16, "y_3857": 6661809.14, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDBI", "_index": "nrw_stations"}}
+{"station_oid": 120, "ds100": "KDBI", "name": "Düsseldorf-Bilk", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.20786, "longitude": 6.77484, "location": [6.77484, 51.20786], "x_3857": 754171.74, "y_3857": 6658144.44, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDD", "_index": "nrw_stations"}}
+{"station_oid": 121, "ds100": "KDD", "name": "Düsseldorf-Derendorf", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.25174, "longitude": 6.79331, "location": [6.79331, 51.25174], "x_3857": 756227.81, "y_3857": 6665945.0, "source_rows": 4, "position_spread_m": 1424.5}
+{"index": {"_id": "KDE", "_index": "nrw_stations"}}
+{"station_oid": 122, "ds100": "KDE", "name": "Düsseldorf-Eller", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.20279, "longitude": 6.85201, "location": [6.85201, 51.20279], "x_3857": 762762.26, "y_3857": 6657243.62, "source_rows": 4, "position_spread_m": 21.1}
+{"index": {"_id": "KDGE", "_index": "nrw_stations"}}
+{"station_oid": 123, "ds100": "KDGE", "name": "Düsseldorf-Gerresheim", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.22038, "longitude": 6.86488, "location": [6.86488, 51.22038], "x_3857": 764194.95, "y_3857": 6660369.37, "source_rows": 4, "position_spread_m": 956.5}
+{"index": {"_id": "KDR", "_index": "nrw_stations"}}
+{"station_oid": 124, "ds100": "KDR", "name": "Düsseldorf-Rath", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.26416, "longitude": 6.82131, "location": [6.82131, 51.26416], "x_3857": 759344.76, "y_3857": 6668154.26, "source_rows": 2, "position_spread_m": 6.9}
+{"index": {"_id": "KDU", "_index": "nrw_stations"}}
+{"station_oid": 125, "ds100": "KDU", "name": "Düsseldorf-Unterrath", "district": "Kreisfreie Stadt Düsseldorf", "latitude": 51.27659, "longitude": 6.78892, "location": [6.78892, 51.27659], "x_3857": 755739.12, "y_3857": 6670365.9, "source_rows": 5, "position_spread_m": 2382.9}
+{"index": {"_id": "KEIT", "_index": "nrw_stations"}}
+{"station_oid": 126, "ds100": "KEIT", "name": "Eitorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.77362, "longitude": 7.44725, "location": [7.44725, 50.77362], "x_3857": 829024.08, "y_3857": 6581346.99, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEM", "_index": "nrw_stations"}}
+{"station_oid": 127, "ds100": "EEM", "name": "Emmerich", "district": "Kreis Kleve", "latitude": 51.83424, "longitude": 6.25563, "location": [6.25563, 51.83424], "x_3857": 696373.55, "y_3857": 6770209.23, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEMP", "_index": "nrw_stations"}}
+{"station_oid": 128, "ds100": "EEMP", "name": "Empel-Rees", "district": "Kreis Kleve", "latitude": 51.79814, "longitude": 6.41711, "location": [6.41711, 51.79814], "x_3857": 714349.42, "y_3857": 6763708.55, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEDT", "_index": "nrw_stations"}}
+{"station_oid": 129, "ds100": "EEDT", "name": "Emsdetten", "district": "Kreis Steinfurt", "latitude": 52.17674, "longitude": 7.53152, "location": [7.53152, 52.17674], "x_3857": 838404.97, "y_3857": 6832145.62, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KENL", "_index": "nrw_stations"}}
+{"station_oid": 130, "ds100": "KENL", "name": "Engelskirchen", "district": "Kreis Oberbergischer Kreis", "latitude": 50.98671, "longitude": 7.4077, "location": [7.4077, 50.98671], "x_3857": 824621.39, "y_3857": 6618943.21, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEPE", "_index": "nrw_stations"}}
+{"station_oid": 131, "ds100": "EEPE", "name": "Epe (Westf)", "district": "Kreis Borken", "latitude": 52.18345, "longitude": 7.03006, "location": [7.03006, 52.18345], "x_3857": 782582.7, "y_3857": 6833363.78, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KEST", "_index": "nrw_stations"}}
+{"station_oid": 132, "ds100": "KEST", "name": "Erftstadt", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.80728, "longitude": 6.83303, "location": [6.83303, 50.80728], "x_3857": 760649.42, "y_3857": 6587274.33, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEK", "_index": "nrw_stations"}}
+{"station_oid": 133, "ds100": "EEK", "name": "Erndtebrück", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.99086, "longitude": 8.25509, "location": [8.25509, 50.99086], "x_3857": 918952.42, "y_3857": 6619677.12, "source_rows": 2, "position_spread_m": 4.8}
+{"index": {"_id": "KE", "_index": "nrw_stations"}}
+{"station_oid": 134, "ds100": "KE", "name": "Eschweiler Hbf", "district": "Kreis Städteregion Aachen", "latitude": 50.81354, "longitude": 6.25197, "location": [6.25197, 50.81354], "x_3857": 695966.12, "y_3857": 6588377.15, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HEKP", "_index": "nrw_stations"}}
+{"station_oid": 135, "ds100": "HEKP", "name": "Espelkamp", "district": "Kreis Minden-Lübbecke", "latitude": 52.37917, "longitude": 8.61324, "location": [8.61324, 52.37917], "x_3857": 958821.49, "y_3857": 6868976.77, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EE", "_index": "nrw_stations"}}
+{"station_oid": 136, "ds100": "EE", "name": "Essen Hbf", "district": "Kreisfreie Stadt Essen", "latitude": 51.45152, "longitude": 7.01384, "location": [7.01384, 51.45152], "x_3857": 780777.1, "y_3857": 6701554.39, "source_rows": 8, "position_spread_m": 1426.4}
+{"index": {"_id": "EENW", "_index": "nrw_stations"}}
+{"station_oid": 137, "ds100": "EENW", "name": "Essen West", "district": "Kreisfreie Stadt Essen", "latitude": 51.4544, "longitude": 6.98017, "location": [6.98017, 51.4544], "x_3857": 777028.97, "y_3857": 6702068.86, "source_rows": 3, "position_spread_m": 34.9}
+{"index": {"_id": "EEAL", "_index": "nrw_stations"}}
+{"station_oid": 138, "ds100": "EEAL", "name": "Essen-Altenessen", "district": "Kreisfreie Stadt Essen", "latitude": 51.48321, "longitude": 7.00206, "location": [7.00206, 51.48321], "x_3857": 779465.75, "y_3857": 6707217.21, "source_rows": 2, "position_spread_m": 375.0}
+{"index": {"_id": "EEBE", "_index": "nrw_stations"}}
+{"station_oid": 139, "ds100": "EEBE", "name": "Essen-Bergeborbeck", "district": "Kreisfreie Stadt Essen", "latitude": 51.48034, "longitude": 6.97785, "location": [6.97785, 51.48034], "x_3857": 776770.71, "y_3857": 6706704.2, "source_rows": 2, "position_spread_m": 15.8}
+{"index": {"_id": "EEDO", "_index": "nrw_stations"}}
+{"station_oid": 140, "ds100": "EEDO", "name": "Essen-Dellwig Ost", "district": "Kreisfreie Stadt Essen", "latitude": 51.48997, "longitude": 6.92422, "location": [6.92422, 51.48997], "x_3857": 770800.64, "y_3857": 6708425.69, "source_rows": 2, "position_spread_m": 316.9}
+{"index": {"_id": "EEKN", "_index": "nrw_stations"}}
+{"station_oid": 141, "ds100": "EEKN", "name": "Essen-Kray Nord", "district": "Kreisfreie Stadt Essen", "latitude": 51.46947, "longitude": 7.08069, "location": [7.08069, 51.46947], "x_3857": 788218.81, "y_3857": 6704761.47, "source_rows": 3, "position_spread_m": 16.3}
+{"index": {"_id": "EESA", "_index": "nrw_stations"}}
+{"station_oid": 142, "ds100": "EESA", "name": "Essen-Stadtwald", "district": "Kreisfreie Stadt Essen", "latitude": 51.42238, "longitude": 7.0233, "location": [7.0233, 51.42238], "x_3857": 781830.18, "y_3857": 6696350.7, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEST", "_index": "nrw_stations"}}
+{"station_oid": 143, "ds100": "EEST", "name": "Essen-Steele", "district": "Kreisfreie Stadt Essen", "latitude": 51.45032, "longitude": 7.07609, "location": [7.07609, 51.45032], "x_3857": 787706.74, "y_3857": 6701340.03, "source_rows": 5, "position_spread_m": 1578.0}
+{"index": {"_id": "EEVL", "_index": "nrw_stations"}}
+{"station_oid": 144, "ds100": "EEVL", "name": "Essen-Vogelheim", "district": "Kreisfreie Stadt Essen", "latitude": 51.48478, "longitude": 6.98412, "location": [6.98412, 51.48478], "x_3857": 777468.68, "y_3857": 6707497.86, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EEWD", "_index": "nrw_stations"}}
+{"station_oid": 145, "ds100": "EEWD", "name": "Essen-Werden", "district": "Kreisfreie Stadt Essen", "latitude": 51.3869, "longitude": 6.99784, "location": [6.99784, 51.3869], "x_3857": 778995.99, "y_3857": 6690019.32, "source_rows": 2, "position_spread_m": 0.0}
+{"index": {"_id": "KEU", "_index": "nrw_stations"}}
+{"station_oid": 146, "ds100": "KEU", "name": "Euskirchen", "district": "Kreis Euskirchen", "latitude": 50.6577, "longitude": 6.79231, "location": [6.79231, 50.6577], "x_3857": 756116.49, "y_3857": 6560966.72, "source_rows": 4, "position_spread_m": 1676.7}
+{"index": {"_id": "KKUH", "_index": "nrw_stations"}}
+{"station_oid": 147, "ds100": "KKUH", "name": "Euskirchen-Kuchenheim", "district": "Kreis Euskirchen", "latitude": 50.65547, "longitude": 6.83368, "location": [6.83368, 50.65547], "x_3857": 760721.78, "y_3857": 6560575.15, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EFER", "_index": "nrw_stations"}}
+{"station_oid": 148, "ds100": "EFER", "name": "Ferndorf (Kr Siegen)", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.9595, "longitude": 8.00899, "location": [8.00899, 50.9595], "x_3857": 891556.69, "y_3857": 6614132.87, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EFP", "_index": "nrw_stations"}}
+{"station_oid": 149, "ds100": "EFP", "name": "Finnentrop", "district": "Kreis Olpe", "latitude": 51.1733, "longitude": 7.96455, "location": [7.96455, 51.1733], "x_3857": 886609.65, "y_3857": 6652005.93, "source_rows": 3, "position_spread_m": 15.0}
+{"index": {"_id": "EFRE", "_index": "nrw_stations"}}
+{"station_oid": 150, "ds100": "EFRE", "name": "Freienohl", "district": "Kreis Hochsauerlandkreis", "latitude": 51.3664, "longitude": 8.16935, "location": [8.16935, 51.3664], "x_3857": 909407.88, "y_3857": 6686363.35, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EFFD", "_index": "nrw_stations"}}
+{"station_oid": 151, "ds100": "EFFD", "name": "Friedrichsfeld (Niederrhein)", "district": "Kreis Wesel", "latitude": 51.62848, "longitude": 6.64548, "location": [6.64548, 51.62848], "x_3857": 739771.45, "y_3857": 6733226.64, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HFLL", "_index": "nrw_stations"}}
+{"station_oid": 152, "ds100": "HFLL", "name": "Frille", "district": "Kreis Minden-Lübbecke", "latitude": 52.33199, "longitude": 8.99396, "location": [8.99396, 52.33199], "x_3857": 1001203.05, "y_3857": 6860377.55, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EFOE", "_index": "nrw_stations"}}
+{"station_oid": 153, "ds100": "EFOE", "name": "Fröndenberg", "district": "Kreis Unna", "latitude": 51.4712, "longitude": 7.76184, "location": [7.76184, 51.4712], "x_3857": 864044.08, "y_3857": 6705070.63, "source_rows": 3, "position_spread_m": 33.2}
+{"index": {"_id": "KGEK", "_index": "nrw_stations"}}
+{"station_oid": 154, "ds100": "KGEK", "name": "Geilenkirchen", "district": "Kreis Heinsberg", "latitude": 50.96103, "longitude": 6.12444, "location": [6.12444, 50.96103], "x_3857": 681769.54, "y_3857": 6614403.27, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KGE", "_index": "nrw_stations"}}
+{"station_oid": 155, "ds100": "KGE", "name": "Geldern", "district": "Kreis Kleve", "latitude": 51.51329, "longitude": 6.31931, "location": [6.31931, 51.51329], "x_3857": 703462.37, "y_3857": 6712595.98, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EG", "_index": "nrw_stations"}}
+{"station_oid": 156, "ds100": "EG", "name": "Gelsenkirchen Hbf", "district": "Kreisfreie Stadt Gelsenkirchen", "latitude": 51.50488, "longitude": 7.10255, "location": [7.10255, 51.50488], "x_3857": 790652.25, "y_3857": 6711091.78, "source_rows": 6, "position_spread_m": 65.4}
+{"index": {"_id": "EGBK", "_index": "nrw_stations"}}
+{"station_oid": 157, "ds100": "EGBK", "name": "Gelsenkirchen-Bismarck", "district": "Kreisfreie Stadt Gelsenkirchen", "latitude": 51.5372, "longitude": 7.10662, "location": [7.10662, 51.5372], "x_3857": 791105.32, "y_3857": 6716873.99, "source_rows": 3, "position_spread_m": 3117.2}
+{"index": {"_id": "EGBN", "_index": "nrw_stations"}}
+{"station_oid": 158, "ds100": "EGBN", "name": "Gelsenkirchen-Buer Nord", "district": "Kreisfreie Stadt Gelsenkirchen", "latitude": 51.58454, "longitude": 7.04167, "location": [7.04167, 51.58454], "x_3857": 783875.12, "y_3857": 6725350.76, "source_rows": 2, "position_spread_m": 249.8}
+{"index": {"_id": "EGHN", "_index": "nrw_stations"}}
+{"station_oid": 159, "ds100": "EGHN", "name": "Gelsenkirchen-Horst Nord", "district": "Kreis Recklinghausen", "latitude": 51.54013, "longitude": 7.01407, "location": [7.01407, 51.54013], "x_3857": 780802.7, "y_3857": 6717398.38, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGS", "_index": "nrw_stations"}}
+{"station_oid": 160, "ds100": "EGS", "name": "Gelsenkirchen-Schalke", "district": "Kreisfreie Stadt Gelsenkirchen", "latitude": 51.52599, "longitude": 7.07502, "location": [7.07502, 51.52599], "x_3857": 787587.62, "y_3857": 6714868.0, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGK", "_index": "nrw_stations"}}
+{"station_oid": 161, "ds100": "EGK", "name": "Geseke", "district": "Kreis Soest", "latitude": 51.64378, "longitude": 8.51535, "location": [8.51535, 51.64378], "x_3857": 947924.43, "y_3857": 6735970.82, "source_rows": 2, "position_spread_m": 375.2}
+{"index": {"_id": "KGVW", "_index": "nrw_stations"}}
+{"station_oid": 162, "ds100": "KGVW", "name": "Gevelsberg West", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.31711, "longitude": 7.31281, "location": [7.31281, 51.31711], "x_3857": 814058.29, "y_3857": 6677579.67, "source_rows": 2, "position_spread_m": 6.5}
+{"index": {"_id": "EGBW", "_index": "nrw_stations"}}
+{"station_oid": 163, "ds100": "EGBW", "name": "Gladbeck West", "district": "Kreis Recklinghausen", "latitude": 51.57535, "longitude": 6.9768, "location": [6.9768, 51.57535], "x_3857": 776653.82, "y_3857": 6723704.5, "source_rows": 2, "position_spread_m": 334.7}
+{"index": {"_id": "KGO", "_index": "nrw_stations"}}
+{"station_oid": 164, "ds100": "KGO", "name": "Goch", "district": "Kreis Kleve", "latitude": 51.68178, "longitude": 6.16088, "location": [6.16088, 51.68178], "x_3857": 685826.02, "y_3857": 6742790.45, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HGOF", "_index": "nrw_stations"}}
+{"station_oid": 165, "ds100": "HGOF", "name": "Gohfeld", "district": "Kreis Herford", "latitude": 52.20023, "longitude": 8.75961, "location": [8.75961, 52.20023], "x_3857": 975115.32, "y_3857": 6836410.89, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KG", "_index": "nrw_stations"}}
+{"station_oid": 166, "ds100": "KG", "name": "Gremberg", "district": "Kreisfreie Stadt Köln", "latitude": 50.90008, "longitude": 7.04626, "location": [7.04626, 50.90008], "x_3857": 784386.08, "y_3857": 6603638.03, "source_rows": 4, "position_spread_m": 3875.5}
+{"index": {"_id": "EGRV", "_index": "nrw_stations"}}
+{"station_oid": 167, "ds100": "EGRV", "name": "Greven", "district": "Kreis Steinfurt", "latitude": 52.08999, "longitude": 7.59937, "location": [7.59937, 52.08999], "x_3857": 845958.0, "y_3857": 6816413.18, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KGRB", "_index": "nrw_stations"}}
+{"station_oid": 168, "ds100": "KGRB", "name": "Grevenbroich", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.09325, "longitude": 6.58029, "location": [6.58029, 51.09325], "x_3857": 732514.53, "y_3857": 6637805.17, "source_rows": 2, "position_spread_m": 10.8}
+{"index": {"_id": "KERW", "_index": "nrw_stations"}}
+{"station_oid": 169, "ds100": "KERW", "name": "Grevenbroich Erftwerk", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.08225, "longitude": 6.61846, "location": [6.61846, 51.08225], "x_3857": 736763.6, "y_3857": 6635855.71, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGRN", "_index": "nrw_stations"}}
+{"station_oid": 170, "ds100": "EGRN", "name": "Gronau (Westf)", "district": "Kreis Borken", "latitude": 52.21502, "longitude": 7.02249, "location": [7.02249, 52.21502], "x_3857": 781740.01, "y_3857": 6839097.59, "source_rows": 2, "position_spread_m": 16.2}
+{"index": {"_id": "KGU", "_index": "nrw_stations"}}
+{"station_oid": 171, "ds100": "KGU", "name": "Gummersbach", "district": "Kreis Oberbergischer Kreis", "latitude": 51.02334, "longitude": 7.56642, "location": [7.56642, 51.02334], "x_3857": 842290.02, "y_3857": 6625423.34, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDI", "_index": "nrw_stations"}}
+{"station_oid": 172, "ds100": "KDI", "name": "Gummersbach-Dieringhausen", "district": "Kreis Oberbergischer Kreis", "latitude": 50.99028, "longitude": 7.55116, "location": [7.55116, 50.99028], "x_3857": 840591.29, "y_3857": 6619574.55, "source_rows": 2, "position_spread_m": 831.8}
+{"index": {"_id": "KGUS", "_index": "nrw_stations"}}
+{"station_oid": 173, "ds100": "KGUS", "name": "Gustorf", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.06696, "longitude": 6.56988, "location": [6.56988, 51.06696], "x_3857": 731355.7, "y_3857": 6633146.73, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGLO", "_index": "nrw_stations"}}
+{"station_oid": 174, "ds100": "EGLO", "name": "Gütersloh Hbf", "district": "Kreis Gütersloh", "latitude": 51.90679, "longitude": 8.38524, "location": [8.38524, 51.90679], "x_3857": 933440.65, "y_3857": 6783289.41, "source_rows": 2, "position_spread_m": 24.9}
+{"index": {"_id": "KGUI", "_index": "nrw_stations"}}
+{"station_oid": 175, "ds100": "KGUI", "name": "Haan-Gruiten", "district": "Kreis Mettmann", "latitude": 51.21451, "longitude": 7.01122, "location": [7.01122, 51.21451], "x_3857": 780485.44, "y_3857": 6659326.13, "source_rows": 4, "position_spread_m": 416.6}
+{"index": {"_id": "EHGG", "_index": "nrw_stations"}}
+{"station_oid": 176, "ds100": "EHGG", "name": "Hagen Gbf", "district": "Kreisfreie Stadt Hagen", "latitude": 51.38667, "longitude": 7.45306, "location": [7.45306, 51.38667], "x_3857": 829670.84, "y_3857": 6689978.3, "source_rows": 2, "position_spread_m": 1351.5}
+{"index": {"_id": "EHG", "_index": "nrw_stations"}}
+{"station_oid": 177, "ds100": "EHG", "name": "Hagen Hbf", "district": "Kreisfreie Stadt Hagen", "latitude": 51.3627, "longitude": 7.4606, "location": [7.4606, 51.3627], "x_3857": 830510.19, "y_3857": 6685703.67, "source_rows": 6, "position_spread_m": 98.3}
+{"index": {"_id": "EHGH", "_index": "nrw_stations"}}
+{"station_oid": 178, "ds100": "EHGH", "name": "Hagen-Halden", "district": "Kreisfreie Stadt Hagen", "latitude": 51.38129, "longitude": 7.52025, "location": [7.52025, 51.38129], "x_3857": 837150.4, "y_3857": 6689018.67, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHGP", "_index": "nrw_stations"}}
+{"station_oid": 179, "ds100": "EHGP", "name": "Hagen-Haspe", "district": "Kreisfreie Stadt Hagen", "latitude": 51.34319, "longitude": 7.4219, "location": [7.4219, 51.34319], "x_3857": 826202.13, "y_3857": 6682226.06, "source_rows": 2, "position_spread_m": 13.7}
+{"index": {"_id": "EHGI", "_index": "nrw_stations"}}
+{"station_oid": 180, "ds100": "EHGI", "name": "Hagen-Heubing", "district": "Kreisfreie Stadt Hagen", "latitude": 51.35239, "longitude": 7.42351, "location": [7.42351, 51.35239], "x_3857": 826381.35, "y_3857": 6683865.75, "source_rows": 2, "position_spread_m": 698.4}
+{"index": {"_id": "EHGK", "_index": "nrw_stations"}}
+{"station_oid": 181, "ds100": "EHGK", "name": "Hagen-Kabel", "district": "Kreisfreie Stadt Hagen", "latitude": 51.40352, "longitude": 7.48861, "location": [7.48861, 51.40352], "x_3857": 833628.25, "y_3857": 6692984.54, "source_rows": 3, "position_spread_m": 374.8}
+{"index": {"_id": "EHGV", "_index": "nrw_stations"}}
+{"station_oid": 182, "ds100": "EHGV", "name": "Hagen-Vorhalle", "district": "Kreisfreie Stadt Hagen", "latitude": 51.38767, "longitude": 7.43419, "location": [7.43419, 51.38767], "x_3857": 827570.25, "y_3857": 6690156.68, "source_rows": 7, "position_spread_m": 2440.0}
+{"index": {"_id": "EHAL", "_index": "nrw_stations"}}
+{"station_oid": 183, "ds100": "EHAL", "name": "Halle (Westf)", "district": "Kreis Gütersloh", "latitude": 52.05705, "longitude": 8.35838, "location": [8.35838, 52.05705], "x_3857": 930450.61, "y_3857": 6810447.41, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHLT", "_index": "nrw_stations"}}
+{"station_oid": 184, "ds100": "EHLT", "name": "Haltern am See", "district": "Kreis Recklinghausen", "latitude": 51.7375, "longitude": 7.18419, "location": [7.18419, 51.7375], "x_3857": 799740.37, "y_3857": 6752800.54, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHM", "_index": "nrw_stations"}}
+{"station_oid": 185, "ds100": "EHM", "name": "Hamm (Westf) Pbf", "district": "Kreisfreie Stadt Hamm", "latitude": 51.67812, "longitude": 7.80802, "location": [7.80802, 51.67812], "x_3857": 869184.81, "y_3857": 6742133.37, "source_rows": 7, "position_spread_m": 127.1}
+{"index": {"_id": "EHRB", "_index": "nrw_stations"}}
+{"station_oid": 186, "ds100": "EHRB", "name": "Hamm (Westf) Rbf", "district": "Kreisfreie Stadt Hamm", "latitude": 51.6584, "longitude": 7.80069, "location": [7.80069, 51.6584], "x_3857": 868368.84, "y_3857": 6738593.91, "source_rows": 10, "position_spread_m": 3591.1}
+{"index": {"_id": "EHK", "_index": "nrw_stations"}}
+{"station_oid": 187, "ds100": "EHK", "name": "Hamminkeln", "district": "Kreis Wesel", "latitude": 51.73526, "longitude": 6.60169, "location": [6.60169, 51.73526], "x_3857": 734896.77, "y_3857": 6752397.89, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHAT", "_index": "nrw_stations"}}
+{"station_oid": 188, "ds100": "EHAT", "name": "Hattingen (Ruhr)", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.40067, "longitude": 7.16633, "location": [7.16633, 51.40067], "x_3857": 797752.21, "y_3857": 6692475.98, "source_rows": 2, "position_spread_m": 347.6}
+{"index": {"_id": "EHBK", "_index": "nrw_stations"}}
+{"station_oid": 189, "ds100": "EHBK", "name": "Havixbeck", "district": "Kreis Coesfeld", "latitude": 51.96672, "longitude": 7.4077, "location": [7.4077, 51.96672], "x_3857": 824621.39, "y_3857": 6794110.24, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHE", "_index": "nrw_stations"}}
+{"station_oid": 190, "ds100": "EHE", "name": "Heessen", "district": "Kreisfreie Stadt Hamm", "latitude": 51.69189, "longitude": 7.81011, "location": [7.81011, 51.69189], "x_3857": 869417.47, "y_3857": 6744605.8, "source_rows": 2, "position_spread_m": 868.2}
+{"index": {"_id": "HHMS", "_index": "nrw_stations"}}
+{"station_oid": 191, "ds100": "HHMS", "name": "Heimsen", "district": "Kreis Minden-Lübbecke", "latitude": 52.46214, "longitude": 9.0462, "location": [9.0462, 52.46214], "x_3857": 1007018.38, "y_3857": 6884121.54, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KHEN", "_index": "nrw_stations"}}
+{"station_oid": 192, "ds100": "KHEN", "name": "Hennef (Sieg)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.77317, "longitude": 7.28569, "location": [7.28569, 50.77317], "x_3857": 811039.3, "y_3857": 6581267.78, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KHEC", "_index": "nrw_stations"}}
+{"station_oid": 193, "ds100": "KHEC", "name": "Herchen", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.7712, "longitude": 7.52139, "location": [7.52139, 50.7712], "x_3857": 837277.3, "y_3857": 6580921.01, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHCK", "_index": "nrw_stations"}}
+{"station_oid": 194, "ds100": "EHCK", "name": "Herdecke", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.40462, "longitude": 7.43248, "location": [7.43248, 51.40462], "x_3857": 827379.89, "y_3857": 6693180.83, "source_rows": 2, "position_spread_m": 9.4}
+{"index": {"_id": "EHFD", "_index": "nrw_stations"}}
+{"station_oid": 195, "ds100": "EHFD", "name": "Herford", "district": "Kreis Herford", "latitude": 52.11973, "longitude": 8.66368, "location": [8.66368, 52.11973], "x_3857": 964436.45, "y_3857": 6821803.19, "source_rows": 4, "position_spread_m": 52.6}
+{"index": {"_id": "EHER", "_index": "nrw_stations"}}
+{"station_oid": 196, "ds100": "EHER", "name": "Herne", "district": "Kreisfreie Stadt Herne", "latitude": 51.54676, "longitude": 7.22699, "location": [7.22699, 51.54676], "x_3857": 804504.85, "y_3857": 6718585.11, "source_rows": 6, "position_spread_m": 2610.7}
+{"index": {"_id": "EHEO", "_index": "nrw_stations"}}
+{"station_oid": 197, "ds100": "EHEO", "name": "Herne-Rottbruch", "district": "Kreisfreie Stadt Herne", "latitude": 51.53482, "longitude": 7.20634, "location": [7.20634, 51.53482], "x_3857": 802206.1, "y_3857": 6716448.06, "source_rows": 3, "position_spread_m": 321.7}
+{"index": {"_id": "KHEZ", "_index": "nrw_stations"}}
+{"station_oid": 198, "ds100": "KHEZ", "name": "Herzogenrath", "district": "Kreis Städteregion Aachen", "latitude": 50.87097, "longitude": 6.09428, "location": [6.09428, 50.87097], "x_3857": 678412.15, "y_3857": 6598501.47, "source_rows": 2, "position_spread_m": 15.1}
+{"index": {"_id": "EHIB", "_index": "nrw_stations"}}
+{"station_oid": 199, "ds100": "EHIB", "name": "Hilchenbach", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.99214, "longitude": 8.10691, "location": [8.10691, 50.99214], "x_3857": 902457.09, "y_3857": 6619903.5, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KHI", "_index": "nrw_stations"}}
+{"station_oid": 200, "ds100": "KHI", "name": "Hilden", "district": "Kreis Mettmann", "latitude": 51.16691, "longitude": 6.92191, "location": [6.92191, 51.16691], "x_3857": 770543.5, "y_3857": 6650871.44, "source_rows": 3, "position_spread_m": 20.8}
+{"index": {"_id": "EHIG", "_index": "nrw_stations"}}
+{"station_oid": 201, "ds100": "EHIG", "name": "Hillegossen", "district": "Kreisfreie Stadt Bielefeld", "latitude": 52.00041, "longitude": 8.61157, "location": [8.61157, 52.00041], "x_3857": 958635.59, "y_3857": 6800199.59, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HHIG", "_index": "nrw_stations"}}
+{"station_oid": 202, "ds100": "HHIG", "name": "Himmighausen", "district": "Kreis Höxter", "latitude": 51.80395, "longitude": 8.99397, "location": [8.99397, 51.80395], "x_3857": 1001204.16, "y_3857": 6764754.43, "source_rows": 2, "position_spread_m": 14.3}
+{"index": {"_id": "KHOF", "_index": "nrw_stations"}}
+{"station_oid": 203, "ds100": "KHOF", "name": "Hoffnungsthal", "district": "Kreis Rheinisch-Bergischer Kreis", "latitude": 50.91128, "longitude": 7.19659, "location": [7.19659, 50.91128], "x_3857": 801120.73, "y_3857": 6605615.16, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHOG", "_index": "nrw_stations"}}
+{"station_oid": 204, "ds100": "EHOG", "name": "Hohenlimburg", "district": "Kreisfreie Stadt Hagen", "latitude": 51.34884, "longitude": 7.5717, "location": [7.5717, 51.34884], "x_3857": 842877.79, "y_3857": 6683233.0, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KHOZ", "_index": "nrw_stations"}}
+{"station_oid": 205, "ds100": "KHOZ", "name": "Holzheim (b Neuss)", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.16561, "longitude": 6.66462, "location": [6.66462, 51.16561], "x_3857": 741902.1, "y_3857": 6650640.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHZW", "_index": "nrw_stations"}}
+{"station_oid": 206, "ds100": "EHZW", "name": "Holzwickede", "district": "Kreis Unna", "latitude": 51.5046, "longitude": 7.61968, "location": [7.61968, 51.5046], "x_3857": 848218.9, "y_3857": 6711041.71, "source_rows": 2, "position_spread_m": 17.4}
+{"index": {"_id": "EHBM", "_index": "nrw_stations"}}
+{"station_oid": 207, "ds100": "EHBM", "name": "Horn-Bad Meinberg", "district": "Kreis Lippe", "latitude": 51.88184, "longitude": 8.95493, "location": [8.95493, 51.88184], "x_3857": 996858.25, "y_3857": 6778788.74, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KHR", "_index": "nrw_stations"}}
+{"station_oid": 208, "ds100": "KHR", "name": "Horrem", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.91712, "longitude": 6.71323, "location": [6.71323, 50.91712], "x_3857": 747313.35, "y_3857": 6606646.28, "source_rows": 4, "position_spread_m": 462.9}
+{"index": {"_id": "EHOS", "_index": "nrw_stations"}}
+{"station_oid": 209, "ds100": "EHOS", "name": "Hösel", "district": "Kreis Mettmann", "latitude": 51.34151, "longitude": 6.89325, "location": [6.89325, 51.34151], "x_3857": 767353.08, "y_3857": 6681926.67, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHOV", "_index": "nrw_stations"}}
+{"station_oid": 210, "ds100": "EHOV", "name": "Hövelhof", "district": "Kreis Paderborn", "latitude": 51.82367, "longitude": 8.66203, "location": [8.66203, 51.82367], "x_3857": 964252.77, "y_3857": 6768305.31, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HHX", "_index": "nrw_stations"}}
+{"station_oid": 211, "ds100": "HHX", "name": "Höxter", "district": "Kreis Höxter", "latitude": 51.77721, "longitude": 9.39503, "location": [9.39503, 51.77721], "x_3857": 1045849.96, "y_3857": 6759941.98, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HOTT", "_index": "nrw_stations"}}
+{"station_oid": 212, "ds100": "HOTT", "name": "Höxter-Ottbergen", "district": "Kreis Höxter", "latitude": 51.71109, "longitude": 9.30544, "location": [9.30544, 51.71109], "x_3857": 1035876.84, "y_3857": 6748054.45, "source_rows": 2, "position_spread_m": 28.6}
+{"index": {"_id": "KKAS", "_index": "nrw_stations"}}
+{"station_oid": 213, "ds100": "KKAS", "name": "Hürth-Kalscheuren", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.87558, "longitude": 6.9101, "location": [6.9101, 50.87558], "x_3857": 769228.81, "y_3857": 6599314.7, "source_rows": 4, "position_spread_m": 395.7}
+{"index": {"_id": "HI", "_index": "nrw_stations"}}
+{"station_oid": 214, "ds100": "HI", "name": "Ibbenbüren", "district": "Kreis Steinfurt", "latitude": 52.27685, "longitude": 7.7215, "location": [7.7215, 52.27685], "x_3857": 859553.45, "y_3857": 6850339.12, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HESH", "_index": "nrw_stations"}}
+{"station_oid": 215, "ds100": "HESH", "name": "Ibbenbüren-Esch", "district": "Kreis Steinfurt", "latitude": 52.29977, "longitude": 7.65581, "location": [7.65581, 52.29977], "x_3857": 852240.87, "y_3857": 6854510.26, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KIMI", "_index": "nrw_stations"}}
+{"station_oid": 216, "ds100": "KIMI", "name": "Immigrath", "district": "Kreis Mettmann", "latitude": 51.11723, "longitude": 6.96305, "location": [6.96305, 51.11723], "x_3857": 775123.18, "y_3857": 6642056.61, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELE", "_index": "nrw_stations"}}
+{"station_oid": 217, "ds100": "ELE", "name": "Iserlohn-Letmathe", "district": "Kreis Märkischer Kreis", "latitude": 51.36352, "longitude": 7.62358, "location": [7.62358, 51.36352], "x_3857": 848653.04, "y_3857": 6685849.86, "source_rows": 2, "position_spread_m": 395.6}
+{"index": {"_id": "KKAK", "_index": "nrw_stations"}}
+{"station_oid": 218, "ds100": "KKAK", "name": "Kaldenkirchen", "district": "Kreis Viersen", "latitude": 51.32718, "longitude": 6.20324, "location": [6.20324, 51.32718], "x_3857": 690541.52, "y_3857": 6679373.42, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKAL", "_index": "nrw_stations"}}
+{"station_oid": 219, "ds100": "KKAL", "name": "Kall", "district": "Kreis Euskirchen", "latitude": 50.53861, "longitude": 6.55695, "location": [6.55695, 50.53861], "x_3857": 729916.34, "y_3857": 6540081.43, "source_rows": 2, "position_spread_m": 23.4}
+{"index": {"_id": "EKAL", "_index": "nrw_stations"}}
+{"station_oid": 220, "ds100": "EKAL", "name": "Kalthof (Kr Iserlohn)", "district": "Kreis Märkischer Kreis", "latitude": 51.42496, "longitude": 7.67245, "location": [7.67245, 51.42496], "x_3857": 854093.23, "y_3857": 6696811.29, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EKAM", "_index": "nrw_stations"}}
+{"station_oid": 221, "ds100": "EKAM", "name": "Kamen", "district": "Kreis Unna", "latitude": 51.58516, "longitude": 7.66102, "location": [7.66102, 51.58516], "x_3857": 852820.85, "y_3857": 6725461.84, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EKV", "_index": "nrw_stations"}}
+{"station_oid": 222, "ds100": "EKV", "name": "Kattenvenne", "district": "Kreis Steinfurt", "latitude": 52.11324, "longitude": 7.86027, "location": [7.86027, 52.11324], "x_3857": 875001.25, "y_3857": 6820626.65, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKEM", "_index": "nrw_stations"}}
+{"station_oid": 223, "ds100": "KKEM", "name": "Kempen (Niederrhein)", "district": "Kreis Viersen", "latitude": 51.36787, "longitude": 6.42533, "location": [6.42533, 51.36787], "x_3857": 715264.46, "y_3857": 6686625.46, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EKG", "_index": "nrw_stations"}}
+{"station_oid": 224, "ds100": "EKG", "name": "Kettwig", "district": "Kreisfreie Stadt Essen", "latitude": 51.36327, "longitude": 6.95362, "location": [6.95362, 51.36327], "x_3857": 774073.44, "y_3857": 6685805.29, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKEV", "_index": "nrw_stations"}}
+{"station_oid": 225, "ds100": "KKEV", "name": "Kevelaer", "district": "Kreis Kleve", "latitude": 51.58101, "longitude": 6.25222, "location": [6.25222, 51.58101], "x_3857": 695993.95, "y_3857": 6724718.37, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EKIE", "_index": "nrw_stations"}}
+{"station_oid": 226, "ds100": "EKIE", "name": "Kierspe", "district": "Kreis Märkischer Kreis", "latitude": 51.13078, "longitude": 7.61633, "location": [7.61633, 51.13078], "x_3857": 847845.98, "y_3857": 6644459.88, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWSE", "_index": "nrw_stations"}}
+{"station_oid": 227, "ds100": "EWSE", "name": "Kirchhundem Welschen Ennest", "district": "Kreis Olpe", "latitude": 51.04205, "longitude": 8.00374, "location": [8.00374, 51.04205], "x_3857": 890972.26, "y_3857": 6628735.25, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HKLG", "_index": "nrw_stations"}}
+{"station_oid": 228, "ds100": "HKLG", "name": "Kirchlengern", "district": "Kreis Herford", "latitude": 52.19672, "longitude": 8.64398, "location": [8.64398, 52.19672], "x_3857": 962243.45, "y_3857": 6835773.41, "source_rows": 2, "position_spread_m": 535.7}
+{"index": {"_id": "KKLE", "_index": "nrw_stations"}}
+{"station_oid": 229, "ds100": "KKLE", "name": "Kleinenbroich", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.19563, "longitude": 6.55217, "location": [6.55217, 51.19563], "x_3857": 729384.23, "y_3857": 6655971.63, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKLV", "_index": "nrw_stations"}}
+{"station_oid": 230, "ds100": "KKLV", "name": "Kleve", "district": "Kreis Kleve", "latitude": 51.78967, "longitude": 6.14625, "location": [6.14625, 51.78967], "x_3857": 684197.42, "y_3857": 6762184.07, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKOS", "_index": "nrw_stations"}}
+{"station_oid": 231, "ds100": "KKOS", "name": "Kohlscheid", "district": "Kreis Städteregion Aachen", "latitude": 50.8273, "longitude": 6.07205, "location": [6.07205, 50.8273], "x_3857": 675937.51, "y_3857": 6590801.76, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKOI", "_index": "nrw_stations"}}
+{"station_oid": 232, "ds100": "KKOI", "name": "Korschenbroich", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.19561, "longitude": 6.51187, "location": [6.51187, 51.19561], "x_3857": 724898.05, "y_3857": 6655968.08, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKR", "_index": "nrw_stations"}}
+{"station_oid": 233, "ds100": "KKR", "name": "Krefeld Hbf", "district": "Kreisfreie Stadt Krefeld", "latitude": 51.32558, "longitude": 6.56996, "location": [6.56996, 51.32558], "x_3857": 731364.6, "y_3857": 6679088.38, "source_rows": 3, "position_spread_m": 61.5}
+{"index": {"_id": "KKRL", "_index": "nrw_stations"}}
+{"station_oid": 234, "ds100": "KKRL", "name": "Krefeld-Linn", "district": "Kreisfreie Stadt Krefeld", "latitude": 51.33679, "longitude": 6.62951, "location": [6.62951, 51.33679], "x_3857": 737993.68, "y_3857": 6681085.59, "source_rows": 3, "position_spread_m": 712.7}
+{"index": {"_id": "KKRU", "_index": "nrw_stations"}}
+{"station_oid": 235, "ds100": "KKRU", "name": "Krefeld-Uerdingen", "district": "Kreisfreie Stadt Krefeld", "latitude": 51.36562, "longitude": 6.65445, "location": [6.65445, 51.36562], "x_3857": 740769.99, "y_3857": 6686224.28, "source_rows": 3, "position_spread_m": 727.6}
+{"index": {"_id": "EKT", "_index": "nrw_stations"}}
+{"station_oid": 236, "ds100": "EKT", "name": "Kreuztal", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.95602, "longitude": 7.99184, "location": [7.99184, 50.95602], "x_3857": 889647.56, "y_3857": 6613517.85, "source_rows": 2, "position_spread_m": 274.0}
+{"index": {"_id": "EKRU", "_index": "nrw_stations"}}
+{"station_oid": 237, "ds100": "EKRU", "name": "Krummenerl", "district": "Kreis Märkischer Kreis", "latitude": 51.08012, "longitude": 7.75564, "location": [7.75564, 51.08012], "x_3857": 863353.9, "y_3857": 6635478.28, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKBT", "_index": "nrw_stations"}}
+{"station_oid": 238, "ds100": "KKBT", "name": "Köln Bonntor", "district": "Kreisfreie Stadt Köln", "latitude": 50.91815, "longitude": 6.94788, "location": [6.94788, 50.91815], "x_3857": 773434.46, "y_3857": 6606828.16, "source_rows": 3, "position_spread_m": 790.4}
+{"index": {"_id": "KKE", "_index": "nrw_stations"}}
+{"station_oid": 239, "ds100": "KKE", "name": "Köln Eifeltor", "district": "Kreisfreie Stadt Köln", "latitude": 50.9084, "longitude": 6.93052, "location": [6.93052, 50.9084], "x_3857": 771501.96, "y_3857": 6605106.71, "source_rows": 2, "position_spread_m": 385.6}
+{"index": {"_id": "KK", "_index": "nrw_stations"}}
+{"station_oid": 240, "ds100": "KK", "name": "Köln Hbf", "district": "Kreisfreie Stadt Köln", "latitude": 50.94647, "longitude": 6.95523, "location": [6.95523, 50.94647], "x_3857": 774252.66, "y_3857": 6611830.34, "source_rows": 9, "position_spread_m": 1406.1}
+{"index": {"_id": "KKDZ", "_index": "nrw_stations"}}
+{"station_oid": 241, "ds100": "KKDZ", "name": "Köln Messe/Deutz", "district": "Kreisfreie Stadt Köln", "latitude": 50.94105, "longitude": 6.9746, "location": [6.9746, 50.94105], "x_3857": 776408.92, "y_3857": 6610872.77, "source_rows": 10, "position_spread_m": 861.1}
+{"index": {"_id": "KKDT", "_index": "nrw_stations"}}
+{"station_oid": 242, "ds100": "KKDT", "name": "Köln Messe/Deutz (tief)", "district": "Kreisfreie Stadt Köln", "latitude": 50.94073, "longitude": 6.97488, "location": [6.97488, 50.94073], "x_3857": 776440.09, "y_3857": 6610816.23, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKS", "_index": "nrw_stations"}}
+{"station_oid": 243, "ds100": "KKS", "name": "Köln Süd", "district": "Kreisfreie Stadt Köln", "latitude": 50.92697, "longitude": 6.93845, "location": [6.93845, 50.92697], "x_3857": 772384.72, "y_3857": 6608385.71, "source_rows": 2, "position_spread_m": 13.2}
+{"index": {"_id": "KKW", "_index": "nrw_stations"}}
+{"station_oid": 244, "ds100": "KKW", "name": "Köln West", "district": "Kreisfreie Stadt Köln", "latitude": 50.94335, "longitude": 6.93399, "location": [6.93399, 50.94335], "x_3857": 771888.24, "y_3857": 6611279.1, "source_rows": 5, "position_spread_m": 1328.1}
+{"index": {"_id": "KKCN", "_index": "nrw_stations"}}
+{"station_oid": 245, "ds100": "KKCN", "name": "Köln-Chorweiler Nord", "district": "Kreisfreie Stadt Köln", "latitude": 51.0281, "longitude": 6.89277, "location": [6.89277, 51.0281], "x_3857": 767299.65, "y_3857": 6626265.79, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKDB", "_index": "nrw_stations"}}
+{"station_oid": 246, "ds100": "KKDB", "name": "Köln-Dellbrück", "district": "Kreisfreie Stadt Köln", "latitude": 50.98143, "longitude": 7.07011, "location": [7.07011, 50.98143], "x_3857": 787041.05, "y_3857": 6618009.56, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKER", "_index": "nrw_stations"}}
+{"station_oid": 247, "ds100": "KKER", "name": "Köln-Ehrenfeld", "district": "Kreisfreie Stadt Köln", "latitude": 50.95034, "longitude": 6.90557, "location": [6.90557, 50.95034], "x_3857": 768724.54, "y_3857": 6612514.14, "source_rows": 6, "position_spread_m": 4047.1}
+{"index": {"_id": "KKA", "_index": "nrw_stations"}}
+{"station_oid": 248, "ds100": "KKA", "name": "Köln-Kalk", "district": "Kreisfreie Stadt Köln", "latitude": 50.93198, "longitude": 7.0055, "location": [7.0055, 50.93198], "x_3857": 779848.69, "y_3857": 6609270.58, "source_rows": 3, "position_spread_m": 509.1}
+{"index": {"_id": "KKAN", "_index": "nrw_stations"}}
+{"station_oid": 249, "ds100": "KKAN", "name": "Köln-Kalk Nord", "district": "Kreisfreie Stadt Köln", "latitude": 50.93967, "longitude": 7.01562, "location": [7.01562, 50.93967], "x_3857": 780975.25, "y_3857": 6610628.97, "source_rows": 7, "position_spread_m": 2368.2}
+{"index": {"_id": "KKL", "_index": "nrw_stations"}}
+{"station_oid": 250, "ds100": "KKL", "name": "Köln-Longerich", "district": "Kreisfreie Stadt Köln", "latitude": 50.9979, "longitude": 6.90194, "location": [6.90194, 50.9979], "x_3857": 768320.45, "y_3857": 6620922.27, "source_rows": 3, "position_spread_m": 49.7}
+{"index": {"_id": "KLOV", "_index": "nrw_stations"}}
+{"station_oid": 251, "ds100": "KLOV", "name": "Köln-Lövenich", "district": "Kreisfreie Stadt Köln", "latitude": 50.94308, "longitude": 6.83526, "location": [6.83526, 50.94308], "x_3857": 760897.66, "y_3857": 6611231.4, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKM", "_index": "nrw_stations"}}
+{"station_oid": 252, "ds100": "KKM", "name": "Köln-Mülheim", "district": "Kreisfreie Stadt Köln", "latitude": 50.95851, "longitude": 7.01546, "location": [7.01546, 50.95851], "x_3857": 780957.43, "y_3857": 6613957.9, "source_rows": 15, "position_spread_m": 1895.0}
+{"index": {"_id": "KKN", "_index": "nrw_stations"}}
+{"station_oid": 253, "ds100": "KKN", "name": "Köln-Nippes", "district": "Kreisfreie Stadt Köln", "latitude": 50.98446, "longitude": 6.92183, "location": [6.92183, 50.98446], "x_3857": 770534.59, "y_3857": 6618545.34, "source_rows": 2, "position_spread_m": 3240.8}
+{"index": {"_id": "KKWO", "_index": "nrw_stations"}}
+{"station_oid": 254, "ds100": "KKWO", "name": "Köln-Worringen", "district": "Kreisfreie Stadt Köln", "latitude": 51.05236, "longitude": 6.85203, "location": [6.85203, 51.05236], "x_3857": 762764.49, "y_3857": 6630560.83, "source_rows": 2, "position_spread_m": 16.8}
+{"index": {"_id": "KFKB", "_index": "nrw_stations"}}
+{"station_oid": 255, "ds100": "KFKB", "name": "Köln/Bonn Flughafen", "district": "Kreisfreie Stadt Köln", "latitude": 50.8789, "longitude": 7.11926, "location": [7.11926, 50.8789], "x_3857": 792512.4, "y_3857": 6599900.43, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KKOW", "_index": "nrw_stations"}}
+{"station_oid": 256, "ds100": "KKOW", "name": "Königswinter", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.67879, "longitude": 7.19339, "location": [7.19339, 50.67879], "x_3857": 800764.51, "y_3857": 6564670.87, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELAG", "_index": "nrw_stations"}}
+{"station_oid": 257, "ds100": "ELAG", "name": "Lage (Lippe)", "district": "Kreis Lippe", "latitude": 51.99166, "longitude": 8.80134, "location": [8.80134, 51.99166], "x_3857": 979760.69, "y_3857": 6798617.62, "source_rows": 3, "position_spread_m": 16.0}
+{"index": {"_id": "HLAN", "_index": "nrw_stations"}}
+{"station_oid": 258, "ds100": "HLAN", "name": "Langeland", "district": "Kreis Höxter", "latitude": 51.77194, "longitude": 8.9869, "location": [8.9869, 51.77194], "x_3857": 1000417.13, "y_3857": 6758993.86, "source_rows": 2, "position_spread_m": 13.9}
+{"index": {"_id": "KLA", "_index": "nrw_stations"}}
+{"station_oid": 259, "ds100": "KLA", "name": "Langenfeld (Rheinl)", "district": "Kreis Mettmann", "latitude": 51.09865, "longitude": 6.94098, "location": [6.94098, 51.09865], "x_3857": 772666.36, "y_3857": 6638762.35, "source_rows": 2, "position_spread_m": 10.9}
+{"index": {"_id": "KLAW", "_index": "nrw_stations"}}
+{"station_oid": 260, "ds100": "KLAW", "name": "Langerwehe", "district": "Kreis Düren", "latitude": 50.81764, "longitude": 6.35474, "location": [6.35474, 50.81764], "x_3857": 707406.42, "y_3857": 6589099.52, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELSD", "_index": "nrw_stations"}}
+{"station_oid": 261, "ds100": "ELSD", "name": "Langschede", "district": "Kreis Unna", "latitude": 51.47651, "longitude": 7.70519, "location": [7.70519, 51.47651], "x_3857": 857737.83, "y_3857": 6706019.63, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KLEL", "_index": "nrw_stations"}}
+{"station_oid": 262, "ds100": "KLEL", "name": "Leichlingen", "district": "Kreis Rheinisch-Bergischer Kreis", "latitude": 51.10741, "longitude": 7.00533, "location": [7.00533, 51.10741], "x_3857": 779829.77, "y_3857": 6640315.35, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELEN", "_index": "nrw_stations"}}
+{"station_oid": 263, "ds100": "ELEN", "name": "Lengerich (Westf)", "district": "Kreis Steinfurt", "latitude": 52.17575, "longitude": 7.87846, "location": [7.87846, 52.17575], "x_3857": 877026.16, "y_3857": 6831965.9, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EA", "_index": "nrw_stations"}}
+{"station_oid": 264, "ds100": "EA", "name": "Lennestadt-Altenhundem", "district": "Kreis Olpe", "latitude": 51.10481, "longitude": 8.07179, "location": [8.07179, 51.10481], "x_3857": 898547.55, "y_3857": 6639854.38, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EGVB", "_index": "nrw_stations"}}
+{"station_oid": 265, "ds100": "EGVB", "name": "Lennestadt-Grevenbrück", "district": "Kreis Olpe", "latitude": 51.14174, "longitude": 8.0178, "location": [8.0178, 51.14174], "x_3857": 892537.41, "y_3857": 6646404.29, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMEG", "_index": "nrw_stations"}}
+{"station_oid": 266, "ds100": "EMEG", "name": "Lennestadt-Meggen", "district": "Kreis Olpe", "latitude": 51.12252, "longitude": 8.06551, "location": [8.06551, 51.12252], "x_3857": 897848.47, "y_3857": 6642994.77, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELEO", "_index": "nrw_stations"}}
+{"station_oid": 267, "ds100": "ELEO", "name": "Leopoldstal", "district": "Kreis Lippe", "latitude": 51.8445, "longitude": 8.97116, "location": [8.97116, 51.8445], "x_3857": 998664.96, "y_3857": 6772057.75, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KLMI", "_index": "nrw_stations"}}
+{"station_oid": 268, "ds100": "KLMI", "name": "Leverkusen Mitte", "district": "Kreisfreie Stadt Leverkusen", "latitude": 51.03242, "longitude": 6.99125, "location": [6.99125, 51.03242], "x_3857": 778262.39, "y_3857": 6627030.45, "source_rows": 2, "position_spread_m": 111.8}
+{"index": {"_id": "KLM", "_index": "nrw_stations"}}
+{"station_oid": 269, "ds100": "KLM", "name": "Leverkusen Morsbroich", "district": "Kreisfreie Stadt Leverkusen", "latitude": 51.03249, "longitude": 7.02622, "location": [7.02622, 51.03249], "x_3857": 782155.23, "y_3857": 6627042.84, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KLS", "_index": "nrw_stations"}}
+{"station_oid": 270, "ds100": "KLS", "name": "Leverkusen-Manfort", "district": "Kreisfreie Stadt Leverkusen", "latitude": 51.03187, "longitude": 7.01516, "location": [7.01516, 51.03187], "x_3857": 780924.04, "y_3857": 6626933.09, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KLD", "_index": "nrw_stations"}}
+{"station_oid": 271, "ds100": "KLD", "name": "Lindern", "district": "Kreis Heinsberg", "latitude": 50.99714, "longitude": 6.20874, "location": [6.20874, 50.99714], "x_3857": 691153.78, "y_3857": 6620787.84, "source_rows": 2, "position_spread_m": 150.7}
+{"index": {"_id": "ELIT", "_index": "nrw_stations"}}
+{"station_oid": 272, "ds100": "ELIT", "name": "Lintorf (Niederrhein)", "district": "Kreis Mettmann", "latitude": 51.33436, "longitude": 6.82673, "location": [6.82673, 51.33436], "x_3857": 759948.11, "y_3857": 6680652.61, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELPP", "_index": "nrw_stations"}}
+{"station_oid": 273, "ds100": "ELPP", "name": "Lippstadt", "district": "Kreis Soest", "latitude": 51.67071, "longitude": 8.34875, "location": [8.34875, 51.67071], "x_3857": 929378.6, "y_3857": 6740803.2, "source_rows": 2, "position_spread_m": 384.1}
+{"index": {"_id": "ELUT", "_index": "nrw_stations"}}
+{"station_oid": 274, "ds100": "ELUT", "name": "Lutum", "district": "Kreis Coesfeld", "latitude": 51.98211, "longitude": 7.22593, "location": [7.22593, 51.98211], "x_3857": 804386.85, "y_3857": 6796891.36, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HL", "_index": "nrw_stations"}}
+{"station_oid": 275, "ds100": "HL", "name": "Löhne (Westf) Pbf", "district": "Kreis Herford", "latitude": 52.19667, "longitude": 8.71336, "location": [8.71336, 52.19667], "x_3857": 969966.8, "y_3857": 6835764.33, "source_rows": 5, "position_spread_m": 60.2}
+{"index": {"_id": "HLBB", "_index": "nrw_stations"}}
+{"station_oid": 276, "ds100": "HLBB", "name": "Lübbecke (Westf)", "district": "Kreis Minden-Lübbecke", "latitude": 52.30636, "longitude": 8.60573, "location": [8.60573, 52.30636], "x_3857": 957985.48, "y_3857": 6855709.96, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBRU", "_index": "nrw_stations"}}
+{"station_oid": 277, "ds100": "EBRU", "name": "Lüdenscheid-Brügge", "district": "Kreis Märkischer Kreis", "latitude": 51.20859, "longitude": 7.56771, "location": [7.56771, 51.20859], "x_3857": 842433.62, "y_3857": 6658274.15, "source_rows": 2, "position_spread_m": 315.0}
+{"index": {"_id": "ELDH", "_index": "nrw_stations"}}
+{"station_oid": 278, "ds100": "ELDH", "name": "Lüdinghausen", "district": "Kreis Coesfeld", "latitude": 51.76189, "longitude": 7.43159, "location": [7.43159, 51.76189], "x_3857": 827280.81, "y_3857": 6757186.09, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ELUE", "_index": "nrw_stations"}}
+{"station_oid": 279, "ds100": "ELUE", "name": "Lünen Hbf", "district": "Kreis Unna", "latitude": 51.61701, "longitude": 7.52889, "location": [7.52889, 51.61701], "x_3857": 838112.2, "y_3857": 6731170.0, "source_rows": 3, "position_spread_m": 789.8}
+{"index": {"_id": "EPRN", "_index": "nrw_stations"}}
+{"station_oid": 280, "ds100": "EPRN", "name": "Lünen Preußen", "district": "Kreis Unna", "latitude": 51.59807, "longitude": 7.53664, "location": [7.53664, 51.59807], "x_3857": 838974.93, "y_3857": 6727775.09, "source_rows": 2, "position_spread_m": 1130.8}
+{"index": {"_id": "ELUS", "_index": "nrw_stations"}}
+{"station_oid": 281, "ds100": "ELUS", "name": "Lünen Süd", "district": "Kreis Unna", "latitude": 51.60775, "longitude": 7.5187, "location": [7.5187, 51.60775], "x_3857": 836977.86, "y_3857": 6729510.01, "source_rows": 2, "position_spread_m": 507.7}
+{"index": {"_id": "ELUZ", "_index": "nrw_stations"}}
+{"station_oid": 282, "ds100": "ELUZ", "name": "Lützel", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.96699, "longitude": 8.17392, "location": [8.17392, 50.96699], "x_3857": 909916.61, "y_3857": 6615456.71, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KMAH", "_index": "nrw_stations"}}
+{"station_oid": 283, "ds100": "KMAH", "name": "Marienheide", "district": "Kreis Oberbergischer Kreis", "latitude": 51.0807, "longitude": 7.53174, "location": [7.53174, 51.0807], "x_3857": 838429.46, "y_3857": 6635581.05, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMSI", "_index": "nrw_stations"}}
+{"station_oid": 284, "ds100": "EMSI", "name": "Marl-Sinsen", "district": "Kreis Recklinghausen", "latitude": 51.66783, "longitude": 7.17346, "location": [7.17346, 51.66783], "x_3857": 798545.91, "y_3857": 6740286.27, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMAR", "_index": "nrw_stations"}}
+{"station_oid": 285, "ds100": "EMAR", "name": "Marsberg", "district": "Kreis Hochsauerlandkreis", "latitude": 51.46273, "longitude": 8.85485, "location": [8.85485, 51.46273], "x_3857": 985717.39, "y_3857": 6703557.1, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KMCH", "_index": "nrw_stations"}}
+{"station_oid": 286, "ds100": "KMCH", "name": "Mechernich", "district": "Kreis Euskirchen", "latitude": 50.59138, "longitude": 6.64256, "location": [6.64256, 50.59138], "x_3857": 739446.4, "y_3857": 6549329.4, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KMCK", "_index": "nrw_stations"}}
+{"station_oid": 287, "ds100": "KMCK", "name": "Meckenheim (Bz Köln)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.62744, "longitude": 7.01473, "location": [7.01473, 50.62744], "x_3857": 780876.17, "y_3857": 6555654.89, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMEK", "_index": "nrw_stations"}}
+{"station_oid": 288, "ds100": "EMEK", "name": "Mecklenbeck", "district": "Kreisfreie Stadt Münster", "latitude": 51.92401, "longitude": 7.57999, "location": [7.57999, 51.92401], "x_3857": 843800.63, "y_3857": 6786397.13, "source_rows": 3, "position_spread_m": 347.4}
+{"index": {"_id": "KMBO", "_index": "nrw_stations"}}
+{"station_oid": 289, "ds100": "KMBO", "name": "Meerbusch-Osterath", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.26915, "longitude": 6.62588, "location": [6.62588, 51.26915], "x_3857": 737589.59, "y_3857": 6669042.05, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMHO", "_index": "nrw_stations"}}
+{"station_oid": 290, "ds100": "EMHO", "name": "Mehrhoog", "district": "Kreis Wesel", "latitude": 51.73916, "longitude": 6.51776, "location": [6.51776, 51.73916], "x_3857": 725553.72, "y_3857": 6753098.95, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMZH", "_index": "nrw_stations"}}
+{"station_oid": 291, "ds100": "EMZH", "name": "Meinerzhagen", "district": "Kreis Märkischer Kreis", "latitude": 51.10809, "longitude": 7.63384, "location": [7.63384, 51.10809], "x_3857": 849795.18, "y_3857": 6640435.91, "source_rows": 2, "position_spread_m": 10.6}
+{"index": {"_id": "KMD", "_index": "nrw_stations"}}
+{"station_oid": 292, "ds100": "KMD", "name": "Menden (Rheinl)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.7799, "longitude": 7.14953, "location": [7.14953, 50.7799], "x_3857": 795882.04, "y_3857": 6582452.54, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMED", "_index": "nrw_stations"}}
+{"station_oid": 293, "ds100": "EMED", "name": "Menden (Sauerland)", "district": "Kreis Märkischer Kreis", "latitude": 51.43413, "longitude": 7.79489, "location": [7.79489, 51.43413], "x_3857": 867723.19, "y_3857": 6698448.56, "source_rows": 2, "position_spread_m": 220.2}
+{"index": {"_id": "EHOK", "_index": "nrw_stations"}}
+{"station_oid": 294, "ds100": "EHOK", "name": "Menden Horlecke", "district": "Kreis Märkischer Kreis", "latitude": 51.4255, "longitude": 7.81133, "location": [7.81133, 51.4255], "x_3857": 869553.28, "y_3857": 6696907.7, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMES", "_index": "nrw_stations"}}
+{"station_oid": 295, "ds100": "EMES", "name": "Mersch (Westf)", "district": "Kreis Warendorf", "latitude": 51.76206, "longitude": 7.7374, "location": [7.7374, 51.76206], "x_3857": 861323.43, "y_3857": 6757216.67, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMSD", "_index": "nrw_stations"}}
+{"station_oid": 296, "ds100": "EMSD", "name": "Meschede", "district": "Kreis Hochsauerlandkreis", "latitude": 51.34957, "longitude": 8.27909, "location": [8.27909, 51.34957], "x_3857": 921624.08, "y_3857": 6683363.11, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMSN", "_index": "nrw_stations"}}
+{"station_oid": 297, "ds100": "EMSN", "name": "Messinghausen", "district": "Kreis Hochsauerlandkreis", "latitude": 51.39312, "longitude": 8.67983, "location": [8.67983, 51.39312], "x_3857": 966234.26, "y_3857": 6691128.92, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KMIL", "_index": "nrw_stations"}}
+{"station_oid": 298, "ds100": "KMIL", "name": "Millingen", "district": "Kreis Wesel", "latitude": 51.55996, "longitude": 6.5568, "location": [6.5568, 51.55996], "x_3857": 729899.64, "y_3857": 6720948.33, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HM", "_index": "nrw_stations"}}
+{"station_oid": 299, "ds100": "HM", "name": "Minden (Westf)", "district": "Kreis Minden-Lübbecke", "latitude": 52.29047, "longitude": 8.93481, "location": [8.93481, 52.29047], "x_3857": 994618.5, "y_3857": 6852817.52, "source_rows": 3, "position_spread_m": 2154.3}
+{"index": {"_id": "KMO", "_index": "nrw_stations"}}
+{"station_oid": 300, "ds100": "KMO", "name": "Moers", "district": "Kreis Wesel", "latitude": 51.45084, "longitude": 6.64164, "location": [6.64164, 51.45084], "x_3857": 739343.98, "y_3857": 6701432.92, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMOE", "_index": "nrw_stations"}}
+{"station_oid": 301, "ds100": "EMOE", "name": "Möllen (Niederrhein)", "district": "Kreis Wesel", "latitude": 51.57981, "longitude": 6.6881, "location": [6.6881, 51.57981], "x_3857": 744515.89, "y_3857": 6724503.41, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KM", "_index": "nrw_stations"}}
+{"station_oid": 302, "ds100": "KM", "name": "Mönchengladbach Hbf", "district": "Kreisfreie Stadt Mönchengladbach", "latitude": 51.19647, "longitude": 6.44622, "location": [6.44622, 51.19647], "x_3857": 717589.93, "y_3857": 6656120.85, "source_rows": 3, "position_spread_m": 68.9}
+{"index": {"_id": "KMR", "_index": "nrw_stations"}}
+{"station_oid": 303, "ds100": "KMR", "name": "Mönchengladbach-Rheindahlen", "district": "Kreisfreie Stadt Mönchengladbach", "latitude": 51.15068, "longitude": 6.35787, "location": [6.35787, 51.15068], "x_3857": 707754.85, "y_3857": 6647990.68, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EMRS", "_index": "nrw_stations"}}
+{"station_oid": 304, "ds100": "EMRS", "name": "Mülheim (Ruhr)-Speldorf", "district": "Kreisfreie Stadt Mülheim an der Ruhr", "latitude": 51.42662, "longitude": 6.85055, "location": [6.85055, 51.42662], "x_3857": 762599.74, "y_3857": 6697107.65, "source_rows": 2, "position_spread_m": 961.7}
+{"index": {"_id": "EMRY", "_index": "nrw_stations"}}
+{"station_oid": 305, "ds100": "EMRY", "name": "Mülheim (Ruhr)-Styrum", "district": "Kreisfreie Stadt Mülheim an der Ruhr", "latitude": 51.44918, "longitude": 6.85263, "location": [6.85263, 51.44918], "x_3857": 762831.28, "y_3857": 6701136.4, "source_rows": 6, "position_spread_m": 544.7}
+{"index": {"_id": "EMST", "_index": "nrw_stations"}}
+{"station_oid": 306, "ds100": "EMST", "name": "Münster (Westf) Hbf", "district": "Kreisfreie Stadt Münster", "latitude": 51.95651, "longitude": 7.63592, "location": [7.63592, 51.95651], "x_3857": 850026.73, "y_3857": 6792265.72, "source_rows": 6, "position_spread_m": 93.3}
+{"index": {"_id": "EKAN", "_index": "nrw_stations"}}
+{"station_oid": 307, "ds100": "EKAN", "name": "Münster (Westf) Kanal", "district": "Kreisfreie Stadt Münster", "latitude": 51.92856, "longitude": 7.65451, "location": [7.65451, 51.92856], "x_3857": 852096.16, "y_3857": 6787218.48, "source_rows": 2, "position_spread_m": 9.4}
+{"index": {"_id": "EEMS", "_index": "nrw_stations"}}
+{"station_oid": 308, "ds100": "EEMS", "name": "Münster Ems", "district": "Kreisfreie Stadt Münster", "latitude": 52.01532, "longitude": 7.718, "location": [7.718, 52.01532], "x_3857": 859163.83, "y_3857": 6802895.98, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EAML", "_index": "nrw_stations"}}
+{"station_oid": 309, "ds100": "EAML", "name": "Münster-Amelsbüren", "district": "Kreisfreie Stadt Münster", "latitude": 51.88217, "longitude": 7.59885, "location": [7.59885, 51.88217], "x_3857": 845900.11, "y_3857": 6778848.26, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EHIT", "_index": "nrw_stations"}}
+{"station_oid": 310, "ds100": "EHIT", "name": "Münster-Hiltrup", "district": "Kreisfreie Stadt Münster", "latitude": 51.9046, "longitude": 7.65435, "location": [7.65435, 51.9046], "x_3857": 852078.34, "y_3857": 6782894.26, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ENHH", "_index": "nrw_stations"}}
+{"station_oid": 311, "ds100": "ENHH", "name": "Neheim-Hüsten", "district": "Kreis Hochsauerlandkreis", "latitude": 51.43798, "longitude": 7.97003, "location": [7.97003, 51.43798], "x_3857": 887219.68, "y_3857": 6699136.06, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KNEH", "_index": "nrw_stations"}}
+{"station_oid": 312, "ds100": "KNEH", "name": "Nettersheim", "district": "Kreis Euskirchen", "latitude": 50.49227, "longitude": 6.63035, "location": [6.63035, 50.49227], "x_3857": 738087.19, "y_3857": 6531968.86, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ENBM", "_index": "nrw_stations"}}
+{"station_oid": 313, "ds100": "ENBM", "name": "Neubeckum", "district": "Kreis Warendorf", "latitude": 51.80194, "longitude": 8.02134, "location": [8.02134, 51.80194], "x_3857": 892931.48, "y_3857": 6764392.59, "source_rows": 3, "position_spread_m": 51.3}
+{"index": {"_id": "ENK", "_index": "nrw_stations"}}
+{"station_oid": 314, "ds100": "ENK", "name": "Neunkirchen (Kr Siegen)", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.78467, "longitude": 8.00612, "location": [8.00612, 50.78467], "x_3857": 891237.2, "y_3857": 6583292.36, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KNG", "_index": "nrw_stations"}}
+{"station_oid": 315, "ds100": "KNG", "name": "Neuss Gbf", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.2063, "longitude": 6.68534, "location": [6.68534, 51.2063], "x_3857": 744208.64, "y_3857": 6657867.25, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KN", "_index": "nrw_stations"}}
+{"station_oid": 316, "ds100": "KN", "name": "Neuss Hbf", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.20456, "longitude": 6.68419, "location": [6.68419, 51.20456], "x_3857": 744080.63, "y_3857": 6657558.1, "source_rows": 8, "position_spread_m": 710.6}
+{"index": {"_id": "ENHF", "_index": "nrw_stations"}}
+{"station_oid": 317, "ds100": "ENHF", "name": "Nevinghof/Münster Zentrum Nord", "district": "Kreisfreie Stadt Münster", "latitude": 51.98485, "longitude": 7.63824, "location": [7.63824, 51.98485], "x_3857": 850284.99, "y_3857": 6797386.6, "source_rows": 2, "position_spread_m": 11.6}
+{"index": {"_id": "ENDI", "_index": "nrw_stations"}}
+{"station_oid": 318, "ds100": "ENDI", "name": "Niederdielfen", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.85378, "longitude": 8.09674, "location": [8.09674, 50.85378], "x_3857": 901324.97, "y_3857": 6595469.74, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KND", "_index": "nrw_stations"}}
+{"station_oid": 319, "ds100": "KND", "name": "Niederdollendorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.69509, "longitude": 7.1809, "location": [7.1809, 50.69509], "x_3857": 799374.13, "y_3857": 6567534.87, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KNIK", "_index": "nrw_stations"}}
+{"station_oid": 320, "ds100": "KNIK", "name": "Nieukerk", "district": "Kreis Kleve", "latitude": 51.45805, "longitude": 6.37559, "location": [6.37559, 51.45805], "x_3857": 709727.43, "y_3857": 6702720.94, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KNIV", "_index": "nrw_stations"}}
+{"station_oid": 321, "ds100": "KNIV", "name": "Nievenheim", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.12365, "longitude": 6.78222, "location": [6.78222, 51.12365], "x_3857": 754993.28, "y_3857": 6643195.19, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KNO", "_index": "nrw_stations"}}
+{"station_oid": 322, "ds100": "KNO", "name": "Norf", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.16116, "longitude": 6.7304, "location": [6.7304, 51.16116], "x_3857": 749224.7, "y_3857": 6649850.72, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EAPH", "_index": "nrw_stations"}}
+{"station_oid": 323, "ds100": "EAPH", "name": "Nottuln-Appelhülsen", "district": "Kreis Coesfeld", "latitude": 51.89212, "longitude": 7.42631, "location": [7.42631, 51.89212], "x_3857": 826693.05, "y_3857": 6780642.82, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EOD", "_index": "nrw_stations"}}
+{"station_oid": 324, "ds100": "EOD", "name": "Oberaden", "district": "Kreis Unna", "latitude": 51.61635, "longitude": 7.57862, "location": [7.57862, 51.61635], "x_3857": 843648.12, "y_3857": 6731051.67, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EOB", "_index": "nrw_stations"}}
+{"station_oid": 325, "ds100": "EOB", "name": "Oberhausen Hbf", "district": "Kreisfreie Stadt Oberhausen", "latitude": 51.47553, "longitude": 6.85276, "location": [6.85276, 51.47553], "x_3857": 762845.75, "y_3857": 6705844.48, "source_rows": 12, "position_spread_m": 1782.2}
+{"index": {"_id": "EOBR", "_index": "nrw_stations"}}
+{"station_oid": 326, "ds100": "EOBR", "name": "Oberhausen West", "district": "Kreisfreie Stadt Oberhausen", "latitude": 51.47668, "longitude": 6.83248, "location": [6.83248, 51.47668], "x_3857": 760588.19, "y_3857": 6706050.01, "source_rows": 7, "position_spread_m": 1479.7}
+{"index": {"_id": "EOBU", "_index": "nrw_stations"}}
+{"station_oid": 327, "ds100": "EOBU", "name": "Oberhausen-Buschhausen", "district": "Kreisfreie Stadt Oberhausen", "latitude": 51.49627, "longitude": 6.82596, "location": [6.82596, 51.49627], "x_3857": 759862.39, "y_3857": 6709552.1, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EOS", "_index": "nrw_stations"}}
+{"station_oid": 328, "ds100": "EOS", "name": "Oberhausen-Osterfeld", "district": "Kreisfreie Stadt Oberhausen", "latitude": 51.49983, "longitude": 6.8851, "location": [6.8851, 51.49983], "x_3857": 766445.83, "y_3857": 6710188.68, "source_rows": 5, "position_spread_m": 3725.7}
+{"index": {"_id": "EOSD", "_index": "nrw_stations"}}
+{"station_oid": 329, "ds100": "EOSD", "name": "Oberhausen-Sterkrade", "district": "Kreisfreie Stadt Oberhausen", "latitude": 51.50594, "longitude": 6.84588, "location": [6.84588, 51.50594], "x_3857": 762079.88, "y_3857": 6711281.36, "source_rows": 2, "position_spread_m": 725.7}
+{"index": {"_id": "EOP", "_index": "nrw_stations"}}
+{"station_oid": 330, "ds100": "EOP", "name": "Ochtrup", "district": "Kreis Steinfurt", "latitude": 52.2016, "longitude": 7.18401, "location": [7.18401, 52.2016], "x_3857": 799720.34, "y_3857": 6836659.72, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EOEL", "_index": "nrw_stations"}}
+{"station_oid": 331, "ds100": "EOEL", "name": "Oelde", "district": "Kreis Warendorf", "latitude": 51.82924, "longitude": 8.14297, "location": [8.14297, 51.82924], "x_3857": 906471.27, "y_3857": 6769308.55, "source_rows": 2, "position_spread_m": 20.8}
+{"index": {"_id": "EOER", "_index": "nrw_stations"}}
+{"station_oid": 332, "ds100": "EOER", "name": "Oerlinghausen", "district": "Kreis Lippe", "latitude": 51.97873, "longitude": 8.66611, "location": [8.66611, 51.97873], "x_3857": 964706.95, "y_3857": 6796280.48, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KOPL", "_index": "nrw_stations"}}
+{"station_oid": 333, "ds100": "KOPL", "name": "Opladen", "district": "Kreisfreie Stadt Leverkusen", "latitude": 51.06612, "longitude": 7.00924, "location": [7.00924, 51.06612], "x_3857": 780265.03, "y_3857": 6632997.93, "source_rows": 3, "position_spread_m": 946.1}
+{"index": {"_id": "HOE", "_index": "nrw_stations"}}
+{"station_oid": 334, "ds100": "HOE", "name": "Osnabrück-Eversburg", "district": "Kreis Steinfurt", "latitude": 52.30738, "longitude": 7.98927, "location": [7.98927, 52.30738], "x_3857": 889361.47, "y_3857": 6855895.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBRO", "_index": "nrw_stations"}}
+{"station_oid": 335, "ds100": "EBRO", "name": "Ostbevern", "district": "Kreis Warendorf", "latitude": 52.07011, "longitude": 7.80926, "location": [7.80926, 52.07011], "x_3857": 869322.85, "y_3857": 6812812.18, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KOV", "_index": "nrw_stations"}}
+{"station_oid": 336, "ds100": "KOV", "name": "Overath", "district": "Kreis Rheinisch-Bergischer Kreis", "latitude": 50.93263, "longitude": 7.28887, "location": [7.28887, 50.93263], "x_3857": 811393.3, "y_3857": 6609385.39, "source_rows": 2, "position_spread_m": 10.8}
+{"index": {"_id": "EPD", "_index": "nrw_stations"}}
+{"station_oid": 337, "ds100": "EPD", "name": "Paderborn Hbf", "district": "Kreis Paderborn", "latitude": 51.71294, "longitude": 8.74093, "location": [8.74093, 51.71294], "x_3857": 973035.88, "y_3857": 6748386.82, "source_rows": 3, "position_spread_m": 29.9}
+{"index": {"_id": "EPDN", "_index": "nrw_stations"}}
+{"station_oid": 338, "ds100": "EPDN", "name": "Paderborn Nord", "district": "Kreis Paderborn", "latitude": 51.72804, "longitude": 8.75893, "location": [8.75893, 51.72804], "x_3857": 975039.63, "y_3857": 6751100.19, "source_rows": 2, "position_spread_m": 15.1}
+{"index": {"_id": "EPK", "_index": "nrw_stations"}}
+{"station_oid": 339, "ds100": "EPK", "name": "Pelkum", "district": "Kreisfreie Stadt Hamm", "latitude": 51.64131, "longitude": 7.74915, "location": [7.74915, 51.64131], "x_3857": 862631.43, "y_3857": 6735527.74, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HLAD", "_index": "nrw_stations"}}
+{"station_oid": 340, "ds100": "HLAD", "name": "Petershagen-Lahde", "district": "Kreis Minden-Lübbecke", "latitude": 52.36814, "longitude": 9.00975, "location": [9.00975, 52.36814], "x_3857": 1002960.78, "y_3857": 6866965.57, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EPLT", "_index": "nrw_stations"}}
+{"station_oid": 341, "ds100": "EPLT", "name": "Plettenberg", "district": "Kreis Märkischer Kreis", "latitude": 51.2319, "longitude": 7.86879, "location": [7.86879, 51.2319], "x_3857": 875949.7, "y_3857": 6662417.12, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KPR", "_index": "nrw_stations"}}
+{"station_oid": 342, "ds100": "KPR", "name": "Porz (Rhein)", "district": "Kreisfreie Stadt Köln", "latitude": 50.87873, "longitude": 7.06713, "location": [7.06713, 50.87873], "x_3857": 786709.31, "y_3857": 6599870.43, "source_rows": 2, "position_spread_m": 171.7}
+{"index": {"_id": "KPH", "_index": "nrw_stations"}}
+{"station_oid": 343, "ds100": "KPH", "name": "Porz-Heumar", "district": "Kreisfreie Stadt Köln", "latitude": 50.9166, "longitude": 7.07561, "location": [7.07561, 50.9166], "x_3857": 787653.3, "y_3857": 6606554.47, "source_rows": 2, "position_spread_m": 1797.1}
+{"index": {"_id": "KPW", "_index": "nrw_stations"}}
+{"station_oid": 344, "ds100": "KPW", "name": "Porz-Wahn", "district": "Kreisfreie Stadt Köln", "latitude": 50.85629, "longitude": 7.07985, "location": [7.07985, 50.85629], "x_3857": 788125.3, "y_3857": 6595912.35, "source_rows": 6, "position_spread_m": 1266.3}
+{"index": {"_id": "KPUL", "_index": "nrw_stations"}}
+{"station_oid": 345, "ds100": "KPUL", "name": "Pulheim", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.99802, "longitude": 6.79709, "location": [6.79709, 50.99802], "x_3857": 756648.6, "y_3857": 6620943.49, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EQL", "_index": "nrw_stations"}}
+{"station_oid": 346, "ds100": "EQL", "name": "Quelle", "district": "Kreisfreie Stadt Bielefeld", "latitude": 52.00036, "longitude": 8.46106, "location": [8.46106, 52.00036], "x_3857": 941880.89, "y_3857": 6800190.55, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HRAH", "_index": "nrw_stations"}}
+{"station_oid": 347, "ds100": "HRAH", "name": "Rahden", "district": "Kreis Minden-Lübbecke", "latitude": 52.4337, "longitude": 8.62374, "location": [8.62374, 52.4337], "x_3857": 959990.35, "y_3857": 6878927.09, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRAO", "_index": "nrw_stations"}}
+{"station_oid": 348, "ds100": "KRAO", "name": "Ratingen Ost", "district": "Kreis Mettmann", "latitude": 51.29545, "longitude": 6.86378, "location": [6.86378, 51.29545], "x_3857": 764072.49, "y_3857": 6673722.75, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRAW", "_index": "nrw_stations"}}
+{"station_oid": 349, "ds100": "KRAW", "name": "Ratingen West", "district": "Kreis Mettmann", "latitude": 51.29898, "longitude": 6.83866, "location": [6.83866, 51.29898], "x_3857": 761276.15, "y_3857": 6674351.2, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERFE", "_index": "nrw_stations"}}
+{"station_oid": 350, "ds100": "ERFE", "name": "Reckenfeld", "district": "Kreis Steinfurt", "latitude": 52.13383, "longitude": 7.56464, "location": [7.56464, 52.13383], "x_3857": 842091.87, "y_3857": 6824359.9, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERE", "_index": "nrw_stations"}}
+{"station_oid": 351, "ds100": "ERE", "name": "Recklinghausen Hbf", "district": "Kreis Recklinghausen", "latitude": 51.61605, "longitude": 7.20343, "location": [7.20343, 51.61605], "x_3857": 801882.16, "y_3857": 6730997.89, "source_rows": 3, "position_spread_m": 17.0}
+{"index": {"_id": "ERHO", "_index": "nrw_stations"}}
+{"station_oid": 352, "ds100": "ERHO", "name": "Recklinghausen Ost", "district": "Kreis Recklinghausen", "latitude": 51.59906, "longitude": 7.218, "location": [7.218, 51.59906], "x_3857": 803504.08, "y_3857": 6727952.51, "source_rows": 3, "position_spread_m": 325.6}
+{"index": {"_id": "ERES", "_index": "nrw_stations"}}
+{"station_oid": 353, "ds100": "ERES", "name": "Recklinghausen Süd", "district": "Kreis Recklinghausen", "latitude": 51.56203, "longitude": 7.19555, "location": [7.19555, 51.56203], "x_3857": 801004.96, "y_3857": 6721318.99, "source_rows": 4, "position_spread_m": 137.3}
+{"index": {"_id": "EREK", "_index": "nrw_stations"}}
+{"station_oid": 354, "ds100": "EREK", "name": "Reken", "district": "Kreis Borken", "latitude": 51.80181, "longitude": 7.04992, "location": [7.04992, 51.80181], "x_3857": 784793.5, "y_3857": 6764369.18, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERMH", "_index": "nrw_stations"}}
+{"station_oid": 355, "ds100": "ERMH", "name": "Remmighausen (Lippe)", "district": "Kreis Lippe", "latitude": 51.91276, "longitude": 8.90702, "location": [8.90702, 51.91276], "x_3857": 991524.93, "y_3857": 6784366.69, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRG", "_index": "nrw_stations"}}
+{"station_oid": 356, "ds100": "KRG", "name": "Remscheid Güldenwerth", "district": "Kreisfreie Stadt Remscheid", "latitude": 51.16917, "longitude": 7.16311, "location": [7.16311, 51.16917], "x_3857": 797393.76, "y_3857": 6651272.67, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KR", "_index": "nrw_stations"}}
+{"station_oid": 357, "ds100": "KR", "name": "Remscheid Hbf", "district": "Kreisfreie Stadt Remscheid", "latitude": 51.17722, "longitude": 7.19959, "location": [7.19959, 51.17722], "x_3857": 801454.69, "y_3857": 6652701.96, "source_rows": 3, "position_spread_m": 461.4}
+{"index": {"_id": "KRB", "_index": "nrw_stations"}}
+{"station_oid": 358, "ds100": "KRB", "name": "Remscheid-Bliedinghausen", "district": "Kreisfreie Stadt Remscheid", "latitude": 51.16745, "longitude": 7.2063, "location": [7.2063, 51.16745], "x_3857": 802201.65, "y_3857": 6650967.31, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRL", "_index": "nrw_stations"}}
+{"station_oid": 359, "ds100": "KRL", "name": "Remscheid-Lennep", "district": "Kreisfreie Stadt Remscheid", "latitude": 51.19082, "longitude": 7.25284, "location": [7.25284, 51.19082], "x_3857": 807382.46, "y_3857": 6655117.24, "source_rows": 2, "position_spread_m": 546.3}
+{"index": {"_id": "ERHA", "_index": "nrw_stations"}}
+{"station_oid": 360, "ds100": "ERHA", "name": "Rhade", "district": "Kreis Recklinghausen", "latitude": 51.75102, "longitude": 6.94836, "location": [6.94836, 51.75102], "x_3857": 773487.9, "y_3857": 6755231.27, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERDW", "_index": "nrw_stations"}}
+{"station_oid": 361, "ds100": "ERDW", "name": "Rheda-Wiedenbrück", "district": "Kreis Gütersloh", "latitude": 51.85712, "longitude": 8.28654, "location": [8.28654, 51.85712], "x_3857": 922453.41, "y_3857": 6774332.03, "source_rows": 3, "position_spread_m": 33.3}
+{"index": {"_id": "KRBA", "_index": "nrw_stations"}}
+{"station_oid": 362, "ds100": "KRBA", "name": "Rheinbach", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.62924, "longitude": 6.9479, "location": [6.9479, 50.62924], "x_3857": 773436.69, "y_3857": 6555970.77, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRBE", "_index": "nrw_stations"}}
+{"station_oid": 363, "ds100": "KRBE", "name": "Rheinberg (Rheinl)", "district": "Kreis Wesel", "latitude": 51.54207, "longitude": 6.59258, "location": [6.59258, 51.54207], "x_3857": 733882.65, "y_3857": 6717745.61, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HR", "_index": "nrw_stations"}}
+{"station_oid": 364, "ds100": "HR", "name": "Rheine", "district": "Kreis Steinfurt", "latitude": 52.27636, "longitude": 7.43442, "location": [7.43442, 52.27636], "x_3857": 827595.85, "y_3857": 6850249.97, "source_rows": 3, "position_spread_m": 57.0}
+{"index": {"_id": "KRH", "_index": "nrw_stations"}}
+{"station_oid": 365, "ds100": "KRH", "name": "Rheinhausen", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.39369, "longitude": 6.70623, "location": [6.70623, 51.39369], "x_3857": 746534.11, "y_3857": 6691230.61, "source_rows": 2, "position_spread_m": 23.0}
+{"index": {"_id": "KRHK", "_index": "nrw_stations"}}
+{"station_oid": 366, "ds100": "KRHK", "name": "Rheinkamp", "district": "Kreis Wesel", "latitude": 51.50345, "longitude": 6.62461, "location": [6.62461, 51.50345], "x_3857": 737448.21, "y_3857": 6710836.04, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRY", "_index": "nrw_stations"}}
+{"station_oid": 367, "ds100": "KRY", "name": "Rheydt Hbf", "district": "Kreisfreie Stadt Mönchengladbach", "latitude": 51.16302, "longitude": 6.43941, "location": [6.43941, 51.16302], "x_3857": 716831.84, "y_3857": 6650180.89, "source_rows": 4, "position_spread_m": 1269.7}
+{"index": {"_id": "KRYO", "_index": "nrw_stations"}}
+{"station_oid": 368, "ds100": "KRYO", "name": "Rheydt-Odenkirchen", "district": "Kreisfreie Stadt Mönchengladbach", "latitude": 51.1376, "longitude": 6.44603, "location": [6.44603, 51.1376], "x_3857": 717568.78, "y_3857": 6645669.76, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERHY", "_index": "nrw_stations"}}
+{"station_oid": 369, "ds100": "ERHY", "name": "Rhynern", "district": "Kreisfreie Stadt Hamm", "latitude": 51.64393, "longitude": 7.87561, "location": [7.87561, 51.64393], "x_3857": 876708.89, "y_3857": 6735997.73, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRHD", "_index": "nrw_stations"}}
+{"station_oid": 370, "ds100": "KRHD", "name": "Rhöndorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.65808, "longitude": 7.20998, "location": [7.20998, 50.65808], "x_3857": 802611.3, "y_3857": 6561033.45, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERIG", "_index": "nrw_stations"}}
+{"station_oid": 371, "ds100": "ERIG", "name": "Ringel", "district": "Kreis Steinfurt", "latitude": 52.13762, "longitude": 7.87726, "location": [7.87726, 52.13762], "x_3857": 876892.57, "y_3857": 6825047.27, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERIK", "_index": "nrw_stations"}}
+{"station_oid": 372, "ds100": "ERIK", "name": "Rinkerode", "district": "Kreis Warendorf", "latitude": 51.84437, "longitude": 7.68937, "location": [7.68937, 51.84437], "x_3857": 855976.75, "y_3857": 6772034.32, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KROI", "_index": "nrw_stations"}}
+{"station_oid": 373, "ds100": "KROI", "name": "Roisdorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.75317, "longitude": 7.01604, "location": [7.01604, 50.75317], "x_3857": 781022.0, "y_3857": 6577747.95, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KROM", "_index": "nrw_stations"}}
+{"station_oid": 374, "ds100": "KROM", "name": "Rommerskirchen", "district": "Kreis Rhein-Kreis Neuss", "latitude": 51.03974, "longitude": 6.70058, "location": [6.70058, 51.03974], "x_3857": 745905.15, "y_3857": 6628326.28, "source_rows": 2, "position_spread_m": 14.8}
+{"index": {"_id": "EROL", "_index": "nrw_stations"}}
+{"station_oid": 375, "ds100": "EROL", "name": "Rummenohl", "district": "Kreisfreie Stadt Hagen", "latitude": 51.27777, "longitude": 7.52836, "location": [7.52836, 51.27777], "x_3857": 838053.2, "y_3857": 6670575.88, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KROE", "_index": "nrw_stations"}}
+{"station_oid": 376, "ds100": "KROE", "name": "Rösrath", "district": "Kreis Rheinisch-Bergischer Kreis", "latitude": 50.90135, "longitude": 7.18272, "location": [7.18272, 50.90135], "x_3857": 799576.73, "y_3857": 6603862.2, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KRUN", "_index": "nrw_stations"}}
+{"station_oid": 377, "ds100": "KRUN", "name": "Ründeroth", "district": "Kreis Oberbergischer Kreis", "latitude": 50.99531, "longitude": 7.46542, "location": [7.46542, 50.99531], "x_3857": 831046.75, "y_3857": 6620464.16, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESZK", "_index": "nrw_stations"}}
+{"station_oid": 378, "ds100": "ESZK", "name": "Salzkotten", "district": "Kreis Paderborn", "latitude": 51.67251, "longitude": 8.59957, "location": [8.59957, 51.67251], "x_3857": 957299.75, "y_3857": 6741126.29, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KSA", "_index": "nrw_stations"}}
+{"station_oid": 379, "ds100": "KSA", "name": "Satzvey", "district": "Kreis Euskirchen", "latitude": 50.62306, "longitude": 6.71322, "location": [6.71322, 50.62306], "x_3857": 747312.23, "y_3857": 6554886.31, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HSCD", "_index": "nrw_stations"}}
+{"station_oid": 380, "ds100": "HSCD", "name": "Scherfede", "district": "Kreis Höxter", "latitude": 51.52474, "longitude": 9.04642, "location": [9.04642, 51.52474], "x_3857": 1007042.87, "y_3857": 6714644.35, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HSCI", "_index": "nrw_stations"}}
+{"station_oid": 381, "ds100": "HSCI", "name": "Schieder", "district": "Kreis Lippe", "latitude": 51.92237, "longitude": 9.1531, "location": [9.1531, 51.92237], "x_3857": 1018918.43, "y_3857": 6786101.11, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KSLA", "_index": "nrw_stations"}}
+{"station_oid": 382, "ds100": "KSLA", "name": "Schladern (Sieg)", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.80701, "longitude": 7.59226, "location": [7.59226, 50.80701], "x_3857": 845166.52, "y_3857": 6587226.76, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESHO", "_index": "nrw_stations"}}
+{"station_oid": 383, "ds100": "ESHO", "name": "Schloß Holte", "district": "Kreis Gütersloh", "latitude": 51.90869, "longitude": 8.61043, "location": [8.61043, 51.90869], "x_3857": 958508.68, "y_3857": 6783632.24, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KSWE", "_index": "nrw_stations"}}
+{"station_oid": 384, "ds100": "KSWE", "name": "Schwelm", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.29058, "longitude": 7.28966, "location": [7.28966, 51.29058], "x_3857": 811481.24, "y_3857": 6672855.81, "source_rows": 4, "position_spread_m": 433.9}
+{"index": {"_id": "ESRT", "_index": "nrw_stations"}}
+{"station_oid": 385, "ds100": "ESRT", "name": "Schwerte (Ruhr)", "district": "Kreis Unna", "latitude": 51.44232, "longitude": 7.55885, "location": [7.55885, 51.44232], "x_3857": 841447.33, "y_3857": 6699911.13, "source_rows": 5, "position_spread_m": 222.4}
+{"index": {"_id": "ESRO", "_index": "nrw_stations"}}
+{"station_oid": 386, "ds100": "ESRO", "name": "Schwerte (Ruhr) Ost", "district": "Kreis Unna", "latitude": 51.45132, "longitude": 7.58911, "location": [7.58911, 51.45132], "x_3857": 844815.86, "y_3857": 6701518.66, "source_rows": 3, "position_spread_m": 628.2}
+{"index": {"_id": "KSEC", "_index": "nrw_stations"}}
+{"station_oid": 387, "ds100": "KSEC", "name": "Sechtem", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.79541, "longitude": 6.95776, "location": [6.95776, 50.79541], "x_3857": 774534.3, "y_3857": 6585183.6, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESEL", "_index": "nrw_stations"}}
+{"station_oid": 388, "ds100": "ESEL", "name": "Sennelager", "district": "Kreis Paderborn", "latitude": 51.77006, "longitude": 8.71388, "location": [8.71388, 51.77006], "x_3857": 970024.68, "y_3857": 6758655.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESES", "_index": "nrw_stations"}}
+{"station_oid": 389, "ds100": "ESES", "name": "Sennestadt", "district": "Kreisfreie Stadt Bielefeld", "latitude": 51.94045, "longitude": 8.56779, "location": [8.56779, 51.94045], "x_3857": 953762.02, "y_3857": 6789365.2, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESIH", "_index": "nrw_stations"}}
+{"station_oid": 390, "ds100": "ESIH", "name": "Siedlinghausen", "district": "Kreis Hochsauerlandkreis", "latitude": 51.25825, "longitude": 8.47385, "location": [8.47385, 51.25825], "x_3857": 943304.67, "y_3857": 6667102.92, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KSIB", "_index": "nrw_stations"}}
+{"station_oid": 391, "ds100": "KSIB", "name": "Siegburg/Bonn", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.79391, "longitude": 7.20258, "location": [7.20258, 50.79391], "x_3857": 801787.54, "y_3857": 6584919.43, "source_rows": 3, "position_spread_m": 413.4}
+{"index": {"_id": "ESIE", "_index": "nrw_stations"}}
+{"station_oid": 392, "ds100": "ESIE", "name": "Siegen Hbf", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.87567, "longitude": 8.01585, "location": [8.01585, 50.87567], "x_3857": 892320.34, "y_3857": 6599330.58, "source_rows": 2, "position_spread_m": 19.8}
+{"index": {"_id": "ESIG", "_index": "nrw_stations"}}
+{"station_oid": 393, "ds100": "ESIG", "name": "Siegen Ost Gbf", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.87669, "longitude": 8.04642, "location": [8.04642, 50.87669], "x_3857": 895723.38, "y_3857": 6599510.53, "source_rows": 2, "position_spread_m": 17.2}
+{"index": {"_id": "EHTG", "_index": "nrw_stations"}}
+{"station_oid": 394, "ds100": "EHTG", "name": "Siegen-Geisweid", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.91559, "longitude": 8.01433, "location": [8.01433, 50.91559], "x_3857": 892151.13, "y_3857": 6606376.13, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESW", "_index": "nrw_stations"}}
+{"station_oid": 395, "ds100": "ESW", "name": "Siegen-Weidenau", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.89121, "longitude": 8.03011, "location": [8.03011, 50.89121], "x_3857": 893907.76, "y_3857": 6602072.55, "source_rows": 2, "position_spread_m": 527.3}
+{"index": {"_id": "KSIU", "_index": "nrw_stations"}}
+{"station_oid": 396, "ds100": "KSIU", "name": "Sindorf", "district": "Kreis Rhein-Erft-Kreis", "latitude": 50.9037, "longitude": 6.68119, "location": [6.68119, 50.9037], "x_3857": 743746.67, "y_3857": 6604277.01, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESOT", "_index": "nrw_stations"}}
+{"station_oid": 397, "ds100": "ESOT", "name": "Soest", "district": "Kreis Soest", "latitude": 51.57847, "longitude": 8.10463, "location": [8.10463, 51.57847], "x_3857": 902203.28, "y_3857": 6724263.37, "source_rows": 3, "position_spread_m": 16.0}
+{"index": {"_id": "KSO", "_index": "nrw_stations"}}
+{"station_oid": 398, "ds100": "KSO", "name": "Solingen Hbf", "district": "Kreisfreie Stadt Solingen", "latitude": 51.16076, "longitude": 7.00435, "location": [7.00435, 51.16076], "x_3857": 779720.68, "y_3857": 6649779.72, "source_rows": 3, "position_spread_m": 33.6}
+{"index": {"_id": "KSM", "_index": "nrw_stations"}}
+{"station_oid": 399, "ds100": "KSM", "name": "Solingen Mitte", "district": "Kreisfreie Stadt Solingen", "latitude": 51.1657, "longitude": 7.08872, "location": [7.08872, 51.1657], "x_3857": 789112.7, "y_3857": 6650656.64, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESPN", "_index": "nrw_stations"}}
+{"station_oid": 400, "ds100": "ESPN", "name": "Spellen (Niederrhein)", "district": "Kreis Wesel", "latitude": 51.61165, "longitude": 6.63963, "location": [6.63963, 51.61165], "x_3857": 739120.23, "y_3857": 6730209.1, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBGO", "_index": "nrw_stations"}}
+{"station_oid": 401, "ds100": "EBGO", "name": "Steinfurt-Borghorst", "district": "Kreis Steinfurt", "latitude": 52.11869, "longitude": 7.39763, "location": [7.39763, 52.11869], "x_3857": 823500.4, "y_3857": 6821614.65, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EBFT", "_index": "nrw_stations"}}
+{"station_oid": 402, "ds100": "EBFT", "name": "Steinfurt-Burgsteinfurt", "district": "Kreis Steinfurt", "latitude": 52.14737, "longitude": 7.32935, "location": [7.32935, 52.14737], "x_3857": 815899.51, "y_3857": 6826815.83, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESTG", "_index": "nrw_stations"}}
+{"station_oid": 403, "ds100": "ESTG", "name": "Steinhagen (Westf)", "district": "Kreis Gütersloh", "latitude": 52.01741, "longitude": 8.42095, "location": [8.42095, 52.01741], "x_3857": 937415.87, "y_3857": 6803274.02, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HSTM", "_index": "nrw_stations"}}
+{"station_oid": 404, "ds100": "HSTM", "name": "Steinheim (Westf)", "district": "Kreis Höxter", "latitude": 51.86838, "longitude": 9.08859, "location": [9.08859, 51.86838], "x_3857": 1011737.21, "y_3857": 6776361.77, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KST", "_index": "nrw_stations"}}
+{"station_oid": 405, "ds100": "KST", "name": "Stolberg (Rheinl) Hbf", "district": "Kreis Städteregion Aachen", "latitude": 50.7949, "longitude": 6.21829, "location": [6.21829, 50.7949], "x_3857": 692216.88, "y_3857": 6585093.78, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESDM", "_index": "nrw_stations"}}
+{"station_oid": 406, "ds100": "ESDM", "name": "Sudmühle", "district": "Kreisfreie Stadt Münster", "latitude": 51.98825, "longitude": 7.67489, "location": [7.67489, 51.98825], "x_3857": 854364.85, "y_3857": 6798001.18, "source_rows": 2, "position_spread_m": 20.7}
+{"index": {"_id": "KODE", "_index": "nrw_stations"}}
+{"station_oid": 407, "ds100": "KODE", "name": "Swisttal-Odendorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.65091, "longitude": 6.88094, "location": [6.88094, 50.65091], "x_3857": 765982.74, "y_3857": 6559774.51, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ESYB", "_index": "nrw_stations"}}
+{"station_oid": 408, "ds100": "ESYB", "name": "Sythen Bbf", "district": "Kreis Recklinghausen", "latitude": 51.78736, "longitude": 7.24494, "location": [7.24494, 51.78736], "x_3857": 806503.03, "y_3857": 6761768.36, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ETEL", "_index": "nrw_stations"}}
+{"station_oid": 409, "ds100": "ETEL", "name": "Telgte", "district": "Kreis Warendorf", "latitude": 51.98116, "longitude": 7.78114, "location": [7.78114, 51.98116], "x_3857": 866192.54, "y_3857": 6796719.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KT", "_index": "nrw_stations"}}
+{"station_oid": 410, "ds100": "KT", "name": "Troisdorf", "district": "Kreis Rhein-Sieg-Kreis", "latitude": 50.81366, "longitude": 7.15073, "location": [7.15073, 50.81366], "x_3857": 796015.62, "y_3857": 6588398.29, "source_rows": 3, "position_spread_m": 46.9}
+{"index": {"_id": "KTR", "_index": "nrw_stations"}}
+{"station_oid": 411, "ds100": "KTR", "name": "Trompet", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.4132, "longitude": 6.6692, "location": [6.6692, 51.4132], "x_3857": 742411.95, "y_3857": 6694712.07, "source_rows": 3, "position_spread_m": 36.3}
+{"index": {"_id": "EUN", "_index": "nrw_stations"}}
+{"station_oid": 412, "ds100": "EUN", "name": "Unna", "district": "Kreis Unna", "latitude": 51.53898, "longitude": 7.69221, "location": [7.69221, 51.53898], "x_3857": 856292.9, "y_3857": 6717192.56, "source_rows": 4, "position_spread_m": 355.9}
+{"index": {"_id": "EUK", "_index": "nrw_stations"}}
+{"station_oid": 413, "ds100": "EUK", "name": "Unna-Königsborn", "district": "Kreis Unna", "latitude": 51.55176, "longitude": 7.6803, "location": [7.6803, 51.55176], "x_3857": 854967.09, "y_3857": 6719480.19, "source_rows": 2, "position_spread_m": 541.5}
+{"index": {"_id": "ELBG", "_index": "nrw_stations"}}
+{"station_oid": 414, "ds100": "ELBG", "name": "Velbert-Langenberg", "district": "Kreis Mettmann", "latitude": 51.35445, "longitude": 7.1222, "location": [7.1222, 51.35445], "x_3857": 792839.68, "y_3857": 6684232.94, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HVEP", "_index": "nrw_stations"}}
+{"station_oid": 415, "ds100": "HVEP", "name": "Velpe (Westf)", "district": "Kreis Steinfurt", "latitude": 52.2678, "longitude": 7.86541, "location": [7.86541, 52.2678], "x_3857": 875573.44, "y_3857": 6848692.73, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HVTH", "_index": "nrw_stations"}}
+{"station_oid": 416, "ds100": "HVTH", "name": "Veltheim (b Rinteln)", "district": "Kreis Minden-Lübbecke", "latitude": 52.19095, "longitude": 8.95964, "location": [8.95964, 52.19095], "x_3857": 997382.56, "y_3857": 6834725.58, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HVBK", "_index": "nrw_stations"}}
+{"station_oid": 417, "ds100": "HVBK", "name": "Vennebeck", "district": "Kreis Minden-Lübbecke", "latitude": 52.22132, "longitude": 8.8718, "location": [8.8718, 52.22132], "x_3857": 987604.26, "y_3857": 6840242.3, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KV", "_index": "nrw_stations"}}
+{"station_oid": 418, "ds100": "KV", "name": "Viersen", "district": "Kreis Viersen", "latitude": 51.25487, "longitude": 6.40369, "location": [6.40369, 51.25487], "x_3857": 712855.51, "y_3857": 6666501.71, "source_rows": 2, "position_spread_m": 16.7}
+{"index": {"_id": "KVH", "_index": "nrw_stations"}}
+{"station_oid": 419, "ds100": "KVH", "name": "Viersen-Helenabrunn", "district": "Kreis Viersen", "latitude": 51.23382, "longitude": 6.43704, "location": [6.43704, 51.23382], "x_3857": 716568.02, "y_3857": 6662758.46, "source_rows": 2, "position_spread_m": 14.9}
+{"index": {"_id": "HVLO", "_index": "nrw_stations"}}
+{"station_oid": 420, "ds100": "HVLO", "name": "Vlotho", "district": "Kreis Herford", "latitude": 52.17246, "longitude": 8.86396, "location": [8.86396, 52.17246], "x_3857": 986731.51, "y_3857": 6831368.7, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWLS", "_index": "nrw_stations"}}
+{"station_oid": 421, "ds100": "EWLS", "name": "Walsum", "district": "Kreisfreie Stadt Duisburg", "latitude": 51.5345, "longitude": 6.71871, "location": [6.71871, 51.5345], "x_3857": 747923.38, "y_3857": 6716390.79, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWAN", "_index": "nrw_stations"}}
+{"station_oid": 422, "ds100": "EWAN", "name": "Wanne-Eickel Hbf", "district": "Kreisfreie Stadt Herne", "latitude": 51.53007, "longitude": 7.16702, "location": [7.16702, 51.53007], "x_3857": 797829.02, "y_3857": 6715598.04, "source_rows": 12, "position_spread_m": 3012.9}
+{"index": {"_id": "HWAR", "_index": "nrw_stations"}}
+{"station_oid": 423, "ds100": "HWAR", "name": "Warburg (Westf)", "district": "Kreis Höxter", "latitude": 51.49298, "longitude": 9.16387, "location": [9.16387, 51.49298], "x_3857": 1020117.34, "y_3857": 6708963.85, "source_rows": 2, "position_spread_m": 6.4}
+{"index": {"_id": "EWAF", "_index": "nrw_stations"}}
+{"station_oid": 424, "ds100": "EWAF", "name": "Warendorf", "district": "Kreis Warendorf", "latitude": 51.94997, "longitude": 7.98523, "location": [7.98523, 51.94997], "x_3857": 888911.74, "y_3857": 6791084.44, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KWEE", "_index": "nrw_stations"}}
+{"station_oid": 425, "ds100": "KWEE", "name": "Weeze", "district": "Kreis Kleve", "latitude": 51.62432, "longitude": 6.19785, "location": [6.19785, 51.62432], "x_3857": 689941.51, "y_3857": 6732480.66, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KWEG", "_index": "nrw_stations"}}
+{"station_oid": 426, "ds100": "KWEG", "name": "Wegberg", "district": "Kreis Heinsberg", "latitude": 51.14514, "longitude": 6.28152, "location": [6.28152, 51.14514], "x_3857": 699255.61, "y_3857": 6647007.58, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KDEK", "_index": "nrw_stations"}}
+{"station_oid": 427, "ds100": "KDEK", "name": "Weilerswist-Derkum", "district": "Kreis Euskirchen", "latitude": 50.70498, "longitude": 6.81672, "location": [6.81672, 50.70498], "x_3857": 758833.8, "y_3857": 6569273.08, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWGO", "_index": "nrw_stations"}}
+{"station_oid": 428, "ds100": "EWGO", "name": "Wengern Ost", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.40012, "longitude": 7.35022, "location": [7.35022, 51.40012], "x_3857": 818222.75, "y_3857": 6692377.85, "source_rows": 2, "position_spread_m": 13.7}
+{"index": {"_id": "EWMN", "_index": "nrw_stations"}}
+{"station_oid": 429, "ds100": "EWMN", "name": "Wennemen", "district": "Kreis Hochsauerlandkreis", "latitude": 51.35215, "longitude": 8.1913, "location": [8.1913, 51.35215], "x_3857": 911851.34, "y_3857": 6683822.97, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWHL", "_index": "nrw_stations"}}
+{"station_oid": 430, "ds100": "EWHL", "name": "Werdohl", "district": "Kreis Märkischer Kreis", "latitude": 51.25948, "longitude": 7.75793, "location": [7.75793, 51.25948], "x_3857": 863608.82, "y_3857": 6667321.72, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWER", "_index": "nrw_stations"}}
+{"station_oid": 431, "ds100": "EWER", "name": "Werl", "district": "Kreis Soest", "latitude": 51.55802, "longitude": 7.91375, "location": [7.91375, 51.55802], "x_3857": 880954.62, "y_3857": 6720600.96, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWRN", "_index": "nrw_stations"}}
+{"station_oid": 432, "ds100": "EWRN", "name": "Werne (a d Lippe)", "district": "Kreis Unna", "latitude": 51.66923, "longitude": 7.62291, "location": [7.62291, 51.66923], "x_3857": 848578.46, "y_3857": 6740537.55, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWES", "_index": "nrw_stations"}}
+{"station_oid": 433, "ds100": "EWES", "name": "Wesel", "district": "Kreis Wesel", "latitude": 51.6558, "longitude": 6.62713, "location": [6.62713, 51.6558], "x_3857": 737728.74, "y_3857": 6738127.36, "source_rows": 3, "position_spread_m": 231.6}
+{"index": {"_id": "EWSH", "_index": "nrw_stations"}}
+{"station_oid": 434, "ds100": "EWSH", "name": "Westerholt", "district": "Kreis Recklinghausen", "latitude": 51.60236, "longitude": 7.08316, "location": [7.08316, 51.60236], "x_3857": 788493.76, "y_3857": 6728543.93, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWEF", "_index": "nrw_stations"}}
+{"station_oid": 435, "ds100": "EWEF", "name": "Westhofen (Westf)", "district": "Kreis Unna", "latitude": 51.41697, "longitude": 7.51937, "location": [7.51937, 51.41697], "x_3857": 837052.44, "y_3857": 6695384.97, "source_rows": 2, "position_spread_m": 14.2}
+{"index": {"_id": "EWIC", "_index": "nrw_stations"}}
+{"station_oid": 436, "ds100": "EWIC", "name": "Wickede (Ruhr)", "district": "Kreis Soest", "latitude": 51.49316, "longitude": 7.86974, "location": [7.86974, 51.49316], "x_3857": 876055.45, "y_3857": 6708996.03, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HWBD", "_index": "nrw_stations"}}
+{"station_oid": 437, "ds100": "HWBD", "name": "Willebadessen", "district": "Kreis Höxter", "latitude": 51.62157, "longitude": 9.01214, "location": [9.01214, 51.62157], "x_3857": 1003226.84, "y_3857": 6731987.57, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "ERUD", "_index": "nrw_stations"}}
+{"station_oid": 438, "ds100": "ERUD", "name": "Wilnsdorf-Rudersdorf", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.83921, "longitude": 8.14395, "location": [8.14395, 50.83921], "x_3857": 906580.37, "y_3857": 6592900.97, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "HWDH", "_index": "nrw_stations"}}
+{"station_oid": 439, "ds100": "HWDH", "name": "Windheim (Weser)", "district": "Kreis Minden-Lübbecke", "latitude": 52.40681, "longitude": 9.02305, "location": [9.02305, 52.40681], "x_3857": 1004441.33, "y_3857": 6874018.82, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWTB", "_index": "nrw_stations"}}
+{"station_oid": 440, "ds100": "EWTB", "name": "Winterberg (Westf)", "district": "Kreis Hochsauerlandkreis", "latitude": 51.19846, "longitude": 8.53238, "location": [8.53238, 51.19846], "x_3857": 949820.2, "y_3857": 6656474.36, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "EWIT", "_index": "nrw_stations"}}
+{"station_oid": 441, "ds100": "EWIT", "name": "Witten Hbf", "district": "Kreis Ennepe-Ruhr-Kreis", "latitude": 51.43538, "longitude": 7.32933, "location": [7.32933, 51.43538], "x_3857": 815897.28, "y_3857": 6698671.77, "source_rows": 3, "position_spread_m": 36.8}
+{"index": {"_id": "KW", "_index": "nrw_stations"}}
+{"station_oid": 442, "ds100": "KW", "name": "Wuppertal Hbf", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.25429, "longitude": 7.15021, "location": [7.15021, 51.25429], "x_3857": 795957.74, "y_3857": 6666398.54, "source_rows": 3, "position_spread_m": 1883.0}
+{"index": {"_id": "KWZ", "_index": "nrw_stations"}}
+{"station_oid": 443, "ds100": "KWZ", "name": "Wuppertal Zoologischer Garten", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.2435, "longitude": 7.1071, "location": [7.1071, 51.2435], "x_3857": 791158.75, "y_3857": 6664479.61, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KWO", "_index": "nrw_stations"}}
+{"station_oid": 444, "ds100": "KWO", "name": "Wuppertal-Oberbarmen", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.2716, "longitude": 7.23785, "location": [7.23785, 51.2716], "x_3857": 805713.78, "y_3857": 6669477.97, "source_rows": 6, "position_spread_m": 1322.3}
+{"index": {"_id": "KWRO", "_index": "nrw_stations"}}
+{"station_oid": 445, "ds100": "KWRO", "name": "Wuppertal-Ronsdorf", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.22623, "longitude": 7.21549, "location": [7.21549, 51.22623], "x_3857": 803224.67, "y_3857": 6661409.17, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KWU", "_index": "nrw_stations"}}
+{"station_oid": 446, "ds100": "KWU", "name": "Wuppertal-Unterbarmen", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.2588, "longitude": 7.17118, "location": [7.17118, 51.2588], "x_3857": 798292.11, "y_3857": 6667200.75, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KWV", "_index": "nrw_stations"}}
+{"station_oid": 447, "ds100": "KWV", "name": "Wuppertal-Vohwinkel", "district": "Kreisfreie Stadt Wuppertal", "latitude": 51.23394, "longitude": 7.07185, "location": [7.07185, 51.23394], "x_3857": 787234.74, "y_3857": 6662779.79, "source_rows": 3, "position_spread_m": 107.7}
+{"index": {"_id": "EWGD", "_index": "nrw_stations"}}
+{"station_oid": 448, "ds100": "EWGD", "name": "Würgendorf", "district": "Kreis Siegen-Wittgenstein", "latitude": 50.76006, "longitude": 8.14183, "location": [8.14183, 50.76006], "x_3857": 906344.37, "y_3857": 6578960.36, "source_rows": 1, "position_spread_m": 0.0}
+{"index": {"_id": "KX", "_index": "nrw_stations"}}
+{"station_oid": 449, "ds100": "KX", "name": "Xanten", "district": "Kreis Wesel", "latitude": 51.65973, "longitude": 6.44526, "location": [6.44526, 51.65973], "x_3857": 717483.06, "y_3857": 6738832.58, "source_rows": 1, "position_spread_m": 0.0}

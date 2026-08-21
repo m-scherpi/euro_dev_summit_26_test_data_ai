@@ -117,6 +117,31 @@ Generated code, scratch files, intermediate build products — anything that
 should not be versioned goes here, not into `output/`. Regenerable from the
 documented command, never referenced by another use case.
 
+**Third-party binaries go to `build/`; git gets a manifest.**
+A use case may need a server, not just a library — a search engine, a database,
+a runtime. The archive never enters the repository. What is committed is
+`input/<product>_dist.json`: version, download URL, size, the checksum **the
+vendor publishes** (prefer that over one computed locally — it is a claim about
+the artifact, not about our download), licence, and the reason for the version
+choice. The setup script reads that manifest, and a checksum mismatch aborts
+rather than warns.
+
+**Pin the version the *client* certifies, not the newest one.** Measured in
+`opensearch`: ArcGIS Pro 3.7 and Enterprise 12.1 support OpenSearch **2.12** —
+one minor release, not the 2.x line. A GIS client pins its database support far
+harder than the database pins itself, so tracking "latest" means tracking away
+from the only version that works. State the certified pairing in the manifest so
+the pin does not look like neglect.
+
+**Old pinned versions carry expired material.** The demo TLS root CA shipped
+with OpenSearch 2.12.0 was issued with a **30-day** validity in August 2023 and
+expired a month later, while the node certificate it signed runs to 2033. The
+server starts, the chain looks plausible, and every client fails with
+`certificate has expired`. When a pinned release is years old, check the
+expiry dates of anything it ships (`openssl x509 -dates`) before believing its
+quick-start path, and generate your own credentials rather than working around
+the broken ones.
+
 **Keep LLM output raw next to any corrected version.**
 When generated data has to be corrected to be usable, commit both: the
 unedited LLM artifact (`<name>_llm_raw.csv`) as evidence, and the corrected
@@ -222,6 +247,34 @@ coordinates.
   third-party library (`pyproj`/PROJ), and do the same for containment
   (`shapely` on one side, ray casting on the other). Agreement between separate
   code bases is stronger evidence than agreement between two of your own lines.
+- **When the data has a consumer, verify against the consumer — not only against
+  itself.** "Is the geometry correct?" and "can the target system read it?" are
+  two questions, and the second one is answered by the *consumer's*
+  documentation. Measured in `opensearch`: ArcGIS cannot read a `geo_point`
+  written as `{"lat": …, "lon": …}` — the first form in the OpenSearch docs and
+  the one an LLM writes unprompted. An index built that way failed **1 of 12**
+  checks. Document count, bounding box, `geo_distance` against an independent
+  haversine, coordinate provenance: all green, and the layer will not open. By
+  comparison a swapped axis fails 5 of 12 and puts the points in another
+  hemisphere. **The loud error is the harmless one.** So: read the target's field
+  and format requirements before designing the schema, encode them as a check,
+  and let the target's constraint — not the database's tolerance — decide the
+  representation.
+- **Where a spec allows several encodings, parameterise and verify — never
+  assume.** The three ArcGIS-readable `geo_point` forms disagree about axis
+  order: array is `[lon, lat]`, a bare string is `"lat,lon"`, WKT is
+  `POINT (lon lat)`. Two of three put longitude first and the odd one out reads
+  most like prose. Expose the choice as a flag, decode it in the verifier from a
+  second reading of the spec, and let the engine referee the axis order (a
+  bounding box that must match everything, plus its transpose that must match
+  nothing).
+- **Two subsystems of one product can demand incompatible formats.** The
+  OpenSearch SQL plugin accepts *only* `{"lat": …, "lon": …}` — the one form
+  ArcGIS forbids — and rejects array, string, WKT and geohash alike. ArcGIS query
+  layers are SQL, so whether this is fatal depends on something neither side
+  documents. Report such a conflict as an explicit INFO finding with the
+  measurement behind it; do not resolve it by guessing, and do not hide it
+  because it did not break the current path.
 
 ---
 
@@ -362,6 +415,16 @@ Generated test data is only useful for a talk if it can be regenerated live.
   between runs is a finding, not a bug to hide.
 - **Never commit secrets.** API keys and endpoints come from environment
   variables; document the variable names, not the values.
+- **One narrow exception, and only when the user grants it: the credentials of a
+  local throwaway service.** A single-node test cluster on a VM, holding nothing
+  but public open data and deleted with its `build/` folder, is not a secret —
+  and a live demo that needs a manual `export` before the first command is a demo
+  that fails on stage. Such a password may be committed if it is stated as an
+  exception in the use-case README, overridable by flag and environment variable,
+  and confined to that use case. Note also that the obvious value may be
+  unavailable anyway: OpenSearch 2.12 runs the initial admin password through a
+  strength check and rejects `admin`. Anything reaching a real system, a real
+  account or real data stays out of git without exception.
 
 ---
 

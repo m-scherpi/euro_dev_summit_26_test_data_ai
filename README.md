@@ -35,7 +35,7 @@ README. There is no shared build and nothing to install at root level.
 |---|---|---|---|---|
 | [`csv_data/`](csv_data/) | Geo points as CSV, two ways: 100 written directly by the LLM vs. 10,000 from a seeded generator — coordinates verified by code either way | Python 3.12, stdlib only | ✅ done | [README](csv_data/README.md) |
 | [`open_data_search/`](open_data_search/) | The inverse: the LLM searches, triages licences and writes code, but invents no data — 449 real NRW railway stations from DB InfraGO open data, every coordinate traceable to its source | Python 3.12 + venv (`requests`, `shapely`, `pyshp`, `pyproj`) | ✅ done | [README](open_data_search/README.md) |
-| [`opensearch/`](opensearch/) | Test data for OpenSearch (indexing / geo queries) | tbd | 🕓 planned | [README](opensearch/README.md) |
+| [`opensearch/`](opensearch/) | The same 449 stations as an OpenSearch index a GIS client can draw — provisioned by script, no Docker, nothing but the data in git. The `geo_point` format every tutorial shows is the one ArcGIS cannot read, and only 1 of 12 checks notices | Shell + Batch, Python 3.12 stdlib only, OpenSearch 2.12.0 | ✅ done | [README](opensearch/README.md) |
 | [`python_import/`](python_import/) | Importing / converting generated data via Python | tbd | 🕓 planned | [README](python_import/README.md) |
 
 Status legend: 🕓 planned · 🚧 in progress · ✅ done
@@ -57,6 +57,10 @@ always live in the use-case README.
 | `fetch_infrago_source.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_infrago_source.py` (one-off, needs network) | [README](open_data_search/README.md#provisioning) |
 | `fetch_nrw_boundary.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_nrw_boundary.py` (one-off, needs network) | [README](open_data_search/README.md#provisioning) |
 | `fetch_nrw_boundary_ne10m.py` | `open_data_search` | `cd open_data_search && .venv/bin/python scripts/fetch_nrw_boundary_ne10m.py` (one-off, superseded, kept as evidence) | [README](open_data_search/README.md#provisioning) |
+| `setup_opensearch.sh` / `.bat` | `opensearch` | `cd opensearch && ./scripts/setup_opensearch.sh --host localhost` (needs network, ~820 MB) | [README](opensearch/README.md#setup) |
+| `run_opensearch.sh` / `.bat` | `opensearch` | `cd opensearch && ./scripts/run_opensearch.sh start` (also `stop`, `status`, `logs`) | [README](opensearch/README.md#setup) |
+| `index_stations.py` | `opensearch` | `cd opensearch && python3 scripts/index_stations.py --recreate --host https://localhost:9200 --ca-cert build/tls/root-ca.pem` | [README](opensearch/README.md#usage) |
+| `verify_index.py` | `opensearch` | `cd opensearch && python3 scripts/verify_index.py --host https://localhost:9200 --ca-cert build/tls/root-ca.pem --report output/verification_report.md` | [README](opensearch/README.md#verify) |
 
 ---
 
@@ -83,6 +87,12 @@ always live in the use-case README.
 - How far verification goes is agreed up front, not defaulted to. "Plausible is
   enough" and "must be defensible in public" lead to very different amounts of
   work.
+- Data with a consumer is checked **against the consumer**, not only against
+  itself. A correct data set the target system cannot read passes every test the
+  database can offer — measured in `opensearch`: 1 failing check out of 12.
+- Third-party server binaries live in `build/`; git gets the manifest with
+  version, URL and checksum. Pin the version the *client* certifies, not the
+  latest one.
 - Documentation language is English.
 
 Full details: [`CLAUDE.md`](CLAUDE.md).
@@ -126,5 +136,6 @@ to depend on.
 | 2026-08-20 | Use case `csv_data`: 100 geo points written directly by the LLM; coordinate verifier found a systematic 490 m EPSG:3857 error, `output/` switched to versioned, `build/` introduced |
 | 2026-08-20 | Use case `csv_data`, iteration 2: seeded generator, 10,000 points across Germany with a public-domain boundary; reproducible, 0 points outside Germany, projection exact — the LLM's contribution moved from the data to the text fixtures |
 | 2026-08-20 | Use case `open_data_search`: LLM-driven web search and licence triage across seven open-data candidates; 449 real NRW railway stations built from DB InfraGO (CC BY 4.0), OSM rejected on ODbL share-alike grounds, a generalised boundary caught misclassifying correct data and replaced by the authoritative Geobasis NRW outline |
+| 2026-08-21 | Use case `opensearch`: the 449 stations as a script-provisioned OpenSearch 2.12 index for ArcGIS Pro 3.7 / Enterprise 12.1. The `geo_point` format ArcGIS cannot read is the one every tutorial shows, and an index using it fails only 1 of 12 checks; the certified release's demo TLS root CA expired in 2023; the OpenSearch SQL plugin accepts only the format Esri forbids |
 
 Detailed, prompt-by-prompt history: [`PROMPT.md`](PROMPT.md).
