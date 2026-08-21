@@ -1,0 +1,74 @@
+# Builds the Slidev deck in `slides/` and publishes it to GitHub Pages.
+#
+# Adapted from the official Slidev hosting workflow, which assumes the project
+# sits at the repository root. Here it lives in `slides/`, so the build runs in
+# that working directory and the artifact path is `slides/dist`.
+#
+# Note: Pages deployment requires the repository to be public (or a plan that
+# allows private Pages). Until this repository is published, the build job
+# succeeds and the deploy job fails -- that is the repository visibility, not
+# the workflow.
+
+name: Deploy slides
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'slides/**'
+      - '.github/workflows/deploy-slides.yml'
+      # The deck reads the result screenshots straight out of the use cases.
+      - 'csv_data/input/*.png'
+      - 'open_data_search/input/*.png'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: slides
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+          cache: npm
+          cache-dependency-path: slides/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The base path must start and end with a slash. Deriving it from the
+      # repository name means a rename does not silently break every asset URL.
+      - name: Build
+        run: npm run build -- --base /${{ github.event.repository.name }}/
+
+      - uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: slides/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
