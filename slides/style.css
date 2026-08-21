@@ -1,0 +1,79 @@
+/* Slidev picks this up automatically. Kept small on purpose: the deck is
+   projected, so contrast and legibility beat decoration. */
+
+/* Body copy one notch down from the seriph default -- these slides carry
+   measured numbers, and the numbers need the room. */
+.slidev-layout {
+  font-size: 0.92rem;
+}
+.slidev-layout h1 {
+  line-height: 1.15;
+}
+.slidev-layout h1 + p {
+  margin-top: 0.5rem;
+}
+
+/* The named, reusable rule each act ends on. Deliberately loud -- these four
+   boxes are what the audience should still have tomorrow. */
+.rule {
+  @apply mt-5 border-l-4 border-teal-600 bg-teal-50 px-5 py-3
+         text-xl font-medium leading-snug;
+}
+
+/* Small caps label above a slide title, used to mark the three acts. */
+.eyebrow {
+  @apply mb-1 text-xs font-semibold uppercase tracking-widest text-teal-700;
+}
+
+/* A measured number, when the number is the whole point of the slide. */
+.metric {
+  @apply text-4xl font-bold text-teal-800 leading-none;
+}
+
+/* Two-column body grid. Explicit, because Slidev's two-cols-header lets a long
+   left column run underneath the right one. */
+.cols {
+  @apply grid gap-8 items-start mt-3;
+  grid-template-columns: 1fr 1fr;
+}
+.cols-img {
+  @apply grid gap-6 items-start mt-3;
+  grid-template-columns: 43fr 57fr;
+}
+
+/* Screenshots keep their burnt-in basemap attribution -- never crop it, so
+   always object-contain, never a cover background. */
+.shot {
+  @apply w-full rounded shadow-lg;
+}
+.credit {
+  @apply mt-1 text-xs opacity-60;
+}
+
+/* Verification tables in act 3: two of them side by side have to fit, so they
+   are deliberately denser than the rest of the deck. */
+.checks table {
+  @apply w-full text-sm;
+}
+.checks th {
+  @apply hidden;
+}
+.checks td {
+  @apply py-1;
+}
+.verdict-pass { @apply text-green-700 font-semibold; }
+.verdict-fail { @apply text-red-700 font-semibold; }
+
+/* Cover. Deliberately not a screenshot: a full-bleed background is cropped to
+   fill, and the first thing cropped off an ArcGIS capture is the basemap
+   attribution bar. The screenshots get their own slides, uncropped. */
+.cover-bg {
+  background: linear-gradient(140deg, #0b3b39 0%, #134e4a 45%, #0f766e 100%);
+}
+.cover-bg h1,
+.cover-bg h2 {
+  color: #fff !important;
+}
+.cover-bg {
+  color: #e6fffb;
+}
