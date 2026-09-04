@@ -766,3 +766,204 @@ Followed mid-turn by:
   room, are visible in that screenshot and both hold: `_id` became the Object ID
   (it shows as `EMST`, the DS100 code), and `x_3857` / `y_3857` arrive as plain
   attributes while the geometry is drawn from `location` alone.
+
+---
+
+## [011] 2026-09-04 — A second index from a geodatabase export  ·  scope: `opensearch`
+
+**Prompt (original, DE)**
+> Nun ein weiterer Use Case: das Setup für den open Search cluster steht, ich konnte die Daten anzeigen und auch publizieren. nun habe ich unter @opensearch/input/ eine GeoJSON abgelegt, welche einem Export aus einer bestehenden Featureclass aus einer Enterprise Geodatabase entspricht. diese soll nun als weiterer Index im Opensearch-Cluster erscheinen und von da aus verwendet werden. Ziel dabei ist zu zeigen, dass auch unterschiedliche Datenquellen dafür herhalten können. Vermutlich ein etwas kleinerer Use Case mit weniger Änderungen, aber eine nette ergänzung
+
+**Prompt (translation, EN)**
+> Now another use case: the setup for the open Search cluster is in place, I was able to display the data and also publish it. now I have placed a GeoJSON under @opensearch/input/ which corresponds to an export from an existing feature class from an Enterprise Geodatabase. this should now appear as a further index in the Opensearch cluster and be used from there. The goal is to show that different data sources can also serve for this. Probably a somewhat smaller use case with fewer changes, but a nice addition.
+
+Follow-up, after the plan was presented:
+
+> da ich den cluster durch kopieren des opensearch-ordner auf einen anderen (Windows)-Rechner aufgebaut habe, brauche ich noch eine "um den 2. Index aufzubauen, kopiere und ersetze folgende Dateien" Anleitung
+
+> since I built the cluster by copying the opensearch folder onto another (Windows) machine, I still need a "to build the 2nd index, copy and replace the following files" instruction
+
+**What happened**
+
+- Profiled `input/airports.json` before touching anything, which produced four
+  facts that reshaped the task:
+  1. **It is not GeoJSON.** It is an Esri JSON FeatureSet (`query?f=json`):
+     `geometryType: "esriGeometryPoint"`, geometry as `{"x","y"}`,
+     `spatialReference {"wkid": 102100, "latestWkid": 3857}` — Web Mercator in
+     **metres**, where RFC 7946 GeoJSON is always EPSG:4326.
+  2. It therefore has to be **reprojected**, the exact operation
+     `index_stations.py` refuses to perform.
+  3. It **crosses the antimeridian** (lon −177.37 … +166.64), so its naive
+     bounding box is 344° × 86° and useless as a check.
+  4. It carries **no licence statement**.
+- Asked four questions rather than guessing: licence/provenance, verification
+  depth (CLAUDE.md section 12 requires asking), permission to refactor the
+  existing scripts, and stdlib-vs-`pyproj` for the projection. Answers: the file
+  is an internal export of unknown licence and only its *structure* may be
+  copied, with that reason recorded explicitly; full public-grade verification;
+  new scripts with shared helpers; stdlib with two separate computation paths.
+- Gitignored `opensearch/input/airports.json` with the reason in the ignore file
+  itself, then extracted only its schema and its measured distributions.
+- Wrote `make_airports_fixture.py`, a one-off provisioning script (the
+  CLAUDE.md section 3 exception) producing `input/synthetic_airports.json`:
+  structure identical, every value generated, `sin(latitude)` sampled uniformly,
+  rounded to 6 decimals before projecting, self-checking, and carrying its own
+  `_provenance` block plus a manifest with SHA-256.
+- Move-only refactor into `geopoint.py` (indexer side) and `arcgis_checks.py`
+  (verifier side), plus `webmercator.py` holding **only the forward
+  projection**. The inverse lives in `index_airports.py` alone, so the verifier
+  checks it by running the opposite direction with code the indexer cannot
+  import.
+- Regression-proved the refactor before continuing: re-ran
+  `index_stations.py --dry-run` and `git diff` on the committed artifacts was
+  empty; the existing verifier stayed 12/12 green against the live cluster.
+- Checked Esri's documentation for reserved field names in query layers over
+  document databases. **It names none** — only `_id` as the default unique
+  identifier and "an integer field that contains unique values" as the
+  alternative. Recorded that as "not documented" instead of inventing a
+  conflict, and prefixed `source_objectid` / `source_esri_oid` /
+  `source_globalid` for a different, measurable reason.
+- Built `index_airports.py` (aborts on an unexpected `geometryType` or `wkid`
+  rather than converting) and `verify_airports.py` (19 checks).
+- Proved the verifier fails, three times, on a document moved 40 km inside
+  Kansas.
+- Added `.gitattributes` (`* text=auto eol=lf`, `*.bat` excepted) so a Windows
+  clone cannot break the fixture's SHA-256, and wrote the file-copy instruction
+  the follow-up prompt asked for.
+
+**Artifacts**
+- `opensearch/scripts/make_airports_fixture.py` — one-off fixture generator
+- `opensearch/scripts/index_airports.py` — Esri JSON → OpenSearch, hand-written
+  inverse Mercator
+- `opensearch/scripts/verify_airports.py` — 19 checks
+- `opensearch/scripts/diagnose_fixture.py` — locates why a rebuilt fixture's
+  hash differs: environment, RNG fingerprints, libm hex floats, field-level diff
+- `opensearch/scripts/webmercator.py` — forward projection only, never imported
+  by an indexer
+- `opensearch/scripts/geopoint.py`, `opensearch/scripts/arcgis_checks.py` —
+  move-only extractions shared by the two script pairs
+- `opensearch/input/synthetic_airports.json` — 880 features, 248 KB
+- `opensearch/input/synthetic_airports_source.json` — manifest, SHA-256,
+  region boxes
+- `opensearch/output/synthetic_airports_{mapping.json,bulk.ndjson}` — 17 fields,
+  415 KB
+- `opensearch/output/synthetic_airports_verification_report.md` — 19 checks,
+  0 failed
+- `opensearch/input/synthetic_airports_opensearch_viewlayer.png` — ArcGIS Pro
+  3.7 query layer over the second index, both indexes in one connection
+- `.gitignore`, `.gitattributes` — the licence exclusion and the LF pin
+- `opensearch/README.md` — findings 8–11, second schema table, transfer
+  instruction; `README.md`, `CLAUDE.md` — index, executables, progress,
+  conventions
+
+**Result / Iteration**
+
+- **The licence stopped the use case as designed, and the replacement is
+  better.** A real export handed over to prove a second source works, and it
+  could not be used — not for the geometry but because nobody could say what the
+  licence was ("I think it's the FAA data set, but I don't know for sure"). The
+  file is gitignored and its structure rebuilt with generated values. That is
+  this repository's thesis happening rather than being asserted, and it is the
+  best story the folder has produced. What no rebuild restores is the one
+  property that made the original evidence: that somebody else published it.
+- **"It's a GeoJSON" was wrong in the one way with no error message.** Metres
+  read as degrees are out of range; a library that clamps rather than raises
+  puts every point on the antimeridian, consistently, so the data looks
+  systematic instead of broken. The reader now asserts and aborts.
+- **Two fixture properties were wrong on the first attempt**, and both looked
+  plausible. `type` came out uniform (86/86/85/85/85) where the source has a 6:1
+  skew, because the generator filled it round-robin. `tot_enp` topped out at 3.7
+  million against the source's 38.9 million, because the first sigma was
+  guessed; it is now derived from the measured spread. Neither would have
+  surfaced without the original still sitting there to measure against — an
+  argument for measuring the thing you are about to replace *before* replacing
+  it.
+- **The axis-swap check degrades in two ways this data set exposed.** For five
+  of seven regions the transposed box does not exist at all: Alaska's longitudes
+  are −179.5…−129.5, and OpenSearch rejects the query with `top is below bottom
+  corner: -129.5 vs. -90.0`. Where it does apply it passes only because no
+  airport sits at longitude −14…71 — luck, and the report says so.
+- **The same bug is loud here and silent there.** `--swap-axes` gets **550 of
+  880 documents rejected** (`illegal latitude value [-97.302373]`) and the load
+  aborts; 330 would have been silently misplaced. On the stations, latitude
+  50-52 and longitude 5-9 are both valid latitudes, so all 449 loaded happily
+  into the Indian Ocean. Nothing in the code differs. The verifier that caught
+  the stations was luckier, not better — the most uncomfortable finding of the
+  session.
+- **Provenance for transformed data needs two checks, and they were proven to
+  fire separately.** Moving one document 40 km inside Kansas: both red. Moving
+  only the degrees: reprojection red, provenance green. Only the metres:
+  the reverse. In all three cases the other 17 checks stayed green — bounding
+  boxes, axis order, antimeridian, `geo_distance`, field types. Forward round
+  trip across all 880 documents: **0.0500 mm**, exactly half the rounding step
+  of the stored metres (0.2 mm on the original export, whose metres were not
+  derived from rounded degrees at all). It closed at 0.0000 mm until the
+  cross-platform fix below forced the metres to be stored rounded — a worse
+  number and a reproducible file.
+- **The naive bounding box is 344.63° wide** and passes. Replaced by seven
+  regional boxes plus one that deliberately wraps the antimeridian and matches
+  42 documents, the same 42 computed from the source.
+- **The follow-up prompt caught a real hazard.** The move-only refactor makes
+  `index_stations.py` and `verify_index.py` depend on the new modules, so a
+  partial copy to the Windows machine yields a working second index and a first
+  one dying with `ImportError`. The instruction says all-or-nothing, and
+  `.gitattributes` now pins LF so a clone cannot invalidate the fixture's
+  SHA-256 by rewriting newlines.
+- **Confirmed in ArcGIS Pro 3.7 the same day**, with evidence:
+  `opensearch/input/synthetic_airports_opensearch_viewlayer.png`. The query
+  layer opens, the points draw, feature binning switched itself on, and the
+  Catalog pane shows **both** indexes under one
+  `OpenSearch-https_localhost_9200.dbconn` — the whole claim of this addition in
+  one screenshot. The nineteen checks predicted the client correctly, which is
+  the less informative of the two possible outcomes: a checklist that agrees
+  with the consumer says less than one that disagrees, which is how finding 1
+  was found in the first place.
+- **The screenshot was cross-checked rather than admired.** All nine values the
+  pop-up rendered for `ILD` / *Yarrowmead Mem* are byte-identical to
+  `output/synthetic_airports_bulk.ndjson`. It also confirms two findings
+  visually that were until then only measured: the row shows `airport_oid` 490,
+  `source_objectid` 251 and `source_esri_oid` 50 — three different integers, and
+  ArcGIS using none of them, because its Object ID is the string `_id` `ILD`.
+  And `airport_type` and `field` render as **empty cells** while both hold
+  `" "`, so a user filtering that attribute table for blanks finds nothing.
+- **The cross-platform fixture hash did NOT match — finding 12, and the best
+  thing the follow-up produced.** Rebuilding with the same seed on Windows
+  Server 2025 / CPython 3.14.7 gave `4d180ba8…50d90b` against Linux / CPython
+  3.12.7's `b798f3d9…2df7cb`, at identical file size (256.3 KB) and feature
+  count (880). `scripts/diagnose_fixture.py` was written to locate it and ruled
+  out the boring causes in order:
+  - **newlines**: `Get-FileHash` agreed with the hash computed from the
+    in-memory string, so the bytes on disk are what Python produced. This was
+    the expected cause and it was wrong.
+  - **the seed**: all six RNG fingerprints identical — across two Python minor
+    versions, which is a quietly reassuring result of its own.
+  - **attributes and ordering**: identical at all 880 positions.
+
+  What remained was `y`: **30 of 880 values differing by up to 2 ULP, 1.9
+  nanometres**, while `x` differed in **0 of 880**. `x = R·radians(lon)` is a
+  multiplication and exact on any IEEE-754 machine; `y = R·log(tan(π/4 + φ/2))`
+  passes through `libm` twice, and C transcendental functions are not
+  standardised to the last bit. Stored as raw doubles, that bit reached
+  `json.dumps` and changed the hash.
+- **Two things about the fix were more instructive than the fix.** First, the
+  five hex-float `libm` comparisons in the diagnostic were **bit-identical on
+  both machines and still are** — the divergence rate is 3.4 %, so five samples
+  had an 84 % chance of showing nothing. The fingerprint section reassures
+  wrongly; the field-level diff answers. Second, rounding the metres only works
+  while no value sits on a rounding boundary, and that is a property of the data
+  rather than of the idea: measured, four decimals leave the closest value
+  **15.6×** the divergence away, five decimals 1.3× and six decimals **0.5×** —
+  at six, rounding would have changed nothing. So the generator now measures
+  that margin on the *unrounded* values, records it in `_provenance` and the
+  manifest, and refuses to write a fixture whose margin is under 1e-08 m. The
+  first version of that check read the **rounded** values, which sit on the grid
+  by definition and therefore always pass — a check proving nothing, found by
+  asking what it would take to make it fail.
+- **Resolved.** Projected metres are stored rounded to four decimals — a tenth
+  of a millimetre, and the precision the original geodatabase export actually
+  carried, so the fixture became *more* structurally faithful, not less. New
+  hash `247e2d00…9efe283`, confirmed byte-identical on both platforms. The cost
+  is finding 10's headline number: the forward round trip now closes at 0.05 mm
+  instead of 0.0000 mm. The tolerance stays at 1 mm rather than being tightened
+  to 0.06, because a check calibrated to this artifact's exact rounding would
+  fail on the next source for a reason that is not an error.
