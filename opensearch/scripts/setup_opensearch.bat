@@ -9,6 +9,9 @@ rem
 rem NOTE: this file was written from the Windows documentation but not executed
 rem here; the Linux script is the tested one. See the README.
 rem
+rem A "!" in --password does not survive cmd: see the KEYSTORE_PASSWORD note
+rem below. Use a password without it.
+rem
 rem The version is pinned to 2.12.0 in input\opensearch_dist.json because
 rem ArcGIS Pro 3.7 and ArcGIS Enterprise 12.1 certify exactly OpenSearch 2.12.
 rem The checksum is the one OpenSearch publishes; a mismatch aborts.
@@ -33,10 +36,14 @@ set "OWN_CERTS=true"
 set "EXTRA_SAN="
 rem Protects the generated PKCS#12 keystores inside build\, which is gitignored.
 set "KEYSTORE_PASSWORD=devsummit"
+rem Neither password contains "!". Under EnableDelayedExpansion cmd removes an
+rem unmatched "!" from any `set "VAR=..."` - including one arriving via
+rem --password or the environment - so the node would silently end up with a
+rem different password than the documented one, and every client gets a 401.
 if defined OPENSEARCH_INITIAL_ADMIN_PASSWORD (
     set "PASSWORD=%OPENSEARCH_INITIAL_ADMIN_PASSWORD%"
 ) else (
-    set "PASSWORD=DevSummit#2026!os"
+    set "PASSWORD=DevSummit#2026os"
 )
 
 :parse
@@ -72,7 +79,8 @@ echo   --demo-certs     keep OpenSearch's own demo certificates instead of
 echo                    generating one. Their root CA expired on 2023-09-28, so
 echo                    every client will reject the connection
 echo   --password PW    admin password. Must pass OpenSearch's strength check -
-echo                    'admin' does not (default: the committed demo password)
+echo                    'admin' does not (default: the committed demo password).
+echo                    Avoid an exclamation mark: cmd removes it from the value
 echo   --force          re-extract and re-configure, wiping the data directory
 echo   -h, --help       show this help
 echo.

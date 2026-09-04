@@ -64,7 +64,7 @@ done
 BASE_URL="$CLUSTER_SCHEME://$CLUSTER_HOST:$CLUSTER_PORT"
 CURL_OPTS=(--silent --show-error --max-time 5)
 if [ "$CLUSTER_MODE" != "insecure" ]; then
-    CURL_OPTS+=(--cacert "$BUILD/tls/root-ca.pem" -u "admin:${OPENSEARCH_PASSWORD:-DevSummit#2026!os}")
+    CURL_OPTS+=(--cacert "$BUILD/tls/root-ca.pem" -u "admin:${OPENSEARCH_PASSWORD:-DevSummit#2026os}")
 fi
 
 running_pid() {

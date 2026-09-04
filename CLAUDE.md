@@ -320,6 +320,20 @@ Rules that do apply regardless of stack:
   including the exact input path and expected output path.
 - **Prefer relative paths** inside the use case, so commands work regardless of
   where the repository is cloned.
+- **A ported script is a second implementation, so it can disagree with the
+  first — and a shared literal is where it happens.** Measured in `opensearch`:
+  the demo password `DevSummit#2026!os` reached OpenSearch as `DevSummit#2026os`
+  from `setup_opensearch.bat`, because `cmd.exe` under
+  `setlocal EnableDelayedExpansion` strips an unmatched `!` from every
+  `set "VAR=..."`. Setup reported success, the cluster came up, and the status
+  command said `green` — that command is a batch file too and mangled the
+  password the same way. Only the browser, the Python client and hand-typed
+  `curl` saw the 401. **A checker written in the same language as the thing it
+  checks shares its bugs**, which is the projection-formula rule from section 4
+  in a different costume. Keep values that any shell in the chain can rewrite
+  (`!`, `%`, `$`, `^`, backticks) out of shared constants rather than escaping
+  them per platform, and prove a credential from outside the script family that
+  set it.
 
 ---
 

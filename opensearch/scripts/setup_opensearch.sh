@@ -47,7 +47,11 @@ ALLOW_MMAP="true"
 FORCE="false"
 OWN_CERTS="true"
 EXTRA_SAN=""
-PASSWORD="${OPENSEARCH_INITIAL_ADMIN_PASSWORD:-DevSummit#2026!os}"
+# No "!" in this password on purpose: setup_opensearch.bat runs under
+# `setlocal EnableDelayedExpansion`, where cmd silently eats an unmatched "!"
+# out of any `set "VAR=..."`. The Windows node then carried a password one
+# character shorter than the documented one and every client got a 401.
+PASSWORD="${OPENSEARCH_INITIAL_ADMIN_PASSWORD:-DevSummit#2026os}"
 # Protects the generated PKCS#12 keystore inside build/, which is gitignored.
 KEYSTORE_PASSWORD="devsummit"
 

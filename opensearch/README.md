@@ -257,7 +257,7 @@ credentials are committed:
 | | |
 |---|---|
 | User | `admin` |
-| Password | `DevSummit#2026!os` |
+| Password | `DevSummit#2026os` |
 
 A throwaway single-node cluster on a test VM holding public open data is not a
 secret worth an environment variable, and a demo that needs a manual export
@@ -395,13 +395,13 @@ One example document:
 
 ```bash
 # full text, the reason for a search engine
-curl -s --cacert build/tls/root-ca.pem -u "admin:DevSummit#2026!os" \
+curl -s --cacert build/tls/root-ca.pem -u "admin:DevSummit#2026os" \
   "https://localhost:9200/nrw_stations/_search?pretty" \
   -H 'Content-Type: application/json' \
   -d '{"size":3,"query":{"match":{"name":"Hbf"}}}'
 
 # everything within 30 km of Köln Hbf
-curl -s --cacert build/tls/root-ca.pem -u "admin:DevSummit#2026!os" \
+curl -s --cacert build/tls/root-ca.pem -u "admin:DevSummit#2026os" \
   "https://localhost:9200/nrw_stations/_count" \
   -H 'Content-Type: application/json' \
   -d '{"query":{"geo_distance":{"distance":"30km",
@@ -428,7 +428,7 @@ tested; this side is documented. Verifying it is the obvious next step.
 2. *Catalog* pane → right-click **Databases** → **New Database Connection**.
 3. *Database Platform*: **OpenSearch**. *Host URL*: `https://localhost:9200`
    (append `:port` only if it is not 443/80 - here it always is).
-4. *User Name* `admin`, *Password* `DevSummit#2026!os`. Basic authentication is
+4. *User Name* `admin`, *Password* `DevSummit#2026os`. Basic authentication is
    the only kind ArcGIS supports for this platform.
 5. **Validate**, then name the connection and click **OK** - this writes a
    `.dbconn` file into the project.
@@ -520,12 +520,16 @@ out on the first publish attempt.
   other* and then measuring the overlap is work a language model is genuinely
   good at, and it turned "I only know that it is supposed to work" into a
   documented setup in one session.
-- **What failed.** Three times, and each one was informative. The demo TLS
+- **What failed.** Four times, and each one was informative. The demo TLS
   configuration of the certified release is expired, so the documented quick
   start is dead. Fixing it with one self-signed certificate hit an undocumented
   filter in OpenSearch Security (`CA:true` certificates are dropped from the
-  server chain). And the format the SQL plugin demands is precisely the one
-  ArcGIS forbids - a contradiction with no clean resolution from this side.
+  server chain). The format the SQL plugin demands is precisely the one ArcGIS
+  forbids - a contradiction with no clean resolution from this side. And the
+  Windows port of the setup script chose a demo password containing `!`, which
+  `cmd.exe` silently removes - so the node and the documentation disagreed by
+  one character, while the status check agreed with the node because it was
+  written in the same language and mangled it identically.
 - **The measurement to show.** The object-format index passes eleven of twelve
   checks. Document count, bounding box, distance query, provenance - all green,
   and the layer will not open in ArcGIS. Put the two verification tables side by

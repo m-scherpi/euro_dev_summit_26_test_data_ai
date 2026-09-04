@@ -60,7 +60,7 @@ if not exist "%BUILD%\cluster.env" (
 for /f "usebackq tokens=1,* delims==" %%a in ("%BUILD%\cluster.env") do set "%%a=%%b"
 
 set "BASE_URL=%CLUSTER_SCHEME%://%CLUSTER_HOST%:%CLUSTER_PORT%"
-if not defined OPENSEARCH_PASSWORD set "OPENSEARCH_PASSWORD=DevSummit#2026!os"
+if not defined OPENSEARCH_PASSWORD set "OPENSEARCH_PASSWORD=DevSummit#2026os"
 if /I "%CLUSTER_MODE%"=="insecure" (
     set "CURL_AUTH="
 ) else (

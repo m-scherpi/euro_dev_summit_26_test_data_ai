@@ -24,9 +24,11 @@ import urllib.request
 # The security demo configuration ships one admin user. `admin/admin` stopped
 # working in OpenSearch 2.12: the demo installer runs the password through a
 # strength check and rejects it. The password below is committed on purpose -
-# see the README section on credentials.
+# see the README section on credentials. It deliberately contains no "!":
+# cmd.exe eats one out of the setup script, so the node would end up with a
+# different password than this default.
 DEFAULT_USER = "admin"
-DEFAULT_PASSWORD = "DevSummit#2026!os"
+DEFAULT_PASSWORD = "DevSummit#2026os"
 DEFAULT_HOST = "https://localhost:9200"
 
 
