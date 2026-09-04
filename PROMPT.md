@@ -566,3 +566,203 @@ Two follow-up prompts arrived while the work was running:
 - Unchanged: no use-case folder was touched. Code snippets in the deck are inline
   rather than imported with Slidev's `<<< @/path` syntax, because the useful form
   of that would require adding `#region` markers to existing use-case scripts.
+
+---
+
+## [008] 2026-09-04 — Publishing the OpenSearch layer: the wrong "Feature" check box  ·  scope: `opensearch`
+
+**Prompt (original, DE)**
+> Das Aufsetzen des Opensearch-Clusters hat funktioniert. Auch das einladen in ArcGIS Pro. Unter @opensearch/input/nrw_stations_opensearch_viewlayer.png habe ich einen Screenshot mit dem Ergebnis abgelegt. Wie aber zu erwarten war, kann dieser Layer nicht publiziert werden. in ArcGIS Pro wird gesagt: Layers Datasource is not supportet. Gibt es noch einen anderen Weg, die Daten als FeatureService zu publizieren?
+
+**Prompt (translation, EN)**
+> Setting up the OpenSearch cluster worked. Loading it into ArcGIS Pro as well. Under @opensearch/input/nrw_stations_opensearch_viewlayer.png I have put a screenshot with the result. But as was to be expected, this layer cannot be published. In ArcGIS Pro it says: Layers Datasource is not supportet. Is there another way to publish the data as a FeatureService?
+
+**What happened**
+- The user had done what [006] left open: installed the cluster on Windows,
+  indexed the stations, connected ArcGIS Pro 3.7 over the private CA and drawn
+  all 449 stations. The screenshot shows the `.dbconn` in the Catalog pane, the
+  pop-up with real attributes, and the automatic feature binning the README had
+  predicted from Esri's documentation.
+- Research against Esri's current documentation, three pages, quoted to the full
+  stop this time: analyzer message **24078**, *Manage registered data stores*,
+  and *Connect to OpenSearch from ArcGIS* (Server 12.0).
+- **The "contradiction" [006] recorded does not exist.** That entry quoted
+  *"Sharing query layers from Elasticsearch or OpenSearch is not supported"* and
+  could not reconcile it with the *Reference registered data → Feature* workflow
+  documented right next to it. The sentence does not end there. It continues
+  *"…as a map image layer or web feature layer that copies all data, a web tile
+  layer, a vector tile, a web scene layer, or a map service"* — an enumeration
+  of what is excluded, and the reference-registered-data route is not in it.
+- So the answer to the prompt is yes, and it is one route rather than another
+  way: the *Share → Web Layer* pane offers a check box labelled **Feature**
+  twice, under *Copy all data* and under *Reference registered data*. The first
+  is unsupported for OpenSearch; the error names neither.
+- Derived, not quoted, and flagged as such: because Esri requires the server
+  database connection to be **identical** to the publisher connection for
+  OpenSearch, a `.dbconn` pointing at `https://localhost:9200` cannot work — the
+  federated server would resolve that on its own machine. The cluster has to be
+  reachable under one name from both, which is what `--host` / `--san` are for.
+- Considered and not built, at the user's decision: a Koop server
+  (`@koopjs/provider-elasticsearch`, Apache-2.0, OpenSearch support in beta) in
+  front of the index, which would serve a genuine FeatureServer without any
+  Enterprise at all. Recorded in the README as the fallback.
+
+**Artifacts**
+- `opensearch/input/nrw_stations_opensearch_viewlayer.png` — the working Pro
+  layer; the evidence that the connection side is done
+- `opensearch/README.md` — new finding 6, "Connecting from ArcGIS" rewritten
+  from documented-not-tested to tested-in-part, publishing section replaced by
+  the support matrix and the corrected procedure
+- `README.md`, `CLAUDE.md` — progress log and the new quoting convention
+
+**Result / Iteration**
+- **The best finding is a retraction.** [006] predicted a contradiction in
+  Esri's documentation and was pleased with it. The contradiction was a
+  truncated quote in our own notes. A shortened quote reads exactly like a
+  vendor being inconsistent, which is a comfortable conclusion and stops the
+  search — the sentence has to be read to the full stop before it can be called
+  a contradiction. Written into `CLAUDE.md`.
+- **The unsupported option is the one that looks default.** Two identically
+  labelled check boxes in one pane, one of which works, and an error message
+  (`Layer's Datasource is not supported`) that mentions neither the check box
+  nor the word OpenSearch. Same shape as finding 2 of this folder in reverse:
+  there the harmless error was loud, here the fatal choice is quiet.
+- **Resolved later the same day.** The corrected check box was right: with the
+  data store registered and *Reference registered data — Feature* selected, the
+  layer publishes. Two certificate problems stood in between, see [009] and
+  [010]. The `localhost` worry in this entry was wrong — server and cluster turned
+  out to be co-located, which [009] establishes from the shape of the next
+  error.
+- Open point on the screenshot: it carries an Esri World Topographic basemap
+  with no attribution bar — ArcGIS Pro does not paint one into the map view. A
+  caption naming the sources was added under the image in the README rather than
+  recapturing it. The later Map Viewer capture of the published service does
+  carry the full bar (`Land NRW | LGLN | Esri | TomTom | Garmin | USGS | FAO |
+  NOAA`), so the repository has a compliant capture either way.
+
+---
+
+## [009] 2026-09-04 — WinINet 12045: one machine, one certificate, two trust stores  ·  scope: `opensearch`
+
+**Prompt (original, DE)**
+> beim Publizieren fliegt noch folgender Fehler im ArcGIS Server Log: The certificate authority is invalid or incorrect (WinINet ERROR_INTERNET_INVALID_CA, 12045), URL = https://localhost:9200
+
+**Prompt (translation, EN)**
+> when publishing the following error still comes up in the ArcGIS Server log: The certificate authority is invalid or incorrect (WinINet ERROR_INTERNET_INVALID_CA, 12045), URL = https://localhost:9200
+
+Followed mid-turn by:
+
+> Der ArcGIS Server wurde aber seit dem Import in den Truststore beim aufsetzen des Clusters noch nicht neu gestartet
+
+> But the ArcGIS Server has not been restarted since the import into the trust store during the setting up of the cluster
+
+**What happened**
+- Checked the certificate before the client: `openssl x509` on the generated
+  files shows `CN=localhost`, SAN `DNS:localhost, IP:127.0.0.1, IP:::1`, root
+  `CA:TRUE, pathlen:0`, leaf `CA:FALSE`, both valid to 2036. Nothing wrong with
+  it, so the error is about trust, not about the artifact.
+- Distinguished the WinINet codes: 12045 is `ERROR_INTERNET_INVALID_CA`, and a
+  hostname mismatch would be 12038. That narrows it to the chain and rules out
+  the `localhost` name.
+- **Retracted part of [008].** That entry warned that a `.dbconn` on `localhost`
+  would send the federated server to its own machine. A TLS *rejection* proves a
+  TLS *handshake* happened, so ArcGIS Server and OpenSearch are co-located here
+  and the warning did not apply. Kept in the README, marked as predicted and
+  measured not to bite.
+- **Found the actual cause in our own documentation.** The README told the user
+  to import the CA with `certmgr.msc`. That is *Certificates, Current User*.
+  ArcGIS Pro runs as the interactive user and was satisfied; ArcGIS Server runs
+  as a service account and reads *Certificates, Local Computer* (`certlm.msc`).
+  Corroborated by Esri knowledge base 000013244, which resolves the identical
+  error by importing the root into the Local Computer store.
+- The user's follow-up reorders the diagnosis: the service has not been
+  restarted since the import, and the service process does not pick up a store
+  change made while it was running. So restart first, verify the store scope
+  second - documented in that order, with a PowerShell pair that reads
+  `Cert:\LocalMachine\Root` against `Cert:\CurrentUser\Root` so the scope is
+  measured rather than assumed.
+- Fixed the misleading hint at its source: both `setup_opensearch.sh` and
+  `setup_opensearch.bat` printed the `certmgr.msc`-shaped advice on every run.
+
+**Artifacts**
+- `opensearch/README.md` — finding 7, the corrected Pro step 1, the server-side
+  trust procedure, the marked retraction of the `localhost` prediction
+- `opensearch/scripts/setup_opensearch.sh`, `.bat` — corrected closing hint
+- `README.md`, `CLAUDE.md` — progress log, new convention
+
+**Result / Iteration**
+- **Two consumers of one certificate, and only one of them has a dialog.** This
+  is finding 2 of the folder in a new costume: the loud failure (Pro refusing to
+  connect) was the one everybody would have caught, and the silent one is that a
+  successful Pro connection says nothing about a service on the same machine.
+  "I imported the certificate" is not a statement about the machine.
+- **The documentation caused the bug it then had to explain.** `certmgr.msc` was
+  written into this repository from Windows documentation, in the same pass that
+  described the ArcGIS side without an ArcGIS installation. It is correct for
+  the client it was tested against and wrong for the one it was not.
+- **Resolved: both were needed.** The import went into the Local Computer store
+  *and* the service was restarted, and the WinINet error disappeared. So the
+  `certmgr.msc` advice this repository gave was not harmless luck — it was the
+  bug. It did not end the matter, though: a third trust store was waiting behind
+  it, see [010].
+
+---
+
+## [010] 2026-09-04 — The same product, the same certificate, a second trust store  ·  scope: `opensearch`
+
+**Prompt (original, DE)**
+> ich hab das cert in die local maschine importiert und den server neu gestartet. nun bekomme ich aber trotzdem noch 0 : javax.net.ssl.SSLHandshakeException: (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target See https://opensearch.org/docs/latest/clients/java/ for troubleshooting.
+
+**Prompt (translation, EN)**
+> i imported the cert into the local machine and restarted the server. but now i still get 0 : javax.net.ssl.SSLHandshakeException: (certificate_unknown) PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target See https://opensearch.org/docs/latest/clients/java/ for troubleshooting.
+
+**What happened**
+- Read the change in the error rather than the error: `WinINet 12045` is gone.
+  The fix from [009] worked; what is left is a different runtime. `PKIX` and
+  `sun.security.provider.certpath` are the JVM, and a JVM does not consult the
+  Windows certificate store - it reads its own `cacerts`.
+- **So ArcGIS Server needs the same certificate imported twice.** It is part
+  native and part Java, and it reaches OpenSearch through the OpenSearch Java
+  client (the URL in the error message is Esri handing through that client's own
+  troubleshooting link). Two unrelated trust stores in one product.
+- Documented the supported route rather than the working one: Server
+  Administrator Directory → `machines` → *<MACHINE>* → `sslcertificates` →
+  `importRootOrIntermediate` (POST, `alias` + `rootCACertificate`), then restart
+  the machine. Explicitly warned *against* `keytool` on
+  `Server\framework\runtime\jre\lib\security\cacerts` — it works, and an upgrade
+  replaces that JRE and silently removes the trust again.
+- Added Portal for ArcGIS as the fourth store on the list (own `cacerts`, own
+  admin-directory import, own restart), flagged as not measured — publishing
+  runs Pro → Portal → Server, so it is where the Java error goes next if it
+  moves.
+- Renamed finding 7 to cover the cascade and gave it the table of four
+  consumers, four stores, four mechanisms.
+
+**Artifacts**
+- `opensearch/README.md` — finding 7 extended and retitled, steps 3 and 4 added
+  to the publishing procedure, status and talk notes updated
+- `README.md`, `CLAUDE.md` — progress log, sharpened convention
+
+**Result / Iteration**
+- **Every fix in this chain was a successful verification that proved nothing
+  about the next consumer.** Pro connected — that was real, and said nothing
+  about the service. The Local Computer store validated and WinINet went quiet —
+  also real, and said nothing about the JVM in the same process tree. Three
+  green results in a row, three more failures behind them. This is the
+  strongest version of the folder's own rule so far, because it needs no
+  contrived example: the *same product on the same machine reading the same
+  file* answers differently depending on which half of itself is asking.
+- Sharpened the `CLAUDE.md` rule accordingly: a trust store is per **runtime**,
+  not merely per principal, and one product can appear on the consumer list more
+  than once.
+- **Resolved, and with it the whole chain.** The admin-directory import into the
+  ArcGIS Server JVM was the last step: the layer publishes as a web feature layer
+  referencing the index, opens in Map Viewer and answers its pop-ups out of
+  OpenSearch with no copy of the data anywhere. Portal's truststore turned out
+  not to be needed on this deployment — it stays documented as the next place to
+  look, not as a step. Evidence:
+  `opensearch/input/nrw_stations_opensearch_service.png`.
+- Two predictions from [006], written without an ArcGIS installation in the
+  room, are visible in that screenshot and both hold: `_id` became the Object ID
+  (it shows as `EMST`, the DS100 code), and `x_3857` / `y_3857` arrive as plain
+  attributes while the geometry is drawn from `location` alone.
