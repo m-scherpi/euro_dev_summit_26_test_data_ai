@@ -234,3 +234,133 @@ So the repository commits:
 <div class="rule">
 That turns "we used this version" into a checkable claim — and it lets the pipeline run offline, on stage.
 </div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 8 · opensearch</div>
+
+# No licence. So we rebuilt the data set.
+
+A real export from a real Enterprise Geodatabase, handed over to prove a second
+data source works — with **no licence statement**. Probably FAA-derived, and
+*probably is not a licence*. Gitignored; only its **measured structure** was
+rebuilt.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+Carried over: 880 features · a 6:1 category skew · `tot_enp` from 100 to
+38,893,670 · 3 duplicate names · two unique object ids that agree in **no** row
+· 825 "empty" values that are a single space
+
+</div>
+<div>
+
+Two properties were wrong on the first attempt and **both looked plausible**: a
+skew flattened to five equal buckets, a log-normal tail an order of magnitude
+short.
+
+<div class="metric mt-2">0</div>
+
+values copied from the original
+
+</div>
+</div>
+
+<div class="rule">
+Not being allowed to use real data is why generated test data exists. Measure the original <em>before</em> you replace it.
+</div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 9 · opensearch</div>
+
+# The same bug is loud or silent depending on where on Earth you are
+
+Swap latitude and longitude in the index. Identical code, two data sets.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**449 NRW stations**<br>
+lat 50–52, lon 5–9 — both are valid latitudes
+
+<div class="metric mt-2">449 / 449</div>
+
+loaded happily, and landed in the Indian Ocean
+
+</div>
+<div>
+
+**880 US airports**<br>
+lon −178 … +167 — mostly *not* valid latitudes
+
+<div class="metric mt-2">550 / 880</div>
+
+rejected by the engine, load aborted
+
+</div>
+</div>
+
+<div class="mt-3">
+
+```
+illegal latitude value [-97.302373] for location
+```
+
+</div>
+
+<div class="rule">
+The verifier that caught the stations was not better. It was luckier. Geography decided whether the bug had an error message.
+</div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 10 · opensearch</div>
+
+# 1.9 nanometres broke the build
+
+The committed fixture is pinned by SHA-256. Rebuilt on Windows with the **same
+seed**: different hash, identical size, identical feature count.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**Ruled out, in order**
+
+Newlines — `Get-FileHash` matched the in-memory hash<br>
+The seed — six RNG fingerprints identical, across CPython 3.12 and 3.14<br>
+Attributes and ordering — identical
+
+</div>
+<div>
+
+**What remained**
+
+`x = R·radians(lon)` → **0 of 880** differ<br>
+`y = R·log(tan(π/4+φ/2))` → **30 of 880**, up to 2 ULP
+
+<div class="metric mt-2">1.9 nm</div>
+
+libm is not standardised to the last bit
+
+</div>
+</div>
+
+<div class="mt-3">
+
+Fixed by storing **4 decimals** — the precision the real export had. At six,
+rounding would not have helped, so the generator measures that margin and
+refuses to write a fixture whose hash is reproducible by luck.
+
+</div>
+
+<div class="rule">
+Five hex-float samples of <code>log</code>/<code>tan</code> were bit-identical on both machines. At a 3.4% divergence rate, five samples miss it 84% of the time.
+</div>

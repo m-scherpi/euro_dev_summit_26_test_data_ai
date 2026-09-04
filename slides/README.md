@@ -64,6 +64,9 @@ CI does not download it on every build:
 npm install --no-save playwright-chromium
 npm run export
 npx slidev export --format png --output build/png/slide --range 1-14
+# or every slide, backup included, which is how the two overflow defects
+# and one broken layout were found that the build reported as success:
+npx slidev export --format png --output build/png
 ```
 
 ---
@@ -99,7 +102,7 @@ will not grow. So the deck is built to *leave things out*:
 
 - **Core deck, slides 1–14.** Four named rules, each proven by one measured
   number and one image. Nothing else survives the budget.
-- **Backup, slides 15–22.** Written out, not shown. Reachable with the arrow key
+- **Backup, slides 15–25.** Written out, not shown. Reachable with the arrow key
   during questions and readable in the repository.
 
 **House rule for new use cases:** a new one gets its own `pages/NN-*.md` and
@@ -142,6 +145,15 @@ Total ≈ 11 minutes, which leaves air for one slide to run long.
 | 20 | Two bugs of my own, worth more than the successes | `csv_data` |
 | 21 | Uniform in latitude is not uniform on the ground | `csv_data` |
 | 22 | Open-data portals rot — commit the slice, not just the URL | `open_data_search` |
+| 23 | No licence. So we rebuilt the data set | `opensearch` |
+| 24 | The same bug is loud or silent depending on where on Earth you are | `opensearch` |
+| 25 | 1.9 nanometres broke the build | `opensearch` |
+
+Slide 24 is the strongest candidate to displace a core-deck rule: it is the same
+point as **Rule 4** (the loud error is the harmless one) with a second
+measurement that makes it uncomfortable rather than merely true — the verifier
+that caught the stations was luckier, not better. It stays in the backup for now
+because Rule 4 already has an image and this has only numbers.
 
 ---
 
