@@ -268,6 +268,10 @@ if /I "%MODE%"=="insecure" (
     echo   The CA is a private one. ArcGIS Pro will refuse the connection until
     echo   build\tls\root-ca.pem is imported into the Windows certificate store
     echo   under Trusted Root Certification Authorities.
+    echo   Use certlm.msc ^(Local Computer^), not certmgr.msc ^(Current User^):
+    echo   the current-user store satisfies Pro but not ArcGIS Server, which
+    echo   runs as a service and fails with WinINet 12045. Restart the ArcGIS
+    echo   Server service after importing.
     set "SCHEME=https"
 )
 

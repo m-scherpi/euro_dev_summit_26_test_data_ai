@@ -386,6 +386,10 @@ EOF
     log "  The CA is a private one. ArcGIS Pro will refuse the connection until"
     log "  build/tls/root-ca.pem is imported into the Windows certificate store"
     log "  under Trusted Root Certification Authorities."
+    log "  Use certlm.msc (Local Computer), not certmgr.msc (Current User):"
+    log "  the current-user store satisfies Pro but not ArcGIS Server, which"
+    log "  runs as a service and fails with WinINet 12045. Restart the ArcGIS"
+    log "  Server service after importing."
 fi
 
 # State the other scripts read, so nobody has to remember which mode this is.
