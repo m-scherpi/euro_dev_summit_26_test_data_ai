@@ -1,0 +1,32 @@
+{
+  "_comment": [
+    "Connection template for the Enterprise Geodatabase. Copy it, fill it in, and pass the",
+    "copy with --connection; or pass the individual flags and skip the file entirely.",
+    "",
+    "There is deliberately no password field. It comes from the EGDB_PASSWORD environment",
+    "variable or --password, and never from a committed file (CLAUDE.md sections 10 and 11).",
+    "The opensearch use case carries a committed throwaway password under the narrow",
+    "exception in section 10; that exception is not taken here, because an Enterprise",
+    "Geodatabase is not a folder that gets deleted with build/ - it is a database instance",
+    "with a real login, and the demo cost of one 'set EGDB_PASSWORD=...' is smaller than the",
+    "cost of getting that judgement wrong.",
+    "",
+    "Note what the .sde file the importer generates does contain: ArcGIS Pro can hang when",
+    "opening a geodatabase from a connection file whose credentials were not saved, so",
+    "import_to_egdb.py creates it with SAVE_USERNAME. That means the generated file carries",
+    "the credentials - which is exactly why it is written to build/ and gitignored, never to",
+    "input/ or output/."
+  ],
+  "instance": "127.0.0.1",
+  "database": "devsummit",
+  "username": "devsummit",
+  "schema": null,
+  "version_type": "TRANSACTIONAL",
+  "_field_notes": {
+    "instance": "The PostgreSQL host. 127.0.0.1 rather than 'localhost' or the machine name, to keep name resolution out of a connection that does not need it. For a non-default port, Esri's documented syntax could not be confirmed on a version-specific page - try 'host,port' and check the result rather than assuming.",
+    "database": "Required for PostgreSQL, unlike SQL Server where it may be blank. Must be lowercase: PostgreSQL folds unquoted identifiers, and ArcGIS never quotes them.",
+    "username": "The data owner - the login that will own the feature class. Not 'sde': the sde login owns the geodatabase system tables, and putting user data in that schema mixes the two.",
+    "schema": "Null means the user's own schema, which is the normal case for a user-schema geodatabase.",
+    "version_type": "TRANSACTIONAL is the default. BRANCH would be the choice for a branch-versioned feature service, which this use case does not build."
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "_comment": [
+    "What the client certifies for the Enterprise Geodatabase this use case writes into,",
+    "and - separately - what could actually be verified from a fetchable page.",
+    "",
+    "Why this file exists at all: CLAUDE.md section 3 says open-data portals rot, so commit",
+    "the slice rather than the URL. Esri's own documentation turned out to rot the same way.",
+    "While this use case was built, doc.esri.com was mid-migration: several",
+    "pro.arcgis.com/en/pro-app/latest/... URLs 301-redirect there, and the version-pinned",
+    "enterprise.arcgis.com/en/system-requirements/12.1/... path for the PostgreSQL",
+    "requirements did not resolve - 12.0 was the highest that did. So each claim below",
+    "carries its source URL, the date it was retrieved, and an explicit verification status.",
+    "",
+    "import_to_egdb.py does not trust this file either. Its preflight reads the actual",
+    "PostgreSQL and PostGIS versions off the server and reports them next to these claims,",
+    "because a documented requirement and a running instance are two different facts."
+  ],
+  "client": {
+    "arcgis_pro": "3.7",
+    "arcgis_enterprise": "12.1",
+    "note": "The client pins its database support far harder than the database pins itself; see CLAUDE.md section 3 on pinning the version the client certifies rather than the newest one."
+  },
+  "postgresql": {
+    "claimed_for_12_1": {
+      "major_versions": [
+        "17.7",
+        "16.11",
+        "15.15",
+        "14.20"
+      ],
+      "postgis": "3.6.1",
+      "note": "This is the last ArcGIS release to support PostgreSQL 14.x.",
+      "source": "https://enterprise.arcgis.com/en/system-requirements/latest/windows/database-requirements-postgresql.htm",
+      "retrieved": "2026-09-04",
+      "verification_status": "UNVERIFIED - the page could not be fetched directly (ECONNRESET); these values come from a search engine's summary of it. Re-check before quoting publicly."
+    },
+    "verified_for_12_0": {
+      "major_versions": [
+        "17.5",
+        "16.9",
+        "15.13",
+        "14.18"
+      ],
+      "postgis": "3.5",
+      "excluded": [
+        "3.5.3",
+        "3.6.0"
+      ],
+      "quote": "PostGIS 3.5.3 and 3.6.0 are not supported due to PostGIS issue 5978.",
+      "source": "https://enterprise.arcgis.com/en/system-requirements/12.0/windows/database-requirements-postgresql.htm",
+      "retrieved": "2026-09-04",
+      "verification_status": "VERIFIED - page fetched and quoted. Kept as the nearest fully checkable data point to the 12.1 claim above."
+    }
+  },
+  "geometry_storage": {
+    "options": [
+      "POSTGIS",
+      "ST_GEOMETRY"
+    ],
+    "postgis": "Supported on every listed PostgreSQL major version and on EDB Postgres Advanced Server. The interoperable choice - a plain PostGIS geometry column is readable by GDAL, psycopg and anything else.",
+    "st_geometry": "Esri's own spatial type. Requires st_geometry.dll placed in PostgreSQL's lib directory, version-matched to the ArcGIS release and downloaded from My Esri, plus the Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 (x64) on the database host. Not supported on EDB Postgres Advanced Server.",
+    "chosen_here": null,
+    "note": "Null on purpose: this use case writes into a geodatabase that already exists, so the spatial type is a property of that instance rather than a decision made here. The preflight reports which one it found."
+  },
+  "client_libraries": {
+    "quote": "PostgreSQL client files are installed with ArcGIS Pro and ArcGIS Server; you do not need to install a PostgreSQL client or set environment variables to access the client.",
+    "source": "https://doc.esri.com/en/arcgis-pro/latest/help/data/databases/connect-postgresql.html",
+    "retrieved": "2026-09-04",
+    "verification_status": "VERIFIED - page fetched and quoted.",
+    "note": "So no libpq DLL has to be copied into the ArcGIS bin folder. Worth recording because the opposite was true for some older DBMS pairings, and the instruction survives in a lot of third-party write-ups."
+  },
+  "name_limits": {
+    "field_name_chars": 31,
+    "table_name_chars": 128,
+    "database_name_chars": 31,
+    "quote": "ArcGIS does not delimit object names. Do not create any tables, feature classes, indexes, databases, users, roles, or other object names that require delimiters if you will be using them with ArcGIS.",
+    "source": "https://desktop.arcgis.com/en/arcmap/10.7/manage-data/gdbs-in-postgresql/enterprise-geodatabase-limits.htm",
+    "retrieved": "2026-09-04",
+    "verification_status": "VERIFIED - page fetched and quoted, but the page is a 10.7-era URL. No 12.1-specific replacement with different numbers was found; treat the numbers as the best available rather than as confirmed for 12.1.",
+    "note": "The field limit is the one that bites: PostgreSQL itself allows 63 characters, so a name between 32 and 63 is accepted by the database and unaddressable through ArcGIS."
+  },
+  "field_types": {
+    "available": [
+      "SHORT",
+      "LONG",
+      "FLOAT",
+      "DOUBLE",
+      "TEXT",
+      "DATE",
+      "GUID",
+      "GLOBALID",
+      "BLOB"
+    ],
+    "no_boolean": true,
+    "length_applies_to": [
+      "TEXT",
+      "BLOB"
+    ],
+    "source": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/arcgis-field-data-types.htm",
+    "retrieved": "2026-09-04",
+    "verification_status": "VERIFIED for the types listed. A newer BIGINTEGER keyword is likely present in 3.7 but was not confirmed on a version-pinned page, so this importer never emits it."
+  },
+  "python": {
+    "claimed_pro_37": "3.13.13",
+    "claimed_arcgis_package": "2.4.3.1",
+    "claim_source": "Esri Community FAQ / support.esri.com KB for the Python version; Esri's conda channel metadata (https://conda.anaconda.org/esri/win-64/repodata.json) for the package version",
+    "claim_retrieved": "2026-09-04",
+    "measured_pro_37": "3.13.13",
+    "measured_full": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 22 2026, 16:49:16) [MSC v.1938 64 bit (AMD64)]",
+    "measured_on": "2026-09-04, Windows machine with ArcGIS Pro 3.7, via `propy -c \"import sys; print(sys.version)\"`",
+    "measured_arcgis_package": null,
+    "verification_status": "The Python version was recorded here as UNVERIFIED because Esri's own page returned no body / HTTP 403. It has now been CONFIRMED BY MEASUREMENT on the target machine: claimed 3.13.13, measured 3.13.13. The `arcgis` package version is still unmeasured - it was only ever inferred from conda channel metadata and is stated in no release note; import_to_egdb.py's preflight prints it, so it resolves on the first real run.",
+    "note": "The build string is worth keeping. This is MSVC (MSC v.1938), not glibc - the C runtime whose libm returned different last bits in the `opensearch` fixture (CLAUDE.md section 10). It costs nothing here because this pipeline projects nothing: the doubles in the CSV are handed to SHAPE@XY unchanged, so no transcendental function is ever called and there is no ULP to diverge."
+  },
+  "arcgis_api_for_python": {
+    "can_write_to_enterprise_geodatabase": false,
+    "quote": "Writing to file geodatabases requires the ArcPy site-package.",
+    "source": "https://developers.arcgis.com/python/latest/guide/introduction-to-the-spatially-enabled-dataframe/",
+    "retrieved": "2026-09-04",
+    "verification_status": "VERIFIED - page fetched and quoted.",
+    "documented_conflict": {
+      "guide_says": "Without ArcPy, to_featureclass can only write shapefile format.",
+      "api_reference_says": "The IO engine used for this operation can be set with the ARCGIS_IO_ENGINE environment variable. Available options: 'shapefile', 'gdal', 'arcpy'. If not set, the first available library in the environment will be used.",
+      "reference_source": "https://developers.arcgis.com/python/latest/api-reference/arcgis.features.toc.html",
+      "unresolved": "Neither page states what the GDAL engine can write. Recorded as an open conflict rather than resolved by guessing - CLAUDE.md section 4, quote the whole sentence and do not turn a gap into a claim in either direction."
+    }
+  },
+  "licence": {
+    "measured": "ArcEditor",
+    "means": "ArcGIS Pro Standard",
+    "measured_on": "2026-09-04, via `propy -c \"import arcpy; print(arcpy.ProductInfo())\"`",
+    "sufficient": true,
+    "note": "arcpy.ProductInfo() reports the historical names: ArcView = Basic, ArcEditor = Standard, ArcInfo = Advanced. Standard is enough to create and load a feature class in an existing Enterprise Geodatabase. Basic is not. Creating the geodatabase itself with CreateEnterpriseGeodatabase would also need Standard or Advanced, or an ArcGIS Server licence - not relevant here, because the geodatabase already exists."
+  }
+}

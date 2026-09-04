@@ -1,0 +1,23 @@
+# Dependencies for `try_arcgis_api.py` only - the script that runs the route the
+# request named (the ArcGIS API for Python) and records what it actually writes.
+#
+# The two other scripts need no requirements file at all: `analyze_source.py` is
+# standard library, and `import_to_egdb.py` / `verify_featureclass.py` need arcpy,
+# which is not installable from PyPI and exists only inside ArcGIS Pro's bundled
+# `arcgispro-py3` environment. See the README's Stack section - this is the one
+# use case in the repository that cannot fully isolate its dependencies.
+#
+# pyshp is pinned to 2.x deliberately. arcgis 2.4.1.1 calls the pyshp writer with
+# a `fieldType=` keyword that pyshp 3.x removed, so with pyshp 3.1.6 installed the
+# call dies inside the library *after* creating three files - a broken .shp, .shx
+# and .dbf left on disk. That is a third distinct outcome from the same line of
+# code, and it is recorded in the README rather than pinned away silently.
+arcgis==2.4.1.1
+pyshp==2.3.1
+# Python 3.12 removed `distutils` from the standard library, and arcgis 2.4.1.1's
+# geo accessor still imports it. setuptools ships the shim that satisfies it. A
+# `python3 -m venv` on 3.12 no longer installs setuptools by default, so without
+# this pin `from arcgis.features import GeoAccessor` fails with
+# `ModuleNotFoundError: No module named 'distutils'` and the accessor - the whole
+# point of the script - never registers.
+setuptools==80.9.0
