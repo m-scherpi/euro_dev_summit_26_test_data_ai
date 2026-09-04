@@ -299,6 +299,51 @@ coordinates.
   documents. Report such a conflict as an explicit INFO finding with the
   measurement behind it; do not resolve it by guessing, and do not hide it
   because it did not break the current path.
+- **Quote the whole sentence, especially when it looks like a contradiction.**
+  Two vendor statements that seem to conflict are usually one statement read
+  twice, once too short. Measured in `opensearch`: Esri's *"Sharing query layers
+  from Elasticsearch or OpenSearch is not supported"* was recorded here as an
+  unresolvable contradiction against the publishing workflow documented next to
+  it. The sentence continues *"...as a map image layer or web feature layer that
+  copies all data, a web tile layer, ..."* - an enumeration of exclusions, with
+  the one supported route surviving in the half that had been cut. A truncated
+  quote is indistinguishable from an inconsistent vendor, and "the documentation
+  contradicts itself" is a comfortable place to stop looking. Before recording a
+  contradiction, re-fetch the source and quote it to the full stop. When the
+  correction lands, keep the wrong reading visible and mark it corrected - the
+  delta is the talk material, deleting it is not.
+- **"The consumer" is a list, not a thing — and a credential or certificate has
+  more consumers than the data does.** Verifying against one client proves
+  nothing about the next. Measured in `opensearch`: the private CA was imported
+  once, ArcGIS Pro connected, and the certificate looked settled — then ArcGIS
+  Server, on the *same machine*, against the *same URL*, rejected it with
+  `WinINet ERROR_INTERNET_INVALID_CA (12045)`. A Windows trust store belongs to
+  a **principal**: `certmgr.msc` is the interactive user's store and satisfies a
+  desktop client, while a service account reads the Local Computer store
+  (`certlm.msc`). A service also will not see a certificate added while it was
+  running, so a restart is part of the import. **And a trust store is per
+  runtime, not merely per principal — one product can appear on the consumer
+  list twice.** With the Local Computer store fixed, the same ArcGIS Server
+  failed again with `PKIX path building failed`: it is part native and part
+  Java, and a JVM reads its own `cacerts`, never the Windows store. Four
+  consumers of one self-signed CA on one machine — Pro (Current User), the
+  server's native stack (Local Computer), the server's JVM (admin directory
+  `importRootOrIntermediate`), Portal's JVM (its own admin directory) — four
+  mechanisms, and **each fix only makes the next failure observable**. Three
+  green results in a row were each real and each said nothing about the next
+  consumer. So enumerate every process *and every runtime* that will open the
+  connection, and say which store each one reads, rather than writing "import it
+  into the Windows certificate store" as though there were one. Prefer the
+  vendor's supported import over the one that works: editing a bundled JRE's
+  `cacerts` directly is undone by the next upgrade, silently and months later.
+  The same shape as the projection-formula and same-language-checker rules: the
+  component that fails is the one with no dialog to show.
+- **A UI that offers the same label twice offers you the wrong one.** ArcGIS
+  Pro's share pane has a check box called **Feature** under *Copy all data* and
+  another called **Feature** under *Reference registered data*; for an
+  OpenSearch layer only the second works, and the error names neither. When a
+  documented capability fails, check whether the control you used is the control
+  the documentation meant before concluding the capability is missing.
 
 ---
 
