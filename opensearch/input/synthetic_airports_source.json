@@ -1,0 +1,166 @@
+{
+  "file": "synthetic_airports.json",
+  "features": 880,
+  "bytes": 253963,
+  "sha256": "247e2d00bc1abcb48658f77aa51fb3c2a2a2e83ed142db7c939ad91c09efe283",
+  "geometry_type": "esriGeometryPoint",
+  "spatial_reference": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "coordinate_units": "metres (EPSG:3857 / Web Mercator auxiliary sphere)",
+  "metre_decimals": 4,
+  "rounding_margin_m": 2.899169921875e-08,
+  "rounding_margin_note": "Smallest distance between an unrounded projected value and the rounding boundary it crosses. Must exceed 1e-08 m, or two platforms whose libm differs in the last bit could round a value in opposite directions and this file's SHA-256 would not be reproducible. Measured divergence between glibc and MSVC: 2 ULP, 1.9e-09 m, on 30 of 880 y values.",
+  "generated_by": "opensearch/scripts/make_airports_fixture.py",
+  "command": "python3 scripts/make_airports_fixture.py --seed 20260904 --count 880 --output input/synthetic_airports.json",
+  "seed": 20260904,
+  "model": "Claude Opus 5",
+  "generated": "2026-09-04",
+  "licence": "CC BY 4.0",
+  "attribution": "Synthetic test data from euro_dev_summit_26_test_data_ai, CC BY 4.0. Contains no third-party data.",
+  "structure_source": "Field names, Esri field types, string lengths, fieldAliases, geometryType, spatialReference and the measured distributions and quirks were copied from an export of a feature class in an Enterprise Geodatabase. No values were copied.",
+  "why_synthetic": "The original export carried no licence statement. It is probably derived from FAA airport data, but 'probably' is not a licence, and this repository is published under CC BY 4.0 (CLAUDE.md sections 3 and 11). The original is gitignored and never committed; only its structure was reused.",
+  "real_public_facts_retained": "US state names and official FIPS state codes - a US government standard in the public domain.",
+  "sampling": "Points are drawn inside hand-written lat/lon rectangles, uniform in sin(latitude) for equal-area coverage, rounded to 6 decimals and then projected to EPSG:3857. Rectangles are not boundaries - real state polygons would have needed a licence.",
+  "region_boxes_note": "lat_min, lat_max, lon_min, lon_max in EPSG:4326 degrees. Read by verify_airports.py. Consistency reference, not an independent one - the independent checks are the reprojection and the coordinate provenance.",
+  "region_boxes": {
+    "conus": [
+      24.0,
+      49.5,
+      -125.0,
+      -66.5
+    ],
+    "alaska": [
+      51.0,
+      71.5,
+      -179.5,
+      -129.5
+    ],
+    "hawaii": [
+      18.8,
+      22.4,
+      -160.0,
+      -154.7
+    ],
+    "pacific": [
+      13.0,
+      19.5,
+      144.5,
+      167.1
+    ],
+    "samoa": [
+      -14.5,
+      -14.1,
+      -171.0,
+      -169.3
+    ],
+    "caribbean": [
+      17.6,
+      18.6,
+      -67.4,
+      -64.5
+    ],
+    "outlying": [
+      16.6,
+      28.4,
+      -177.6,
+      -169.4
+    ]
+  },
+  "state_regions": {
+    "Alaska": "alaska",
+    "California": "conus",
+    "Texas": "conus",
+    "Florida": "conus",
+    "Michigan": "conus",
+    "New York": "conus",
+    "Washington": "conus",
+    "Illinois": "conus",
+    "Pennsylvania": "conus",
+    "Arizona": "conus",
+    "Colorado": "conus",
+    "North Carolina": "conus",
+    "Montana": "conus",
+    "New Mexico": "conus",
+    "Ohio": "conus",
+    "Wisconsin": "conus",
+    "Georgia": "conus",
+    "Virginia": "conus",
+    "Hawaii": "hawaii",
+    "Kansas": "conus",
+    "Minnesota": "conus",
+    "Alabama": "conus",
+    "Indiana": "conus",
+    "Missouri": "conus",
+    "Idaho": "conus",
+    "Iowa": "conus",
+    "Massachusetts": "conus",
+    "Nebraska": "conus",
+    "North Dakota": "conus",
+    "Utah": "conus",
+    "Wyoming": "conus",
+    "Maine": "conus",
+    "South Carolina": "conus",
+    "Tennessee": "conus",
+    "West Virginia": "conus",
+    "Arkansas": "conus",
+    "Louisiana": "conus",
+    "Mississippi": "conus",
+    "Oklahoma": "conus",
+    "Oregon": "conus",
+    "Puerto Rico": "caribbean",
+    "South Dakota": "conus",
+    "Kentucky": "conus",
+    "Nevada": "conus",
+    "New Jersey": "conus",
+    "Maryland": "conus",
+    "Connecticut": "conus",
+    "New Hampshire": "conus",
+    "American Samoa": "samoa",
+    "MP": "pacific",
+    "Rhode Island": "conus",
+    "Delaware": "conus",
+    "Guam": "pacific",
+    "HI": "outlying",
+    "Vermont": "conus",
+    "Virgin Islands": "caribbean",
+    "Wake Island": "pacific"
+  },
+  "quirks_reproduced": {
+    "blank_is_a_single_space": {
+      "field": 825,
+      "type": 453,
+      "acais": 65,
+      "note": "The geodatabase stores ' ', not NULL and not ''. In OpenSearch that is a real keyword term; in ArcGIS the cell looks empty and is not, so a filter on 'empty' finds nothing."
+    },
+    "state_is_sometimes_a_code": {
+      "values": [
+        "HI",
+        "MP"
+      ],
+      "note": "Two of 57 state values are abbreviations where the rest are spelled out - and 'HI' here is FIPS 74 (US Minor Outlying Islands), not FIPS 15 (Hawaii). Filtering state='HI' returns points ~4,000 km from Hawaii; filtering state='Hawaii' loses them entirely."
+    },
+    "one_fips_two_names": {
+      "fips": "74",
+      "names": [
+        "HI",
+        "Wake Island"
+      ],
+      "note": "The same FIPS code carries two different state values."
+    },
+    "two_unequal_object_ids": {
+      "note": "`objectid` and `ESRI_OID` are both 1..N and both unique, and they agree in zero rows. The field called objectid is not the object id; the stable key is the business key `locid`."
+    },
+    "duplicate_names": {
+      "count": 3,
+      "note": "`name` is not unique. 3 of 880 values occur twice."
+    },
+    "integral_doubles": {
+      "note": "`tot_enp` is esriFieldTypeDouble and every value is integral. The source schema defines the type, not the look of the values."
+    },
+    "fips_has_leading_zeros": {
+      "note": "289 of 880 state_fips values start with '0'. Never numeric."
+    }
+  }
+}
