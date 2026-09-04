@@ -171,6 +171,14 @@ if exist "%OS_HOME%" (
     echo removing previous installation
     rmdir /s /q "%OS_HOME%"
 )
+rem The admin password lives in the .opendistro_security index, initialised
+rem exactly once against an empty data directory. Keeping build\data across a
+rem re-setup keeps the old password whatever internal_users.yml says, and the
+rem only symptom is a 401. So --force wipes the data too, as the help promises.
+if exist "%BUILD%\data" (
+    echo wiping the data directory ^(the security index holds the old password^)
+    rmdir /s /q "%BUILD%\data"
+)
 echo extracting into build\ ...
 powershell -NoProfile -Command "Expand-Archive -LiteralPath '%ARCHIVE%' -DestinationPath '%BUILD%' -Force"
 if not exist "%OS_HOME%" (
@@ -179,6 +187,15 @@ if not exist "%OS_HOME%" (
 )
 
 :configure
+rem Same trap from the other side: an existing installation is not re-extracted,
+rem so internal_users.yml keeps the hash of the first run and the security index
+rem keeps the password of the first start. Say so rather than letting a changed
+rem --password fail silently with a 401 later.
+if /I not "%MODE%"=="insecure" if /I not "%FORCE%"=="true" if exist "%BUILD%\data\nodes" (
+    echo note: build\data already holds an initialised cluster. Its admin password
+    echo       is the one from the first start and cannot be changed here - re-run
+    echo       with --force to wipe the data directory and set a new one.
+)
 if not exist "%BUILD%\data" mkdir "%BUILD%\data"
 if not exist "%BUILD%\logs" mkdir "%BUILD%\logs"
 if not exist "%BUILD%\tls" mkdir "%BUILD%\tls"
@@ -217,6 +234,11 @@ if /I "%MODE%"=="insecure" (
         exit /b 1
     )
     echo installing demo TLS certificates and the admin user ...
+    rem -y: assume yes. -i: initialise, i.e. write certificates and security
+    rem settings into opensearch.yml. -s: skip the update if opensearch.yml
+    rem already carries a plugins.security setting - the installer then exits 0
+    rem without doing anything, which is why this script always rewrites
+    rem opensearch.yml first.
     set "OPENSEARCH_INITIAL_ADMIN_PASSWORD=%PASSWORD%"
     call "!DEMO!" -y -i -s
     if errorlevel 1 (

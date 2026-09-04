@@ -266,6 +266,32 @@ before the first command is a demo that fails on stage. Both are overridable -
 `$OPENSEARCH_PASSWORD` for the clients - and nothing else in this repository
 follows this pattern.
 
+Two things about that password are not cosmetic, and both were found while
+verifying the Windows path.
+
+**It contains no `!`, because `cmd.exe` would eat it.** `setup_opensearch.bat`
+runs under `setlocal EnableDelayedExpansion` - it has to, the certificate SANs
+are built up in a loop - and there cmd strips an unmatched `!` out of every
+`set "VAR=..."`. The original default `DevSummit#2026!os` therefore reached the
+demo installer as `DevSummit#2026os`: setup succeeded, the cluster started, and
+`run_opensearch.bat status` reported `green`, because that script mangles the
+password in exactly the same way. Everything that did *not* go through a batch
+file - the browser login, `osclient.py`, `curl` typed by hand - used the
+documented password and got **401**. The password the node has and the password
+the documentation names differed by one character, and every component that
+could have noticed was on the wrong side of the same bug.
+
+**The password can only be set once per data directory.** The admin user lives
+in the `.opendistro_security` index, which is initialised exactly once - on the
+first start against an empty `build/data`. Re-running setup rewrites
+`internal_users.yml`, and the running cluster ignores it. Worse, the installer
+only rewrites that file if it still carries the *default* hash it ships with
+(it does a literal string replacement of `$2a$12$VcCDgh2NDk07JGN0rjGbM...`), so
+a second attempt is a no-op on both ends. `--force` promised to wipe the data
+directory and did not; it now does, and a setup run that finds an initialised
+`build/data` says so instead of leaving a changed `--password` to fail as a 401
+later.
+
 `--insecure` turns the security plugin off entirely: plain HTTP, no credentials,
 no TLS. Useful for `curl`, and *not* what ArcGIS is documented against, since it
 needs basic auth. Note that the middle ground - security on, HTTP TLS off - is
@@ -498,11 +524,12 @@ out on the first publish attempt.
   ```
 
 - **Tested on Linux** (x86-64, Python 3.12), end to end: download, checksum,
-  certificate generation, start, index, verify, stop. The `.bat` scripts are
-  written from the Windows documentation and are **not executed here**; the
-  keytool chain and the OpenSearch configuration they produce are identical to
-  the tested Linux path, but the batch syntax itself is unverified. The ArcGIS
-  side is untested for the same reason.
+  certificate generation, start, index, verify, stop. The `.bat` scripts were
+  written from the Windows documentation, and running them on Windows turned up
+  the two credential defects described under [Credentials](#credentials) - the
+  swallowed `!` and the un-wiped data directory. With those fixed, **setup,
+  start and the admin login are confirmed working on Windows**. The ArcGIS side
+  is still untested.
 - **Attribution** for the data carried through this use case: DB InfraGO AG /
   Deutsche Bahn AG, licensed CC BY 4.0 - see
   [`../open_data_search/README.md`](../open_data_search/README.md). OpenSearch

@@ -198,12 +198,28 @@ if [ -d "$OS_HOME" ] && [ "$FORCE" != "true" ]; then
     log "installation already present: build/opensearch-$VERSION (use --force to redo)"
 else
     [ -d "$OS_HOME" ] && { log "removing previous installation"; rm -rf "$OS_HOME"; }
+    # The admin password lives in the .opendistro_security index, which is
+    # initialised exactly once - on the first start against an empty data
+    # directory. Keeping build/data across a re-setup therefore keeps the old
+    # password no matter what internal_users.yml says, and the only symptom is
+    # a 401. So --force wipes the data too, as the help text promises.
+    [ -d "$BUILD/data" ] && { log "wiping the data directory (the security index holds the old password)"; rm -rf "$BUILD/data"; }
     log "extracting into build/ ..."
     tar -xzf "$ARCHIVE" -C "$BUILD"
     [ -d "$OS_HOME" ] || die "archive did not contain opensearch-$VERSION/"
 fi
 
 mkdir -p "$BUILD/data" "$BUILD/logs" "$BUILD/tls"
+
+# Same trap from the other side: an installation that is already there is not
+# re-extracted, so internal_users.yml still carries the hash of the first run
+# and the security index carries the password of the first start. Say so
+# instead of letting a changed --password fail silently later.
+if [ "$MODE" != "insecure" ] && [ "$FORCE" != "true" ] && [ -d "$BUILD/data/nodes" ]; then
+    log "note: build/data already holds an initialised cluster. Its admin password"
+    log "      is the one from the first start and cannot be changed here - re-run"
+    log "      with --force to wipe the data directory and set a new one."
+fi
 
 # -- configure -----------------------------------------------------------------
 
@@ -244,7 +260,9 @@ else
 
     log "installing demo TLS certificates and the admin user ..."
     # -y: assume yes, -i: initialise (write certificates and security settings
-    # into opensearch.yml), -s: do not start the cluster afterwards.
+    # into opensearch.yml), -s: skip the update if opensearch.yml already
+    # carries a plugins.security setting - the installer exits 0 in that case,
+    # which is why this script always rewrites opensearch.yml first.
     OPENSEARCH_INITIAL_ADMIN_PASSWORD="$PASSWORD" \
         bash "$DEMO" -y -i -s \
         || die "the demo security installer failed. The most common cause is a

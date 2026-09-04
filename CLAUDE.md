@@ -478,6 +478,16 @@ Generated test data is only useful for a talk if it can be regenerated live.
   between runs is a finding, not a bug to hide.
 - **Never commit secrets.** API keys and endpoints come from environment
   variables; document the variable names, not the values.
+- **State where a credential is actually stored, and whether it can be changed
+  twice.** A password handed to a setup script is often copied into state on
+  first use and read from there afterwards: OpenSearch initialises the admin
+  user into the `.opendistro_security` index on the first start against an empty
+  data directory, and every later run of the installer is a no-op — it rewrites
+  `internal_users.yml` only while that file still carries the default hash it
+  ships with. So a re-setup with a new password silently keeps the old one and
+  fails as a 401 with nothing in the log. A `--force` that re-installs must wipe
+  the state directory too, or it is not a reset; and if it does not, say so in
+  the run rather than leaving it to be discovered.
 - **One narrow exception, and only when the user grants it: the credentials of a
   local throwaway service.** A single-node test cluster on a VM, holding nothing
   but public open data and deleted with its `build/` folder, is not a secret —
