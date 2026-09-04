@@ -967,3 +967,480 @@ Follow-up, after the plan was presented:
   instead of 0.0000 mm. The tolerance stays at 1 mm rather than being tightened
   to 0.06, because a check calibrated to this artifact's exact rounding would
   fail on the next source for a reason that is not an error.
+
+---
+
+## [012] 2026-09-04 — A universal importer into an Enterprise Geodatabase, and the API that cannot  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> Nun ein weiterer Use case, welcher tatsächlich einer der wichtigsten ist, da es sehr nahe an das herankommt, was wir im alltag sehr oft brauchen. Ich möchte einen Mechanismus entwickeln, welche unter nutzung der ArcGIS API for Python einen importer bereitstellt, welcher es ermöglich, auf einer Instanz einer Enterprise Geodatabase (EGDB) eine FeatureClass zu erzeugen und generierte oder recherchierte Daten (siehe die anderen use cases) in diese Importiert. Idealerweise auch so gestaltet, dass es universell nutzbar ist. Ich nehme mir daten, also csv oder json und das python programm analysiert diese, baut die featureclass entsprechend der struktur, legt diese in der Datenbank instanz an und importiert die dann. von da aus soll diese wieder in ArcGIS Pro genutzt werden. die bestehende EGDB soll auf einer maschine (im testfall wieder windows) unter localhost laufen, in der regel ist es eine postgresql instanz. Ziel ist ArcGIS Enterprise 12.1. Am anfang wäre es auch ok, wenn das transformieren der ausgangsdaten in ein lesbares format auch über irgendwelche anderen skripte möglich ist, je nachdem was einfach ist.
+
+**Prompt (translation, EN)**
+> Now another use case, which is actually one of the most important ones, because it comes very close to what we need very often in everyday work. I want to develop a mechanism which, using the ArcGIS API for Python, provides an importer that makes it possible to create a FeatureClass on an instance of an Enterprise Geodatabase (EGDB) and import generated or researched data (see the other use cases) into it. Ideally also designed so that it is universally usable. I take data, so csv or json, and the python program analyses it, builds the featureclass according to the structure, creates it in the database instance and then imports it. From there it should be used in ArcGIS Pro again. The existing EGDB should run on a machine (in the test case Windows again) on localhost, usually it is a postgresql instance. The target is ArcGIS Enterprise 12.1. At the beginning it would also be OK if transforming the source data into a readable format is possible via some other scripts, depending on what is easy.
+
+**What happened**
+
+- Four decisions agreed up front before any code (CLAUDE.md §12): new folder `egdb_import` rather than filling the `python_import` stub; the Windows VM with ArcGIS Pro 3.7 / Enterprise 12.1 and an existing PostgreSQL EGDB as the test environment; `csv_data/output/nrw_points.csv` as the committed demo source; verification depth **"plausible is enough"**. Credentials by environment variable only, connection template with placeholders, and no publishing to Enterprise (already shown in `opensearch`).
+- Documentation research first, and it changed the architecture. **The ArcGIS API for Python cannot create a feature class in an Enterprise Geodatabase.** The `arcgis` package is a REST client for a portal with no database connectivity at all — no SDE connection object, no `arcpy.da` equivalent. `GIS.content.import_data()` produces a *hosted* layer in the ArcGIS Data Store, copying the rows out of the customer's database. So the work is arcpy's, which means Windows and a licence.
+- Built three stages, split so only the middle one needs the VM: `analyze_source.py` (stdlib, anywhere) measures the source and writes an editable **schema contract**; `import_to_egdb.py` (arcpy) transcribes it into `CreateFeatureclass` + `AddField` + `InsertCursor`; `verify_featureclass.py` (arcpy) reads it back. The contract is the "universal" interface the prompt asked for — any other script can produce one.
+- Then measured the requested route instead of just asserting it was wrong, with `try_arcgis_api.py`. This produced the best finding in the folder, and it took four environments to see it (see Result).
+- Readers for CSV, a JSON array of objects, GeoJSON `FeatureCollection` and Esri JSON `FeatureSet`. The FeatureSet reader asserts `geometryType` and the spatial reference and aborts; smoke-tested against the real `opensearch` fixture, where it correctly refused because the file carries a column literally named `objectid` — the geodatabase manages that name itself.
+- `--dry-run` was made a *check* rather than a printout: it coerces every row to its declared field type without importing arcpy. Proven to fire on three perturbed copies of the source.
+- Documentation duties: this entry, `egdb_import/README.md`, root `README.md` (index, four executables rows, conventions bullet, progress log), `CLAUDE.md`, and three backup slides.
+
+**Artifacts**
+
+- `egdb_import/scripts/analyze_source.py` — measure a source, write the schema contract; refuses to guess a CRS
+- `egdb_import/scripts/schema.py` — type inference with evidence, and the geodatabase's name rules
+- `egdb_import/scripts/sources.py` — the three JSON shapes and CSV, shared by analyser and loader
+- `egdb_import/scripts/import_to_egdb.py` — the arcpy loader, with a rehearsing `--dry-run`
+- `egdb_import/scripts/verify_featureclass.py` — eight checks plus two INFO rows, read back independently
+- `egdb_import/scripts/egdb_checks.py` — verifier-only: the Esri type vocabulary, transcribed not derived
+- `egdb_import/scripts/try_arcgis_api.py` — the requested route, and what it actually writes
+- `egdb_import/input/egdb_requirements.json` — claimed vs. verifiable client/DBMS requirements
+- `egdb_import/input/egdb_connection.example.json` — connection template, deliberately no password field
+- `egdb_import/output/nrw_points_schema.json` — the contract: 10 fields with the measurement behind each type
+- `egdb_import/output/nrw_points_arcpy_plan.md` — 13 arcpy calls with every argument, plus the row rehearsal
+- `egdb_import/output/arcgis_api_attempt.md` — the measurement of the requested route
+- `egdb_import/requirements.txt` — pins for `try_arcgis_api.py` only, each pin with its reason
+
+**Result / Iteration**
+
+- **The requested API does not fail, it substitutes.** `DataFrame.spatial.to_featureclass()` was run four times, changing nothing but what was importable: (1) `arcgis` alone raises *"Cannot Export the data without ArcPy, Shapely, or GDAL libraries. Please install one and try again."* (2) With **shapely** installed it raises the **same message** — the code checks `USE_ARCPY`/`USE_PYSHP`/`USE_GDAL` and shapely is not in the list. Following the error message's own instruction does not fix the error. (3) With **pyshp 3.1.6** it writes `.shp`, `.shx` and `.dbf`, then dies inside the library on `DbfWriter.field() got an unexpected keyword argument 'fieldType'`, leaving three broken files behind. (4) With **pyshp 2.3.1** it **succeeds silently and writes a shapefile**, returning its path.
+- **What that silent success did to the schema**, against the contract: four of ten field names truncated to the DBF limit of ten characters (`description` → `descriptio`, `visitor_count` → `visitor_co`, `elevation_m` → `elevation_`, `is_enchanted` → `is_enchant`); `TEXT(40)` and `TEXT(120)`, both measured from the data, both replaced by `C(255)`, the format's maximum; every `DOUBLE` written as DBF type `F`. And one inversion worth the whole exercise: `is_enchanted` became DBF type `L`, a **boolean** — the contract had substituted `SHORT` because an Enterprise Geodatabase has no boolean type, so the format that cannot be the target represents that column *better* than the target can. The spatial reference did survive, in the sidecar `.prj`.
+- **A correction made mid-task.** The first claim written down was "without arcpy it silently writes a shapefile". That is only true for one of the four environments; with no writer library at all it raises loudly and correctly. The nuance is the finding, and the wrong first reading is kept here rather than deleted.
+- **A documentation conflict recorded, not resolved.** Esri's guide says shapefile-only without arcpy; the current API reference documents `ARCGIS_IO_ENGINE` with `'shapefile' | 'gdal' | 'arcpy'` and *"the first available library in the environment will be used"*. Neither says what the GDAL engine can write. After [008], the rule is to quote to the full stop and leave a gap as a gap.
+- **Esri's own documentation rots like an open-data portal.** The version-pinned `enterprise.arcgis.com/.../12.1/...` path for the PostgreSQL requirements does not resolve — 12.0 was the highest that did — and several `pro.arcgis.com/.../latest/...` URLs 301-redirect to `doc.esri.com`. So `input/egdb_requirements.json` records each claim with its URL, retrieval date and an explicit **verification status**, and three numbers are marked UNVERIFIED: the Python version in Pro 3.7, the bundled `arcgis` version (inferred from Esri's conda channel metadata, never stated in release notes) and the certified PostgreSQL/PostGIS pairing for 12.1. The importer's preflight asks the machine instead.
+- **`--dry-run` earns its place.** Three planted defects each aborted with the right row number: a `description` grown to 130 characters against `TEXT(120)`, an `is_enchanted` set to `maybe`, and a `latitude` written with a German decimal comma. No database was involved in catching any of them.
+- **Two refusals that are features.** `nrw_points.csv` carries *both* `latitude`/`longitude` and `x_3857`/`y_3857`, and a feature class has exactly one spatial reference — so `--geometry-from` is mandatory rather than defaulted. And `--wkid 3857` alongside `latitude`/`longitude` columns is an error, not an override.
+- **Not finished.** Stages 2 and 3 have **not** been run against a real geodatabase. The arcpy code is written from the tool references and is unproven; `output/verification_report.md` and the ArcGIS Pro screenshot do not exist yet. Next iteration is the Windows VM: the real load, the verifier, the perturbation runs that prove each check fires on its own, and the layer in Pro.
+
+---
+
+## [013] 2026-09-04 — A runbook for the Windows half  ·  scope: `egdb_import`
+
+**Prompt (original, DE)**
+> ich brauche noch eine schritt für schritt anleitung, was ich jetzt wohin kopieren soll und was ich ausführen soll
+
+**Prompt (translation, EN)**
+> i still need a step by step guide, what i should copy where now and what i should run
+
+**What happened**
+
+- Added a *Running it on the Windows machine* section to `egdb_import/README.md`
+  rather than a separate document, so there is one source of truth for the
+  commands. Nine steps: get the repository there, confirm the environment,
+  confirm the dry run, fill in the connection, load, verify, prove the checks
+  fire, open it in ArcGIS Pro, and optionally run the requested API route with
+  arcpy present.
+- Checked `.gitattributes` before writing step 0, and it changed the
+  instruction. It declares `* text=auto eol=lf`, so a **clone** on Windows keeps
+  LF newlines and the source CSV keeps the SHA-256 the schema contract records —
+  while a hand copy through a share, a zip or an editor is protected by nothing.
+  Step 0 therefore says clone, not copy, and gives the `certutil -hashfile`
+  command plus the expected digest.
+- Wrote step 6 as a table of four perturbations, each with the check it must
+  turn red, and told the reader to point `--contract` at a copy in `build/` so
+  the committed artifact survives being tampered with.
+- Named the likely failures in advance instead of leaving them to be discovered:
+  a Basic licence is not enough, the non-default-port syntax is unconfirmed, the
+  `.sde` carries the saved password and must stay in `build/`, and the arcpy code
+  has never run so a wrong positional argument is the likeliest first error.
+
+**Artifacts**
+
+- `egdb_import/README.md` — new *Running it on the Windows machine* section
+
+**Result / Iteration**
+
+- No code changed; this is the missing half of the instructions rather than a
+  new capability.
+- The useful part was step 0. "Copy the folder to the VM" was the obvious
+  wording and it is wrong: the hash the contract pins is only protected inside a
+  git checkout, which is exactly the distinction CLAUDE.md §10 already
+  records — `.gitattributes` protects a clone and nothing protects a folder
+  someone copied. Verified the expected digest against the file rather than
+  transcribing it from the contract.
+- Step 1 also asks for a number back: the README states Python 3.13.13 for Pro
+  3.7 on the strength of a page that could not be fetched, and the run replaces
+  the claim with a measurement.
+
+---
+
+## [014] 2026-09-04 — The runbook was written for the wrong shell  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> in windows powershell funktioniert bei mir das set propy nicht richtig. er kann das nicht als command ausführen
+
+**Prompt (translation, EN)**
+> in windows powershell the set propy does not work properly for me. he cannot execute that as a command
+
+**What happened**
+
+- The runbook from [013] was written in `cmd.exe` syntax and run in PowerShell,
+  where none of it works: `set PROPY=...` sets nothing, `%PROPY%` expands to
+  nothing, `%PROGRAMFILES%` is not a variable, and `^` is not a line
+  continuation. Converted every command in `egdb_import/README.md` to
+  PowerShell: `$propy = "$env:ProgramFiles\..."`, backtick continuations, and
+  `Get-FileHash` in place of `certutil`.
+- The reported symptom - "cannot execute that as a command" - has its own cause
+  beyond the assignment syntax. PowerShell treats a string held in a variable as
+  *data*, so `$propy args` prints the path rather than running it; the call
+  operator `&` is what makes it a command. Documented at the point of use rather
+  than as a footnote.
+- Added a second route for the same step: ArcGIS Pro's
+  `envs\arcgispro-py3\python.exe`, which sidesteps the batch-file argument layer
+  when `propy.bat` fights over quoting. `propy.bat` only activates the conda
+  environment first, so for a plain arcpy script the two are equivalent.
+- Added a `Test-Path $propy` line before anything else, so a wrong install path
+  is one `False` rather than a confusing error later.
+
+**Artifacts**
+
+- `egdb_import/README.md` — every Windows command converted to PowerShell, with
+  the shell named in the first line of the runbook
+- `CLAUDE.md` — §5, the "a shared literal is where two implementations disagree"
+  bullet extended with the PowerShell half
+- `README.md` (root) — the executables table row for `verify_featureclass.py`
+
+**Result / Iteration**
+
+- My mistake, and an instructive one: `opensearch` shipped `.bat` files, so cmd
+  syntax was the habit, and this use case has no `.bat` files at all. Nothing in
+  the runbook said which shell it was for, which is exactly why it read as
+  plausible and produced three failures for three different reasons - none of
+  them the tool's.
+- The finding worth keeping is the credential one, because it is the `!`-stripped
+  OpenSearch password again with the characters reversed. PowerShell interpolates
+  inside **double** quotes, so `$env:EGDB_PASSWORD = "a$bc"` silently loses
+  `$bc` and the database answers with an ordinary authentication failure. The
+  runbook now uses single quotes and asks the reader to check
+  `$env:EGDB_PASSWORD.Length` against what they typed before blaming the server.
+- Still not run against a real geodatabase. This iteration removed an obstacle
+  to trying, it did not test anything.
+
+---
+
+## [015] 2026-09-04 — A leading `&` is a bad interface  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> PS C:\data\opensearch_devsummit\egdb_import> $propy = "$env:ProgramFiles\ArcGIS\Pro\bin\Python\Scripts\propy.bat"
+> PS C:\data\opensearch_devsummit\egdb_import> Test-Path $propy
+> True
+> PS C:\data\opensearch_devsummit\egdb_import> $propy -c 'import arcpy, sys; print(sys.version); print(arcpy.ProductInfo()); print(arcpy.GetInstallInfo()["Version"])'
+> At line:1 char:8
+> + $propy -c 'import arcpy, sys; print(sys.version); print(arcpy.Product ...
+> +        ~~
+> Unexpected token '-c' in expression or statement.
+> [... second identical failure for $py ...]
+
+**Prompt (translation, EN)**
+> (A PowerShell transcript: the variable is set, `Test-Path` returns True, and
+> invoking it fails with `Unexpected token '-c' in expression or statement` —
+> twice, once for `propy.bat` and once for the environment's `python.exe`.)
+
+**What happened**
+
+- Checked the README first rather than answering from the transcript: it does
+  carry `& $propy` and `& $py`. The call operator was lost in the copy, which is
+  the whole finding.
+- Replaced the variable-plus-call-operator pattern with a **function**:
+  `function propy { & "...\propy.bat" @args }`. Every subsequent step in the
+  runbook is now a bare `propy scripts\...` with no PowerShell-specific
+  punctuation at all, and the alternative interpreter is a one-line redefinition
+  of the same function rather than a second variable to substitute everywhere.
+- Added an out for the inline probe: if `-c` quoting fights, skip it. Step 2 is
+  the same check with only a file path, and step 4's preflight prints the
+  version, licence level and server versions anyway. The probe was a convenience
+  presented as a gate.
+- Recorded the rule in `CLAUDE.md` §5.
+
+**Artifacts**
+
+- `egdb_import/README.md` — step 1 rewritten around a function; ten call sites
+  simplified
+- `CLAUDE.md` — §5, extended
+- `README.md` (root) — executables table row
+
+**Result / Iteration**
+
+- The error message is the interesting part. `Unexpected token '-c'` names the
+  flag, so it reads as "this tool does not accept `-c`" when the actual cause is
+  a missing operator three characters earlier. That is the same shape as the
+  findings this repository keeps collecting: the diagnostic points at the wrong
+  component. Here it pointed at Python's flag when the parser had never got as
+  far as running Python.
+- The design lesson is mine, not PowerShell's. I documented `&` in prose
+  *underneath* the code block - "The `&` is not decoration" - which is precisely
+  where a reader who is copying a command will not look. A command whose
+  correctness depends on one easily-lost leading character should not be
+  copy-pasted eight times; the character belongs in a definition.
+- Still nothing run against a real geodatabase. Two iterations in a row have now
+  been spent on the shell rather than on the database.
+
+---
+
+## [016] 2026-09-04 — Two claims become measurements  ·  scope: `egdb_import`
+
+**Prompt (original, DE)**
+> mit der function funktioniert es. Version ist: 3.13.13 | packaged by Anaconda, Inc. | (main, Apr 22 2026, 16:49:16) [MSC v.1938 64 bit (AMD64)]
+> ArcEditor
+
+**Prompt (translation, EN)**
+> with the function it works. Version is: 3.13.13 | packaged by Anaconda, Inc. | (main, Apr 22 2026, 16:49:16) [MSC v.1938 64 bit (AMD64)]
+> ArcEditor
+
+**What happened**
+
+- Step 1 of the runbook passed. Recorded both numbers in
+  `input/egdb_requirements.json` as `measured_*` fields beside the existing
+  `claimed_*` ones, and flipped the Python entry's verification status.
+- **Python 3.13.13 for ArcGIS Pro 3.7 is confirmed.** It was recorded as
+  UNVERIFIED because Esri's own page returned HTTP 403 and the number came from
+  search results alone. Claimed 3.13.13, measured 3.13.13.
+- **`ArcEditor` is Standard, and sufficient.** `arcpy.ProductInfo()` reports the
+  historical product names, so the check the runbook asks for is meaningful:
+  `ArcView` would have meant Basic and would not have been enough for the
+  enterprise-geodatabase tools.
+- Replaced the runbook's "write down the version it prints" with the actual
+  output, and turned the reproducibility section's prose about unverified claims
+  into a four-row status table.
+
+**Artifacts**
+
+- `egdb_import/input/egdb_requirements.json` — `python` block rewritten with
+  claim *and* measurement; new `licence` block
+- `egdb_import/README.md` — step 1 carries the measured output; reproducibility
+  section now a claim/status table
+
+**Result / Iteration**
+
+- Two of four version claims are now settled. The `arcgis` package version
+  (2.4.3.1, inferred from Esri's conda channel metadata and stated in no release
+  note) and the certified PostgreSQL/PostGIS pairing for 12.1 are still
+  unmeasured; both are printed by the importer's preflight, so they resolve on
+  the first real run.
+- The build string turned out worth keeping for a reason unrelated to versions:
+  it is **MSVC**, not glibc — the C runtime whose `libm` returned different last
+  bits in the `opensearch` fixture. It costs nothing here, and the reason is
+  worth stating rather than assuming: this pipeline projects nothing, so the
+  doubles from the CSV reach `SHAPE@XY` unchanged, no transcendental function is
+  ever called, and there is no last bit to disagree about. The immunity is a
+  consequence of the design decision to build the feature class in the CRS the
+  source already carries.
+- Stages 2 and 3 still not run. Next: the dry run on Windows, then the load.
+
+---
+
+## [017] 2026-09-04 — A second source, and the declaration that beat the measurement  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> Es hat funktioniert. Ich habe den passenden Screenshot hinzugefügt. Was muss ich tun, um jetzt z.B. aus der synthetischen Airports JSON auch eine FeatureClass zu machen?
+
+**Prompt (translation, EN)**
+> It worked. I added the matching screenshot. What do I have to do to now also make a FeatureClass from the synthetic airports JSON, for example?
+
+**What happened**
+
+- Read the screenshot rather than taking "it worked" at face value, and it
+  confirmed the load: `agsdb.sde.nrw_points`, points across NRW, all ten
+  declared fields in the pop-up, `is_enchanted` showing `0`. It also showed
+  that the connection was made as `sde`, so the qualified name is
+  `agsdb.sde.nrw_points` and the verifier needs `--database agsdb --schema sde`.
+  Recorded both in the runbook.
+- The airports FeatureSet could not be analysed at all: two of its eleven
+  columns are called `objectid` and `globalid`, which the geodatabase manages
+  itself, and `input/` is read-only. Added `--rename OLD=NEW`, repeatable, with
+  an unused rename treated as an error rather than a no-op.
+- Then found the source **declares its own schema** in a `fields` block - real
+  Esri types and real TEXT lengths, because it came out of a geodatabase. Made
+  the declaration decide the type, with the measurement recorded beside it and
+  `--infer-types` to force the measurement instead. One case is refused rather
+  than reported: a declared TEXT length the source's own values exceed.
+- Two bugs found, both by the row rehearsal, both fixed.
+- Regenerated all five committed artifacts and re-verified byte reproducibility.
+
+**Artifacts**
+
+- `egdb_import/output/synthetic_airports_schema.json` — 11 fields, declared
+  types, EPSG:3857
+- `egdb_import/output/synthetic_airports_arcpy_plan.md` — 14 calls, 880-row
+  rehearsal
+- `egdb_import/scripts/schema.py` — `--rename` support, `declared_field()`,
+  `is_absent()` made public
+- `egdb_import/scripts/sources.py` — the FeatureSet's `fields` block carried out
+- `egdb_import/input/csv_to_egdb_pro.png` — the user's ArcGIS Pro capture
+- `CLAUDE.md` — four new conventions
+
+**Result / Iteration**
+
+- **The declaration beat the measurement, twice, and that inverts this
+  repository's usual rule.** `state_fips` measures as integers and is declared
+  `TEXT(2)`; its values include `01` … `09`, so `LONG` would have turned `'01'`
+  into `1` and `WHERE state_fips = '01'` would find nothing. `acais` has one
+  real value, `Y`, so the boolean heuristic would have fired and collapsed it
+  into 1/0. A FIPS code is a *code* - a string that looks like a number - and no
+  amount of measuring a column of digits reveals that. Everywhere else in this
+  repository the measurement is the thing to trust; here it was wrong and the
+  file was right.
+- **1,343 values that look empty and are not.** `" "` - a single space - in 825
+  rows of `field`, 453 of `type`, 65 of `acais`. The first version treated a
+  whitespace-only string as absent and would have written `NULL`, which is a
+  silent edit to somebody else's data. Now carried verbatim, counted as
+  `whitespace_only_values`, and all three fields correctly `nullable: false`.
+- **The mechanism that exposed it is the finding.** The analyser and the loader
+  held *two different definitions of empty*, so the rehearsal aborted at row 0
+  with "field 'field' is empty but the contract declares it non-nullable" - one
+  file, two answers. The predicate is now a single public function imported by
+  both. Code that has to **agree** should be shared; code that has to **check**
+  must not be. Getting that backwards produces either a bug that passes both
+  sides or a conflict at row 0, and this was the second kind, which is the lucky
+  one.
+- **Two things still open, both worth naming.** `verify_featureclass.py` has not
+  been run - the layer draws, which is exactly what check 4 exists to prove is
+  not enough. And the screenshot's basemap attribution is **collapsed**: ArcGIS
+  Pro hides the provider notice behind a small control in the map frame's
+  bottom-right corner, so a capture of the entire application window contains no
+  notice at all without anything having been cropped. For a published image that
+  is the same as cropping it, and the World Topographic Map includes
+  OpenStreetMap, whose ODbL makes attribution the condition for redistributing a
+  map image. Needs one click and a re-capture.
+- The screenshot also settled a question nobody asked: the pop-up shows
+  `objectid 65` above the CSV's own `id 65`. They agree, which is worse than the
+  `opensearch` case where the equivalent pair matched in zero rows - an accidental
+  agreement invites the join that will break the first time a row is deleted.
+
+---
+
+## [018] 2026-09-04 — A qualified name I built instead of looking up  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> Screenshot aktualisiert. Verify läuft nicht: PS C:\data\opensearch_devsummit\egdb_import> propy scripts\verify_featureclass.py --contract output\nrw_points_schema.json --sde build\egdb.sde --database agsdb --report output\verification_report.md
+> [... Traceback ...]
+> arcgisscripting.ExecuteError: Failed to execute. Parameters are not valid.
+> ERROR 000732: Input Rows: Dataset build\egdb.sde\agsdb.agsdb.nrw_points does not exist or is not supported
+> Failed to execute (GetCount).
+
+**Prompt (translation, EN)**
+> Screenshot updated. Verify does not run: [PowerShell transcript of
+> `verify_featureclass.py`, failing with `ERROR 000732: Input Rows: Dataset
+> build\egdb.sde\agsdb.agsdb.nrw_points does not exist or is not supported`.]
+
+**What happened**
+
+- The path in the error is the bug: `agsdb.agsdb.nrw_points` against a real
+  `agsdb.sde.nrw_points`. My verifier defaulted the schema to the database name
+  when `--schema` was not given, so it *constructed* a qualified name rather
+  than finding one.
+- Replaced the construction with a lookup: `resolve_feature_class()` enumerates
+  the workspace with `arcpy.ListFeatureClasses()` and matches on the unqualified
+  name, prints what it resolved to, and keeps `--database`/`--schema` as filters
+  for the one case a human must decide - the same table name in two schemas. A
+  miss now lists what the connection actually contains.
+- `--database` and `--schema` are no longer required, so the command is three
+  flags shorter and has nothing left to guess wrong.
+- Checked the updated screenshot rather than taking it on trust, and found the
+  attribution - in the **Service Layer Credits** panel, not at the map's bottom
+  edge where I had told the user to look. Corrected the instruction, and
+  recorded the notice as text in the README as well, because an image can be
+  resized or replaced and the obligation cannot.
+
+**Artifacts**
+
+- `egdb_import/scripts/verify_featureclass.py` — `resolve_feature_class()`,
+  `_list_feature_classes()`, both positional flags made optional
+- `egdb_import/input/csv_to_egdb_pro.png` — re-captured with the credits panel open
+- `egdb_import/README.md` — verify command simplified, the error documented,
+  step 7 corrected
+- `CLAUDE.md` — two rules
+
+**Result / Iteration**
+
+- **The error message named the wrong component, again.** `ERROR 000732: Input
+  Rows: Dataset ... does not exist or is not supported` points at the *dataset*,
+  so it reads as "the load failed" or "this feature class type is unsupported".
+  The load was fine; the checker had invented a path. This is the third time in
+  this use case that the diagnostic has pointed one layer away from the cause -
+  after `Unexpected token '-c'` naming Python's flag for a missing PowerShell
+  operator, and `to_featureclass` returning a success for a shapefile.
+- **The rule: do not construct a qualified name you can look up.** The schema in
+  `database.schema.table` belongs to the connecting login and is not derivable
+  from anything the script is told. A default that is wrong half the time is
+  worse than a required flag, and a lookup is better than both.
+- **The attribution was there, and my instruction was not.** ArcGIS Pro does not
+  burn the basemap notice into the map; it keeps it in a dockable panel that is
+  closed by default. I had written "expand the control in the bottom-right of the
+  map frame", looked for it at the bottom edge of the first capture, and
+  concluded it was absent - correct conclusion, wrong reason. The notice reads
+  *"Sources: Esri, TomTom, Garmin, FAO, NOAA, USGS, © OpenStreetMap
+  contributors, and the GIS User Community, Esri, USGS"*, which also confirms
+  the guess that the Esri basemap carries OSM data and that ODbL Produced-Work
+  attribution is what is being satisfied.
+- Still no verification report: the fix is untested, like the rest of the arcpy
+  code. Next run either produces eight results or a fourth misdirecting error.
+
+---
+
+## [019] 2026-09-04 — Both sources loaded, and a claim of mine refuted by its own check  ·  scope: `egdb_import`, root
+
+**Prompt (original, DE)**
+> Airports waren auch erfolgreich. Screenshot ergänzt. Commit fertig machen
+
+**Prompt (translation, EN)**
+> Airports were also successful. Screenshot added. Finish the commit
+
+**What happened**
+
+- Read what had actually landed rather than taking "successful" at face value:
+  `output/verification_report.md` had appeared (10 of 10 green for `nrw_points`)
+  and a second capture, `input/egdb_airports.png`, showing
+  `agsdb.sde.synthetic_airports` with 880 features and the credits panel open.
+- **One number in that report refutes something this repository asserted.**
+  Check 7 was written as an exact comparison, on the reasoning that nothing in
+  the pipeline projects, converts or rounds - the double parsed from the CSV is
+  the double handed to `SHAPE@XY`. Measured: the worst disagreement on read-back
+  is **8.53e-14 degrees, about 9.5 nanometres**, roughly 12 ULP of the stored
+  latitude; the extent check shows 6.1 nm. Corrected the claim in the README,
+  both script docstrings and `CLAUDE.md`, and kept the wrong reading visible
+  rather than deleting it.
+- Added the finding as backup slide 29. The first render **overflowed the bottom
+  edge and cut off the punchline** - the exact defect CLAUDE.md §8 says to look
+  for by rendering to PNG, found by rendering to PNG. Trimmed and re-checked.
+- Marked the use case done in the root README, wrote the progress-log entry, and
+  prepared the commits.
+
+**Artifacts**
+
+- `egdb_import/output/verification_report.md` — 10 of 10, from the real geodatabase
+- `egdb_import/input/egdb_airports.png` — the second capture
+- `egdb_import/README.md` — status table, the corrected check-7 section, the
+  three findings visible in the airports pop-up
+- `slides/pages/90-appendix.md` — backup slide 29
+- `CLAUDE.md` — the round-trip rule
+
+**Result / Iteration**
+
+- **A geodatabase round trip is not the identity, even when no code touches the
+  value.** Which mechanism is responsible was not established: a geodatabase
+  quantises geometry to the coordinate grid its spatial reference defines, and
+  arcpy converts between the stored form and a Python tuple, and either could
+  account for 12 ULP. Saying "not measured which" is cheaper than picking one.
+  Two consequences: the tolerance that looked like decoration was load-bearing,
+  and it must **not** be tightened to the measured value - the rounding-margin
+  mistake from §10 in a new costume.
+- **The symmetry is the talk material.** `opensearch`: 1.9 nm, because libm is
+  not standardised to the last bit. `egdb_import`: 9.5 nm, because a database
+  stored a number. Same units, unrelated causes, no arithmetic in either, both
+  fatal to an exact-equality check.
+- **The airports pop-up carries three findings in one feature.** `objectid 282`
+  beside `source_objectid 305` - they disagree, which is the *safe* version,
+  against `nrw_points` where `objectid 65` and the CSV's own `id 65` agree by
+  accident and will diverge on the first delete. `state_fips 08`, leading zero
+  intact, which is the declaration-beats-measurement finding in one cell.
+  And a `field` cell that renders empty while holding a single space.
+- **Still open, and stated in the README rather than quietly dropped:** the
+  airports feature class has not been verified (it loaded and it draws, which is
+  what check 4 exists to show is not enough), and the perturbation runs that
+  prove each check goes red have not been done. Ten green checks are worth less
+  than one check proven to fail.
+
