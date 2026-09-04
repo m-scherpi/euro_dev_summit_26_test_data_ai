@@ -61,13 +61,19 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import math
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from arcgis_checks import (  # noqa: E402
+    ARCGIS_TYPE_OF,
+    Check,
+    decode_location,
+    flatten_properties,
+    haversine_m,
+    render_check_table,
+)
 from osclient import (  # noqa: E402  (path shim has to come first)
     DEFAULT_HOST,
     DEFAULT_PASSWORD,
@@ -76,118 +82,13 @@ from osclient import (  # noqa: E402  (path shim has to come first)
     OpenSearchError,
 )
 
-# Which OpenSearch field types ArcGIS maps to which ArcGIS type. Transcribed
-# from the Esri table, not from the indexer's mapping, so a wrong type in the
-# index is a finding rather than a shared assumption.
-# https://doc.esri.com/en/arcgis-pro/latest/help/data/databases/dbms-data-types-supported.html
-ARCGIS_TYPE_OF = {
-    "long": "Big Integer",
-    "unsigned_long": "Big Integer",
-    "binary": "Blob",
-    "date": "Date",
-    "double": "Double",
-    "float": "Float",
-    "scaled_float": "Float",
-    "half_float": "Float",
-    "geo_point": "Geometry",
-    "geo_shape": "Geometry",
-    "integer": "Long Integer",
-    "keyword": "Text",
-    "text": "Text",
-    "alias": "Text",
-    "object": "Text",
-    "long_range": "Text",
-    "integer_range": "Text",
-    "date_range": "Text",
-    "double_range": "Text",
-}
-
 # North Rhine-Westphalia, from the bounding box of the source CSV plus a margin.
 NRW_BOX = {"lat_min": 50.20, "lat_max": 52.60, "lon_min": 5.80, "lon_max": 9.50}
-
-EARTH_RADIUS_M = 6371008.8  # mean radius, as used by OpenSearch's arc distance
-
-WKT_POINT = re.compile(
-    r"^\s*POINT\s*\(\s*(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s*\)\s*$", re.IGNORECASE
-)
-
-
-class Check:
-    """One verification result, rendered as a row of the report table."""
-
-    def __init__(self, name: str, passed: bool | None, detail: str) -> None:
-        self.name = name
-        self.passed = passed  # None = informational
-        self.detail = detail
-
-    @property
-    def verdict(self) -> str:
-        if self.passed is None:
-            return "INFO"
-        return "PASS" if self.passed else "FAIL"
-
-
-def decode_location(value) -> tuple[float, float]:
-    """Decode a geo_point value into (latitude, longitude).
-
-    Written from the OpenSearch field-type specification rather than from the
-    indexer's `format_location`, on purpose: two readings of the spec that
-    agree is evidence, one function calling itself is not.
-
-    Raises ValueError for the object format, which is valid OpenSearch and
-    unusable from ArcGIS.
-    """
-    if isinstance(value, dict):
-        raise ValueError(
-            "object format {lat, lon} - valid in OpenSearch, unsupported by ArcGIS"
-        )
-    if isinstance(value, (list, tuple)):
-        if len(value) != 2:
-            raise ValueError(f"array of length {len(value)}, expected 2")
-        longitude, latitude = float(value[0]), float(value[1])  # GeoJSON order
-        return latitude, longitude
-    if isinstance(value, str):
-        match = WKT_POINT.match(value)
-        if match:
-            longitude, latitude = float(match.group(1)), float(match.group(2))
-            return latitude, longitude
-        if "," in value:
-            latitude, longitude = (float(part) for part in value.split(",", 1))
-            return latitude, longitude
-        raise ValueError(f"unrecognised string form: {value!r}")
-    raise ValueError(f"unsupported geo_point value of type {type(value).__name__}")
-
-
-def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Great-circle distance in metres. Independent of anything in the indexer."""
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    dphi = phi2 - phi1
-    dlambda = math.radians(lon2 - lon1)
-    a = (
-        math.sin(dphi / 2) ** 2
-        + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
-    )
-    return 2 * EARTH_RADIUS_M * math.asin(min(1.0, math.sqrt(a)))
 
 
 def read_stations(path: Path) -> dict[str, dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return {row["ds100"]: row for row in csv.DictReader(handle)}
-
-
-def flatten_properties(properties: dict, prefix: str = "") -> dict[str, str]:
-    """Flatten the mapping's properties into {field path: type}."""
-    flat: dict[str, str] = {}
-    for name, definition in properties.items():
-        path = f"{prefix}{name}"
-        if "type" in definition:
-            flat[path] = definition["type"]
-        for sub_name, sub_def in definition.get("fields", {}).items():
-            if "type" in sub_def:
-                flat[f"{path}.{sub_name}"] = sub_def["type"]
-        if "properties" in definition:
-            flat.update(flatten_properties(definition["properties"], f"{path}."))
-    return flat
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -624,11 +525,8 @@ def main() -> int:  # noqa: C901  (a checklist is a checklist)
         "",
         "## Summary",
         "",
-        "| Check | Result | Detail |",
-        "|---|---|---|",
     ]
-    for check in checks:
-        lines.append(f"| {check.name} | {check.verdict} | {check.detail} |")
+    lines += render_check_table(checks)
 
     lines += [
         "",

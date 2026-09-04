@@ -52,6 +52,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from geopoint import GEO_FORMATS, format_location  # noqa: E402
 from osclient import (  # noqa: E402  (path shim has to come first)
     DEFAULT_HOST,
     DEFAULT_PASSWORD,
@@ -106,24 +107,6 @@ INDEX_MAPPING = {
         },
     },
 }
-
-GEO_FORMATS = ("array", "string", "wkt")
-
-
-def format_location(latitude: float, longitude: float, geo_format: str):
-    """Build the geo_point value in one of the three ArcGIS-readable formats.
-
-    The object form `{"lat": ..., "lon": ...}` is intentionally not offered:
-    OpenSearch accepts it, ArcGIS does not.
-    """
-    if geo_format == "array":
-        return [longitude, latitude]           # GeoJSON order: lon, lat
-    if geo_format == "string":
-        return f"{latitude},{longitude}"       # OpenSearch string order: lat, lon
-    if geo_format == "wkt":
-        return f"POINT ({longitude} {latitude})"
-    raise ValueError(f"unknown geo format: {geo_format!r}")
-
 
 def read_stations(path: Path) -> list[dict[str, str]]:
     """Read the source CSV and check that its header is what we expect."""
