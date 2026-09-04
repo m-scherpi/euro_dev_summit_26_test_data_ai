@@ -100,6 +100,25 @@ README, including what it would have been good at. "The best data set was
 unusable for legal reasons" is one of the more useful things this repository has
 to say.
 
+**When the licence cannot be established, take the structure and generate the
+data — and record that this was the reason.** "Probably derived from a public
+source" is the same as no licence. Measured in `opensearch`: an export from a
+real Enterprise Geodatabase, handed over to prove a second data source works,
+turned out to carry no licence statement and a maybe ("I think it's the FAA data
+set, but I don't know for sure"). The file was gitignored — not merely left
+untracked, because the surrounding `input/` is committed in full and one
+`git add` would take it along — and what was reused is its schema plus its
+*measured* distributions and quirks, rebuilt with generated values. This is
+better than a substitute source, because the shape of real data is the part
+nobody invents correctly. **Measure the original before replacing it**: two
+properties of the rebuild were wrong on the first attempt and both looked
+entirely plausible — a 6:1 category skew flattened to five equal buckets by a
+round-robin fill, and a log-normal tail an order of magnitude short because the
+sigma was guessed instead of derived from the measured spread. Neither would
+have been found without the original still sitting there to compare against.
+State plainly what the rebuild cannot restore: that somebody else published it.
+A synthetic set proves the pipeline, not the world.
+
 **Open-data portals rot — commit the slice, not just the URL.**
 Measured in `open_data_search`: the download URL that every tutorial and every
 GitHub mirror still names for DB station data no longer resolves at all, and its
@@ -186,6 +205,22 @@ to `build/`. Always state the committed size and the full size in the README.
 Learned the hard way in `csv_data`. These apply to every use case that touches
 coordinates.
 
+- **An Esri JSON FeatureSet is not GeoJSON, and the difference is the CRS.**
+  A file described as "a GeoJSON export from a feature class" is often the
+  output of an ArcGIS REST `query?f=json`: `geometryType: "esriGeometryPoint"`,
+  geometry as `{"x": …, "y": …}`, and
+  `spatialReference {"wkid": 102100, "latestWkid": 3857}` — Web Mercator in
+  **metres**, where RFC 7946 GeoJSON is always EPSG:4326. (`wkid` 102100 is the
+  deprecated Esri code for the same auxiliary sphere `latestWkid` calls 3857,
+  which is why the file names it twice.) The `{"x","y"}` shape fails loudly in
+  any GeoJSON reader; the CRS does not fail at all. A value of `-13055594.63`
+  read as a longitude is out of range, and a library that clamps rather than
+  raises puts every point on the antimeridian — inside the valid domain,
+  plotted without complaint, and systematic rather than broken-looking. So a
+  reader must **assert `geometryType` and `latestWkid` and abort**, never
+  convert what it happens to be handed: a FeatureSet in another projected CRS
+  would still be metres, just of a different grid, and the output would be
+  plausible and wrong.
 - **Name the EPSG code explicitly**, in the README and in the column names.
   "Coordinates" is not a specification. Note that "decimal degrees" and
   "EPSG:3857" are mutually exclusive — decimal degrees are EPSG:4326, EPSG:3857
@@ -205,6 +240,24 @@ coordinates.
   logarithm, tangent or square root gets recomputed. The failure mode is a
   systematic directional bias, not random noise, so it survives averaging and
   spot-checks and looks entirely plausible in the data.
+- **A data set that crosses the antimeridian turns the bounding-box check into
+  a prop, and the axis-swap check into a coin flip.** Measured in `opensearch`:
+  880 airports spanning longitude −178.0 … +166.6 have a naive envelope of
+  **344.63° × 85.46°** — it matches every document and discriminates nothing.
+  Replace it with regional boxes tight enough to mean something, each checked
+  against a count computed from the source, plus one box that deliberately
+  **spans** the dateline (`top_left.lon` > `bottom_right.lon` is how OpenSearch
+  is told to wrap). Two further consequences, both measured: for five of seven
+  regions the *transposed* box does not exist — Alaska's longitudes are
+  −179.5…−129.5, and asking for those as latitudes is rejected outright
+  (`top is below bottom corner`) — and where the transposed test does apply it
+  passes only because no feature happens to sit at longitude −14…71. Say that
+  it is luck. **And the same geometry decides whether a swapped axis is loud or
+  silent**: swapping here gets **550 of 880** documents rejected by the engine
+  (`illegal latitude value [-97.302373]`) and aborts the load, while swapping
+  the NRW stations — latitude 50-52, longitude 5-9, both valid latitudes —
+  loaded all 449 happily into the Indian Ocean. Nothing in the code differs.
+  The verifier that caught the stations was luckier, not better.
 - **A bounding box is not a boundary.** Sampling a rectangle around an
   irregular region places a substantial share of the points outside it. Either
   sample against a polygon, or measure and document the share that falls
@@ -234,6 +287,26 @@ coordinates.
   precision of the reference to the precision of the question — a generalised
   outline cannot answer a 100 m question — and prefer the authoritative source
   when the answer has to hold up in public.
+- **An identifier column is not an identifier, and a two-letter code is not
+  the abbreviation it looks like.** Measured in `opensearch`, in one geodatabase
+  export: `objectid` and `ESRI_OID` are both 1…N, both unique, and **equal in
+  zero rows**, while the GIS client builds its own Object ID from the document
+  `_id` — three columns that look like an object id and none of them the one
+  that is used. The stable key was the business key (`locid`). Prefix such
+  columns (`source_objectid`) so the attribute table stops inviting a join on
+  them. In the same file, `state` carried `HI` with `state_fips` **74** (US
+  Minor Outlying Islands) while Hawaii is FIPS 15 — so `WHERE state = 'HI'`
+  returns points ~2,000 km from Hawaii and `WHERE state = 'Hawaii'` silently
+  drops them. Neither query is wrong; the attribute is. Check a code against the
+  published standard rather than against the first two letters of a name, and
+  distinguish the two cases: `MP` in the same file is the *correct*
+  abbreviation, merely inconsistently formatted.
+- **A geodatabase's "empty" may be a single space.** Measured: `" "` and not
+  `NULL`, on 825 of 880 rows of one column. In a search engine that is a real
+  keyword term; in a GIS client the cell looks empty and is not, so a filter on
+  empty finds nothing and `IS NULL` finds nothing either. Count it, report it,
+  and keep the value verbatim — the space is what the source stores, and
+  tidying it away is a silent edit to somebody else's data.
 - **An attribute filter is not a spatial filter, and the cross-check is worth
   keeping even when it finds nothing.** Filter on `Bundesland`/`region`/`country`
   if the column exists, then have the geometry referee it. Measured: across all
@@ -256,6 +329,29 @@ coordinates.
   to 1 mm, while its `WKT WGS84` column disagrees with both by a median of
   1.27 m. Two representations would only have shown a conflict; three showed
   which one to believe.
+- **When the data has to be reprojected, provenance splits in two — and both
+  halves need their own check.** "Nothing was recomputed" is the strongest claim
+  available and it is unavailable the moment a source in a projected CRS has to
+  become `geo_point` degrees. So: carry the **source coordinate through
+  bit-identically** (`x_3857`/`y_3857` asserted `==`, the same double, against
+  the source row with the same identity key), and prove the **computed
+  coordinate reproducible by code that shares nothing with the code that
+  computed it** — take the degrees back out of the index and project them
+  *forward* again from a module the indexer cannot import. Different function,
+  opposite direction, no shared line; weaker evidence than a third-party
+  library, and it survives a use case that must run without dependencies.
+  Measured in `opensearch`: the forward round trip closes at **0.05 mm** across
+  880 documents - half the rounding step of the stored metres - and at
+  **0.2 mm** on a real export whose metres were not derived from rounded
+  degrees. Do not tighten the tolerance to the current artifact's exact
+  rounding; a check calibrated that finely fails on the next source for a
+  reason that is not an error. **Then prove each half fires
+  on its own**: move one document 40 km inside its own state and both go red;
+  move only the degrees and only the reprojection does; move only the metres and
+  only the provenance does. In all three cases the other seventeen checks stay
+  green — bounding boxes, axis order, distance queries, field types. A verifier
+  that never goes red has not been verified, and one whose checks always go red
+  together has one check wearing three hats.
 - **For sourced data, verify provenance, not plausibility.** "Is this value
   plausible?" is the wrong question about data somebody else published. Assert
   instead that every coordinate in `output/` exists, unmodified, in a source row
@@ -521,6 +617,47 @@ Generated test data is only useful for a talk if it can be regenerated live.
 - **Record the exact command** that produced the committed output.
 - **Note non-determinism explicitly** where it exists — LLM output that varies
   between runs is a finding, not a bug to hide.
+- **A hash-pinned artifact must not store a raw float that came out of `libm`.**
+  C transcendental functions - `log`, `tan`, `sin`, `asin`, `exp` - are **not
+  standardised to the last bit**, so glibc and MSVC may each return either of
+  the two nearest doubles. Measured in `opensearch`: rebuilding a committed
+  fixture with the same seed on Windows Server 2025 / CPython 3.14.7 against
+  Linux / CPython 3.12.7 gave a different SHA-256 at identical file size and
+  feature count, because **30 of 880 `y` values differed by up to 2 ULP - 1.9
+  nanometres**. `y = R·log(tan(π/4 + φ/2))` passes through libm twice; the
+  matching `x = R·radians(lon)` is a multiplication and was identical
+  everywhere. Fix it by **storing rounded values**, and pick the precision the
+  real source carries rather than the maximum the double offers - here four
+  decimals, a tenth of a millimetre, which also made the fixture structurally
+  closer to the export it imitates. Rule out the boring causes first, in this
+  order: newline translation (compare the file's hash against the hash of the
+  string before writing - if they agree, newlines are innocent), then the random
+  sequence (fingerprint the generator's RNG calls; the Mersenne Twister is
+  specified bit-for-bit and survives Python minor versions), then the values.
+  **Two traps in the fix itself.** Rounding only helps while no value sits on a
+  rounding boundary: measured, four decimals left the closest value 15.6× the
+  divergence away, five decimals 1.3× and six decimals 0.5× - at six, rounding
+  would have changed nothing. So *measure that margin on the unrounded values*
+  and refuse to write an artifact whose margin is too small, rather than
+  assuming the idea works. And measuring it on the **rounded** values proves
+  nothing, because rounding puts them on the grid by definition - a check that
+  always passes, which is how the first version of it was written. **And do not
+  trust a spot check whose sample rate you have not measured**: five hex-float
+  comparisons of `sin`/`log`/`tan` were bit-identical on both machines and still
+  are, because the divergence rate is 3.4 % and five samples had an 84 % chance
+  of showing nothing. Diff the artifact field by field; the fingerprint
+  reassures, the diff answers.
+- **If a committed file is pinned by its hash, pin its line endings too.**
+  A manifest recording the SHA-256 of a committed artifact is only checkable
+  while the bytes survive the trip. A checkout on Windows with
+  `core.autocrlf=true` rewrites every newline and changes the hash without
+  changing a single value — the provenance check then fails for a reason that
+  has nothing to do with the data. Declare it in `.gitattributes`
+  (`* text=auto eol=lf`, with `*.bat text eol=crlf` as the exception, because
+  `cmd.exe` needs CRLF) rather than hoping every clone is configured correctly.
+  Write the file with an explicit `newline="\n"`, and say in the README that a
+  hand copy between machines must be verbatim — `.gitattributes` protects a
+  clone, and nothing protects a folder someone copied.
 - **Never commit secrets.** API keys and endpoints come from environment
   variables; document the variable names, not the values.
 - **State where a credential is actually stored, and whether it can be changed
