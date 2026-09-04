@@ -82,7 +82,9 @@ without a running cluster.
 
 ## Findings
 
-Five things were measured here that no amount of reading would have produced.
+Seven things were measured here that no amount of reading would have produced.
+The last two came out of the publish attempt, and both are corrections of what
+this file previously claimed.
 
 ### 1. The `geo_point` format ArcGIS cannot read is the one everything else suggests
 
@@ -196,6 +198,110 @@ Since OpenSearch 2.12 the demo installer requires
 `OPENSEARCH_INITIAL_ADMIN_PASSWORD` and runs it through a strength check.
 `admin` is rejected. This repository therefore commits a fixed demo password
 (see [Credentials](#credentials)).
+
+### 6. The unsupported option is the one that looks default
+
+Publishing the working Pro layer fails with `Layer's Datasource is not
+supported`. The *Share* > *Web Layer* pane offers a check box labelled
+**Feature** in two places - under **Copy all data** and under **Reference
+registered data** - and for OpenSearch exactly one of them works. The error
+message names neither the check box nor OpenSearch.
+
+An earlier version of this file recorded a contradiction in Esri's
+documentation here. There is none, and the mistake is worth keeping. It quoted:
+
+> Sharing query layers from Elasticsearch or OpenSearch is not supported
+
+The sentence does not end there:
+
+> Sharing query layers from Elasticsearch and OpenSearch as a map image layer or
+> web feature layer **that copies all data**, a web tile layer, a vector tile, a
+> web scene layer, or a map service is not supported.
+>
+> You can only publish data from Elasticsearch or OpenSearch as map image layers
+> or web feature layers **that reference registered data** to ArcGIS Enterprise
+> 12.0 or later.
+
+It is an enumeration of what is excluded, and the supported route survives in
+the half that was cut off. A shortened quote reads exactly like a vendor being
+inconsistent - which is a comfortable conclusion, and it stops the search.
+
+The parallel to finding 2 is exact, and inverted. There the loud failure was the
+harmless one. Here the fatal choice is the quiet one: two identical labels, no
+warning, and an error that arrives one dialog too late to say which one was
+meant. See [Publishing to ArcGIS Enterprise](#publishing-to-arcgis-enterprise-121)
+for the corrected procedure.
+
+### 7. One certificate, three trust stores, and two belong to the same product
+
+With the right check box ticked, publishing gets further and stops in the
+ArcGIS Server log:
+
+```
+The certificate authority is invalid or incorrect
+(WinINet ERROR_INTERNET_INVALID_CA, 12045), URL = https://localhost:9200
+```
+
+Read it carefully, because it says three useful things at once.
+
+**It is not a name mismatch.** WinINet has a separate code for that
+(`ERROR_INTERNET_SEC_CERT_CN_INVALID`, 12038). 12045 means the chain was
+rejected, and the certificate is fine: `CN=localhost`, SAN
+`DNS:localhost, IP:127.0.0.1, IP:::1`, issued by a `CA:TRUE, pathlen:0` root and
+valid to 2036. Only the trust is missing.
+
+**It also retracts part of what this file predicted.** The section below warned
+that a `.dbconn` pointing at `localhost` would send the federated server looking
+for a cluster on its own machine. WinINet got far enough to *do a TLS handshake*
+with something at `https://localhost:9200`, so in this deployment ArcGIS Server
+and OpenSearch are on the same machine and the warning does not bite. It stands
+for a split deployment; it was not the blocker here. Left in place, marked.
+
+**And it is a Windows store scoping problem, which is why Pro was happy.**
+ArcGIS Pro runs as the interactive user; ArcGIS Server runs as a service
+account. `certmgr.msc` - which this file recommended - is *Certificates, Current
+User*. It makes Pro trust the CA and leaves every service on the same machine
+untrusting it. The machine-wide store is `certlm.msc`, *Certificates, Local
+Computer*, and that is the one WinINet consults for a service. Esri's own
+knowledge base entry for this exact error (000013244) resolves it the same way,
+by importing the root into *Trusted Root Certification Authorities* of the
+**Local Computer** store.
+
+So one host, one certificate, two clients, two different answers - and the
+component that failed is the one that never showed a dialog. The trust store is
+per-principal, and "I imported the certificate" is not a statement about the
+machine.
+
+**Then it happens a second time, to the same product.** With the root in the
+Local Computer store and the service restarted, WinINet is satisfied and the
+error changes:
+
+```
+javax.net.ssl.SSLHandshakeException: (certificate_unknown) PKIX path building
+failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to
+find valid certification path to requested target
+```
+
+That is not Windows any more. `PKIX` and `sun.security.provider` are the JVM,
+and **a JVM does not read the Windows certificate store** - it reads its own
+`cacerts`. ArcGIS Server is part native and part Java, it opens this connection
+through the OpenSearch Java client, and so the same product needs the same
+certificate imported **twice, into two unrelated stores**. Fixing the first one
+is what makes the second one visible.
+
+The score, then, for one self-signed CA on one machine:
+
+| Consumer | Trust store | How it is fed |
+|---|---|---|
+| ArcGIS Pro | Windows, **Current User** | `certmgr.msc` |
+| ArcGIS Server, native stack (WinINet) | Windows, **Local Computer** | `certlm.msc` + service restart |
+| ArcGIS Server, **JVM** | its own `cacerts` | Server Admin Directory → `importRootOrIntermediate` |
+| Portal for ArcGIS, JVM | *another* `cacerts` | Portal Admin → *Import Root or Intermediate Certificate* |
+
+Four stores, four mechanisms, three error messages, and each one only becomes
+observable once the previous is fixed. Every step of that cascade was a
+*successful* verification of something - Pro connected, the machine store
+validated - and none of them was evidence about the next consumer in the line.
 
 ---
 
@@ -438,22 +544,64 @@ curl -s --cacert build/tls/root-ca.pem -u "admin:DevSummit#2026os" \
 
 ## Connecting from ArcGIS
 
-**Not tested here.** There is no ArcGIS installation in this environment, so
-everything in this section is derived from Esri's documentation for Pro 3.7 /
-Enterprise 12.1 rather than from a working connection. The OpenSearch side is
-tested; this side is documented. Verifying it is the obvious next step.
+**Tested end to end on 2026-09-04**, against a real ArcGIS Pro 3.7 and ArcGIS
+Enterprise 12.1 on Windows. The database connection validates over the private
+CA, the index drags onto the map as a query layer, all 449 stations draw, the
+attributes and pop-ups are correct, and the automatic feature binning this
+section predicted from the documentation is there. **The layer then publishes to
+Enterprise as a web feature layer referencing the index** - it opens in Map
+Viewer and serves its own pop-ups without a copy of the data existing anywhere.
+
+It took three attempts to get there, and the three failures are
+[finding 6](#6-the-unsupported-option-is-the-one-that-looks-default) and
+[finding 7](#7-one-certificate-three-trust-stores-and-two-belong-to-the-same-product) -
+the wrong check box, then two of the four trust stores.
+
+![nrw_stations from OpenSearch as a query layer in ArcGIS Pro 3.7 - all 449
+stations drawn over a topographic basemap, with the pop-up for Münster (Westf)
+Hbf showing the indexed attributes and the Contents pane showing the automatic
+feature binning](input/nrw_stations_opensearch_viewlayer.png)
+
+*Basemap: World Topographic Map - Esri, TomTom, Garmin, FAO, NOAA, USGS. ArcGIS
+Pro does not render the attribution bar into the map view, so it is named here
+instead; the capture itself is uncropped.*
+
+And the same index once more, three steps later - published out of Pro, served
+by Enterprise, opened in the browser. Nothing here is a copy: every attribute in
+the pop-up is read out of OpenSearch on demand.
+
+![The published web feature layer 'Nrw stations' open in the ArcGIS Enterprise
+Map Viewer, all 449 stations drawn, with the pop-up for Münster (Westf) Hbf
+showing name, _id EMST, district, latitude, longitude, position_spread_m,
+source_rows, station_oid and the EPSG:3857 coordinates](input/nrw_stations_opensearch_service.png)
+
+*Basemap: Esri World Topographic Map, attribution bar intact at the bottom edge -
+`Land NRW | LGLN | Esri | TomTom | Garmin | USGS | FAO | NOAA`.*
+
+Two details in that pop-up are worth a second look, because both were predicted
+in writing before anyone could test them. `_id` is `EMST`, the DS100 code - the
+index's document id became the Object ID, exactly as
+[the Pro notes](#arcgis-pro-37) said it would. And `x_3857` / `y_3857` come
+through as plain attributes (`850,026.73` / `6,792,265.72`) while the geometry
+is drawn from `location` alone, which is the whole point of keeping the
+projected values as data rather than as geometry.
 
 ### ArcGIS Pro 3.7
 
 1. Import `build/tls/root-ca.pem` into the Windows certificate store under
-   *Trusted Root Certification Authorities* (`certmgr.msc` → Action → All Tasks
-   → Import). Skipping this gives a TLS error, not a login error.
+   *Trusted Root Certification Authorities*. **Use `certlm.msc`, not
+   `certmgr.msc`** - see [finding 7](#7-one-certificate-three-trust-stores-and-two-belong-to-the-same-product).
+   `certmgr.msc` writes into the *current user's* store, which is enough for Pro
+   and not enough for anything running as a service. Action → All Tasks →
+   Import. Skipping this gives a TLS error, not a login error.
    Be aware that ArcGIS Pro has been reported not to honour the Windows store in
    every case - if the connection still fails after a correct import, that is a
    known class of problem rather than a mistake in the setup.
 2. *Catalog* pane → right-click **Databases** → **New Database Connection**.
 3. *Database Platform*: **OpenSearch**. *Host URL*: `https://localhost:9200`
-   (append `:port` only if it is not 443/80 - here it always is).
+   (append `:port` only if it is not 443/80 - here it always is). If this
+   connection is later meant to be published, `localhost` will not do - see
+   [the `localhost` problem](#publishing-to-arcgis-enterprise-121).
 4. *User Name* `admin`, *Password* `DevSummit#2026os`. Basic authentication is
    the only kind ArcGIS supports for this platform.
 5. **Validate**, then name the connection and click **OK** - this writes a
@@ -477,25 +625,142 @@ tested; this side is documented. Verifying it is the obvious next step.
 
 ### Publishing to ArcGIS Enterprise 12.1
 
+**This works, and it took three attempts.** There is exactly one supported
+route, the pane offers the unsupported one right next to it under the same
+label, and two of the four certificate trust stores involved have to be fed by
+hand. The procedure below is the one that succeeded on 2026-09-04; the first
+attempt failed with `Layer's Datasource is not supported`. What can and cannot
+be published from an OpenSearch query layer:
+
+| Target | Supported |
+|---|---|
+| Web feature layer, **reference registered data** | yes, Enterprise 12.0+ |
+| Map image layer, **reference registered data** | yes, Enterprise 12.0+ |
+| Web feature layer, **copy all data** | no |
+| Map image layer copy-all-data, web tile, vector tile, web scene, map service | no |
+| Hosted feature layer on ArcGIS Online | no - that is copy-all-data |
+
+Registering the data store has to come first. Esri describes the second box as
+an *"additional Feature option"* that *"may be available"* under *Reference
+registered data* when publishing from Elasticsearch or OpenSearch to Enterprise
+12.0+ - so if only one *Feature* box is visible, the registration is the thing
+that is missing, and the analyzer will say so as **00231** (*layer's data source
+must be registered with the server*) rather than as the 24078/00134 above.
+
 1. In Pro: *Share* tab → **Data Stores** → **Add** → **Database**, give it a
    title and select the connection from above. For OpenSearch the *server*
    database connection must be **the same** as the publisher connection - the
    option to give a separate one is disabled. Select the federated server and
    validate.
-2. *Share* → **Web Layer** → under **Reference registered data** choose
-   **Feature**. This publishes a web feature layer that references the index
-   instead of copying it.
+2. *Share* → **Web Layer**. **Clear the *Feature* check box under *Copy all
+   data*** - that is the default-looking one and the one that produces the
+   error. Check the *Feature* box under **Reference registered data** instead.
+   This publishes a web feature layer that references the index rather than
+   copying it.
 3. Known limits: **Save As SD is not supported** for layers published from
    OpenSearch; only the *Server* drop-down is available, so no custom folder;
-   basic authentication is mandatory.
+   basic authentication is mandatory. Enterprise must be **12.0 or later** -
+   registering an Elasticsearch or OpenSearch database is not supported before
+   that.
 
-**One contradiction to expect**, straight out of Esri's own documentation:
-*"Sharing query layers from Elasticsearch or OpenSearch is not supported"* sits
-next to the *Reference registered data → Feature* workflow above. The most
-likely reading is that a hand-written query layer cannot be shared while a table
-added from the connection can - but the two statements are not reconciled
-anywhere, and the drag-a-table path also produces a query layer. Worth finding
-out on the first publish attempt.
+**Then the ArcGIS Server has to trust the CA too, and separately - twice.** This
+is [finding 7](#7-one-certificate-three-trust-stores-and-two-belong-to-the-same-product),
+and it is where the remaining two attempts went. Publishing stops first with
+`The certificate authority is invalid or incorrect (WinINet
+ERROR_INTERNET_INVALID_CA, 12045)` in the server log, and then, once that is
+fixed, with a Java error instead. All four steps below were needed. Do step 1
+before step 2, because a service restart is disruptive and the query that
+decides whether it can help is free:
+
+1. **The root must be in the *Local Computer* store**, not the current user's.
+   Measure it - the two are indistinguishable in the Pro client's behaviour:
+
+   ```powershell
+   # what a service sees - this one must return the certificate
+   Get-ChildItem Cert:\LocalMachine\Root | Where-Object { $_.Subject -like '*DevSummit Local Test CA*' }
+   # what certmgr.msc writes to - Pro is happy with only this
+   Get-ChildItem Cert:\CurrentUser\Root  | Where-Object { $_.Subject -like '*DevSummit Local Test CA*' }
+   ```
+
+   If only the second returns something, import `build/tls/root-ca.pem` again
+   via `certlm.msc` → *Trusted Root Certification Authorities* → *Certificates*
+   → Action → All Tasks → Import.
+2. **Restart the ArcGIS Server Windows service.** The service process does not
+   pick up a certificate added to the store while it was running, so an import
+   done during cluster setup has no effect on a server that has been up since
+   before it. Necessary whether or not step 1 changed anything - which is also
+   what makes the two hard to tell apart afterwards, so note which one was
+   actually wrong.
+3. **Import the root into the ArcGIS Server JVM as well.** When steps 1 and 2
+   are done the WinINet error is replaced by a Java one:
+   `javax.net.ssl.SSLHandshakeException: (certificate_unknown) PKIX path
+   building failed`. Same certificate, same URL, different runtime - the JVM
+   ignores the Windows store entirely. Use the **Server Administrator
+   Directory**, not `keytool`:
+
+   `https://<server>:6443/arcgis/admin` → **machines** → *<MACHINE.DOMAIN>* →
+   **sslcertificates** → **importRootOrIntermediate** → `alias` e.g.
+   `devsummit-ca`, `rootCACertificate` = `build/tls/root-ca.pem` → *Import*.
+   Then restart the machine's ArcGIS Server service once more.
+
+   Do **not** run `keytool` against
+   `...\ArcGIS\Server\framework\runtime\jre\lib\security\cacerts` even
+   though it works. An upgrade replaces that JRE, the trust disappears with it,
+   and the failure resurfaces months later with no connection to the change that
+   caused it. The admin-directory import is the route Esri supports.
+4. **Portal for ArcGIS has its own truststore**, fed the same way from the
+   portal admin directory (*Security* → *SSLCertificates* → *Import Root or
+   Intermediate Certificate*), followed by a Portal restart. Publishing runs
+   Pro → Portal → Server, so this is where the Java error goes next if it moves
+   from the server log to the portal log.
+
+With those done, *Share* → *Web Layer* → **Reference registered data** →
+**Feature** publishes, and the layer opens in Map Viewer. Nothing is copied:
+the pop-ups are answered out of the OpenSearch index at request time.
+
+Turning TLS off is not an escape route here: ArcGIS needs basic authentication,
+`--insecure` removes authentication along with TLS, and security-on-with-plain-
+HTTP has been an unsupported OpenSearch configuration since 2.12. The
+certificate has to be trusted; there is no third option. That is the same wall
+as in [finding 4](#4-the-certified-release-ships-a-tls-configuration-that-expired-in-2023).
+
+**The `localhost` problem - predicted, and measured not to apply here.**
+Inference from two documented rules rather than a quoted statement: the server
+database connection cannot differ from the publisher connection, so the
+federated ArcGIS Server receives the literal string the `.dbconn` carries and
+resolves it on *its own* machine. A connection to `https://localhost:9200` would
+then point the server at a cluster that is not there.
+
+It did not bite. The 12045 in
+[finding 7](#7-one-certificate-three-trust-stores-and-two-belong-to-the-same-product)
+is a *TLS* rejection, which means WinINet completed a handshake with something
+at `https://localhost:9200` - ArcGIS Server and OpenSearch are on the same
+machine in this deployment. The warning is kept because it is correct for a
+split one, where the cluster has to answer to one name from both machines:
+
+```bash
+./scripts/setup_opensearch.sh --host gis-vm-01.example.lan --force
+```
+
+`--force` because the certificate and the SANs are written at setup time, and
+because the admin password lives in `build/data` after the first start - see
+[Credentials](#credentials). Two more things then have to be true: the node must
+bind beyond loopback (`network.host` / `http.host` in
+`build/opensearch-2.12.0/config/opensearch.yml`), and `build/tls/root-ca.pem`
+must be trusted **on the
+ArcGIS Server machine as well** - the OS/JVM trust store there, not the Windows
+store the Pro client uses.
+
+**If the Enterprise route stays blocked**, the one option that produces a real
+FeatureServer without any Enterprise is a [Koop](https://koopjs.github.io/)
+server in front of the index -
+[`@koopjs/provider-elasticsearch`](https://github.com/koopjs/koop-provider-elasticsearch),
+Apache-2.0, with OpenSearch connections supported in beta via an `osConnections`
+block. It translates the index into the GeoServices REST API that Pro, Portal
+and ArcGIS Online all speak. Not built here; noted so the option is on record.
+Its SQL-based sibling, `koop-provider-elastic-sql`, would run straight into
+[finding 3](#3-there-is-no-format-both-arcgis-and-the-opensearch-sql-plugin-can-read)
+and is the wrong one for this index.
 
 ---
 
@@ -528,8 +793,27 @@ out on the first publish attempt.
   written from the Windows documentation, and running them on Windows turned up
   the two credential defects described under [Credentials](#credentials) - the
   swallowed `!` and the un-wiped data directory. With those fixed, **setup,
-  start and the admin login are confirmed working on Windows**. The ArcGIS side
-  is still untested.
+  start and the admin login are confirmed working on Windows**.
+- **What is confirmed on the ArcGIS side, 2026-09-04**: ArcGIS Pro 3.7 connects
+  over the private CA, the index draws as a query layer, attributes and pop-ups
+  are correct, feature binning is automatic. Evidence:
+  `input/nrw_stations_opensearch_viewlayer.png`.
+- **Publishing to Enterprise 12.1 is confirmed too**, after three failures: the
+  wrong *Feature* check box, the ArcGIS Server service not trusting the private
+  CA in the Windows Local Computer store (WinINet 12045), and its JVM not
+  trusting it either (PKIX path building failed). Evidence:
+  `input/nrw_stations_opensearch_service.png`. The procedure that worked is in
+  [Publishing to ArcGIS Enterprise](#publishing-to-arcgis-enterprise-121). The
+  research behind it was done with Claude Opus 5 on 2026-09-04, against Esri's
+  analyzer message 24078, *Share a web feature layer*, *Manage registered data
+  stores*, *Connect to OpenSearch from ArcGIS* (Server 12.0), the *Import Root
+  or Intermediate Certificate* admin operation and Esri knowledge base entries
+  000013244 and 000031906.
+- **Not reproducible from this repository, and deliberately so**: the ArcGIS
+  half needs a licensed Pro and a federated Enterprise 12.1. The OpenSearch half
+  - download, checksum, certificates, index, verify - runs from a bare VM with
+  nothing installed, and `verify_index.py` is what stands in for the client when
+  no client is available.
 - **Attribution** for the data carried through this use case: DB InfraGO AG /
   Deutsche Bahn AG, licensed CC BY 4.0 - see
   [`../open_data_search/README.md`](../open_data_search/README.md). OpenSearch
@@ -557,6 +841,38 @@ out on the first publish attempt.
   `cmd.exe` silently removes - so the node and the documentation disagreed by
   one character, while the status check agreed with the node because it was
   written in the same language and mangled it identically.
+- **The retraction is the best thing in this folder.** The previous pass
+  recorded a contradiction in Esri's documentation and was rather pleased with
+  it. There was none: our own quote had been cut off before the enumeration that
+  resolves it, and the supported publishing route was in the half that went
+  missing. A shortened quote is indistinguishable from a vendor being
+  inconsistent, and "the documentation contradicts itself" is a comfortable
+  place to stop looking.
+- **"It works in the client" is not a test of the server.** The private CA was
+  imported once and ArcGIS Pro connected, which made the certificate look
+  settled. ArcGIS Server on the *same machine*, against the *same URL*, with the
+  *same certificate*, rejected it - because a Windows trust store belongs to a
+  principal, and the tool the documentation named (`certmgr.msc`) writes to the
+  one the interactive user reads. The component that failed is the one with no
+  dialog to show.
+- **It works, and the four slides' worth of material is in how.** The finished
+  result is one screenshot of a map in a browser, and behind it: one wrong check
+  box that looks like the right one, and two of four trust stores that had to be
+  found one at a time because each fix only revealed the next. Three failures,
+  none of them in the data, all of them in the seam between two products.
+- **One product, two trust stores.** The best version of that point, because it
+  removes the excuse. Pro and Server being different programs is easy to
+  believe. ArcGIS Server needing the *same* certificate imported twice - once
+  into the Windows Local Computer store for its native stack, once into its JVM
+  through the admin directory - is not something a mental model of "the machine
+  trusts this CA" survives. And each import only made the next failure visible;
+  every step of the cascade was a successful verification of something.
+- **Lesson learned.** Verify against the consumer - and note that "the consumer"
+  is a list, not a thing, and that one product can appear on it more than once.
+  Pro, the server's native stack, the server's JVM and Portal are four consumers
+  of one certificate; the SQL plugin and ArcGIS are two consumers of one
+  geometry. In every case the next consumer had a requirement the previous one
+  never surfaced. Quote each of them to the full stop.
 - **The measurement to show.** The object-format index passes eleven of twelve
   checks. Document count, bounding box, distance query, provenance - all green,
   and the layer will not open in ArcGIS. Put the two verification tables side by
