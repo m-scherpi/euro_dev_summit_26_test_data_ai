@@ -1,0 +1,70 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "airport_oid": {
+        "type": "integer"
+      },
+      "locid": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "field": {
+        "type": "keyword"
+      },
+      "state": {
+        "type": "keyword"
+      },
+      "state_fips": {
+        "type": "keyword"
+      },
+      "acais": {
+        "type": "keyword"
+      },
+      "airport_type": {
+        "type": "keyword"
+      },
+      "tot_enp": {
+        "type": "double"
+      },
+      "source_objectid": {
+        "type": "integer"
+      },
+      "source_esri_oid": {
+        "type": "integer"
+      },
+      "source_globalid": {
+        "type": "keyword"
+      },
+      "latitude": {
+        "type": "double"
+      },
+      "longitude": {
+        "type": "double"
+      },
+      "location": {
+        "type": "geo_point"
+      },
+      "x_3857": {
+        "type": "double"
+      },
+      "y_3857": {
+        "type": "double"
+      }
+    }
+  }
+}
