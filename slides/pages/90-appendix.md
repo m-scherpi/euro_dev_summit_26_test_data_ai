@@ -364,3 +364,158 @@ refuses to write a fixture whose hash is reproducible by luck.
 <div class="rule">
 Five hex-float samples of <code>log</code>/<code>tan</code> were bit-identical on both machines. At a 3.4% divergence rate, five samples miss it 84% of the time.
 </div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 11 · egdb_import</div>
+
+# The API in the request cannot do the job
+
+Asked for: *"using the ArcGIS API for Python"*. It is a REST client for a
+portal — no database connectivity at all.
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div>
+
+**`GIS.content.import_data()`**
+
+Returns a working feature layer.<br>
+**Hosted**, in the ArcGIS Data Store.
+
+The rows are copied *out* of the customer's database. The goal was a feature
+class *in* it.
+
+</div>
+<div>
+
+**`to_featureclass()`**
+
+Returns a path.
+
+> Writing to file geodatabases requires the ArcPy site-package.
+
+Without arcpy, the same call writes a **shapefile**.
+
+</div>
+</div>
+
+<div class="rule">
+Neither route fails. One copies the data to the wrong store, the other writes the wrong format — and both return a success.
+</div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 12 · egdb_import</div>
+
+# Four outcomes, one unchanged line of code
+
+Only the installed libraries differed.
+
+<div class="mt-4">
+
+| Environment | `to_featureclass()` |
+|---|---|
+| `arcgis` alone | raises: *"...without ArcPy, Shapely, or GDAL"* |
+| **+ shapely** | raises the **same** message — the code checks *pyshp* |
+| **+ pyshp 3.1.6** | writes 3 files, then dies inside the library |
+| **+ pyshp 2.3.1** | **succeeds silently — writes a shapefile** |
+
+</div>
+
+<div class="rule">
+The error message names shapely as the remedy. Installing shapely does not fix the error.
+</div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 13 · egdb_import</div>
+
+# What the silent success did to the schema
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div>
+
+**Contract → written**
+
+`description` → `descriptio`<br>
+`visitor_count` → `visitor_co`<br>
+`elevation_m` → `elevation_`<br>
+`is_enchanted` → `is_enchant`
+
+<div class="metric mt-2">4 of 10</div>
+
+field names truncated to the DBF limit of 10 characters. Nothing said so.
+
+</div>
+<div>
+
+**Types**
+
+`TEXT(40)` → `C(255)`<br>
+`TEXT(120)` → `C(255)`
+
+Both lengths were *measured* from the data. Both replaced by the format's
+maximum.
+
+Every `DOUBLE` → DBF `F` (float).
+
+And `SHORT` → `L`: the shapefile has a **boolean**, which the geodatabase does
+not.
+
+</div>
+</div>
+
+<div class="rule">
+Check what an API wrote, not whether it threw. The schema is where the damage lands.
+</div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 14 · egdb_import</div>
+
+# "Nothing was recomputed" — measured
+
+The pipeline projects nothing, converts nothing, rounds nothing. The double
+parsed from the CSV is the double handed to `SHAPE@XY`.
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div>
+
+**Read back out of the geodatabase**
+
+<div class="metric">9.5 nm</div>
+
+worst of 100 · 8.53 × 10⁻¹⁴ ° · ~12 ULP
+
+No code did arithmetic on the value. The **storage** did.
+
+The tolerance that looked like decoration was load-bearing — and must not be
+tightened to the measurement.
+
+</div>
+<div>
+
+**The same units, a different cause**
+
+`opensearch` · **1.9 nm**<br>
+libm is not standardised to the last bit
+
+`egdb_import` · **9.5 nm**<br>
+a database keeping a number
+
+Both invisible. Both fatal to an exact-equality check.
+
+</div>
+</div>
+
+<div class="rule">
+Keep the provenance claim, state its boundary: nothing was recomputed <em>on the way in</em>.
+</div>

@@ -102,7 +102,7 @@ will not grow. So the deck is built to *leave things out*:
 
 - **Core deck, slides 1–14.** Four named rules, each proven by one measured
   number and one image. Nothing else survives the budget.
-- **Backup, slides 15–25.** Written out, not shown. Reachable with the arrow key
+- **Backup, slides 15–29.** Written out, not shown. Reachable with the arrow key
   during questions and readable in the repository.
 
 **House rule for new use cases:** a new one gets its own `pages/NN-*.md` and
@@ -148,12 +148,32 @@ Total ≈ 11 minutes, which leaves air for one slide to run long.
 | 23 | No licence. So we rebuilt the data set | `opensearch` |
 | 24 | The same bug is loud or silent depending on where on Earth you are | `opensearch` |
 | 25 | 1.9 nanometres broke the build | `opensearch` |
+| 26 | The API in the request cannot do the job | `egdb_import` |
+| 27 | Four outcomes, one unchanged line of code | `egdb_import` |
+| 28 | What the silent success did to the schema | `egdb_import` |
+| 29 | "Nothing was recomputed" — measured | `egdb_import` |
 
 Slide 24 is the strongest candidate to displace a core-deck rule: it is the same
 point as **Rule 4** (the loud error is the harmless one) with a second
 measurement that makes it uncomfortable rather than merely true — the verifier
 that caught the stations was luckier, not better. It stays in the backup for now
 because Rule 4 already has an image and this has only numbers.
+
+Slides 26-28 are the second candidate, and for the opposite reason: they are
+**Rule 4** with the cleanest evidence in the repository — four outcomes from one
+unchanged line of code, decided only by which libraries happened to be
+installed, and a schema that came back with four field names silently shortened.
+They stay in the backup because the finding is about an API rather than about
+geodata, and because `egdb_import` has not yet been run against a real
+geodatabase. When it has, and there is a screenshot of the layer in ArcGIS Pro,
+slide 27 is the one to argue for.
+
+Slide 29 is a third kind of candidate: it pairs with slide 25 rather than
+competing with it. Both are nanometre-scale findings that break an exact
+comparison — 1.9 nm from libm not being standardised to the last bit, 9.5 nm
+from a geodatabase storing a number — and neither involved any code doing
+arithmetic. Shown together they make a point neither makes alone. Shown alone,
+25 is the stronger one, because its cause was hunted down and 29's was not.
 
 ---
 
