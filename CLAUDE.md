@@ -144,7 +144,19 @@ official basemap). Publishing the image redistributes it, and that notice is the
 condition. Practically: always `object-fit: contain` in an `<img>`, never
 `background-size: cover` — a background image is cropped to fill, and the first
 thing cropped off a map capture is exactly that bar. This rules out the
-best-looking option more than once, which is the point.
+best-looking option more than once, which is the point. **And a notice that was never
+shown is not different from one that was cropped.** ArcGIS Pro does not burn the
+basemap attribution into the map at all: it lives in a dockable **Service Layer
+Credits** panel, closed by default. Measured in `egdb_import`: a capture of the
+entire application window contained no provider notice whatsoever, with nothing
+having been cut off. Open that panel before capturing. Then **record the notice
+as text in the README as well**, because an image can be resized, re-exported or
+replaced and the obligation cannot - here it reads *"Sources: Esri, TomTom,
+Garmin, FAO, NOAA, USGS, © OpenStreetMap contributors, and the GIS User
+Community, Esri, USGS"*, which is also the confirmation that the Esri basemap
+carries OSM data and therefore that the ODbL Produced-Work attribution applies.
+Do not look for the notice at the bottom edge and conclude it is missing; look
+for where the client keeps it.
 
 **`output/` is generated, but committed.**
 Only generated artifacts. It must always be safe to delete the entire folder and
@@ -434,6 +446,112 @@ coordinates.
   `cacerts` directly is undone by the next upgrade, silently and months later.
   The same shape as the projection-formula and same-language-checker rules: the
   component that fails is the one with no dialog to show.
+- **A wrong spatial reference does not error at write time.** Measured in
+  `egdb_import`: a feature class created as EPSG:3857 and fed decimal degrees
+  accepts every row, satisfies the geodatabase, and draws - with all hundred
+  points **within 52 metres of 0°N 0°E** in the Gulf of Guinea, because a
+  longitude of 7.46 read as 7.46 metres is 0.000067°. There is no exception and
+  no warning anywhere in the chain; a bounding box against the source's own
+  measured extent is the only thing that notices. So create the feature class in
+  the CRS the source already carries, state the code in the artifact that
+  describes the schema, and check the extent afterwards.
+- **Whether an axis swap is loud depends on the data, and it is worth saying
+  which case you are in.** In `egdb_import` the transposed bounding box does
+  real work: NRW is latitude 50-52 and longitude 5-9, so both ranges are valid
+  latitudes, a swapped load is accepted without complaint, and every point lands
+  around 7.5°N 51.3°E in the Somali Sea at a perfectly legal coordinate. That is
+  the same silence the `opensearch` stations had, and the opposite of the
+  airports, where the engine rejected 550 of 880. Never write "the axis check
+  passes" without saying whether anything else would have caught a swap.
+- **The geodatabase's name limits are tighter than the database's, and ArcGIS
+  never quotes an identifier.** Esri: *"ArcGIS does not delimit object names. Do
+  not create any tables, feature classes, indexes, databases, users, roles, or
+  other object names that require delimiters if you will be using them with
+  ArcGIS."* A field name may be **31** characters against PostgreSQL's own 63,
+  so a name between 32 and 63 is stored happily by the database and
+  unaddressable through ArcGIS. Mixed case is the same trap from the other
+  side: PostgreSQL folds unquoted identifiers to lowercase, so a column created
+  as `Latitude` *is* `latitude`, and code that remembers the capital is looking
+  for a different column. Sanitise to the geodatabase's limit, lowercase, and
+  record every rename in the artifact rather than performing it silently.
+- **An Enterprise Geodatabase has no boolean type.** The whole list is SHORT,
+  LONG, FLOAT, DOUBLE, TEXT, DATE, GUID, GLOBALID, BLOB. A `true`/`false`
+  column has to become SHORT with 1/0, and the attribute table then shows a
+  number with no way to indicate what it was. Record the substitution in the
+  schema artifact; do not apply it silently. Measured in `egdb_import`, with an
+  edge worth keeping: a shapefile *does* have a boolean (DBF type `L`), so the
+  format that cannot be the target represents that one column better than the
+  target can.
+- **Never infer a decimal coordinate as FLOAT.** A 32-bit float carries about
+  seven significant decimal digits; a latitude of 51.51264 needs seven and an
+  EPSG:3857 metre value like 831034.51 needs eight. The rounding is silent and
+  the result is a plausible coordinate in the wrong place. Everything decimal
+  becomes DOUBLE.
+- **A source that declares its own schema may beat your measurement — and a
+  code that looks like a number is why.** The rest of this file says measure
+  rather than trust; an Esri JSON FeatureSet exported from a geodatabase is the
+  exception, because its `fields` block carries real types and real TEXT
+  lengths. Measured in `egdb_import`: inferring types from the values alone
+  would have made `state_fips` a `LONG`, and its values include `01` … `09` -
+  after which `'01'` is `1` and `WHERE state_fips = '01'` finds nothing. The
+  same run would have collapsed `acais` (only real value `Y`) into a boolean.
+  No amount of measuring a column of digits reveals that it is a *code*. So
+  where a declaration exists, let it decide the type, **record the measurement
+  beside it**, and refuse the one case that is a defect rather than a
+  difference of opinion: a declared TEXT length the source's own values exceed,
+  which otherwise fails hundreds of rows into the insert.
+- **"Empty" needs one definition, shared by everything that writes.** A
+  geodatabase's blank may be `" "`, and this file already says to keep it
+  verbatim - but that is only achievable if the code measuring nullability and
+  the code writing values agree on what absent means. Measured in
+  `egdb_import`: they did not, and the airports fixture aborted at row 0 with
+  *"field 'field' is empty but the contract declares it non-nullable"* - the
+  analyser counted 825 single spaces as present, the loader counted them as
+  absent, one file and two answers. **1,343 values across three columns** were
+  one release away from being written as `NULL`. The predicate is now a single
+  public function imported by both. The general shape: code that has to
+  **agree** should be shared; code that has to **check** must not be. Getting
+  that backwards produces either a bug that passes both sides or a conflict at
+  row 0.
+- **An object id that agrees with a source column is more dangerous than one
+  that does not.** Measured in `egdb_import`: the loaded feature class shows
+  `objectid 65` directly above the source's own `id 65`. They match only because
+  the rows were inserted in file order, and they diverge the first time anything
+  is deleted and re-added - at which point every query that joined on the wrong
+  one is quietly wrong. In `opensearch` the equivalent pair matched in **zero**
+  rows and therefore announced itself. Prefer the loud version: prefix source
+  identity columns (`source_objectid`) so the attribute table cannot invite the
+  join, and never present an accidental agreement as a key.
+- **Do not construct a qualified name you can look up.** An enterprise
+  geodatabase addresses objects as `database.schema.table`, and the schema is
+  the *connecting login's* - not derivable from a database name, a user name or
+  anything else a script is passed. Measured in `egdb_import`: a verifier that
+  defaulted the schema to the database name built
+  `agsdb.agsdb.nrw_points` against a real `agsdb.sde.nrw_points` and failed with
+  `ERROR 000732: Input Rows: Dataset ... does not exist or is not supported` -
+  a message that names the *dataset*, so it reads as "the load failed" when the
+  fault was in the path the checker built. Enumerate the workspace
+  (`arcpy.ListFeatureClasses`) and match on the unqualified name instead; keep
+  the explicit flags only for the one case a human must decide, the same name in
+  two schemas. And when a lookup misses, print **what is there**, not only what
+  was wanted - "does not exist" plus a listing is a different message from
+  "does not exist".
+- **"Nothing was recomputed" does not survive a database round trip, and the
+  tolerance you thought was decoration is load-bearing.** Measured in
+  `egdb_import`: a pipeline that projects nothing, converts nothing and rounds
+  nothing - the double parsed from the CSV is the double handed to `SHAPE@XY` -
+  reads back out of a PostgreSQL enterprise geodatabase differing by up to
+  **8.53e-14 degrees, about 9.5 nanometres**, roughly 12 ULP of the stored
+  latitude. A geodatabase quantises geometry to the coordinate grid its spatial
+  reference defines, and arcpy converts between the stored form and a Python
+  tuple; which of the two accounts for it was not established, and saying so is
+  cheaper than picking one. Consequences: keep the provenance claim but state
+  its boundary - nothing was recomputed *on the way in* - and **do not tighten
+  the tolerance to the measured value**, which is the rounding-margin mistake
+  from section 10 in a new costume. Note the symmetry with that finding: 1.9 nm
+  there from libm not being standardised to the last bit, 9.5 nm here from a
+  database storing a number. Neither involved any code doing arithmetic, both
+  are invisible, and both are fatal to an exact-equality check.
 - **A UI that offers the same label twice offers you the wrong one.** ArcGIS
   Pro's share pane has a check box called **Feature** under *Copy all data* and
   another called **Feature** under *Reference registered data*; for an
@@ -474,7 +592,67 @@ Rules that do apply regardless of stack:
   in a different costume. Keep values that any shell in the chain can rewrite
   (`!`, `%`, `$`, `^`, backticks) out of shared constants rather than escaping
   them per platform, and prove a credential from outside the script family that
-  set it.
+  set it. **Every shell in the chain gets its own turn at this.**
+  Measured again in `egdb_import`: the runbook was first written in `cmd.exe`
+  syntax and handed to PowerShell, where `set VAR=x` sets nothing, `%VAR%`
+  expands to nothing, and a string in a variable is data rather than a command
+  until the call operator `&` is put in front of it - so the first three
+  commands failed for three different reasons, none of them the tool's. And
+  PowerShell has the same credential trap as cmd with the characters reversed:
+  it interpolates inside **double** quotes, so `$env:PWD_VAR = "a$bc"` silently
+  loses `$bc`. Use single quotes for a credential, and check
+  `$env:VAR.Length` against what was typed before blaming the server for a 401.
+  When a runbook targets Windows, say which shell it is written for in the first
+  line - the two share no syntax for variables, quoting or line continuation,
+  and a mixed one fails in a way that looks like the program is broken. **And do not
+  put a bare call operator in a copy-pasteable command.** `& $tool args` is the
+  correct PowerShell form, and the `&` is one leading character that reads as
+  decoration; dropped while copying, it turns into
+  `Unexpected token '-c' in expression or statement`, which names the flag and
+  not the missing operator. Measured: it was dropped on the first attempt.
+  Define the tool once as a function - `function tool { & "C:\...\tool.bat"
+  @args }` - so every later command is a bare `tool ...` with no shell-specific
+  punctuation to lose. The general rule: when a command's correctness depends on
+  a single easily-lost character, move that character into a definition rather
+  than repeating it in every step.
+
+- **Check what an API wrote, not whether it threw.** An interface that cannot
+  reach your target may still hand you a path and a success. Measured in
+  `egdb_import`, where the API the request named was run four times with nothing
+  changed but what was importable: it raised; it raised the *same* message with
+  the library the message recommends installed, because the message names
+  shapely and the code checks pyshp; it wrote three files and then died inside
+  the library; and it succeeded silently and wrote a **shapefile** where a
+  feature class was asked for. The silent success truncated four of ten field
+  names to the DBF limit of ten characters and replaced both measured TEXT
+  lengths with the format's maximum. So assert the format, the field names and
+  the field types of what actually landed - the return value is not the
+  deliverable.
+- **A convenience writer that infers a schema is not an importer.** Where field
+  types and lengths *are* the deliverable, state them explicitly.
+  `to_featureclass` accepts `location, overwrite, has_z, has_m,
+  sanitize_columns` - no type, no length, no alias - and Esri publishes no dtype
+  mapping table, so the schema becomes whatever pandas guessed. Prefer the
+  verbose route (`CreateFeatureclass` + `AddField` per field) and let the
+  measurement decide the length.
+- **Say when a use case cannot isolate its dependencies, and why.** arcpy is not
+  installable from PyPI; it exists only inside ArcGIS Pro's bundled
+  `arcgispro-py3` conda environment, invoked through `propy.bat`. So
+  `egdb_import` has no venv for its loader - the environment *is* the licence.
+  Keep the half that does not need it stdlib-only on purpose, so the analysis is
+  not held hostage to the licence, and pin a `requirements.txt` only for what
+  genuinely comes from PyPI. Every pin gets its reason: `pyshp` is held at 2.x
+  there because `arcgis` 2.4.1.1 calls it with a keyword 3.x removed, and
+  `setuptools` is pinned because Python 3.12 dropped `distutils` and the
+  library still imports it.
+- **Split a pipeline where the licence boundary is, not where the code is
+  convenient.** Measured in `egdb_import`: the decisions (which fields, which
+  types, which CRS) went into a reviewable JSON contract produced by
+  stdlib-only code, and the half that needs Windows, a licence and a database
+  became a transcription of a document somebody had already read. A `--dry-run`
+  that also *rehearses* the work - coercing every row to its declared type
+  without importing the licensed library - caught three planted defects with no
+  database in sight. A dry run that only prints calls is worth much less.
 
 ---
 
@@ -658,6 +836,27 @@ Generated test data is only useful for a talk if it can be regenerated live.
   Write the file with an explicit `newline="\n"`, and say in the README that a
   hand copy between machines must be verbatim — `.gitattributes` protects a
   clone, and nothing protects a folder someone copied.
+- **Vendor documentation rots like an open-data portal, so record the
+  verification status next to the claim.** Measured in `egdb_import`: the
+  version-pinned `enterprise.arcgis.com/.../12.1/...` page for the PostgreSQL
+  requirements did not resolve at all - 12.0 was the highest that did - and
+  several `pro.arcgis.com/.../latest/...` URLs 301-redirect to `doc.esri.com`
+  mid-migration. A requirements manifest therefore carries, per claim, the URL,
+  the retrieval date, the quoted sentence and an explicit **VERIFIED /
+  UNVERIFIED** marker, and the tool asks the machine rather than trusting the
+  file: three numbers went in as UNVERIFIED, including a package version that
+  could only be inferred from the vendor's conda channel metadata and is stated
+  in no release note. "The documentation says" and "the instance reports" are
+  two different facts, and a manifest that cannot tell them apart is a manifest
+  that will be quoted on stage.
+- **State where a credential is stored, and do not take an exception you have
+  not earned.** `opensearch` commits a throwaway password under the narrow
+  exception below; `egdb_import` deliberately does not, because an Enterprise
+  Geodatabase is a database instance with a real login rather than a folder
+  deleted with `build/`. Note also what a generated connection file contains:
+  ArcGIS Pro can hang opening a geodatabase from a `.sde` whose credentials were
+  not saved, so the file has to be written with `SAVE_USERNAME` - which is
+  exactly why it belongs in `build/` and never in `input/` or `output/`.
 - **Never commit secrets.** API keys and endpoints come from environment
   variables; document the variable names, not the values.
 - **State where a credential is actually stored, and whether it can be changed
