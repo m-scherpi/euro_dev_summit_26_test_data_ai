@@ -1,0 +1,17 @@
+# Line endings, because one file in this repository is pinned by its hash.
+#
+# `opensearch/input/synthetic_airports.json` is a committed fixture whose
+# SHA-256 is recorded in `opensearch/input/synthetic_airports_source.json` and
+# asserted by `opensearch/scripts/verify_airports.py`. A checkout on Windows
+# with `core.autocrlf=true` would rewrite every newline and change that hash
+# without changing a single data value - the provenance check would then fail
+# for a reason that has nothing to do with the data. So: LF everywhere, by
+# declaration rather than by hoping the clone is configured correctly.
+* text=auto eol=lf
+
+# Windows batch files are the exception: cmd.exe needs CRLF, and
+# `setup_opensearch.bat` / `run_opensearch.bat` are meant to run there.
+*.bat text eol=crlf
+
+# Binary, never touched.
+*.png binary

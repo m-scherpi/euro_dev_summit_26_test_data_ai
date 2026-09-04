@@ -39,3 +39,16 @@ dist/
 # never a second copy in git. `.slidev/` is Slidev's local cache.
 slides/public/img/
 .slidev/
+
+# Source data whose licence could not be established.
+# `opensearch/input/airports.json` is an export from an existing feature class
+# in an Enterprise Geodatabase, handed over without a licence statement. It is
+# probably the FAA-derived airports data set, but "probably" is not a licence
+# (CLAUDE.md section 3), and this repository is published under CC BY 4.0
+# (section 11). The file therefore never enters git. What was taken from it is
+# its *structure* - field names, Esri field types, spatial reference, and the
+# measured shape of its quirks - which `opensearch/scripts/make_airports_fixture.py`
+# rebuilds with synthetic values. Ignored rather than merely untracked, because
+# the surrounding `input/` folder is committed in full and a `git add
+# opensearch/input` would otherwise take it along.
+opensearch/input/airports.json
