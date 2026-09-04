@@ -1444,3 +1444,47 @@ Follow-up, after the plan was presented:
   prove each check goes red have not been done. Ten green checks are worth less
   than one check proven to fail.
 
+
+---
+
+## [020] 2026-09-04 — Brainstorming the next use cases  ·  scope: root
+
+**Prompt (original, DE)**
+> Wir haben hier jetzt schon einige Use Cases generiert: verschiedene Inputs (generiert, recherchiert, von woanders exportiert) und verschiedene Targets wie Hosted FeatureLayers, Opensearch Db und FeatureClasses. Brainstorme mit mir, was wir noch so an potentiellen Use Cases ausprobieren könnten. Wie gesagt is der Fokus auf: Daten generieren oder durch LLM bereitstellen lassen, um sie dann in verschiedenen Formen auf einem ArcGIS Enterprise nutzen bzw. veröffentlichen zu können.
+
+**Prompt (translation, EN)**
+> We have already generated a few use cases here: different inputs (generated, researched, exported from elsewhere) and different targets such as Hosted FeatureLayers, OpenSearch DB and FeatureClasses. Brainstorm with me about what other potential use cases we could try. As said, the focus is on: generating data or having it provided by an LLM, in order to then use or publish it in various forms on an ArcGIS Enterprise.
+
+**What happened**
+
+- Pure brainstorming, no code, no new folder. Read the root README, the
+  `python_import` stub and the use-case index to establish what is covered.
+- Mapped the existing four use cases onto three axes — input origin, target
+  form, geometry type — and looked for the empty cells rather than for more
+  ideas.
+- **The empty cell that matters is not a target, it is a geometry type.** All
+  four existing use cases produce *points*. Every measured finding in
+  `CLAUDE.md` §4 is therefore a point finding: axis order, CRS, projection,
+  provenance. Polygons and lines carry a whole class of defects the repository
+  has not touched once — ring orientation, self-intersection, gaps and overlaps
+  in a coverage, unclosed rings.
+- Second observation: `python_import` is still a stub and is the only place a
+  **Hosted Feature Layer** (copied data) would live, which is the one
+  publication form of ArcGIS Enterprise the repository claims in its own
+  narrative but has never actually built.
+- Proposed 17 candidates in three groups (target, input, governance) and ranked
+  them by "does it produce a *new* failure class" rather than by novelty of the
+  target, because the 15-minute slot only rewards a finding that displaces an
+  existing rule.
+
+**Artifacts**
+
+- none — brainstorming only
+
+**Result / Iteration**
+
+- Decision deferred to the user; nothing implemented.
+- The ranking criterion is itself the finding of this step: a new **target**
+  costs a use case and yields at most a plumbing story, while a new **geometry
+  type** or a new **failure class** yields a rule. `egdb_import` and
+  `opensearch` already proved the plumbing story twice.
