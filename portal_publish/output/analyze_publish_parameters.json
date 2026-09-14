@@ -1,0 +1,203 @@
+{
+  "type": "csv",
+  "name": "muenster_rent_census",
+  "sourceUrl": "",
+  "maxRecordCount": 1000,
+  "targetSR": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "editorTrackingInfo": {
+    "enableEditorTracking": false,
+    "enableOwnershipAccessControl": false,
+    "allowOthersToUpdate": true,
+    "allowOthersToDelete": false
+  },
+  "locationType": "coordinates",
+  "latitudeFieldName": "latitude",
+  "longitudeFieldName": "longitude",
+  "sourceSR": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "columnDelimiter": ",",
+  "layerInfo": {
+    "currentVersion": 12.1,
+    "id": 0,
+    "name": "muenster_rent_census",
+    "type": "Feature Layer",
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editFieldsInfo": null,
+    "relationships": [],
+    "isDataVersioned": false,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSQL": true,
+    "supportsCalculate": true,
+    "advancedQueryCapabilities": {
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsDistinct": true,
+      "supportsPagination": true,
+      "supportsOrderBy": true,
+      "supportsQueryWithDistance": true
+    },
+    "geometryType": "esriGeometryPoint",
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSMS",
+          "style": "esriSMSCircle",
+          "color": [
+            128,
+            0,
+            145,
+            255
+          ],
+          "size": 4,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "outline": {
+            "color": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "width": 1
+          }
+        },
+        "label": "",
+        "description": ""
+      }
+    },
+    "hasM": false,
+    "hasZ": false,
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeNone",
+    "supportsApplyEditsWithGlobalIds": true,
+    "objectIdField": "",
+    "globalIdField": "",
+    "typeIdField": "",
+    "fields": [
+      {
+        "name": "id",
+        "type": "esriFieldTypeInteger",
+        "alias": "id"
+      },
+      {
+        "name": "address",
+        "type": "esriFieldTypeString",
+        "alias": "address",
+        "length": 8000
+      },
+      {
+        "name": "district",
+        "type": "esriFieldTypeString",
+        "alias": "district",
+        "length": 8000
+      },
+      {
+        "name": "latitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "latitude"
+      },
+      {
+        "name": "longitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "longitude"
+      },
+      {
+        "name": "x_3857",
+        "type": "esriFieldTypeDouble",
+        "alias": "x_3857"
+      },
+      {
+        "name": "y_3857",
+        "type": "esriFieldTypeDouble",
+        "alias": "y_3857"
+      },
+      {
+        "name": "rent_eur_sqm",
+        "type": "esriFieldTypeDouble",
+        "alias": "rent_eur_sqm"
+      },
+      {
+        "name": "living_area_sqm",
+        "type": "esriFieldTypeDouble",
+        "alias": "living_area_sqm"
+      },
+      {
+        "name": "rooms",
+        "type": "esriFieldTypeInteger",
+        "alias": "rooms"
+      },
+      {
+        "name": "median_age",
+        "type": "esriFieldTypeDouble",
+        "alias": "median_age"
+      },
+      {
+        "name": "household_size",
+        "type": "esriFieldTypeDouble",
+        "alias": "household_size"
+      },
+      {
+        "name": "building_type",
+        "type": "esriFieldTypeString",
+        "alias": "building_type",
+        "length": 8000
+      },
+      {
+        "name": "year_built",
+        "type": "esriFieldTypeInteger",
+        "alias": "year_built"
+      }
+    ],
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "id": null,
+            "address": null,
+            "district": null,
+            "latitude": null,
+            "longitude": null,
+            "x_3857": null,
+            "y_3857": null,
+            "rent_eur_sqm": null,
+            "living_area_sqm": null,
+            "rooms": null,
+            "median_age": null,
+            "household_size": null,
+            "building_type": null,
+            "year_built": null
+          }
+        }
+      }
+    ],
+    "useStandardizedQueries": true,
+    "enableZDefaults": false,
+    "zDefault": 0,
+    "supportedQueryFormats": "JSON",
+    "hasStaticData": false,
+    "maxRecordCount": 1000,
+    "capabilities": "Create,Delete,Query,Update,Editing",
+    "supportsCoordinatesQuantization": false,
+    "supportsAttachmentsByUploadId": true
+  },
+  "analyzeParameters": {
+    "locationType": "coordinates",
+    "sourceCountry": "world"
+  }
+}
