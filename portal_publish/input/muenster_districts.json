@@ -1,0 +1,25 @@
+{
+  "name": "Munster district centres (approximate)",
+  "authoritative": false,
+  "authoritative_note": "These are NOT official district boundaries or official centroids. They are hand-picked approximate centre points, chosen so that a Gaussian scatter around them produces visible spatial structure inside the city. They carry no licence obligation because they are not a copy of anybody's data set - they were typed in, not extracted. Do not use them for anything but generating fictitious test data. The authoritative source for Munster's Stadtteil geometry is the city's own open-data portal; it was deliberately not used, because this use case needs a fictional census and not a real boundary (see README, 'Why there is no boundary here').",
+  "crs": "EPSG:4326",
+  "column_order": "latitude before longitude, per CLAUDE.md section 4",
+  "bounding_box": {
+    "comment": "The sampling domain and the box the offline verifier checks against. Chosen so the latitude band (51.90..52.00) and the longitude band (7.55..7.72) do not overlap - which is what makes the axis-order check in verify_census.py able to detect a swap at all.",
+    "latitude_min": 51.9,
+    "latitude_max": 52.0,
+    "longitude_min": 7.55,
+    "longitude_max": 7.72
+  },
+  "weight_note": "weight is the district's relative share of the generated rows, drawn per row rather than filled round-robin. CLAUDE.md section 3: a round-robin fill flattened a measured 6:1 skew into five equal buckets in `opensearch`, and it looked entirely plausible. Weights sum to 100 here, which is a convenience and not a requirement - the generator normalises them.",
+  "districts": [
+    {"key": "altstadt",     "name": "Altstadt",      "latitude": 51.9625, "longitude": 7.6257, "sigma_deg": 0.0035, "weight": 14},
+    {"key": "kreuzviertel", "name": "Kreuzviertel",  "latitude": 51.9705, "longitude": 7.6175, "sigma_deg": 0.0040, "weight": 16},
+    {"key": "hansaviertel", "name": "Hansaviertel",  "latitude": 51.9505, "longitude": 7.6330, "sigma_deg": 0.0045, "weight": 13},
+    {"key": "mauritz",      "name": "Mauritz",       "latitude": 51.9650, "longitude": 7.6510, "sigma_deg": 0.0060, "weight": 12},
+    {"key": "gievenbeck",   "name": "Gievenbeck",    "latitude": 51.9690, "longitude": 7.5860, "sigma_deg": 0.0070, "weight": 15},
+    {"key": "coerde",       "name": "Coerde",        "latitude": 51.9800, "longitude": 7.6395, "sigma_deg": 0.0045, "weight": 10},
+    {"key": "gremmendorf",  "name": "Gremmendorf",   "latitude": 51.9375, "longitude": 7.6870, "sigma_deg": 0.0065, "weight": 9},
+    {"key": "berg_fidel",   "name": "Berg Fidel",    "latitude": 51.9285, "longitude": 7.6215, "sigma_deg": 0.0050, "weight": 11}
+  ]
+}

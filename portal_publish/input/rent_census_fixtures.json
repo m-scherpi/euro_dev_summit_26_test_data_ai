@@ -1,0 +1,54 @@
+{
+  "name": "Fictitious rent-census component pool",
+  "fictitious": true,
+  "fictitious_note": "Every number in this file is invented. It is plausible for a German city of Munster's size and it is not a measurement of anything - no rent index, no census, no register was consulted. CLAUDE.md section 3: this repository may not use real data, and this use case is the one where that constraint is the point rather than the obstacle. Plausibility is deliberately NOT verified downstream, because 'is this value plausible?' is the wrong question about invented data (README, 'Deliberately not checked').",
+  "crs_note": "No coordinates in this file. Geometry comes from muenster_districts.json.",
+
+  "street_name_parts": {
+    "comment": "Combined into an address as '<core><suffix> <number>'. 24 cores x 4 suffixes x 199 numbers = 19,104 distinct addresses, which comfortably covers 500 rows without the generator having to retry.",
+    "cores": [
+      "Hammer", "Warendorfer", "Wolbecker", "Steinfurter", "Grevener", "Gasselstiege",
+      "Kanal", "Bohlweg", "Hafen", "Muhlen", "Dorten", "Sentruper",
+      "Roxeler", "Horsteberg", "Ludgeri", "Aegidii", "Servatii", "Salz",
+      "Windthorst", "Melchers", "Nienberger", "Coerde", "Gremmendorfer", "Loddenheide"
+    ],
+    "suffixes": ["strasse", "weg", "platz", "allee"],
+    "number_min": 1,
+    "number_max": 199
+  },
+
+  "building_types": {
+    "comment": "The categories the uniqueValue renderer draws. Five, because a categorical legend stops being readable beyond that - and the fifth is deliberately rare so the renderer's defaultSymbol is not the only thing proving it exists. rent_factor multiplies the district's rent base; year_built is drawn inside the type's own range, so building_type and year_built cannot contradict each other.",
+    "types": [
+      {"name": "Altbau",        "rent_factor": 1.18, "year_min": 1870, "year_max": 1918, "area_mean": 92.0, "area_sigma": 28.0, "sqm_per_room": 26.0},
+      {"name": "Nachkriegsbau", "rent_factor": 0.88, "year_min": 1949, "year_max": 1979, "area_mean": 68.0, "area_sigma": 18.0, "sqm_per_room": 22.0},
+      {"name": "Plattenbau",    "rent_factor": 0.74, "year_min": 1965, "year_max": 1990, "area_mean": 61.0, "area_sigma": 14.0, "sqm_per_room": 20.0},
+      {"name": "Neubau",        "rent_factor": 1.31, "year_min": 2005, "year_max": 2024, "area_mean": 84.0, "area_sigma": 24.0, "sqm_per_room": 28.0},
+      {"name": "Reihenhaus",    "rent_factor": 1.02, "year_min": 1955, "year_max": 2015, "area_mean": 128.0, "area_sigma": 22.0, "sqm_per_room": 30.0}
+    ],
+    "area_min_sqm": 24.0,
+    "area_max_sqm": 240.0
+  },
+
+  "district_levels": {
+    "comment": "One entry per district key in muenster_districts.json. rent_base_eur_sqm and age_mean are what give the heatmap and the class breaks visible spatial structure; building_type_weights do the same for the categorical layer. The keys must match exactly - generate_census.py refuses to run on a mismatch rather than silently falling back to a default.",
+    "levels": {
+      "altstadt":     {"rent_base_eur_sqm": 15.40, "rent_sigma": 1.60, "age_mean": 44.0, "age_sigma": 6.0, "household_mean": 1.6, "building_type_weights": {"Altbau": 46, "Nachkriegsbau": 20, "Plattenbau": 2, "Neubau": 28, "Reihenhaus": 4}},
+      "kreuzviertel": {"rent_base_eur_sqm": 14.60, "rent_sigma": 1.40, "age_mean": 33.0, "age_sigma": 5.5, "household_mean": 1.9, "building_type_weights": {"Altbau": 54, "Nachkriegsbau": 22, "Plattenbau": 2, "Neubau": 16, "Reihenhaus": 6}},
+      "hansaviertel": {"rent_base_eur_sqm": 13.20, "rent_sigma": 1.50, "age_mean": 31.0, "age_sigma": 5.0, "household_mean": 1.8, "building_type_weights": {"Altbau": 30, "Nachkriegsbau": 34, "Plattenbau": 8, "Neubau": 24, "Reihenhaus": 4}},
+      "mauritz":      {"rent_base_eur_sqm": 12.10, "rent_sigma": 1.30, "age_mean": 47.0, "age_sigma": 7.0, "household_mean": 2.1, "building_type_weights": {"Altbau": 22, "Nachkriegsbau": 40, "Plattenbau": 6, "Neubau": 14, "Reihenhaus": 18}},
+      "gievenbeck":   {"rent_base_eur_sqm": 11.30, "rent_sigma": 1.20, "age_mean": 28.0, "age_sigma": 6.5, "household_mean": 2.3, "building_type_weights": {"Altbau": 6, "Nachkriegsbau": 36, "Plattenbau": 14, "Neubau": 26, "Reihenhaus": 18}},
+      "coerde":       {"rent_base_eur_sqm": 9.20,  "rent_sigma": 1.00, "age_mean": 39.0, "age_sigma": 8.0, "household_mean": 2.6, "building_type_weights": {"Altbau": 4, "Nachkriegsbau": 30, "Plattenbau": 44, "Neubau": 10, "Reihenhaus": 12}},
+      "gremmendorf":  {"rent_base_eur_sqm": 10.40, "rent_sigma": 1.10, "age_mean": 42.0, "age_sigma": 7.5, "household_mean": 2.5, "building_type_weights": {"Altbau": 8, "Nachkriegsbau": 32, "Plattenbau": 16, "Neubau": 14, "Reihenhaus": 30}},
+      "berg_fidel":   {"rent_base_eur_sqm": 8.40,  "rent_sigma": 0.90, "age_mean": 36.0, "age_sigma": 8.5, "household_mean": 2.9, "building_type_weights": {"Altbau": 2, "Nachkriegsbau": 26, "Plattenbau": 52, "Neubau": 8, "Reihenhaus": 12}}
+    }
+  },
+
+  "value_ranges": {
+    "comment": "Hard guards, so a distribution tail cannot produce a negative rent or a 200-year-old resident. They are guards and not shapers: the bounds are set wide enough that a normal run barely reaches them, because a clamp that fires often piles mass onto the bound and that shows up in the data as a suspiciously popular value. The generator prints every clamp count for exactly that reason - the first version clamped 37 of 500 household sizes onto 1.0 and the fix was the distribution, not the bound.",
+    "rent_eur_sqm": [4.0, 30.0],
+    "median_age": [16.0, 84.0],
+    "household_size": [1.0, 8.0],
+    "rooms": [1, 9]
+  }
+}

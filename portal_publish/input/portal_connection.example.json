@@ -1,0 +1,14 @@
+{
+  "_comment": [
+    "Template for the portal connection. Copy it to build/portal_connection.json (build/ is gitignored) and fill it in, or pass the same values as flags.",
+    "There is deliberately NO password field, and there is deliberately no committed default.",
+    "CLAUDE.md section 10 grants one narrow exception for a committed credential: a local throwaway service holding nothing but public open data and deleted with its build/ folder. opensearch takes that exception. This use case does NOT, and the reason is not caution but arithmetic: an ArcGIS Enterprise Portal is a real system with a real named account, its items outlive any build/ folder, and the same login usually reaches a federated server and a data store. Nothing here is throwaway.",
+    "The password comes from $PORTAL_PASSWORD or --password, and appears in no log line - every script substitutes the literal string <PORTAL_PASSWORD> instead.",
+    "A literal 'localhost' in portal_url is resolved by the federated server on its own machine, not on yours. Use the machine's real host name, matching the certificate."
+  ],
+  "portal_url": "https://portal.example.com/portal",
+  "user": "devsummit",
+  "service_name": "muenster_rent_census",
+  "ca_cert": "path/to/root-ca.pem",
+  "verify_cert": true
+}

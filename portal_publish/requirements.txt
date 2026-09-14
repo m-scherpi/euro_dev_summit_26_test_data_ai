@@ -1,0 +1,26 @@
+# Dependencies for the two portal-facing scripts only - `publish_to_portal.py`
+# and `verify_portal.py`. The other three (`generate_census.py`,
+# `verify_census.py`, `build_portal_items.py`) are standard library on purpose,
+# so the entire design of this use case - field types, four renderers, the whole
+# web map - is reviewable and diffable with no portal in the room. See the
+# README's Stack section.
+#
+# arcgis is pinned to the version already measured in `egdb_import`, so the two
+# use cases cannot disagree about what the client library can do. Note what that
+# version does NOT contain: there is no `arcgis.map` module and no
+# `arcgis.mapping.WebMap`, so the web map is hand-built JSON handed to
+# `content.add`. That is measured, not assumed - see the README section "There is
+# no Web Map class", which carries the command to re-measure it.
+arcgis==2.4.1.1
+# Python 3.12 removed `distutils` from the standard library and arcgis 2.4.1.1
+# still imports it from its geo accessor. setuptools ships the shim. A
+# `python3 -m venv` on 3.12 no longer installs setuptools by default, so without
+# this pin the import fails with `ModuleNotFoundError: No module named
+# 'distutils'`. Same pin and same reason as `egdb_import/requirements.txt`.
+setuptools==80.9.0
+#
+# `pyshp` is NOT pinned here, unlike in `egdb_import`. It is only needed by the
+# shapefile writer inside `arcgis.features.GeoAccessor`, which this use case
+# never calls: nothing here writes a local feature class. Recorded rather than
+# copied, because an inherited pin whose reason no longer applies is how a
+# requirements file stops being reviewable.
