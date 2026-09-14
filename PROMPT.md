@@ -1868,3 +1868,254 @@ Follow-up, after the plan was presented:
 - CLAUDE.md now separates the two decisions: capture the before and after at a matched
   view because that is the only way the comparison means anything, and then decide
   *separately* whether to keep them.
+
+---
+
+## [027] 2026-09-14 — The deck, rebuilt around the use cases  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> lass uns am eigentlichen vortrag arbeiten. Bisher gibt es ein paar folien und kernthesen und viel backup... bitte verwerfe das noch mal komplett. die technik zum erstellen der slides soll noch beibehalten werden. nun sind alle use cases vollständig. fokussieren bei dem vortrag mehr auf die use cases und was geht bzw. die Idee hinter dem use case und weniger auf die gesamten findings. liste vielleicht pro use case eine entscheidende erkenntnis und vielleicht auf höherer flugebene am ende noch ein paar lessons learned. bedenke, ich habe nur sehr wenig zeit. und fokus soll sein, was geht, was man alles mit genAI machen kann.
+
+**Prompt (translation, EN)**
+> let's work on the actual talk. So far there are a few slides and core theses and a lot of backup... please discard that completely again. the technology for producing the slides should be kept. now all use cases are complete. focus the talk more on the use cases and what is possible resp. the idea behind the use case and less on all the findings. maybe list one decisive insight per use case and maybe at a higher altitude at the end a few lessons learned. bear in mind, I only have very little time. and the focus should be what is possible, what you can do with genAI.
+
+**What happened**
+- Deleted all six page files of the previous deck — the four-rules core deck and
+  the fifteen backup slides — and kept the Slidev setup, the theme, `style.css`,
+  the asset sync and the deployment workflow untouched.
+- Rewrote the deck as **10 slides**: cover · the constraint · the chain of five
+  use cases · one slide per use case · lessons learned · thanks. Each use-case
+  slide is the same template: eyebrow with the folder name, *The idea*, *What
+  worked* with its measured numbers, one screenshot with its attribution line,
+  and one finding in the teal box.
+- Picked the one finding per use case from each folder's `Notes for the talk`:
+  100 of 100 Web Mercator values wrong by 490 m · the licence check before the
+  geometry check · 11 of 12 green and the layer will not open · the API returned
+  success and wrote a shapefile · 4 of 4 green over a layer that drew nothing.
+- Extended `sync_assets.mjs` from three screenshots to five, one per use case,
+  and added the three missing `input/*.png` paths to the deploy workflow's path
+  filter so a changed capture still triggers a build.
+- Exported every slide to PNG and looked at all ten, twice.
+
+**Artifacts**
+- `slides/slides.md` — new entry, six `src:` includes
+- `slides/pages/00-intro.md` … `60-close.md` — seven new page files
+- `slides/style.css` — `.rule` reduced to `text-lg`, `.card` added
+- `slides/scripts/sync_assets.mjs` — five screenshots
+- `.github/workflows/deploy-slides.yml` — path filter extended
+- `slides/README.md`, `README.md`, `CLAUDE.md`, `portal_publish/README.md` — updated
+
+**Result / Iteration**
+- The first export was the finding of this session: **all five** use-case slides
+  had their teal finding box running past the bottom edge, cut off mid-sentence,
+  on a build that reported success. A repeated layout repeats its defect once per
+  instance — and reports success once per instance too. Fixed by dropping the
+  box to `text-lg` and shortening every finding to two lines, then re-exported.
+- Second defect, also invisible to the build: the `.card` style for slide 3's
+  metric never reached `style.css` at all, because the script that was to append
+  it aborted on an earlier assertion. The slide rendered without the rule that
+  did not exist and looked merely unbalanced rather than broken.
+- The deck now runs ≈ 8.5 minutes of scripted speaking against ~12 available,
+  which is deliberate: five use cases in a row invite questions mid-talk.
+- Not done, and worth saying: the deck has no demo. Everything on it is a
+  screenshot of a result. Whether one of the five should become a live run is
+  the open question for the rehearsal.
+
+---
+
+## [028] 2026-09-14 — Two slides per use case, and a cropped attribution  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> Das geht schon in die richtige Richtung. die Folien sind vielleicht noch ein bisschen zu eng beschrieben. lieber ein paar folien mehr, mit weniger Inhalt. Für die einzelnen Use Cases sollte auch noch mehr beschreibung auf dem Workflow liegen: bei CSV vor allem auf der Masse an Punkten, die niemand von Hand klickt. bei der suche ist es klar: den Such-Aufwand. Beim OpenSearch Index vor allem, dass es auch andere Consumer Typen und damit Dienste-Typen geben kann, um z.B. neue Technologien zu erschließen (OpenSearch support ist noch sehr neu). Bei Egdb dann die machbarkeit, weil dass unser haupt use case in der Firma ist, als EGDB brauchen wir noch am ehesten echte TEstdaten. Der Usecase mit der webmap ist dann schön für Demos bzw. den ganzheitlichen Flow und vor allem auch, um zu zeigen, was alles möglich ist, wenn man weiter denkt. Vom Stil her bitte bedenken: ich bin kein native speaker, ein paar wörter wie prose kenne ich nicht. auch sind vielleicht zu viele zahlen auf den folien: was genau sollen mir die quantile beim class break sagen? lieber simpel halten. für den generellen purpose des vortrag: es geht weniger darum, dass ich keine echte daten nutzen darf, sondern dass ich im zweifel für ein universelles produkt, was wir bauen, nicht unbedingt echte daten brauchen , sondern es eher um strukturen und die art und weise geht: z.B. bei CSV ist es weniger die tatsache dass ich irgendwelche Punkte habe, sondern dass ich nicht 10000 punkte von hand anlegen müsste. ich hätte zudem vielleicht noch ein paar andere findings und takeaways verarbeitet mit ein paar plakativeren aussagen wie sie ja z.B. schon da sind wie: nicht die Daten sondern der consumer sind wichtig oder so
+
+**Prompt (translation, EN)**
+> This is already going in the right direction. the slides are maybe still a bit too densely written. rather a few more slides, with less content. For the individual use cases there should also be more description on the workflow: for CSV above all on the mass of points that nobody clicks by hand. for the search it is clear: the search effort. For the OpenSearch index above all that there can also be other consumer types and therefore service types, in order to open up new technologies for example (OpenSearch support is still very new). For Egdb then the feasibility, because that is our main use case in the company, as EGDB is where we most likely still need real test data. The use case with the web map is then nice for demos resp. the holistic flow and above all also to show what is all possible if one thinks further. In terms of style please bear in mind: I am not a native speaker, a few words like prose I do not know. also there are maybe too many numbers on the slides: what exactly are the quantiles at the class break supposed to tell me? rather keep it simple. for the general purpose of the talk: it is less about the fact that I am not allowed to use real data, but that for a universal product that we build I do not necessarily need real data in case of doubt, but it is more about structures and the manner: e.g. with CSV it is less the fact that I have some points, but that I would not have to create 10000 points by hand. I would moreover maybe have worked in a few other findings and takeaways with a few more striking statements as they already exist e.g. like: not the data but the consumer is important or something
+
+**What happened**
+- **Split every use case into two slides.** An *idea* slide (why this use case
+  exists + the workflow in three steps) and a *result* slide (one screenshot,
+  one finding). Ten slides became 17 at an unchanged speaking budget.
+- Wrote each idea slide around the reason the user gave: volume for `csv_data`,
+  search effort for `open_data_search`, reaching a service type we are new to for
+  `opensearch`, "this is where we actually need test data" for `egdb_import`,
+  the whole flow and something demo-able for `portal_publish`.
+- **Replaced the opening.** It claimed the motivation was not being allowed to
+  use real data; it is now that a product has to work with any customer's data,
+  so a test needs *structure* rather than somebody's rows. Data protection is a
+  consequence, not the argument.
+- **Simplified the language and dropped numbers that need explaining.** Removed
+  *prose*, *triage*, *home turf*, *punchline*; cut the quantile class counts, the
+  candidate/HTTP-check counts and the layer/renderer counts. Kept 10,000, 490 m,
+  11 of 12, 4 of 4, 449, seven sources — each is the point of its own sentence.
+- **Added two takeaway slides**, six short statements in the style the user
+  named: *Ask for the generator, not for the data* · *Let code own every number
+  that has a formula* · *Finding the data costs more than converting it* · *Not
+  the data — the consumer decides* · *"Success" is not a result* · *A green check
+  cannot see a blank map* — plus a closing line slide.
+- Exported all 17 slides to PNG and looked at each one, twice.
+
+**Artifacts**
+- `slides/slides.md`, `slides/pages/*.md` — 17 slides across seven page files
+- `slides/style.css` — `.lead`, `.steps`, `.shot-big` added; type sizes raised
+- `slides/README.md`, `README.md`, `CLAUDE.md` — updated
+
+**Result / Iteration**
+- **The export caught a licence violation, not a layout bug.** The result slides
+  are built around a large screenshot, capped with `max-height: 56vh`. Slidev
+  scales a slide with a CSS transform, so a viewport unit inside a slide is not a
+  fraction of that slide: the image rendered far past the bottom edge and the
+  **basemap attribution was cropped off** — the one thing CLAUDE.md §3 says must
+  never happen. The build reported success. Fixed by capping in pixels against
+  Slidev's 980 × 552 canvas. A written-down rule broken by a unit conversion
+  rather than by a decision.
+- Second defect, same export: the closing statement slide had overlapping lines,
+  because `<br/>` inside a Markdown paragraph does not inherit the `leading-*`
+  class. Replaced with separate `<div>`s and an explicit line height.
+- Third, from the first draft of this round: the slides were legible but sat in
+  the top 45 % of the frame, which reads as small from the back of a room. Type
+  raised to `text-2xl` / `text-xl` on the sparse slides.
+- Still open, unchanged from last time: there is no demo. Every slide is a
+  screenshot of a result, and whether one use case should run live is the
+  question for the rehearsal.
+
+---
+
+## [029] 2026-09-14 — The submitted title, and the abstract as a consumer  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> bitte am anfang noch eine disclaimer folie zum generellen workflow: mit claude code entstanden, alles inkl. VOrtrag, Prompt Log zur nachvollziehbarkeit, fokus auf verification der ergebnisse, alles lokal - bis zum publizieren. Bei den CSV Varianten erwähnen: Hosted Feature Layer im Portal als Ziel der Daten. für EGDB hervorherben, dass unser use case Referenced FeatureLayer aus einer EGDB sind und daher das schreiben in die EGDB so wichtig ist. Kernaussagen noch etwas straffen, ergänzen um das sehr plakative: es ist auf viele Arten möglich über LLM an Daten zu kommen. Der offizielle vortragstitel lautet: Using Agentic AI to Easily Create Geospatial Test Data for Your Infrastructure und das Abstract: Agentic AI may be used to interact with ArcGIS Enterprise in different ways, e.g. for the generation of test data for different scenarios and environments. If the content of the data doesn't matter that much and a feature is considered just a geometry with attributes, it's very easy to generate a CSV with 10k points for a hosted feature service, build an OpenSearch-DB to get a view layer in ArcGIS Pro based on just a GeoJSON or import data into your EGDB with a vibe-coded Python script. In this talk, examples will be given to show you, how easy it is, to populate your testing infrastructure with e.g. Claude Code. - hier noch mal checken, ob die Inhalte dem entsprechen. Mein Name lautet Martin Scherpinski, und es sollte con terra GmbH und nicht nur con terra heißen
+
+**Prompt (translation, EN)**
+> please add a disclaimer slide at the beginning about the general workflow: created with claude code, everything incl. the talk, prompt log for traceability, focus on verification of the results, everything local - up to publishing. For the CSV variants mention: Hosted Feature Layer in the portal as the target of the data. for EGDB highlight that our use case are Referenced FeatureLayers from an EGDB and that is why writing into the EGDB is so important. Tighten the core statements a bit more, add the very striking one: it is possible in many ways to get to data via LLM. The official talk title is: Using Agentic AI to Easily Create Geospatial Test Data for Your Infrastructure and the abstract: [abstract as quoted] - check here again whether the contents correspond to it. My name is Martin Scherpinski, and it should say con terra GmbH and not just con terra
+
+**What happened**
+- Cover now carries the **submitted title**, with the previous title demoted to a
+  subtitle. Author is Martin Scherpinski, affiliation con terra GmbH, on the
+  cover and the closing slide; headmatter `title` and `info` updated with it.
+- New **disclaimer slide** as slide 2: built with Claude Code in a local
+  repository, every prompt logged word for word, the work went into verifying
+  rather than generating, everything local until something was published.
+- `csv_data` idea slide names the target: a CSV is what a hosted feature layer in
+  the portal gets published from.
+- `egdb_import` idea slide states why it matters most: our services are
+  **referenced** feature layers on the geodatabase, so the portal reads through
+  to the database and the write decides everything after it.
+- Takeaways tightened to one explanatory line each, split 3 + 4, and led by the
+  new one — *There is more than one way to get to data.*
+- **Read the deck against the abstract, clause by clause**, and recorded the
+  mapping as a table in `slides/README.md`.
+
+**Artifacts**
+- `slides/pages/05-disclaimer.md` — new
+- `slides/slides.md`, `pages/00-intro.md`, `10-csv-data.md`, `30-opensearch.md`, `40-egdb.md`, `60-close.md` — updated
+- `slides/README.md` — new section "The title and the abstract" with the coverage table
+- `README.md`, `CLAUDE.md` — updated
+
+**Result / Iteration**
+- The abstract check was the productive part and found **three gaps in a deck
+  that already looked finished**: the hosted feature layer was never named as the
+  CSV's target, ArcGIS Pro and the source handed over as "a GeoJSON" were both
+  missing from the OpenSearch use case, and Claude Code — named in the abstract —
+  appeared nowhere in the deck at all. Same move as the rest of the repository:
+  verify against the consumer, and the consumer here is whoever read the
+  programme.
+- One tension worth naming rather than resolving quietly: the abstract sells
+  *how easy it is*, and this repository's instinct is to lead with what went
+  wrong. The deck settles it by order — the working result first, the finding as
+  the closing line — not by dropping either.
+- 18 slides, ≈ 11.5 minutes against ~12 available. The disclaimer slide is the
+  one to drop if the session is already running late.
+- Still open: no live demo.
+
+---
+
+## [030] 2026-09-14 — The conference has a name  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> die konferenz heißt Esri European Developer & Technology Summit
+
+**Prompt (translation, EN)**
+> the conference is called Esri European Developer & Technology Summit
+
+**What happened**
+- Cover slide now reads *Esri European Developer & Technology Summit 2026* on its
+  own line under the speaker and affiliation, rather than the abbreviated
+  "Euro Dev Summit 2026".
+- Named the conference in `slides/README.md` and in the root README's talk
+  section, which both described it only as "a conference talk".
+- The repository name `euro_dev_summit_26_test_data_ai` stays as it is: it is the
+  GitHub remote, the Pages base path and the QR code on the closing slide.
+
+**Artifacts**
+- `slides/slides.md`, `slides/README.md`, `README.md`
+
+**Result / Iteration**
+- One occurrence in the deck, and it was the abbreviation — the full name had
+  never been written down anywhere in the repository, so nothing else could have
+  caught it. Re-rendered slide 1 to confirm the two-line block still sits clear
+  of the repository URL.
+
+---
+
+## [031] 2026-09-14 — The closing line, third attempt  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> Versuche noch mal die letzte FOlie mit dem Abschluss-satz zu überarbeiten, der resoniert mit mir noch nicht... jetzt wo du die essenz und das abstract des talks kennst, und die intention des vortrags
+
+**Prompt (translation, EN)**
+> Try reworking the last slide with the closing sentence again, it does not resonate with me yet... now that you know the essence and the abstract of the talk, and the intention of the presentation
+
+**What happened**
+- Replaced the closing statement slide. It now reads, in two lines:
+  *"Test data used to be the thing nobody had time for."* / **"Now it is the
+  thing you have time to get right."**
+- Set the first line smaller and grey, the second larger and bold, so the slide
+  is spoken as a setup and a landing rather than as one sentence.
+- Recorded the reasoning and two alternates for a more sceptical room in the
+  slide's presenter notes, and the whole decision in `slides/README.md`.
+
+**Artifacts**
+- `slides/pages/60-close.md`, `slides/README.md`
+
+**Result / Iteration**
+- Third version of this slide, and diagnosing the first two was the useful part.
+  *"The verification is the deliverable, not the data"* and *"the deliverable was
+  never the data — it was the generator, the schema and the check"* were both
+  accurate and both ended the talk on a lecture about deliverables. Worse, they
+  worked against the abstract: it sells how *easy* this is, and they left the
+  room with how *careful* you have to be.
+- The fix was order, not content. Both versions carry the same two facts — the
+  making is cheap now, the knowing-it-is-right is where the effort went. Putting
+  the gain last turns a warning into something the audience takes with them.
+- The first render wrapped the bold line with "right." alone on its own line;
+  reduced the horizontal padding and added `text-wrap: balance`, then re-exported.
+
+---
+
+## [032] 2026-09-14 — The closing line, as a combination  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> mache eine kombo: Test data used to be the thing nobody had time for. Filling a test system is no longer the hard part. Knowing that the content is valid, still is.
+
+**Prompt (translation, EN)**
+> make a combo: Test data used to be the thing nobody had time for. Filling a test system is no longer the hard part. Knowing that the content is valid, still is.
+
+**What happened**
+- Closing slide rebuilt as three beats, each its own line and its own size:
+  the past (small, grey), what changed (medium), what is left (large, bold).
+- Dropped the comma in *"Knowing that the content is valid, still is."* — it sits
+  between the subject and its verb, and the pause it marks is already carried by
+  the line break. The speaker still pauses; the reader is not tripped.
+- Presenter notes rewritten for the three-beat delivery, one alternate last line
+  kept for a more sceptical room. Budget raised 20 s → 25 s.
+
+**Artifacts**
+- `slides/pages/60-close.md`, `slides/README.md`
+
+**Result / Iteration**
+- Fourth and final version of this slide. The user's combination is better than
+  the previous one for a reason worth writing down: the middle line — *filling a
+  test system is no longer the hard part* — is the abstract's own claim stated
+  plainly, and putting it on its own beat means the talk agrees with its own
+  advertisement out loud before qualifying it.
+- Rendered and checked: three lines, no wrapping, the bold line one line long.
