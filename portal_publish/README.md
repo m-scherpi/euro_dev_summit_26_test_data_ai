@@ -599,7 +599,7 @@ the rest were discarded after they had done their job.
 
 | File | Layer | Shows |
 |---|---|---|
-| `input/class_breaks.png` | `rent_breaks` | the layer that answers the question — Altstadt and Kreuzviertel red, the outer districts yellow and orange. The one capture this use case contributes to the talk, on backup slide 30 |
+| `input/class_breaks.png` | `rent_breaks` | the layer that answers the question — Altstadt and Kreuzviertel red, the outer districts yellow and orange. The one capture this use case contributes to the talk |
 
 It is an external artifact made by hand, which is why it sits in `input/` and not
 in `output/` (CLAUDE.md §3: `output/` must be safe to delete and rebuild from the
@@ -858,11 +858,11 @@ Four omissions, each a decision rather than a gap:
 
 ## Notes for the talk
 
-**In the deck.** Four backup slides, 30–33 in `slides/pages/90-appendix.md`, and
-one screenshot: `class_breaks.png` on slide 30. Slide 31 — *four of four green,
-and the layer was empty* — is the strongest candidate in the whole backup to
-displace a core rule, because it argues against the deck's own thesis. See the
-note in `slides/README.md`.
+**In the deck.** One slide, `slides/pages/50-portal.md`, with
+`class_breaks.png` as its screenshot. Its single finding is *four of four green,
+and the layer was empty* — chosen over the other four because it argues against
+the deck's own thesis that checks beat inspection. Everything else measured here
+stays in this README; the deck has no backup section for it to land in.
 
 **What worked.**
 
@@ -983,10 +983,10 @@ change. The two intensity bounds are unreachable from here. So the answer to
 *"where are the rents high"* is the class-breaks layer, and that is also the one
 screenshot this use case contributes to the talk —
 `input/class_breaks.png`, synced into the deck by `slides/scripts/sync_assets.mjs`
-and shown on backup slide 30.
+and shown on this use case's slide.
 
-The three heatmap captures were the instrument that produced backup slides 31–33
-and are deliberately not in the repository — 49 MB of Map Viewer exports against
+The three heatmap captures were the instrument that established the *stored but
+not drawn* finding and are deliberately not in the repository — 49 MB of Map Viewer exports against
 one screenshot that carries an argument. If a question comes, the live web map
 answers it better than a still would. The committed capture carries its basemap
 attribution **visible and uncropped** (CLAUDE.md §3 —

@@ -957,28 +957,92 @@ which are noise for the talk narrative.
 
 **The slot is a hard constraint, and the deck is built around leaving things
 out.** The talk is **15 minutes including questions** — about 12 minutes of
-speaking, so roughly fourteen slides. The repository grows; the slot does not.
-`slides/` therefore has two tiers:
+speaking. The repository grows; the slot does not. `slides/` is therefore
+**two slides per use case** — an *idea* slide (why this use case exists, and its
+workflow in three steps) and a *result* slide (one screenshot, exactly **one**
+finding) — plus an opening, an overview, two takeaway slides and a close.
 
-- a **core deck** of four named rules, each proven by *one* measured number and
-  *one* image, and
-- a **backup section** after the end, written out but not shown — reachable by
-  arrow key during questions and readable in the repository.
+**Splitting a dense slide into two sparse ones costs no speaking time.** It is
+the same words with half of them off screen while the other half is being said.
+Measured here: ten slides became seventeen at an unchanged budget, and the thing
+that fitted into the new space was the part that had been missing — *why* a use
+case exists. `egdb_import`'s reason is not a number, it is the sentence "this is
+where we really need test data", and it had nowhere to go while the slide was
+also carrying a result. When a slide feels tight, add a slide before cutting a
+sentence.
 
-**A new use case lands in the backup first.** It enters the core deck only by
-displacing a rule whose finding is weaker. Never widen the core deck to
-accommodate new material, and never leave a finding undocumented because it did
-not make the cut — the backup is where it goes.
+**Pick the shape of the talk before writing a slide, and know that the slot
+decides it.** Measured here: the first deck was four named rules with the use
+cases as evidence for them, and it read as a talk about how much goes wrong. The
+rebuild is the same repository and the same measurements with the use cases as
+the subject and one finding each as the closing line — and it answers the
+question the audience arrived with, which was *what can I do with this*. Twelve
+minutes is enough for five things told once or one thing told five ways; that
+choice is not a formatting detail.
+
+**The abstract is a consumer; check the deck against it.** A conference talk is
+submitted months before it exists, so the deck and the abstract drift apart
+silently. Reading them against each other, sentence by sentence, is the same
+move as checking data against its target - and measured here it found three gaps
+in a deck that already looked finished: the abstract promised a CSV *for a
+hosted feature service* and the deck never named the target, promised a view
+layer *in ArcGIS Pro* from *a GeoJSON* and the deck mentioned neither, and named
+*Claude Code* where the deck named no tool at all. Note also which way the
+promise runs: an abstract selling *how easy it is* against a repository whose
+instinct is to lead with what went wrong. Resolve that by **order** - the result
+first, the finding as the closing line - not by hiding either one.
+
+**And state the motivation the speaker actually has.** The first two drafts
+opened on *"I am not allowed to use real data"*, which is true and is not the
+reason. The reason is that a product has to work with **any** customer's data,
+so what a test needs is the *structure* — schema, coordinate system, volume —
+and the structure can be made. Data protection is then a consequence, not the
+argument. Get this wrong and every use case afterwards reads as a workaround
+rather than as a capability.
+
+**Say how the work was made, once, at the front.** A deck built by an agent
+needs one slide stating that: the tool, that every prompt is logged verbatim,
+where the effort actually went (verifying, not generating), and what ran locally
+versus what left the machine. It costs 40 seconds, it is the honest version of
+the claim the rest of the talk makes, and without it the audience spends the
+first use case wondering rather than listening.
+
+**Write the deck for the speaker, not for the reader.** The talk is given in a
+non-native language. Words that need a moment of thought on stage (*prose*,
+*triage*, *yardstick*) were removed even where they were the better word, and a
+number that has to be explained before it means anything was cut — a quantile
+class count is a fine README fact and dead weight on a slide. Keep a number only
+where the number *is* the point.
+
+**Do not write a backup section.** The first deck had fifteen written-out
+backup slides and a documented rule for which finding may displace which. It was
+an elaborate way of refusing to cut, it cost real maintenance, and nobody ever
+saw a slide of it. Findings belong in the use-case README, which is where a
+question during Q&A gets answered properly anyway. Never leave a finding
+undocumented because it did not fit the deck — but the deck is not where it goes.
 
 **Verify a deck the way you verify data: against its consumer.** A green Slidev
 build says nothing about whether a slide is readable. Render the slides to PNG
 (`npm install --no-save playwright-chromium`, then
-`slidev export --format png`) and look at every one. Measured while building the
-first draft: three real defects that the build reported as success — two slides
-overflowing past the bottom edge with the punchline cut off, and Slidev's
-`two-cols-header` layout running a long left column underneath the image in the
-right column. Prefer an explicit CSS grid over that layout, and keep dense
-slides under test.
+`slidev export --format png`) and look at every one. Measured twice, on two
+different decks. First draft: two slides overflowing past the bottom edge with
+the punchline cut off, and Slidev's `two-cols-header` layout running a long left
+column underneath the image in the right column — prefer an explicit CSS grid
+over that layout. Rebuild: **all five** use-case slides shipped with the finding
+box running off the bottom edge, cut off mid-sentence, because a repeated layout
+repeats its defect five times and the build reports success five times. A
+recurring slide template is the one most worth exporting, not the least.
+
+**And the worst of them was a licence violation caused by a unit.** Rebuilding
+the result slides around a large screenshot, the image was capped with
+`max-height: 56vh` — and Slidev scales the whole slide with a CSS transform, so
+a viewport unit inside a slide is not a fraction of that slide. The image
+rendered far past the bottom edge and **cropped the basemap attribution off**,
+which is exactly the thing §3 says must never happen, on a build that reported
+success. Cap image height in **pixels** against Slidev's 980 × 552 canvas, never
+in `vh`. Note the shape: the rule was known, written down and still broken,
+because it was broken by a unit conversion rather than by a decision — the same
+family as the two "extent" properties in §4.
 
 Each use-case README ends with a `Notes for the talk` section capturing:
 
