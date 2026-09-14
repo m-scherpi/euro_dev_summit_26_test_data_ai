@@ -16,7 +16,7 @@ be compared directly:
 | Reproducible | **no** | **yes** (`--seed`) |
 
 Both files carry the **same ten columns**, so downstream use cases
-(`../opensearch/`, `../python_import/`) can read either.
+(`../opensearch/`, `../egdb_import/`) can read either.
 
 ## Purpose
 
