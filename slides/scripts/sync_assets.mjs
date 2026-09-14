@@ -23,9 +23,10 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 /** Screenshots to publish, with the use case that produced them. */
 const ASSETS = [
-  { from: '../csv_data/input/nrw_points.png', to: 'public/img/nrw_points.png' },
   { from: '../csv_data/input/germany_points_10k.png', to: 'public/img/germany_points_10k.png' },
   { from: '../open_data_search/input/nrw_stations.png', to: 'public/img/nrw_stations.png' },
+  { from: '../opensearch/input/nrw_stations_opensearch_service.png', to: 'public/img/nrw_stations_opensearch_service.png' },
+  { from: '../egdb_import/input/csv_to_egdb_pro.png', to: 'public/img/csv_to_egdb_pro.png' },
   { from: '../portal_publish/input/class_breaks.png', to: 'public/img/muenster_rent_class_breaks.png' },
 ]
 

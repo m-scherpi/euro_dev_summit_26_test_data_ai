@@ -1,8 +1,9 @@
 # `slides/` — the talk, as code
 
-The conference presentation for this repository. Not a use case: no `input/`,
-no `output/`, nothing here is generated test data. It is the deck itself, in
-Markdown, deployed to GitHub Pages by CI.
+The presentation for the **Esri European Developer & Technology Summit 2026**,
+built from this repository. Not a use case: no `input/`, no `output/`, nothing
+here is generated test data. It is the deck itself, in Markdown, deployed to
+GitHub Pages by CI.
 
 **Live:** https://m-scherpi.github.io/euro_dev_summit_26_test_data_ai/
 
@@ -63,9 +64,9 @@ CI does not download it on every build:
 ```bash
 npm install --no-save playwright-chromium
 npm run export
-npx slidev export --format png --output build/png/slide --range 1-14
-# or every slide, backup included, which is how the two overflow defects
-# and one broken layout were found that the build reported as success:
+# every slide, then look at every one -- this is how five slides with their
+# finding box running off the bottom edge were found, on a build that reported
+# success:
 npx slidev export --format png --output build/png
 ```
 
@@ -77,13 +78,15 @@ npx slidev export --format png --output build/png
 slides/
 ├── slides.md              # entry: headmatter, cover, and `src:` includes
 ├── pages/
-│   ├── 00-intro.md        # the constraint, and the setup
-│   ├── 10-csv-data.md     # act 1  -> rule 1
-│   ├── 20-open-data.md    # act 2  -> rules 2 and 3
-│   ├── 30-consumer.md     # act 3  -> rule 4
-│   ├── 40-close.md        # the four rules, what to keep, thanks
-│   └── 90-appendix.md     # backup slides, not part of the talk
-├── style.css              # ~60 lines, auto-loaded by Slidev
+│   ├── 05-disclaimer.md   # how all of this was made -- agent, prompt log, local
+│   ├── 00-intro.md        # why we generate at all, and the chain
+│   ├── 10-csv-data.md     # use case 1 -- idea slide + result slide
+│   ├── 20-open-data.md    # use case 2 -- idea slide + result slide
+│   ├── 30-opensearch.md   # use case 3 -- idea slide + result slide
+│   ├── 40-egdb.md         # use case 4 -- idea slide + result slide
+│   ├── 50-portal.md       # use case 5 -- idea slide + result slide
+│   └── 60-close.md        # six takeaways, the closing line, thanks
+├── style.css              # ~110 lines, auto-loaded by Slidev
 ├── scripts/
 │   ├── sync_assets.mjs    # screenshots -> public/img (runs via pre* hooks)
 │   └── make_qr.mjs        # one-off, output committed
@@ -94,22 +97,75 @@ slides/
 
 ---
 
+## The title and the abstract
+
+The talk is submitted as:
+
+> **Using Agentic AI to Easily Create Geospatial Test Data for Your Infrastructure**
+>
+> Agentic AI may be used to interact with ArcGIS Enterprise in different ways,
+> e.g. for the generation of test data for different scenarios and environments.
+> If the content of the data doesn't matter that much and a feature is considered
+> just a geometry with attributes, it's very easy to generate a CSV with 10k
+> points for a hosted feature service, build an OpenSearch-DB to get a view layer
+> in ArcGIS Pro based on just a GeoJSON or import data into your EGDB with a
+> vibe-coded Python script. In this talk, examples will be given to show you, how
+> easy it is, to populate your testing infrastructure with e.g. Claude Code.
+
+The abstract is a promise, so the deck is checked against it the way a data set
+is checked against its consumer:
+
+| The abstract says | Where the deck delivers it |
+|---|---|
+| interact with ArcGIS Enterprise in different ways | slide 3, the chain — hosted layer, referenced layer, index-backed layer, web map |
+| the content doesn't matter, a feature is a geometry with attributes | slide 4, in those words |
+| a CSV with 10k points for a hosted feature service | slides 5–6, with the hosted-feature-layer target named on the idea slide |
+| an OpenSearch-DB … view layer in ArcGIS Pro … based on just a GeoJSON | slides 9–10: the index, ArcGIS Pro, and the source handed over as "a GeoJSON" |
+| import data into your EGDB with a … Python script | slides 11–12 |
+| with e.g. Claude Code | slide 2, the disclaimer slide |
+| **how easy it is** | every result slide shows the thing working *first*; the finding is the closing line, not the subject |
+
+That last row is the one worth re-reading before a rehearsal. The abstract sells
+ease, and this repository's instinct is to lead with what went wrong. The deck
+resolves it by order: the result, then the one thing to watch.
+
+---
+
 ## The 15-minute constraint is the architecture
 
 The slot is **15 minutes including questions** — about 12 minutes of speaking.
-Three finished use cases and one or two more to come do not fit, and the slot
-will not grow. So the deck is built to *leave things out*:
+Five finished use cases do not fit as five deep dives, and the slot will not
+grow. The deck's answer is **two slides per use case**, each carrying little:
 
-- **Core deck, slides 1–14.** Four named rules, each proven by one measured
-  number and one image. Nothing else survives the budget.
-- **Backup, slides 15–29.** Written out, not shown. Reachable with the arrow key
-  during questions and readable in the repository.
+- an **idea slide** — why this use case exists and the workflow in three steps,
+- a **result slide** — one screenshot, and **one** finding in the teal box.
 
-**House rule for new use cases:** a new one gets its own `pages/NN-*.md` and
-lands in the **backup** first. It enters the core deck only by displacing a rule
-whose finding is weaker.
+Splitting one dense slide into two sparse ones costs no time at all. It is the
+same speaking budget with half the text competing for attention, and it is what
+lets the workflow be said rather than read.
 
-### Core deck and time budget
+**The talk answers "what can you build with this", not "what did I measure".**
+Every use case has a dozen findings; each slide shows one, and it is the one
+that would cost a listener a day. The rest live in the use-case READMEs.
+
+**There is no backup section.** An earlier version had fifteen backup slides and
+a rule for which finding may displace which. It was a way of refusing to cut. A
+question during Q&A is answered from the README, live, not from a slide nobody
+has seen.
+
+### Why each use case is in the deck
+
+The reason a use case exists is the idea slide's job, and each one is different:
+
+| Use case | The reason to show it |
+|---|---|
+| `csv_data` | volume — nobody clicks 10,000 points by hand, and a seed makes it repeatable |
+| `open_data_search` | effort — searching portals and reading licences is the expensive half |
+| `opensearch` | reach — test data for a service type we are new to, with support this young |
+| `egdb_import` | relevance — the Enterprise Geodatabase is where we actually need test data |
+| `portal_publish` | the whole flow, end to end, and something you can show someone |
+
+### Time budget
 
 Each slide's presenter notes repeat its budget, so overrun is visible while
 rehearsing rather than on stage.
@@ -117,90 +173,90 @@ rehearsing rather than on stage.
 | # | Slide | Budget |
 |---|---|---|
 | 1 | Title | 10 s |
-| 2 | I am not allowed to use the data I have | 45 s |
-| 3 | One repository, and a paper trail | 30 s |
-| 4 | Act 1 — 100 geo points, straight from the model | 45 s |
-| 5 | Act 1 — same request, 10,000 rows, a real polygon | 45 s |
-| 6 | **Rule 1** — both files also carried Web Mercator | 75 s |
-| 7 | Act 2 — the licence check comes before the geometry check / **Rule 2** | 60 s |
-| 8 | Act 2 — 449 real stations, every coordinate traceable | 40 s |
-| 9 | **Rule 3** — one station out of 449 failed the check | 75 s |
-| 10 | Act 3 — eleven of twelve checks green, the layer will not open | 75 s |
-| 11 | **Rule 4** — the loud error is the harmless one | 75 s |
-| 12 | The four rules | 45 s |
-| 13 | The verification is the deliverable, not the data | 30 s |
-| 14 | Thank you (QR stays up for questions) | — |
+| 2 | How all of this was made — agent, prompt log, local | 40 s |
+| 3 | We build products, not data sets | 40 s |
+| 4 | Five use cases, one chain | 30 s |
+| 5–6 | `csv_data` — nobody clicks 10,000 points by hand / 10,000 points, one command | 40 + 55 s |
+| 7–8 | `open_data_search` — finding the data is the work / 449 real railway stations | 40 + 55 s |
+| 9–10 | `opensearch` — test data for a technology we are new to / the index, live in ArcGIS | 40 + 55 s |
+| 11–12 | `egdb_import` — the one we need most / a FeatureClass, in a real geodatabase | 40 + 55 s |
+| 13–14 | `portal_publish` — all the way / a web map, published | 40 + 55 s |
+| 15 | Take home, part 1 | 40 s |
+| 16 | Take home, part 2 | 45 s |
+| 17 | *Knowing that the content is valid still is* | 25 s |
+| 18 | Thank you (QR stays up for questions) | — |
 
-Total ≈ 11 minutes, which leaves air for one slide to run long.
+Total ≈ 11.5 minutes against ~12 available. The disclaimer slide is the one to
+drop if a session overruns before the talk starts — it is the only slide whose
+content is also on the closing slide.
 
-### Backup slides
+### The seven takeaways
 
-| # | Slide | Source |
-|---|---|---|
-| 15 | divider | — |
-| 16 | One real-world feature, several published positions | `open_data_search` |
-| 17 | Redundant coordinate columns tell you which one to distrust | `open_data_search` |
-| 18 | An old pinned version ships expired material | `opensearch` |
-| 19 | Two subsystems of one product, incompatible formats | `opensearch` |
-| 20 | Two bugs of my own, worth more than the successes | `csv_data` |
-| 21 | Uniform in latitude is not uniform on the ground | `csv_data` |
-| 22 | Open-data portals rot — commit the slice, not just the URL | `open_data_search` |
-| 23 | No licence. So we rebuilt the data set | `opensearch` |
-| 24 | The same bug is loud or silent depending on where on Earth you are | `opensearch` |
-| 25 | 1.9 nanometres broke the build | `opensearch` |
-| 26 | The API in the request cannot do the job | `egdb_import` |
-| 27 | Four outcomes, one unchanged line of code | `egdb_import` |
-| 28 | What the silent success did to the schema | `egdb_import` |
-| 29 | "Nothing was recomputed" — measured | `egdb_import` |
-| 30 | One service, five renderers | `portal_publish` |
-| 31 | Four of four green, and the layer was empty | `portal_publish` |
-| 32 | Three promises, three silent refusals | `portal_publish` |
-| 33 | The heatmap answered a different question | `portal_publish` |
+Written to be repeatable rather than precise — each one is a sentence someone
+could say to a colleague the next morning.
 
-Slide 24 is the strongest candidate to displace a core-deck rule: it is the same
-point as **Rule 4** (the loud error is the harmless one) with a second
-measurement that makes it uncomfortable rather than merely true — the verifier
-that caught the stations was luckier, not better. It stays in the backup for now
-because Rule 4 already has an image and this has only numbers.
+| Takeaway | Comes from |
+|---|---|
+| There is more than one way to get to data. | all five — it is the talk in one line |
+| Ask for the generator, not for the data. | `csv_data` |
+| Let code own every number that has a formula. | `csv_data` |
+| Finding the data costs more than converting it. | `open_data_search` |
+| Not the data — the consumer decides. | `opensearch` |
+| "Success" is not a result. | `egdb_import` |
+| A green check cannot see a blank map. | `portal_publish` |
 
-Slides 26-28 are the second candidate, and for the opposite reason: they are
-**Rule 4** with the cleanest evidence in the repository — four outcomes from one
-unchanged line of code, decided only by which libraries happened to be
-installed, and a schema that came back with four field names silently shortened.
-They stay in the backup because the finding is about an API rather than about
-geodata, and because `egdb_import` has not yet been run against a real
-geodatabase. When it has, and there is a screenshot of the layer in ArcGIS Pro,
-slide 27 is the one to argue for.
+The first one leads because it answers the abstract's own claim: the agent is
+not one trick that happens to fit one target, it is a way of working that fitted
+five very different ones.
 
-**Slide 31 is the strongest candidate in the deck to displace a core rule**, and
-it argues against the deck's own thesis, which is why it is worth arguing about.
-The core deck says verification beats inspection; slide 31 is a fully green
-four-of-four report over a web map whose layer drew nothing, found by looking at
-it. It is the same family as **Rule 4** (the loud error is the harmless one) and
-one step further — there was no error at all, and no check that reads a stored
-item could have had one. It stays in the backup only because the core deck's
-act 3 already owns `opensearch`, and because taking it in means giving up a rule
-that has a picture. If it goes in, it goes in with slide 30's screenshot.
+### The closing line
 
-Slide 29 is a third kind of candidate: it pairs with slide 25 rather than
-competing with it. Both are nanometre-scale findings that break an exact
-comparison — 1.9 nm from libm not being standardised to the last bit, 9.5 nm
-from a geodatabase storing a number — and neither involved any code doing
-arithmetic. Shown together they make a point neither makes alone. Shown alone,
-25 is the stronger one, because its cause was hunted down and 29's was not.
+> Test data used to be the thing nobody had time for.
+> Filling a test system is no longer the hard part.
+> **Knowing that the content is valid still is.**
 
----
+Three beats — the past, what changed, what is left — and the pauses between them
+are the slide. The third line is the one to say slowest.
+
+It took four attempts, and the rejected ones are instructive. *"The verification
+is the deliverable, not the data"* and *"the deliverable was never the data — it
+was the generator, the schema and the check"* were both true, both accurate
+summaries of the repository, and both ended the talk on a lecture about
+deliverables. They also worked against the abstract, which sells how *easy* this
+is, by leaving the room with how *careful* you have to be.
+
+What fixed it was order rather than content: say the easy part out loud first,
+so the last line reads as what you now get to spend your time on instead of as a
+warning. The version that stands separates that into its own line — *filling a
+test system is no longer the hard part* — which is the abstract's own claim,
+stated plainly, one beat before the qualification. An alternate last line for a
+more sceptical room is in the slide's presenter notes.
+
+One deliberate grammar choice: no comma before *still is*. A comma there is the
+spoken pause, and the slide already has it as a line break, so the sentence can
+stay clean for the reader while the speaker takes the pause anyway.
+
+### Language
+
+The talk is given by a non-native English speaker, and the deck is written for
+that: short sentences, common words, no figurative vocabulary. Words like
+*prose*, *triage* or *yardstick* were removed on purpose — a word the speaker
+has to think about on stage costs more than it adds. Numbers are kept only where
+the number *is* the point (490 m, 11 of 12, 4 of 4); anything that needs
+explaining before it means something was cut.
 
 ## Input: the screenshots
 
-The deck shows three ArcGIS Pro captures, referenced from where they already
-live:
+The deck shows one capture per use case, on that use case's result slide,
+referenced from where each already lives:
 
 | Screenshot | Source | Shown on |
 |---|---|---|
-| `csv_data/input/nrw_points.png` | 100 LLM-written points | slide 4 |
-| `csv_data/input/germany_points_10k.png` | 10,000 generated points | slide 5 |
+| `csv_data/input/germany_points_10k.png` | 10,000 generated points | slide 6 |
 | `open_data_search/input/nrw_stations.png` | 449 real DB InfraGO stations | slide 8 |
+| `opensearch/input/nrw_stations_opensearch_service.png` | web feature layer over the index | slide 10 |
+| `egdb_import/input/csv_to_egdb_pro.png` | FeatureClass in the PostgreSQL geodatabase | slide 12 |
+| `portal_publish/input/class_breaks.png` | published web map, class-breaks layer | slide 14 |
 
 `scripts/sync_assets.mjs` copies them into `public/img/`, which is gitignored —
 Vite only serves assets from inside the project root, and there is no reason for
@@ -208,7 +264,9 @@ a second copy of 4.8 MB of PNG in git.
 
 **The basemap attribution stays visible.** Every capture carries its
 `Esri | TomTom | Garmin | USGS | FAO | NOAA` bar (plus `Land NRW` on the
-stations image) burnt into its bottom edge. Publishing the deck redistributes
+stations and rent-census images) burnt into its bottom edge — except the
+geodatabase capture, where ArcGIS Pro keeps the notice in its *Service Layer
+Credits* panel instead, opened before the capture and visible in the image. Publishing the deck redistributes
 those images, and the attribution is the condition. That is why every screenshot
 is an `object-contain` `<img>` and never a `background-size: cover` — and why the
 cover slide is a plain gradient rather than a full-bleed map. A background image
@@ -221,7 +279,9 @@ is cropped to fill, and the first thing cropped off is the attribution.
 `.github/workflows/deploy-slides.yml` builds on every push to `main` that
 touches `slides/**`, the workflow, or one of the three screenshots, and
 publishes `slides/dist` to GitHub Pages. The base path is derived from the
-repository name, so a rename does not break every asset URL.
+repository name, so a rename does not break every asset URL. The workflow's
+path filter lists the screenshots it syncs, so it needs updating whenever the
+set on the slides changes.
 
 Pages deployment from Actions requires the repository to be **public**. While it
 is private, the build job succeeds and the deploy job fails — that is repository
@@ -231,22 +291,55 @@ visibility, not a broken workflow.
 
 ## Notes for the talk
 
+- **The abstract is a consumer, and the deck gets checked against it.** The talk
+  was submitted before most of it existed, so the deck and the abstract could
+  easily drift apart. Reading them against each other found three real gaps: the
+  hosted feature layer was never named as the CSV's target, ArcGIS Pro and the
+  "GeoJSON" were missing from the OpenSearch use case, and Claude Code itself
+  appeared nowhere. Same move as the rest of the repository: verify against the
+  consumer, and here the consumer is whoever read the programme and chose this
+  room.
+- **The stated motivation and the real one were not the same sentence, and the
+  difference changes every slide after it.** Two drafts opened on "I am not
+  allowed to use real data". The actual reason is that a product has to work with
+  any customer's data, so what a test needs is structure. The first framing makes
+  every use case sound like a workaround; the second makes it a capability.
 - **Presentation as code was the cheap part.** Setup to first rendered slide was
-  one `npm install` and one Markdown file. What actually took the work was
-  cutting three use cases and roughly twenty measured findings down to four
-  rules that fit twelve minutes.
-- **The verification loop applies to slides too.** Building the deck once was not
-  enough: rendering it to PNG and *looking* at every slide caught three real
-  defects that the build reported as success — two slides overflowing past the
-  bottom edge with the punchline cut off, and `two-cols-header` running a long
-  left column underneath the screenshot. A green build is not a readable slide,
-  which is the same lesson as act 3: verify against the consumer, and here the
-  consumer is a projector.
+  one `npm install` and one Markdown file. What takes the work is deciding what
+  not to say.
+- **The deck was rebuilt twice, and the second rebuild is the useful one.** Draft
+  one was four named rules with the use cases as evidence — a talk about how much
+  goes wrong. Draft two put the use cases first with one finding each. Draft three
+  split every use case into *why it exists* and *what came out*, and that is the
+  version that actually explains the workflow: the reason for `egdb_import` is
+  not a number, it is the sentence "this is where we really need test data", and
+  there was no room to say it while the slide was also carrying a result.
+- **Splitting a dense slide is free.** Ten slides became seventeen and the
+  speaking time did not change — the same words, laid out so that half of them
+  are not on screen while the other half is being said.
+- **Write for the speaker, not for the reader.** The talk is given in a
+  non-native language, so words that need a moment of thought on stage were
+  removed even where they were the better word. Same for numbers: a measurement
+  that has to be explained before it means anything is a measurement for the
+  README.
+- **Cutting the backup section was the hard part and the right one.** Fifteen
+  written-out slides nobody sees are fifteen slides of maintenance, and having
+  them made it easy to avoid deciding. The findings did not disappear; they live
+  in the use-case READMEs, which is where a question gets answered properly
+  anyway.
+- **The verification loop applies to slides too, and it caught something worse
+  than a layout bug.** Rendering every slide to PNG found, on a green build:
+  first all five finding boxes running off the bottom edge, and then — after the
+  result slides were rebuilt around a large screenshot — an image scaled so far
+  past the slide that **the basemap attribution was cropped off**. The cause was
+  `max-height: 56vh` on the image: Slidev scales the whole slide with a CSS
+  transform, so a viewport unit inside a slide is not a fraction of that slide.
+  A licence obligation was broken by a unit conversion, and the build said
+  success. Cap image height in pixels against Slidev's 980 × 552 canvas.
 - **A convention caught its own violation.** The obvious cover design is the
   10,000-point map full-bleed behind the title. It renders with the basemap
   attribution cropped off — so the repository's own licence rule ruled out its
   own prettiest slide. Documented rather than quietly cropped.
-- **Lesson learned.** The slot size is a design constraint, not a formatting
-  detail. Deciding *up front* that new findings land in the backup and only
-  displace an incumbent is what keeps a growing repository from turning into an
-  unpresentable deck.
+- **Lesson learned.** The slot size decides the *shape* of the talk, not just its
+  length — and the shape is not only how many slides, but how much is on each.
+  Two sparse slides say more in the same minute than one dense one.

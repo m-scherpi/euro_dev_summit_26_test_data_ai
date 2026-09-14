@@ -1,74 +1,47 @@
----
-layout: default
----
+# We build products, not data sets
 
-# I am not allowed to use the data I have
+<div class="lead">
 
-<v-clicks>
-
-- **Customer data** — obviously not.
-- **Production geodata** — licensed to somebody else.
-- **Internal systems** — not publishable, ever.
-
-</v-clicks>
-
-<div v-click class="mt-6">
-
-So the data has to be invented. And invented *geodata* is a harder ask than
-invented names: every row has to be **somewhere** — in a stated CRS, inside a
-real boundary, readable by a real client.
+Our software has to work with **any** customer's data. To test it, we do not
+need their data — we need the **structure**: the right schema, the right
+coordinate system, and enough rows. Most of the time a feature is just a
+geometry with attributes.
 
 </div>
 
-<div v-click class="rule">
-A language model will produce all of that in seconds. And it will look right.
+<div class="steps">
+<div><b>Real data</b> is often not allowed to leave the building — and it is also not the point.</div>
+<div><b>Hand-made data</b> is fine for five rows and hopeless for ten thousand.</div>
+<div><b>So: generate it.</b> The question is how much of that a language model can build for us.</div>
 </div>
 
 <!--
-45s. The point of this slide is that the constraint is not a nuisance, it IS the
-reason generated test data is worth a talk. Land on the last line and pause --
-"it will look right" is the thread for the next ten minutes.
+40s. This is the frame for the whole talk. Say it plainly: we are not looking
+for a way around a data protection rule. We build universal software, so what we
+actually need is shape and volume, and both can be made. Do not defend GenAI
+here — just set up that the next ten minutes are five concrete things that
+worked.
 -->
 
 ---
-layout: default
----
 
-<div class="eyebrow">The setup</div>
+# Five use cases, one chain
 
-# One repository, and a paper trail
-
-<div class="grid grid-cols-2 gap-8 mt-4">
-<div>
-
-- **Four use cases**, three finished, each self-contained: own stack, own
-  dependencies, own README.
-- **`PROMPT.md`** — every prompt, verbatim, in the language I typed it, plus
-  what actually happened. Including the dead ends.
-- **Everything CC BY 4.0**, so every external source had to be licence-clean
-  before it was allowed in.
-
-</div>
-<div>
-
-- **`output/` is committed**, because the next use case reads it as input.
-- Raw LLM artifact kept **next to** the corrected one. The delta is the
-  interesting file.
-- **These slides are in the same repository** — Markdown, built by CI, no
-  `.pptx` anywhere.
-
-</div>
+<div class="steps">
+<div><b>1 · csv_data</b> — the model writes the data itself</div>
+<div><b>2 · open_data_search</b> — the model finds real data instead</div>
+<div><b>3 · opensearch</b> — the data gets a new kind of consumer</div>
+<div><b>4 · egdb_import</b> — the data lands in an Enterprise Geodatabase</div>
+<div><b>5 · portal_publish</b> — the data becomes a published web map</div>
 </div>
 
-<div v-click class="rule">
-Nothing in this talk is a recollection. Every number comes out of a script that still runs.
+<div class="pt-6 text-sm opacity-80">
+Each one is a folder with its own stack, a runnable command and a check. Every
+prompt is written down.
 </div>
 
 <!--
-30s. Deliberately fast -- this is credentials, not content. The one line worth
-saying out loud is the last one: everything you are about to see is measured,
-not remembered.
-
-If someone asks in Q&A: the deck is a Slidev project in `slides/`, deployed to
-GitHub Pages by an Actions workflow on every push to main.
+30s. Say the chain out loud once, then move. This slide exists so nobody has to
+wonder where we are later. Two slides per use case from here: what it is for,
+then what came out.
 -->

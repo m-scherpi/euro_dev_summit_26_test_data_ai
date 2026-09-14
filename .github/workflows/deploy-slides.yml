@@ -20,6 +20,9 @@ on:
       # The deck reads the result screenshots straight out of the use cases.
       - 'csv_data/input/*.png'
       - 'open_data_search/input/*.png'
+      - 'opensearch/input/*.png'
+      - 'egdb_import/input/*.png'
+      - 'portal_publish/input/*.png'
   workflow_dispatch:
 
 permissions:

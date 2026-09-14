@@ -16,8 +16,8 @@
 /* The named, reusable rule each act ends on. Deliberately loud -- these four
    boxes are what the audience should still have tomorrow. */
 .rule {
-  @apply mt-5 border-l-4 border-teal-600 bg-teal-50 px-5 py-3
-         text-xl font-medium leading-snug;
+  @apply mt-4 border-l-4 border-teal-600 bg-teal-50 px-5 py-3
+         text-lg font-medium leading-snug;
 }
 
 /* Small caps label above a slide title, used to mark the three acts. */
@@ -47,7 +47,7 @@
   @apply w-full rounded shadow-lg;
 }
 .credit {
-  @apply mt-1 text-xs opacity-60;
+  @apply mt-1 text-xs opacity-60 leading-tight;
 }
 
 /* Verification tables in act 3: two of them side by side have to fit, so they
@@ -76,4 +76,40 @@
 }
 .cover-bg {
   color: #e6fffb;
+}
+
+/* A boxed aside next to body copy -- keeps a single big number from floating
+   in dead space on an otherwise text-only slide. */
+.card {
+  @apply border-l-4 border-teal-200 pl-5 py-1;
+}
+
+/* One short sentence under a slide title, set larger than body copy. The idea
+   slides carry one of these instead of a paragraph. */
+.lead {
+  @apply mt-5 text-2xl leading-relaxed;
+}
+
+/* The workflow of a use case, as steps. Deliberately short lines -- this is
+   what gets spoken, not read. */
+.steps {
+  @apply mt-7 space-y-6;
+}
+.steps > div {
+  @apply border-l-4 border-teal-200 pl-5 py-1 text-xl leading-snug;
+}
+.steps b {
+  @apply text-teal-800;
+}
+
+/* A result slide is the screenshot. Capped in PIXELS, not vh: Slidev scales the
+   whole slide with a transform, so a viewport unit inside it is not a fraction
+   of the slide. Getting that wrong overflowed the image past the bottom edge and
+   cropped the basemap attribution off -- the one thing that must never happen to
+   these captures. The cap leaves room for the credit line and the finding box. */
+.shot-big {
+  @apply mx-auto block rounded shadow-lg;
+  max-height: 300px;
+  width: auto;
+  object-fit: contain;
 }
