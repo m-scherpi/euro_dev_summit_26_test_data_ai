@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="presentation">
+  <!-- Decorative low-poly corner. Drawn here from the corporate colour scheme
+       (accent2 #00B0B9, accent4 #8BD3E6, accent3 #418FDE, dk2 #005587); it is
+       not the company's own graphic, which stays out of this repository. -->
+  <g fill="none">
+    <polygon points="600,0 600,120 470,60"   fill="#00B0B9" opacity="0.95"/>
+    <polygon points="600,120 600,230 490,170" fill="#8BD3E6" opacity="0.85"/>
+    <polygon points="470,60 600,120 490,170"  fill="#418FDE" opacity="0.45"/>
+    <polygon points="470,60 490,170 360,130"  fill="#8BD3E6" opacity="0.55"/>
+    <polygon points="360,130 490,170 400,250" fill="#00B0B9" opacity="0.30"/>
+    <polygon points="470,0 600,0 470,60"      fill="#005587" opacity="0.25"/>
+    <polygon points="330,0 470,0 470,60"      fill="#8BD3E6" opacity="0.35"/>
+    <polygon points="330,0 470,60 360,130"    fill="#418FDE" opacity="0.22"/>
+    <polygon points="240,40 330,0 360,130"    fill="#00B0B9" opacity="0.16"/>
+    <polygon points="360,130 400,250 280,215" fill="#8BD3E6" opacity="0.22"/>
+    <polygon points="240,40 360,130 280,215"  fill="#005587" opacity="0.10"/>
+    <polygon points="490,170 600,230 520,300" fill="#00B0B9" opacity="0.20"/>
+    <polygon points="400,250 490,170 520,300" fill="#418FDE" opacity="0.14"/>
+    <polygon points="150,90 240,40 280,215"   fill="#8BD3E6" opacity="0.12"/>
+    <polygon points="280,215 400,250 330,330" fill="#00B0B9" opacity="0.10"/>
+  </g>
+</svg>

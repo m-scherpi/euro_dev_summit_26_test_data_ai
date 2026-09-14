@@ -52,3 +52,8 @@ slides/public/img/
 # the surrounding `input/` folder is committed in full and a `git add
 # opensearch/input` would otherwise take it along.
 opensearch/input/airports.json
+
+# Corporate PowerPoint master (`con terra_Folienmaster_en.potx`). Company
+# template, not ours to publish under CC BY - the Slidev deck only imitates its
+# palette and typography, which are not the file. Never committed.
+slides/input/

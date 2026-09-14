@@ -25,7 +25,7 @@ in the same file as the slide it applies to.
 | Dependency | Why |
 |---|---|
 | `@slidev/cli` | the presentation engine |
-| `@slidev/theme-seriph` | serif theme, light background — projector contrast over aesthetics |
+| `@slidev/theme-seriph` | light background — projector contrast over aesthetics; its serif headings are overridden, see *Corporate look* |
 | `vue` | Slidev peer dependency |
 | `qrcode` | one-off generator for the closing slide's QR code |
 
@@ -86,14 +86,52 @@ slides/
 │   ├── 40-egdb.md         # use case 4 -- idea slide + result slide
 │   ├── 50-portal.md       # use case 5 -- idea slide + result slide
 │   └── 60-close.md        # six takeaways, the closing line, thanks
-├── style.css              # ~110 lines, auto-loaded by Slidev
+├── style.css              # palette and typography, auto-loaded by Slidev
+├── global-bottom.vue      # footer on every slide but the cover
 ├── scripts/
 │   ├── sync_assets.mjs    # screenshots -> public/img (runs via pre* hooks)
 │   └── make_qr.mjs        # one-off, output committed
-└── public/
-    ├── qr-repo.svg        # committed: text, tiny, changes only on a rename
-    └── img/               # generated, gitignored
+├── public/
+│   ├── qr-repo.svg        # committed: text, tiny, changes only on a rename
+│   ├── cover-deco.svg     # low-poly corner graphic, drawn from the palette
+│   └── img/               # generated, gitignored
+└── input/                 # gitignored: the corporate .potx, never committed
 ```
+
+---
+
+## Corporate look
+
+The deck follows the company's PowerPoint master
+(`con terra_Folienmaster_en.potx`, theme `con terra`) closely enough to be
+recognisable, without pretending to be PowerPoint.
+
+**What was taken, and what was not.** Taken: the colour scheme and the
+typography, both read out of the template's own XML
+(`ppt/theme/theme1.xml`, `ppt/slideMasters/slideMaster1.xml`). Not taken: the
+file and its images. The `.potx` is a corporate template, not ours to publish
+under CC BY, so `slides/input/` is **gitignored** and nothing in `public/` comes
+out of it. The corner graphic on the cover is drawn here from the same palette;
+it is an imitation of the master's low-poly motif, not a copy of it.
+
+| From the master | Used for |
+|---|---|
+| `dk2` **#005587** | every title, and the body text — the master sets body copy in the same dark blue |
+| `acc2` **#00B0B9** | the accent: subtitle, eyebrow label, the bold lead-in of a step, the finding box |
+| `acc4` **#8BD3E6** | the left rule of a step or a card |
+| `acc1` **#6CC24A**, `acc3` **#418FDE**, `acc5` **#F2695C** | available in `style.css` as variables; unused so far |
+| Arial, major and minor font alike | the whole deck — `fonts.provider: none`, so nothing is fetched at render time |
+| title 28 pt bold, left aligned, 90 % line spacing | `h1`, at 2.1 rem — a projected deck gets a little more than a printed one |
+| copyright bottom left, slide number bottom right | `global-bottom.vue`, hidden on the cover |
+| `Titelfolie_hell` | the cover: white, title block at the left edge, graphic top right |
+
+**One Slidev trap, measured.** The cover was first written as `layout: cover`,
+which is seriph's own layout and paints its own background — the custom
+background was set, the build reported success, and the slide rendered as a grey
+gradient with the corner graphic nowhere to be seen. `layout: default` plus the
+absolutely positioned `.cover-block` is what actually renders the master's title
+slide. The same lesson as everywhere else in this repository: a green build says
+nothing about what was drawn, so export the PNGs and look.
 
 ---
 

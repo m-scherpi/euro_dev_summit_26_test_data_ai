@@ -1,33 +1,87 @@
 /* Slidev picks this up automatically. Kept small on purpose: the deck is
-   projected, so contrast and legibility beat decoration. */
+   projected, so contrast and legibility beat decoration.
 
-/* Body copy one notch down from the seriph default -- these slides carry
-   measured numbers, and the numbers need the room. */
-.slidev-layout {
-  font-size: 0.92rem;
+   The look follows the corporate PowerPoint master (`con terra_Folienmaster_en`,
+   theme "con terra"): Arial, headings in the dark blue #005587, turquoise as the
+   one accent. Taken from the master are only the palette and the typography --
+   the .potx itself is gitignored, and none of its images are used here. This is
+   a Slidev deck imitating the master, not a copy of it. */
+
+:root {
+  /* Theme colour scheme of the master, verbatim from ppt/theme/theme1.xml. */
+  --ct-dark: #005587;      /* dk2  - titles and body text  */
+  --ct-green: #6CC24A;     /* acc1 */
+  --ct-teal: #00B0B9;      /* acc2 - subtitles, the accent */
+  --ct-blue: #418FDE;      /* acc3 */
+  --ct-lightblue: #8BD3E6; /* acc4 */
+  --ct-coral: #F2695C;     /* acc5 */
+  --ct-grey: #F2F2F2;      /* lt2  */
+  --ct-teal-pale: #E5F7F8; /* tint of acc2, for the finding box */
 }
+
+/* The master is Arial throughout, major and minor font alike -- so the serif
+   headings of the seriph theme have to go. */
+.slidev-layout,
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout td,
+.slidev-layout th {
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+}
+
+/* Body copy: the master sets 20 pt on a 540 pt slide, which is ~20 px on
+   Slidev's 980x552 canvas. These slides carry measured numbers, so they stay a
+   notch below that. */
+.slidev-layout {
+  font-size: 1rem;
+  color: var(--ct-dark);
+}
+
+/* Titles: Arial bold, left aligned, dark blue, 90 % line spacing -- master
+   `titleStyle`. The master's 28 pt is the floor for a printed deck; a projected
+   one gets a little more. */
 .slidev-layout h1 {
-  line-height: 1.15;
+  color: var(--ct-dark);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-size: 2.1rem;
+}
+.slidev-layout h2 {
+  color: var(--ct-teal);
+  font-weight: 700;
 }
 .slidev-layout h1 + p {
   margin-top: 0.5rem;
 }
-
-/* The named, reusable rule each act ends on. Deliberately loud -- these four
-   boxes are what the audience should still have tomorrow. */
-.rule {
-  @apply mt-4 border-l-4 border-teal-600 bg-teal-50 px-5 py-3
-         text-lg font-medium leading-snug;
+.slidev-layout strong,
+.slidev-layout b {
+  color: var(--ct-dark);
 }
 
-/* Small caps label above a slide title, used to mark the three acts. */
+/* The named, reusable rule each use case ends on. Deliberately loud -- these
+   boxes are what the audience should still have tomorrow. Turquoise is the
+   master's accent colour, so it is the one used for emphasis throughout. */
+.rule {
+  @apply mt-4 px-5 py-3 text-lg font-medium leading-snug;
+  border-left: 6px solid var(--ct-teal);
+  background: var(--ct-teal-pale);
+  color: var(--ct-dark);
+}
+
+/* Small caps label above a slide title, used to mark the use cases. */
 .eyebrow {
-  @apply mb-1 text-xs font-semibold uppercase tracking-widest text-teal-700;
+  @apply mb-1 text-xs font-semibold uppercase tracking-widest;
+  color: var(--ct-teal);
 }
 
 /* A measured number, when the number is the whole point of the slide. */
 .metric {
-  @apply text-4xl font-bold text-teal-800 leading-none;
+  @apply text-4xl font-bold leading-none;
+  color: var(--ct-dark);
 }
 
 /* Two-column body grid. Explicit, because Slidev's two-cols-header lets a long
@@ -50,8 +104,8 @@
   @apply mt-1 text-xs opacity-60 leading-tight;
 }
 
-/* Verification tables in act 3: two of them side by side have to fit, so they
-   are deliberately denser than the rest of the deck. */
+/* Verification tables: two of them side by side have to fit, so they are
+   deliberately denser than the rest of the deck. */
 .checks table {
   @apply w-full text-sm;
 }
@@ -61,33 +115,55 @@
 .checks td {
   @apply py-1;
 }
-.verdict-pass { @apply text-green-700 font-semibold; }
-.verdict-fail { @apply text-red-700 font-semibold; }
+.verdict-pass { @apply font-semibold; color: #4E9C33; }
+.verdict-fail { @apply font-semibold; color: #C9463A; }
 
-/* Cover. Deliberately not a screenshot: a full-bleed background is cropped to
-   fill, and the first thing cropped off an ArcGIS capture is the basemap
-   attribution bar. The screenshots get their own slides, uncropped. */
+/* Cover, after the master's `Titelfolie_hell`: white slide, dark blue title,
+   turquoise subtitle, a low-poly graphic in the top right corner. Deliberately
+   not a screenshot behind the title: a full-bleed background is cropped to fill,
+   and the first thing cropped off an ArcGIS capture is the basemap attribution
+   bar. The screenshots get their own slides, uncropped. */
 .cover-bg {
-  background: linear-gradient(140deg, #0b3b39 0%, #134e4a 45%, #0f766e 100%);
+  position: relative;
+  background-color: #fff;
+  background-image: url('/cover-deco.svg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: auto 64%;
+  color: var(--ct-dark);
 }
 .cover-bg h1,
 .cover-bg h2 {
-  color: #fff !important;
+  color: var(--ct-dark) !important;
 }
-.cover-bg {
-  color: #e6fffb;
+.cover-title {
+  color: var(--ct-dark);
+}
+.cover-sub {
+  color: var(--ct-teal);
+}
+
+/* The master keeps the title block 4.5 % from the left edge and does not centre
+   it. The cover follows that. */
+.cover-block {
+  @apply absolute text-left;
+  left: 4.5%;
+  top: 14%;
+  max-width: 64%;
 }
 
 /* A boxed aside next to body copy -- keeps a single big number from floating
    in dead space on an otherwise text-only slide. */
 .card {
-  @apply border-l-4 border-teal-200 pl-5 py-1;
+  @apply pl-5 py-1;
+  border-left: 6px solid var(--ct-lightblue);
 }
 
 /* One short sentence under a slide title, set larger than body copy. The idea
    slides carry one of these instead of a paragraph. */
 .lead {
   @apply mt-5 text-2xl leading-relaxed;
+  color: var(--ct-dark);
 }
 
 /* The workflow of a use case, as steps. Deliberately short lines -- this is
@@ -96,10 +172,11 @@
   @apply mt-7 space-y-6;
 }
 .steps > div {
-  @apply border-l-4 border-teal-200 pl-5 py-1 text-xl leading-snug;
+  @apply pl-5 py-1 text-xl leading-snug;
+  border-left: 6px solid var(--ct-lightblue);
 }
 .steps b {
-  @apply text-teal-800;
+  color: var(--ct-teal);
 }
 
 /* A result slide is the screenshot. Capped in PIXELS, not vh: Slidev scales the
@@ -112,4 +189,13 @@
   max-height: 300px;
   width: auto;
   object-fit: contain;
+}
+
+/* Footer, after the master: copyright bottom left, slide number bottom right,
+   both small and in the title colour. Rendered by `global-bottom.vue`. */
+.ct-footer {
+  @apply absolute bottom-0 left-0 right-0 flex justify-between px-5 pb-2 text-xs;
+  color: var(--ct-dark);
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -1044,6 +1044,22 @@ in `vh`. Note the shape: the rule was known, written down and still broken,
 because it was broken by a unit conversion rather than by a decision — the same
 family as the two "extent" properties in §4.
 
+**Imitating a corporate slide master: take the scheme, never the file.** A
+company `.potx` is a template somebody else owns, and this repository publishes
+under CC BY - so the template is gitignored and none of its images are used.
+What does cross over is what a theme actually is: the colour scheme and the
+typography, both readable straight out of the package (`.potx` is a zip;
+`ppt/theme/theme1.xml` holds the scheme, `ppt/slideMasters/slideMaster1.xml` the
+title and body text styles, and `ppt/slideLayouts/*.xml` carry their German
+layout names). Measured here: the master sets *body* copy in the same dark blue
+as the titles, which no eyeballed imitation would have guessed, and names Arial
+as both major and minor font. Decorative motifs get redrawn from the palette
+rather than extracted. And a theme layout can silently overrule the imitation:
+`layout: cover` is the Slidev theme's own cover, painting its own background over
+the custom one - the build succeeded, the slide rendered as a grey gradient, and
+only the PNG export showed it. Fourth time that export has caught what a green
+build reported as success.
+
 Each use-case README ends with a `Notes for the talk` section capturing:
 
 - **What worked** — where GenAI was clearly faster or better than hand-writing.
