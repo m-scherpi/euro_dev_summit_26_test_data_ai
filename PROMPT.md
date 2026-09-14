@@ -1488,3 +1488,383 @@ Follow-up, after the plan was presented:
   costs a use case and yields at most a plumbing story, while a new **geometry
   type** or a new **failure class** yields a rule. `egdb_import` and
   `opensearch` already proved the plumbing story twice.
+
+---
+
+## [021] 2026-09-07 — Implementing the portal_publish plan  ·  scope: `portal_publish`, root
+
+**Prompt (original, DE)**
+> Für einen weiteren Use Case wurde bereits ein Plan erstellt in @portal_publish/input/implementation_plan.md . Implementiere diesen
+
+**Prompt (translation, EN)**
+> For a further use case a plan has already been created in @portal_publish/input/implementation_plan.md . Implement this
+
+**What happened**
+- Reproduced the plan's central measurement independently before writing code:
+  `arcgis` 2.4.1.1 has no `arcgis.map` module, `arcgis.mapping` no longer
+  exports `WebMap`, and the wheel's `RECORD` lists **0** `arcgis/map/` entries
+  (it lists 32 under `arcgis/mapping/`, which are layer classes, not a map).
+  Confirmed a second time in this use case's own fresh venv. Hand-built Web Map
+  JSON is therefore the only route, not a workaround.
+- Built the five scripts in the plan's order. Stages 1–3 stdlib-only
+  (`generate_census.py`, `verify_census.py`, `build_portal_items.py`), stages
+  4–5 behind a lazy `arcgis` import so `--dry-run` runs under a bare `python3`.
+  `census.py` holds only what the *writers* must agree on — column list,
+  declared Esri type per column, seed and service-name defaults, the two
+  placeholder tokens. Neither verifier imports it.
+- Two fixtures written and cross-checked against each other: eight approximate
+  Münster district centres with per-district sigma and weight
+  (`"authoritative": false`, four sigma clear of every box edge — verified
+  numerically before generating), and the invented rent/age/household levels,
+  five building types and street-name parts.
+- Generated, verified and committed the CSV and the three portal payloads.
+  Rehearsed the publish offline. Then proved four planted defects each fire on
+  only what they should.
+- Deviated from the plan in three places, each recorded in the README rather
+  than smoothed over: only **two** placeholder tokens have a use (the planned
+  `{{PORTAL_URL}}` has none); `verify_census.py` has no `--output` flag because
+  it writes no corrected copy (unlike `csv_data`'s verifier, there is nothing to
+  correct — the projection is computed, not remembered); and the offline checks
+  *were* perturbation-tested, which the plan had deferred, because it cost four
+  lines of throwaway script.
+- Removed the superseded `python_import/` stub and its two live references
+  (root index, `CLAUDE.md` naming examples, `csv_data/README.md` now points at
+  `../egdb_import/`, which genuinely reads that CSV). The five historical
+  mentions in this log are left untouched — the log is evidence.
+
+**Artifacts**
+- `portal_publish/input/muenster_districts.json` — eight approximate district centres, sigma, weight, sampling box; `"authoritative": false`
+- `portal_publish/input/rent_census_fixtures.json` — building types, street-name parts, per-district levels, value guards; `"fictitious": true`
+- `portal_publish/input/portal_connection.example.json` — connection template with no password field, and the reason
+- `portal_publish/requirements.txt` — `arcgis==2.4.1.1`, `setuptools==80.9.0`, one reason per pin; `pyshp` deliberately not inherited
+- `portal_publish/scripts/census.py` — the shared *agreements* only, 186 lines
+- `portal_publish/scripts/generate_census.py` — stdlib generator, gamma household draw, rounding-margin refusal
+- `portal_publish/scripts/verify_census.py` — 2 offline checks, `atanh(sin φ)` against the generator's `ln(tan(π/4+φ/2))`
+- `portal_publish/scripts/build_portal_items.py` — the three payloads; every renderer threshold measured from the CSV
+- `portal_publish/scripts/publish_to_portal.py` — five cumulative stages, `--dry-run` needs neither portal nor `arcgis`
+- `portal_publish/scripts/verify_portal.py` — 4 portal checks, expectations read as data or restated from the spec
+- `portal_publish/output/muenster_rent_census.csv` — 500 rows, 55 KB, SHA-256 `f170410f…f2f73e1e4`
+- `portal_publish/output/{publish_parameters,layer_definition,webmap}.json` — 3.7 KB / 6.8 KB / 30 KB
+- `portal_publish/output/verification_report_coordinates.md` — 2/2 green, max EPSG:3857 deviation 0.000069 m
+
+**Result / Iteration**
+- Stages 1–3 green and committed. **2/2 offline checks pass**, max EPSG:3857
+  deviation **0.000069 m** against a 0.001 m tolerance that was deliberately not
+  tightened to it. The dry run coerces **7,000 values in 500 rows** against 14
+  declared field types with 0 problems, and reports four distinct renderer types
+  on one service URL.
+- **The best failure was self-inflicted and instructive.** The very first
+  `--dry-run` aborted with *"1 unresolved placeholder(s)"* — and the token it
+  found was inside a `_note` in `webmap.json` explaining what the check does.
+  The assertion greps the serialised payload as text, so documentation that
+  spells the marker out is indistinguishable from a real unsubstituted token.
+  Reworded to "double-brace marker" in words. The tempting fix — matching only
+  the known token names — would have let the real failure through: a planted
+  one-character typo `{{FEATURE_SERVICE_UR}}` is caught by the marker grep and
+  would pass a whitelist.
+- **A clamp counter became the distribution it was supposed to police.** The
+  first household-size draw was a Gaussian with mean 1.6 and a hard floor of
+  1.0, which clamped **37 of 500** rows onto exactly 1.0 — 7 % of the data on
+  one value, invisible on a map and obvious in a popup. Replaced by a gamma
+  variate above the floor, which has the bound built in: 37 clamps down to 2,
+  and total clamping across 4,500 generated values down to 6. Same lesson as
+  `opensearch`'s log-normal tail from the other end.
+- Perturbation of the offline pair worked exactly as intended and, importantly,
+  *separately*: transposing every row fails both checks (max deviation
+  7,736,302 m); nudging a single `y_3857` by 5 cm fails only check 2, 1 of 500
+  rows, 0.050026 m. A verifier whose checks always go red together has one check
+  wearing several hats.
+- **Two more defects found by re-reading the finished code, both silent by
+  construction.** An ArcGIS item's `extent` property is documented as decimal
+  degrees while this map's viewpoint is EPSG:3857 metres, and the first version
+  handed the metres to the item - an item whose extent is nonsense and whose map
+  draws perfectly, with no complaint anywhere. And the `_note` keys written into
+  `output/webmap.json` for a human reader were being uploaded as part of the live
+  web map. Both fixed: the artifact now names each extent after its unit, and
+  underscore-prefixed keys are stripped by prefix before `content.add` with
+  `verify_portal.py` asserting their absence from what the portal stored.
+- Recorded rather than resolved: whether the `heatmap` renderer survives on
+  Enterprise **12.1** specifically is **UNVERIFIED** — no version-pinned
+  documentation page for it resolved — so `verify_portal.py` asks the instance
+  instead of the document.
+- **Open, and it needs the user's portal and password:** the real
+  `--stage all` run, `output/analyze_publish_parameters.json` (the portal's own
+  guessed `publishParameters`, whose diff against ours is the central
+  measurement of this folder), the four portal checks, and one Map Viewer
+  screenshot with the basemap attribution visible and uncropped.
+
+## [022] 2026-09-14 — The published map, and what the portal did to the schema  ·  scope: `portal_publish`, root
+
+**Prompt (original, DE)**
+> Das Publizieren hat geklappt. Das Verify lieferte aber Fehler. connecting to https://dev0623w.conterra.de/portal as admin (password: <PORTAL_PASSWORD>)
+> Setting `verify_cert` to False is a security risk, use at your own risk.
+> checks passed: 3/4
+>   3. FAIL - Field types survived the publish (3 failure(s))
+>   4. PASS - Count and extent
+>   5. PASS - Four operational layers, four renderer types, one service
+>   6. PASS - Items exist, typed, tagged, shared as intended
+> wrote output/verification_report_portal.md ... Screenshots habe ich hinzugefügt. Ich hatte mir aber von den Renderern noch etwas mehr Aussagekragt gewünscht, z.B. dass man noch besser sieht, wo die Mietpreise besonders hoch sind. die Heatmap ist noch nicht sehr aussagekräftig
+
+**Prompt (translation, EN)**
+> The publishing worked. But the verify returned errors. connecting to https://dev0623w.conterra.de/portal as admin (password: <PORTAL_PASSWORD>)
+> Setting `verify_cert` to False is a security risk, use at your own risk.
+> checks passed: 3/4
+>   3. FAIL - Field types survived the publish (3 failure(s))
+>   4. PASS - Count and extent
+>   5. PASS - Four operational layers, four renderer types, one service
+>   6. PASS - Items exist, typed, tagged, shared as intended
+> wrote output/verification_report_portal.md ... I have added screenshots. But I had wished for a bit more expressiveness [typo: "Aussagekragt" for "Aussagekraft"] from the renderers, e.g. that one can see even better where the rents are particularly high. the heatmap is not very expressive yet
+
+**What happened**
+- Read the committed verification report and the four screenshots the user had added.
+  Check 3's three failures were identical in shape: `address`, `district` and
+  `building_type` were declared `TEXT(80)`/`TEXT(40)`/`TEXT(40)` and stored as
+  `TEXT(8000)`. Types survived, lengths did not, no warning anywhere. The portal's own
+  `analyze` guess, captured in the same run, agrees with the declaration in 0 of 14
+  fields - so guess and declaration agreed and the stored schema matched neither.
+- Diagnosed the heatmap from the first capture and the builder: `maxPixelIntensity`
+  had been set to the 95th percentile of `rent_eur_sqm` (19.28 EUR/m2), as though a
+  pixel intensity were a rent. It is a sum of kernel weights, so an isolated point
+  peaks at exactly its own weight; rents reach 22.75, so every lone dwelling saturated
+  the ramp on its own. The colour ramp made it worse by reaching alpha 140 at ratio
+  0.01.
+- Asked the user how far to go rather than guessing, since both the renderer layout and
+  the FAIL had several defensible answers. Chosen: a fifth layer for the rent, and an
+  attempt to retrofit the field lengths via `updateDefinition`.
+- Measured the heatmap instead of retuning it by eye. A Gaussian kernel simulated over
+  a pixel grid at a reference resolution derived from the map's own extent
+  (13.25 m/px, sigma 110 m) gives floor p75 = 9.02 and ceiling p99 = 38.82. Also
+  measured what the renderer actually shows: Spearman 0.774 against plain point
+  density and 0.786 against the local rent level - it carries both signals about
+  equally, which is why calibration alone could not answer the user's question.
+- Re-read the Web Map Specification for `heatmapRenderer`: `blurRadius`,
+  `maxPixelIntensity` and `minPixelIntensity` are **deprecated** in favour of
+  `radius`/`maxDensity`/`minDensity`/`referenceScale`. Kept the deprecated form,
+  because the 12.1 instance demonstrably draws it - the same decision as
+  `uniqueValueInfos`, with the cost recorded: `referenceScale` belongs to the current
+  form, so the calibration holds at one scale.
+- Implemented: a fifth operational layer (`rent_breaks`, quantile `classBreaks` on
+  `rent_eur_sqm`, YlOrRd), a generalised `class_breaks_renderer`, the calibrated
+  heatmap, the service-level renderer switched to the rent, a
+  `--retrofit-field-lengths` experiment in the publisher, and two new assertions in the
+  verifier (renderer types as a count per type rather than a set, and a heatmap ramp
+  that must sit 1.5x above the largest weight).
+- Proved the new check fires: it rejects the shipped configuration
+  ("a single isolated feature reaches 100% of the ramp on its own") and passes the
+  calibrated one.
+
+**Artifacts**
+- `portal_publish/scripts/build_portal_items.py` — `heatmap_calibration()`, a
+  parameterised `class_breaks_renderer()`, the fifth layer, the `field_length_update`
+  body
+- `portal_publish/scripts/verify_portal.py` — `check_heatmap_ramp()`,
+  `read_numeric_columns()`, renderer counts per type
+- `portal_publish/scripts/publish_to_portal.py` — `--retrofit-field-lengths`
+- `portal_publish/output/{webmap,layer_definition,publish_parameters}.json` — rebuilt
+- `portal_publish/README.md`, `README.md` — the two findings written up
+
+**Result / Iteration**
+- The heatmap's defect was a unit confusion, not a taste problem, and it is the third
+  of that shape in this repository after the Gulf of Guinea in `egdb_import` and the
+  two "extent" properties one level up. None of the three produced an error message.
+- Fixing the calibration was necessary and not sufficient: the measurement says a
+  weighted heatmap cannot distinguish "many dwellings" from "expensive dwellings", so
+  the honest answer to the user's question was a different renderer rather than a
+  better-tuned one.
+- Check 3 stays FAIL until `--retrofit-field-lengths` has been run against the
+  instance. Esri documents only that "not all of these properties may be updated" and
+  does not say which, so the refusal - if it comes - is itself the finding.
+- Open: one new screenshot each for the fifth layer and the calibrated heatmap, and the
+  retrofit run.
+
+## [023] 2026-09-14 — Stored is not drawn, and success is not written  ·  scope: `portal_publish`, root
+
+**Prompt (original, DE)**
+> Screenshots hinzugefügt. Verify liefert immer noch Fehler. (wieder bei Field Types). CA Cert geht übrigens nicht, ich musste wieder no verify benutzen
+
+**Prompt (translation, EN)**
+> Screenshots added. Verify still returns errors. (again at Field Types). By the way the CA cert does not work, I had to use no verify again
+
+**What happened**
+- Three separate problems, and each measurement contradicted the previous session's
+  assumption.
+- **The CA certificate.** Reproduced in one interpreter: with `REQUESTS_CA_BUNDLE`
+  set, `requests.get(portal_url)` returns 200 and `GIS(portal_url)` raises
+  `CERTIFICATE_VERIFY_FAILED`. Read the wheel: `arcgis` 2.4.1.1 mounts an
+  `EsriTrustStoreAdapter` whose `init_poolmanager` hands urllib3 its own
+  `ssl.SSLContext` (truststore + `certifi.where()`), and a connection built from an
+  explicit context never consults requests' `verify`. The previous session's comment -
+  "setting the variable before the import is the only order that works" - was an
+  assumption stated as a fact. The supported route is `GIS(ca_bundles=...)`, documented
+  only in the class docstring inside the wheel. Verified working against the real
+  portal.
+- **The field lengths.** The retrofit had run: the run record holds
+  `{"success": true}` from `updateDefinition`, and the service still reports
+  `TEXT(8000)`. The API confirmed a write it did not perform. With nothing left to fix
+  on this side, the length mismatch became an INFO finding printed beside that success
+  claim, while the field **types** still fail the check.
+- **The heatmap.** The new screenshot at the same extent and zoom is still saturated -
+  and the verifier reads `blurRadius 25`, `minPixelIntensity 9.02`,
+  `maxPixelIntensity 38.82` back out of the live web map, so the payload arrived
+  intact. Comparing the two captures separates the properties: `blurRadius` visibly
+  took effect (larger blobs), neither intensity bound did. One of three deprecated
+  properties is honoured. "Deprecated" means accepted, not supported.
+- Added `referenceScale` (1:50,093, derived from the calibration's own reference
+  resolution) to the renderer, a `--heatmap-form density` flag that writes the current
+  `radius`/`minDensity`/`maxDensity` encoding instead, and taught the verifier to
+  decode both encodings and to fail when `referenceScale` is absent.
+
+**Artifacts**
+- `portal_publish/scripts/publish_to_portal.py`, `verify_portal.py` — `ca_bundles=`,
+  the corrected docstring, INFO findings, both heatmap encodings
+- `portal_publish/scripts/build_portal_items.py` — `referenceScale`,
+  `--heatmap-form`
+- `portal_publish/input/class_breaks.png` — the second publish (the heatmap
+  captures from this run were the instrument and were not kept; see the use-case
+  README)
+- `portal_publish/README.md`, `README.md`, `CLAUDE.md` — four findings written up
+
+**Result / Iteration**
+- The most uncomfortable finding of the folder: a verifier that reads an item back
+  cannot distinguish "stored" from "drawn". Only the pair of screenshots at identical
+  extent and zoom could, which makes a manual capture load-bearing in a repository
+  built on automated checks.
+- Two assumptions from the previous session were wrong and are kept visible rather than
+  edited away: that `REQUESTS_CA_BUNDLE` was the mechanism, and that calibrating the
+  heatmap would fix the picture.
+- Open: whether `--heatmap-form density` draws on 12.1. If it does not, a heatmap there
+  cannot be calibrated from a payload at all, and the class-breaks layer is the entire
+  answer to the original question.
+
+## [024] 2026-09-14 — Four of four green, and the layer was empty  ·  scope: `portal_publish`, root
+
+**Prompt (original, DE)**
+> CA Certs gehen jetzt, Verify ist alles Pass, aber die Heatmap rendert jetzt gar nicht mehr
+
+**Prompt (translation, EN)**
+> CA certs work now, verify is all pass, but the heatmap does not render at all any more
+
+**What happened**
+- Read `build/webmap_substituted.json` to establish which encoding had actually been
+  published rather than asking: `radius` / `minDensity` / `maxDensity` - the run was
+  made with `--heatmap-form density`. The committed report confirms 4 of 4 checks
+  passed, at 10:42, with the ramp line reading `9.02 .. 38.82 (radius 25,
+  referenceScale 50093)`.
+- That settles the question left open in [023], negatively: ArcGIS Enterprise 12.1
+  **stores** the specification's current heatmap encoding and **draws nothing** from
+  it. Together with the previous session the matrix is complete - the deprecated
+  gaussian form draws but honours only `blurRadius`; the current form does not draw at
+  all.
+- The consequence that matters is about the verifier, not the portal. Every check in
+  `verify_portal.py` reads the stored item, so all four were satisfied by a web map
+  with an invisible layer. Each check was correct about what it measured. "Does this
+  draw" is not a readable property of an item.
+- Encoded the measurement so it is not lost: `check_heatmap_ramp` now refuses the
+  `density` encoding for a 12.1 target and names the publish that established it.
+  Verified it fires against the payload as published and passes on the rebuilt one.
+- Added `--no-reference-scale`, because `referenceScale` has never been published
+  together with the gaussian encoding and is the one remaining untested variable.
+
+**Artifacts**
+- `portal_publish/scripts/verify_portal.py` — `EXPECTED_HEATMAP_ENCODING`, the
+  encoding refusal, the measurement table in the docstring
+- `portal_publish/scripts/build_portal_items.py` — `--no-reference-scale`, the
+  measured default
+- `portal_publish/output/verification_report_portal.md` — the 4/4 run, kept as
+  evidence
+- `portal_publish/README.md`, `README.md`, `CLAUDE.md` — the finding and the narrowed
+  claim about what checks can do
+
+**Result / Iteration**
+- The strongest and most uncomfortable finding in the folder: a repository built on
+  "checks beat inspection" produced a fully green report over a broken map, and a
+  screenshot was the only instrument that could see it. The claim is now stated
+  narrowly rather than dropped - a check sees what it can read, and a verifier can
+  remember this class of defect but never discover it.
+- Three platform behaviours in this use case now share one shape: a declared TEXT
+  length, a heatmap's intensity bounds and an entire renderer encoding were each
+  accepted in full and each silently ignored.
+- Open: whether `referenceScale` is safe alongside the gaussian encoding. One publish,
+  one screenshot.
+
+## [025] 2026-09-14 — The heatmap draws, and one screenshot goes into the talk  ·  scope: `portal_publish`, `slides`
+
+**Prompt (original, DE)**
+> die heatmap zeichnet wieder, ist aber nicht wirklich aussagefähig. FÜr die Verarbeitung im Talk könnte dann eher der class breaks rent renderer genutzt werden, also eher nur 1 Screenshot.
+
+**Prompt (translation, EN)**
+> the heatmap draws again, but is not really expressive. For the processing in the talk the class breaks rent renderer could rather be used, so rather only 1 screenshot.
+
+**What happened**
+- The last open variable is settled by that first sentence and by the capture added
+  with it: `referenceScale` published together with the gaussian
+  encoding is harmless - the layer draws, as one continuous red surface. It also changes
+  nothing visible, which is consistent: the two intensity bounds it would pin are
+  exactly the two properties this version ignores. The use case's heatmap question is
+  closed - on Enterprise 12.1 a heatmap cannot be calibrated from the payload at all.
+- Followed the standing rule from CLAUDE.md section 8 rather than waiting to be asked:
+  a new use case lands in the **backup** first. Wrote four backup slides (30-33) into
+  `slides/pages/90-appendix.md` - the five-layer map with the one screenshot, the
+  four-of-four-green finding, the three silent refusals, and the heatmap answering a
+  different question.
+- Added `class_breaks.png` to `slides/scripts/sync_assets.mjs`. It is ~8 MB against the
+  other captures' 1.6 MB and is copied as-is: no image tool is a dependency of this
+  deck, and re-encoding somebody else's attribution bar is the operation that loses it.
+- Verified the deck against its consumer rather than against the build, as section 8
+  requires. The build was green and two slides were not: the class-count figure set as
+  a `.metric` wrapped into two enormous lines and pushed the text to the bottom edge,
+  and a slide titled "Three promises" showed two columns with the third finding on the
+  previous slide. Both fixed and re-exported.
+
+**Artifacts**
+- `slides/pages/90-appendix.md` — backup slides 30-33
+- `slides/scripts/sync_assets.mjs` — the fourth screenshot
+- `slides/README.md` — the backup index, and why slide 31 is the strongest candidate
+  to displace a core rule
+- `portal_publish/README.md` — the heatmap question closed, the talk screenshot named
+
+**Result / Iteration**
+- Slide 31 argues against the deck's own thesis: the core deck says verification beats
+  inspection, and that slide is a fully green report over a broken map, found by
+  looking at it. Kept in the backup for now because act 3 already owns `opensearch` and
+  because displacing a rule means giving up one that has a picture.
+- The PNG export earned its keep again, exactly as it did on the first draft: two
+  defects the build called success.
+- Nothing open in `portal_publish` now.
+
+## [026] 2026-09-14 — One screenshot, and the other six discarded  ·  scope: `portal_publish`, root
+
+**Prompt (original, DE)**
+> commit das alles
+
+**Prompt (translation, EN)**
+> commit all of this
+
+**What happened**
+- Before committing, measured what was about to enter the history: the seven Map
+  Viewer captures in `portal_publish/input/` came to **49 MB** against a 21 MB
+  repository, and against ~1.6 MB for each screenshot the earlier use cases
+  contribute. A public repository's history is not revisable, so this was worth one
+  question rather than a fait accompli.
+- Asked, and the answer was to keep only the class-breaks capture: *"wenn fragen dazu
+  aufkommen, kann ich ja die webmap live aufrufen"*. Discarded the three heatmap
+  captures and the three from the four-layer version.
+- The three heatmap captures were the **instrument** that produced this folder's best
+  finding, so the README now records what each of them established, and states plainly
+  that the surviving evidence - the measurements, the docstrings, the run record and a
+  check that refuses the encoding that draws nothing - is weaker than the images were.
+  Removed every reference to files that no longer exist, in the README, the builder's
+  docstring and the earlier PROMPT entries' artifact lists.
+- Committed in seven commits along the lines of the work rather than one bulk commit.
+
+**Artifacts**
+- `portal_publish/input/class_breaks.png` — the one committed capture (7.7 MB)
+- `portal_publish/README.md` — *What the discarded captures established*
+
+**Result / Iteration**
+- The evidence question is a real trade and is documented as one: a repository is not
+  an archive of everything that was looked at, and the finding is reproducible in a
+  single publish.
+- CLAUDE.md now separates the two decisions: capture the before and after at a matched
+  view because that is the only way the comparison means anything, and then decide
+  *separately* whether to keep them.

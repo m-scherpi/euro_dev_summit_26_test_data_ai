@@ -47,7 +47,7 @@ generated artifacts that stay out of git (see section 3).
 alternative folder names.
 
 Folder naming: lowercase, `snake_case`, descriptive of the use case
-(`csv_data`, `opensearch`, `python_import`).
+(`csv_data`, `opensearch`, `portal_publish`).
 
 **`slides/` is the one exception, and it is not a use case.** It holds the
 conference presentation itself (Slidev, Markdown, deployed to GitHub Pages), so
@@ -203,6 +203,36 @@ unedited LLM artifact (`<name>_llm_raw.csv`) as evidence, and the corrected
 file that downstream use cases actually read. State in the README exactly which
 columns or fields were corrected, and leave everything else byte-identical.
 The delta between the two files is the most valuable thing in the repository.
+
+**An artifact that names something the target system assigns must carry a
+placeholder, not a value.** `output/` has to be regenerable from `input/` plus
+the documented command, and a portal item id does not exist until the item is
+created and changes on every run. So the committed artifact carries
+`{{FEATURE_SERVICE_URL}}` and the substituted body goes to `build/`. Two
+consequences, both measured in `portal_publish`. The substitution must be
+**asserted**, because an unsubstituted token is the quiet failure: the portal
+accepts the item, the viewer opens it, the frame draws, the legend lists four
+layers and not one feature appears - no error anywhere. And the assertion must
+grep for the **marker** rather than for a list of known token names: a
+one-character typo (`{{FEATURE_SERVICE_UR}}`) passes a whitelist and is caught
+by the marker. The price of the stricter check is that it also catches your own
+prose - the first run aborted on a token sitting inside a note that *explained
+the check* - so keep the marker out of the payload's documentation and write it
+in words. Pay that price; the whitelist is the version that lets the real
+failure through.
+
+**A clamp counter that fires often has stopped being a counter and become the
+distribution.** CLAUDE.md already says to derive a distribution's parameter
+from the measured spread rather than guessing it. The same mistake has a second
+shape when a bound is physical rather than a guard: measured in
+`portal_publish`, an average household size drawn as a Gaussian with mean 1.6
+against a hard floor of 1.0 clamped **37 of 500** rows onto exactly 1.0 - 7 %
+of the data piled on one value, invisible on a map and glaring in a pop-up. A
+gamma variate above the floor has the bound built into the distribution instead
+and took it to 2. So: build a hard bound into the draw, keep the clamp as a
+guard, set the guard wide enough that a normal run barely reaches it, and
+**print every clamp count** - the count is only useful while it is still
+reporting an anomaly rather than describing the data.
 
 **Large data sets.**
 Commit the real output as long as it stays in the low single-digit megabytes —
@@ -445,7 +475,28 @@ coordinates.
   vendor's supported import over the one that works: editing a bundled JRE's
   `cacerts` directly is undone by the next upgrade, silently and months later.
   The same shape as the projection-formula and same-language-checker rules: the
-  component that fails is the one with no dialog to show.
+  component that fails is the one with no dialog to show. **And the trust anchor
+  is usually reachable from the connection that fails.** Measured in
+  `portal_publish`: `unable to get local issuer certificate` reads like a server
+  fault, and the server is in fact sending a correct chain - leaf plus issuing
+  CA - that simply ends below any anchor `certifi` knows. The issuing
+  certificate's *Authority Information Access* extension names the root's
+  download URL, so the bundle can be assembled from the failing host itself
+  rather than requested from whoever runs the CA. Anchor on the root, not on the
+  issuing certificate: OpenSSL will happily stop at either, so a green result
+  with the issuer as anchor proves less than it looks. **And two libraries in
+  one process are two consumers.** Measured in `portal_publish`: exporting
+  `REQUESTS_CA_BUNDLE` makes `requests.get(portal_url)` return 200 and leaves
+  `GIS(portal_url)` raising `CERTIFICATE_VERIFY_FAILED` in the same
+  interpreter, because `arcgis` 2.4.1.1 mounts an adapter whose
+  `init_poolmanager` supplies its own `ssl.SSLContext` (truststore plus
+  `certifi.where()`), and a connection built from an explicit context never
+  consults requests' `verify`. The supported route was a keyword argument
+  documented only in the class docstring **inside the wheel**
+  (`GIS(ca_bundles=...)`). So do not conclude that a certificate is installed
+  because one library in the process accepted it, and when an environment
+  variable appears to be ignored, read the library's own session construction
+  before blaming the certificate.
 - **A wrong spatial reference does not error at write time.** Measured in
   `egdb_import`: a feature class created as EPSG:3857 and fed decimal degrees
   accepts every row, satisfies the geodatabase, and draws - with all hundred
@@ -558,6 +609,134 @@ coordinates.
   OpenSearch layer only the second works, and the error names neither. When a
   documented capability fails, check whether the control you used is the control
   the documentation meant before concluding the capability is missing.
+- **A deprecated form the target version understands beats the current form it
+  does not - and symbology fails silently either way.** The Web Map
+  Specification says of `uniqueValueInfos`: *"Deprecated. Please see
+  uniqueValueGroups."* For a target of ArcGIS Enterprise 12.1 the deprecated
+  form is still the right choice, because a viewer that does not understand a
+  renderer does **not** fall back to the older shape - it draws the
+  `defaultSymbol` for every feature, which looks like a working map with a
+  broken legend. Same shape as the `geo_point` finding one layer down: the
+  consumer's constraint decides the representation, not the spec's preference.
+  So pin the renderer to the *target's* version, quote the deprecation sentence
+  where the choice is recorded so it does not read as ignorance, and have the
+  verifier read the renderer back out of the stored item - a rendering choice
+  that was silently dropped has no error message anywhere. **But reading it back
+  proves storage, not rendering, and the two can disagree property by
+  property.** Measured in `portal_publish`: of a heatmap's three deprecated
+  Gaussian properties, Enterprise 12.1 stored all three and drew by exactly one.
+  Raising `blurRadius` from 12 to 25 visibly enlarged the blobs; replacing
+  `maxPixelIntensity` 19.28 with 38.82 and `minPixelIntensity` 0 with 9.02
+  changed nothing, at the same extent and zoom, with the verifier reading the
+  new values out of the live item. "Deprecated" turned out to mean **accepted**
+  rather than supported. No check that reads an item back can see that
+  difference - the screenshot is the only instrument that can, so capture the
+  before and the after at the **same extent and zoom**; a pair of images is a
+  controlled experiment and a single image is an illustration. Keeping them is a
+  separate decision from taking them: measured in `portal_publish`, seven Map
+  Viewer exports came to 49 MB against 1.6 MB for a typical committed
+  screenshot, so the pair was read, written up and discarded, and only the one
+  capture that carries an argument was committed. Write down what a discarded
+  image established, and say plainly that the surviving evidence is weaker.
+  **The newer form may not degrade but vanish, and the checks stay green while
+  it does.** Publishing the same heatmap in the specification's *current*
+  encoding (`radius`/`minDensity`/`maxDensity`) on the same 12.1 instance stored
+  it intact and drew **nothing at all** - and the verifier reported **4 of 4**,
+  because every check it has reads the stored item. So on this version
+  "deprecated" marks the form that works and "current" the one that is merely
+  accepted. Two duties follow. Encode the measurement as a check once it is
+  known - the verifier now refuses the encoding that draws nothing, naming the
+  publish that established it - and state plainly, wherever a folder claims its
+  checks are strong, that "does this draw" is not a readable property of an
+  item. A read-back verifier cannot find this class of defect; it can only
+  remember it.
+- **Two properties called "extent" may be in two different units.** Measured in
+  `portal_publish`: an ArcGIS *item's* `extent` property is documented as
+  decimal degrees (WGS84), while a web map's own viewpoint is in the map's
+  spatial reference - EPSG:3857 metres, because `targetSR` defaults to 102100.
+  Handing the viewpoint's metres to the item property yields an item whose
+  extent is nonsense and whose map draws perfectly, and nothing anywhere
+  complains. The Gulf-of-Guinea failure one level up: same shape, same silence,
+  a property instead of a geometry. Carry both numbers explicitly, name each
+  key after its unit, and never let one "extent" be assigned from another
+  without a conversion you can point at.
+- **Documentation written into a committed payload must not reach the payload's
+  destination.** An artifact in `output/` is for a reader as much as for a
+  machine, so annotate it - and then strip the annotation before uploading.
+  Measured in `portal_publish`: the `_note` keys explaining the design were
+  being sent as part of the live web map's `text`, where the portal tolerates
+  them and nobody wants them. Prefix such keys consistently, strip them by
+  prefix rather than by name, and have the verifier assert their **absence**
+  from what the target stored - otherwise the strip is an intention rather than
+  a fact.
+- **Derive every renderer threshold from the data, and say which classification
+  it is.** Hard-coded class breaks look fine and quietly put every feature in
+  one class the first time a seed or a source changes. Two specifics, both
+  measured in `portal_publish`: a `classBreakInfo` carries `classMaxValue` and
+  **no** `classMinValue` - the breaks run contiguously from the renderer's own
+  `minValue`, and per-class minima are how a legend ends up with gaps that
+  swallow features - and **quantile** breaks rather than equal intervals,
+  because equal intervals over a normal-ish distribution put almost everything
+  in the middle two classes, which looks like a rendering bug and is arithmetic.
+  Print the per-class counts (measured: 101/101/98/100/100 of 500) so the
+  equal-count claim is checkable rather than asserted. A `simple` renderer
+  carrying one visual variable needs the variable asserted separately: without
+  it, it is still a valid `simple` renderer drawing every feature at the same
+  size - finished-looking and proving nothing.
+- **When a failing check has nothing left to fix, move the finding rather than
+  the threshold.** A verifier tuned until it goes green stops being a verifier -
+  and a check that can only ever be red stops carrying information, which is the
+  same loss from the other side. Measured in `portal_publish`: a hosted feature
+  layer stores every declared TEXT length as 8000 and the documented way to
+  change it afterwards reports success and changes nothing, so the mismatch is a
+  property of the platform rather than a defect in the payload. It became an
+  explicit INFO finding printed next to the API's own success claim, while the
+  part of the check that *is* a claim about our work - the field **types** -
+  still fails. Demote deliberately, say in the artifact that the demotion is a
+  measurement, and never demote something you could still fix.
+- **A renderer parameter that looks like a data value is usually in another
+  unit.** Measured in `portal_publish`: a heatmap's `maxPixelIntensity` was set
+  to the 95th percentile of the weighting column, 19.28 EUR/m2, as though a
+  pixel intensity were a rent. It is the sum of the kernel-weighted
+  contributions of the points near a pixel, so the two share no unit and only
+  happen to be the same order of magnitude - which is exactly what makes it
+  survive review. The arithmetic that makes it fatal is independent of zoom: an
+  **isolated** point peaks at exactly its own weight, so a ceiling at or below
+  the largest weight lets every lone feature reach the top colour alone. All
+  500 features drew as saturated blobs, nothing in the stack reported anything,
+  and the map looked like a density surface while being a dot map. Third of
+  that shape here after the Gulf of Guinea and the two "extent" properties. So
+  derive such a parameter by **simulating** what the client will compute -
+  kernel over a pixel grid at a reference resolution taken from the map's own
+  extent, ramp anchored on percentiles of the occupied pixels - and have the
+  verifier assert the ceiling sits clear of the largest single weight. State
+  what the simulation assumes: the vendor publishes no kernel shape, and the
+  deprecated Gaussian form has no `referenceScale`, so the calibration holds at
+  one scale only.
+- **Ask what a renderer can express before tuning it.** Calibration was
+  necessary and not sufficient in the same case. A field-weighted heatmap draws
+  density x weight, so it cannot separate "many features" from "high-valued
+  features": measured, its intensity correlates with plain point density at
+  rho 0.774 and with the local value level at 0.786 - both, about equally, and
+  a viewer has no way to tell which one a red patch means. The data's own
+  structure was dramatic (district medians 17.86 down to 6.61) and invisible in
+  that renderer. Measure that correlation rather than arguing about it, and when
+  it comes out like that, answer the question with a second renderer on the same
+  column instead of a better-tuned first one - the pair is more honest than
+  either alone, and the comparison is the finding.
+- **A declared field length is a request, not a contract - and which it is
+  depends on the target.** Measured in `portal_publish`: a hosted feature layer
+  published from CSV with an explicit `layerInfo.fields` stored every declared
+  `TEXT(80)`/`TEXT(40)` column as `TEXT(8000)`. The types survived exactly; the
+  lengths were discarded without a warning, while the portal's own `analyze`
+  guess agreed with the declaration in 0 of 14 fields - guess right,
+  declaration right, stored schema matching neither. The contrast is the point:
+  `egdb_import`'s geodatabase honoured every declared length. So verify the
+  stored schema field by field against the declaration rather than against the
+  guess, keep the check red when it fails, and where the vendor's reference says
+  only *"not all of these properties may be updated"* without saying which, ask
+  the instance and record the answer - a refusal is as much a finding as a
+  success.
 
 ---
 
@@ -627,7 +806,15 @@ Rules that do apply regardless of stack:
   names to the DBF limit of ten characters and replaced both measured TEXT
   lengths with the format's maximum. So assert the format, the field names and
   the field types of what actually landed - the return value is not the
-  deliverable.
+  deliverable. **A success message is not a write, either.** Measured in
+  `portal_publish`: `updateDefinition`, asked to set three declared TEXT
+  lengths on a hosted feature layer, answered `{"success": true}` - and the
+  service still reports the old lengths afterwards. The vendor's own reference
+  says only *"When updating field properties, note that not all of these
+  properties may be updated"* without saying which, so there was nothing to read
+  that would have predicted it. Read the property back from the target after
+  every write you care about, and when a confirmation and a measurement
+  disagree, publish both rather than the one that reads better.
 - **A convenience writer that infers a schema is not an importer.** Where field
   types and lengths *are* the deliverable, state them explicitly.
   `to_featureclass` accepts `location, overwrite, has_z, has_m,
@@ -653,6 +840,36 @@ Rules that do apply regardless of stack:
   that also *rehearses* the work - coercing every row to its declared type
   without importing the licensed library - caught three planted defects with no
   database in sight. A dry run that only prints calls is worth much less.
+- **A pinned client library may be missing the module its own migration notes
+  name. Ask the wheel, not the release notes.** Measured in `portal_publish`:
+  the widely-repeated note *"in 2.4, `arcgis.mapping.WebMap` became
+  `arcgis.map.Map`"* is half true for `arcgis` 2.4.1.1 - the old class is gone
+  and the new one is **not in the wheel**. `import arcgis.map` raises
+  `ModuleNotFoundError`, `from arcgis.mapping import WebMap` raises
+  `ImportError`, and `grep -c '^arcgis/map/' …dist-info/RECORD` returns **0**.
+  The `RECORD` file is the authoritative inventory of what was actually
+  installed, and it answers in one command a question release notes and
+  migration guides answer wrongly. Consequence for the design rather than just
+  for the import: hand-built JSON handed to `content.add` is then **the only
+  route, not a workaround**, and saying so is the difference between a decision
+  and an apology.
+- **Where a vendor publishes no specification, the vendor's own code is a better
+  oracle than the vendor's documentation - including deprecated code.** There is
+  no published ArcGIS Dashboard specification, and that absence is itself worth a
+  paragraph. What exists is `arcgis/apps/dashboard/dashboard.py`, deprecated and
+  shipped in the wheel: it establishes that the item type is exactly
+  `"Dashboard"` with the config in `text`, and it emits `version 27` with no
+  `mapWidget` - so it cannot build the widget such a dashboard needs most, and
+  remains a first-party reference for the shapes of the ones it can. Cheaper
+  still where an instance is available: configure one by hand, pull its JSON
+  with `get_data()`, commit it as the reference and build against that. Ground
+  truth from the exact instance beats any amount of doc-reading where no spec
+  exists.
+- **A check that greps a serialised payload as text will catch the payload's own
+  documentation.** See section 3 on placeholder markers for the measurement. The
+  general rule: a textual assertion has no idea which occurrences are data and
+  which are prose, so keep the pattern out of the prose rather than narrowing
+  the pattern. Narrowing it is how the real failure gets through.
 
 ---
 
