@@ -45,6 +45,8 @@ github.com/m-scherpi/euro_dev_summit_26_test_data_ai &middot; CC BY 4.0
 
 </div>
 
+<img src="/logo-conterra.png" class="ct-logo" alt="con terra" />
+
 <!--
 10s. Do not read the title. One sentence: "I built five use cases with an agent,
 from a CSV to a published web map, and this is what worked."

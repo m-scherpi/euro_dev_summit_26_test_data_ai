@@ -2166,3 +2166,38 @@ Follow-up, after the plan was presented:
   address reads *Münster*, since this repository writes German characters
   correctly wherever German text appears.
 
+---
+
+## [034] 2026-09-14 — The logo, as itself  ·  scope: `slides`, root
+
+**Prompt (original, DE)**
+> @slides/input enthält noch das con terra logo. das gerne noch verwenden auf start und endfolie (wenn nötig woanders hin kopieren)
+
+**Prompt (translation, EN)**
+> @slides/input still contains the con terra logo. feel free to use that on the title and closing slide as well (copy it elsewhere if necessary)
+
+**What happened**
+- `input/Logo_con-terra_RGB_600px.png` copied to `slides/public/logo-conterra.png`,
+  since `slides/input/` is gitignored and `public/` is what the build serves.
+- Placed at the master's own coordinates, read from `slideLayout1`/`27`: the
+  template draws the word mark as freeforms from x 9.96 M to 11.65 M EMU at
+  y 5.80 M — bottom right, 13.4 % of the slide width, baseline at 84.6 % height.
+  Same class on both slides, so the two agree by construction.
+- Licence consequence written down rather than assumed: this is the first asset
+  taken from the template **as itself** instead of reconstructed, so the root
+  README gained an explicit carve-out — the word mark is a trademark and is not
+  covered by the repository's CC BY 4.0.
+
+**Artifacts**
+- `slides/public/logo-conterra.png` — the word mark, committed, not CC BY
+- `slides/slides.md`, `slides/pages/60-close.md` — the `<img class="ct-logo">`
+- `slides/style.css` — `.ct-logo`, positioned in per cent of the slide
+- `README.md` — the licence carve-out; `CLAUDE.md` — the convention behind it
+
+**Result / Iteration**
+- Worked first time; PNG export confirms both slides, with the logo clear of the
+  cover's corner graphic and of the closing slide's QR block.
+- The useful part is the constraint it puts on everything else: because the
+  palette, the typography and both decorative graphics are reconstructions, the
+  carve-out is **one file** and a reuser can act on it. Lifting the template's
+  graphics would have turned that into a list.

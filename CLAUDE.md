@@ -1044,6 +1044,16 @@ in `vh`. Note the shape: the rule was known, written down and still broken,
 because it was broken by a unit conversion rather than by a decision — the same
 family as the two "extent" properties in §4.
 
+**A trademark in a CC BY repository needs a written carve-out, and it should be
+exactly one file.** A logo is the one asset that cannot be reconstructed -
+imitating it *is* the infringement - so where it is genuinely wanted it goes in
+as itself, and the licence section then has to say plainly that it is not CC BY,
+because a content licence cannot hand on somebody's mark. Measured here: with the
+palette, the typography and both decorative graphics rebuilt from the theme
+rather than extracted, the carve-out is a single PNG and the sentence "remove
+this one file" is enough for a reuser. Had the template's own graphics been
+lifted, the carve-out would have been a list nobody could act on.
+
 **Imitating a corporate slide master: take the scheme, never the file.** A
 company `.potx` is a template somebody else owns, and this repository publishes
 under CC BY - so the template is gitignored and none of its images are used.

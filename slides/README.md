@@ -96,6 +96,7 @@ slides/
 │   ├── qr-repo.svg        # committed: text, tiny, changes only on a rename
 │   ├── cover-deco.svg     # low-poly corner graphic, drawn from the palette
 │   ├── close-grid.svg     # grid structure of the closing slide, generated
+│   ├── logo-conterra.png  # the word mark -- committed, NOT under CC BY
 │   └── img/               # generated, gitignored
 └── input/                 # gitignored: the corporate .potx, never committed
 ```
@@ -144,6 +145,16 @@ node scripts/make_close_grid.mjs 20260914 public/close-grid.svg
 Neither the cover nor the closing slide gets the footer, because the master's
 `Titelfolie` and `Schlussfolie` carry none — the closing slide states the company
 in full instead.
+
+**The one thing taken as itself: the logo.** `public/logo-conterra.png` is the
+con terra word mark, copied out of the gitignored `input/` folder and placed
+where the master puts it — bottom right on the cover and on the closing slide,
+13.4 % of the slide width with its baseline at 84.6 % height. Everything else
+here is a reconstruction; this is the mark itself, and it is therefore **not
+covered by the repository's CC BY 4.0 licence**. A trademark stays with its
+owner, so the root README carries an explicit carve-out and anyone reusing this
+material has to remove that one file. Keeping the rest of the look a
+reconstruction is what keeps the carve-out down to a single file.
 
 **One Slidev trap, measured.** The cover was first written as `layout: cover`,
 which is seriph's own layout and paints its own background — the custom

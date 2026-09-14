@@ -111,6 +111,8 @@ github.com/m-scherpi/euro_dev_summit_26_test_data_ai<br/>
 
 </div>
 
+<img src="/logo-conterra.png" class="ct-logo" alt="con terra" />
+
 <!--
 Leave this up for questions. The prompt log is the part people ask about: every
 prompt, including the ones that went nowhere.

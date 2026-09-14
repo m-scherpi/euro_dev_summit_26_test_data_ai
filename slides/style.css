@@ -269,3 +269,15 @@
   @apply mt-3 text-sm leading-snug;
   color: var(--ct-dark);
 }
+
+/* The company logo, at the master's own place on `Titelfolie` and
+   `Schlussfolie`: bottom right, 13.4 % of the slide width, its baseline at
+   84.6 % height. Unlike the palette, this is the mark itself and not a
+   reconstruction of it -- see the licence note in README.md. */
+.ct-logo {
+  @apply absolute;
+  left: 81.7%;
+  top: 84.6%;
+  width: 13.4%;
+  height: auto;
+}
