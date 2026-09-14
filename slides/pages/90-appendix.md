@@ -519,3 +519,210 @@ Both invisible. Both fatal to an exact-equality check.
 <div class="rule">
 Keep the provenance claim, state its boundary: nothing was recomputed <em>on the way in</em>.
 </div>
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 15 · portal_publish</div>
+
+# One service, five renderers
+
+<div class="cols-img">
+<div>
+
+500 fictitious Münster rent-census points, published to ArcGIS Enterprise as a
+hosted feature layer and a Web Map. Five operational layers, **one** service
+URL: same data, read five ways.
+
+The map's own subject is `rent_eur_sqm`, and it carries **two** renderers for
+it — a heatmap and quantile class breaks. Only one of them can be read, and this
+is that one.
+
+<div class="mt-4">
+
+Quantile breaks, so the classes are equal-count by construction:
+**98 / 101 / 99 / 98 / 104** features of 500 — printed in the artifact so the
+claim is checkable rather than asserted.
+
+</div>
+
+</div>
+<div>
+
+<img src="/img/muenster_rent_class_breaks.png" class="shot" />
+
+<div class="credit">ArcGIS Enterprise Map Viewer · basemap Land NRW, Esri, HERE, Garmin, INCREMENT P, USGS, METI/NASA</div>
+
+</div>
+</div>
+
+<!--
+Context slide for the three that follow. The whole payload -- schema, renderers,
+web map -- is hand-built JSON written offline: the pinned client has no Web Map
+class at all.
+
+If time is short, skip straight to Backup 16. That one is the finding.
+-->
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 16 · portal_publish</div>
+
+# Four of four green, and the layer was empty
+
+The Web Map Specification offers two encodings for a heatmap. Published one each
+against ArcGIS Enterprise 12.1:
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**Stored → drawn**
+
+`blurRadius` / `minPixelIntensity` / `maxPixelIntensity`<br>
+*"Deprecated"* → **draws**, but honours only the blur radius
+
+`radius` / `minDensity` / `maxDensity`<br>
+the current form → **draws nothing at all**
+
+On this version, "deprecated" marks the form that works.
+
+</div>
+<div>
+
+**What the verifier said about the empty one**
+
+<div class="metric">4 of 4</div>
+
+field types · feature count · extent · renderer types · item metadata
+
+Every check reads the **stored** item. Every one of them was right about what it
+measured.
+
+</div>
+</div>
+
+<div class="rule">
+"Does this draw" is not a readable property of an item. A screenshot found it; the verifier can only remember it.
+</div>
+
+<!--
+The uncomfortable slide of the deck, and the reason it is worth showing: this
+repository's argument is that checks beat inspection. The honest version is
+narrower -- a check sees what it can read.
+
+The measurement is encoded now: the verifier refuses that encoding for a 12.1
+target. But encoding it required a human looking at a map first.
+-->
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 17 · portal_publish</div>
+
+# Three promises, three silent refusals
+
+Accepted by the platform without a warning, and then not done. Two of them are
+below; the third was the entire renderer on the slide before.
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**The declared schema**
+
+`TEXT(80)` / `TEXT(40)` / `TEXT(40)` → stored as **`TEXT(8000)`**, all three.
+
+Types survived exactly. Lengths did not.
+
+Asked to fix them afterwards, `updateDefinition` answered:
+
+```json
+{"success": true}
+```
+
+The service still reports 8000.
+
+</div>
+<div>
+
+**The calibrated heatmap**
+
+Same extent, same zoom, two publishes:
+
+`blurRadius` 12 → 25 — **visible**<br>
+`maxPixelIntensity` 19.28 → 38.82 — nothing<br>
+`minPixelIntensity` 0 → 9.02 — nothing
+
+The verifier reads the new values back out of the live item. They are stored and
+not used.
+
+</div>
+</div>
+
+<div class="rule">
+Check what an API wrote, not whether it threw — and not whether it said it did.
+</div>
+
+<!--
+The portal's own `analyze` guess agreed with our declaration in 0 of 14 fields.
+Guess right, declaration right, stored schema matching neither.
+
+The length mismatch is reported as INFO rather than as a failure, deliberately:
+there is nothing left on our side to fix, and a check that can only ever be red
+carries no information. Say that the demotion is itself a measurement.
+-->
+
+---
+layout: default
+---
+
+<div class="eyebrow">Backup 18 · portal_publish</div>
+
+# The heatmap answered a different question
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div>
+
+**First, a unit confusion**
+
+`maxPixelIntensity` was set to the 95th percentile of the rent column —
+**19.28 €/m²** — as though a pixel intensity were a rent.
+
+A pixel's intensity is a sum of kernel weights, so an **isolated** point peaks at
+exactly its own weight. Rents reach **22.75**.
+
+Every one of the 500 dwellings hit the top of the colour ramp alone. No error
+anywhere.
+
+</div>
+<div>
+
+**Then, the deeper one**
+
+A weighted heatmap draws density × weight. Measured at the point positions:
+
+ρ = **0.774** with plain point density<br>
+ρ = **0.786** with the local rent level
+
+Both, about equally. A red patch cannot be read.
+
+District medians run 17.86 down to 6.61 €/m² — dramatic, and invisible in that
+renderer.
+
+</div>
+</div>
+
+<div class="rule">
+The fix was not a better-tuned heatmap. It was a second renderer on the same column.
+</div>
+
+<!--
+Same family as the Gulf of Guinea in egdb_import and the two "extent" properties
+one level up: a number assigned across a unit boundary nobody was watching.
+
+Ask what a renderer can express before tuning it -- and measure the correlation
+rather than arguing about it.
+-->

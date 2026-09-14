@@ -152,6 +152,10 @@ Total ≈ 11 minutes, which leaves air for one slide to run long.
 | 27 | Four outcomes, one unchanged line of code | `egdb_import` |
 | 28 | What the silent success did to the schema | `egdb_import` |
 | 29 | "Nothing was recomputed" — measured | `egdb_import` |
+| 30 | One service, five renderers | `portal_publish` |
+| 31 | Four of four green, and the layer was empty | `portal_publish` |
+| 32 | Three promises, three silent refusals | `portal_publish` |
+| 33 | The heatmap answered a different question | `portal_publish` |
 
 Slide 24 is the strongest candidate to displace a core-deck rule: it is the same
 point as **Rule 4** (the loud error is the harmless one) with a second
@@ -167,6 +171,16 @@ They stay in the backup because the finding is about an API rather than about
 geodata, and because `egdb_import` has not yet been run against a real
 geodatabase. When it has, and there is a screenshot of the layer in ArcGIS Pro,
 slide 27 is the one to argue for.
+
+**Slide 31 is the strongest candidate in the deck to displace a core rule**, and
+it argues against the deck's own thesis, which is why it is worth arguing about.
+The core deck says verification beats inspection; slide 31 is a fully green
+four-of-four report over a web map whose layer drew nothing, found by looking at
+it. It is the same family as **Rule 4** (the loud error is the harmless one) and
+one step further — there was no error at all, and no check that reads a stored
+item could have had one. It stays in the backup only because the core deck's
+act 3 already owns `opensearch`, and because taking it in means giving up a rule
+that has a picture. If it goes in, it goes in with slide 30's screenshot.
 
 Slide 29 is a third kind of candidate: it pairs with slide 25 rather than
 competing with it. Both are nanometre-scale findings that break an exact
