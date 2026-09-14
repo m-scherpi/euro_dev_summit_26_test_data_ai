@@ -1,0 +1,135 @@
+{
+  "name": "muenster_rent_census",
+  "description": "Fictitious rent-price census for Munster, generated for the Euro DevSummit 2026 talk on generating test data with GenAI. Nothing in this layer is real data.",
+  "locationType": "coordinates",
+  "latitudeFieldName": "latitude",
+  "longitudeFieldName": "longitude",
+  "columnDelimiter": ",",
+  "sourceSR": {
+    "wkid": 4326
+  },
+  "targetSR": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "maxRecordCount": 2000,
+  "layerInfo": {
+    "name": "muenster_rent_census",
+    "geometryType": "esriGeometryPoint",
+    "fields": [
+      {
+        "name": "id",
+        "alias": "ID",
+        "type": "esriFieldTypeInteger",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "address",
+        "alias": "Address",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 80
+      },
+      {
+        "name": "district",
+        "alias": "District",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 40
+      },
+      {
+        "name": "latitude",
+        "alias": "Latitude (EPSG:4326)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "longitude",
+        "alias": "Longitude (EPSG:4326)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "x_3857",
+        "alias": "X (EPSG:3857, m)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "y_3857",
+        "alias": "Y (EPSG:3857, m)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "rent_eur_sqm",
+        "alias": "Rent (EUR/sqm)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "living_area_sqm",
+        "alias": "Living area (sqm)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "rooms",
+        "alias": "Rooms",
+        "type": "esriFieldTypeInteger",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "median_age",
+        "alias": "Median age (years)",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "household_size",
+        "alias": "Household size",
+        "type": "esriFieldTypeDouble",
+        "nullable": false,
+        "editable": true
+      },
+      {
+        "name": "building_type",
+        "alias": "Building type",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 40
+      },
+      {
+        "name": "year_built",
+        "alias": "Year built",
+        "type": "esriFieldTypeInteger",
+        "nullable": false,
+        "editable": true
+      }
+    ]
+  },
+  "_note": {
+    "columnNames_omitted": "layerInfo.fields overrides columnNames, so sending both would leave a reader guessing which one the portal used. This is the declaration; the portal's own guess is committed next to it in analyze_publish_parameters.json, and the diff between the two files is the central measurement of this use case.",
+    "crs_change": "The CSV is EPSG:4326 decimal degrees. targetSR 102100 (= EPSG:3857) means the hosted layer stores metres. Any extent check against it must say which unit it measured.",
+    "measured": {
+      "rows": 500,
+      "longest_text_values": {
+        "address": 24,
+        "district": 12,
+        "building_type": 13
+      }
+    }
+  }
+}

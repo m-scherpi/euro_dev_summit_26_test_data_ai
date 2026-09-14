@@ -1,0 +1,1408 @@
+{
+  "operationalLayers": [
+    {
+      "id": "rent_heatmap",
+      "title": "Rent per square metre (heatmap)",
+      "layerType": "ArcGISFeatureLayer",
+      "url": "{{FEATURE_SERVICE_URL}}/0",
+      "itemId": "{{FEATURE_LAYER_ITEM_ID}}",
+      "visibility": true,
+      "opacity": 1,
+      "mode": 1,
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "heatmap",
+            "field": "rent_eur_sqm",
+            "colorStops": [
+              {
+                "ratio": 0.0,
+                "color": [
+                  255,
+                  255,
+                  178,
+                  0
+                ]
+              },
+              {
+                "ratio": 0.25,
+                "color": [
+                  254,
+                  217,
+                  118,
+                  120
+                ]
+              },
+              {
+                "ratio": 0.5,
+                "color": [
+                  254,
+                  178,
+                  76,
+                  175
+                ]
+              },
+              {
+                "ratio": 0.75,
+                "color": [
+                  253,
+                  141,
+                  60,
+                  215
+                ]
+              },
+              {
+                "ratio": 1.0,
+                "color": [
+                  227,
+                  26,
+                  28,
+                  245
+                ]
+              }
+            ],
+            "referenceScale": 50093,
+            "blurRadius": 25,
+            "minPixelIntensity": 9.02,
+            "maxPixelIntensity": 38.82
+          },
+          "transparency": 0
+        }
+      },
+      "popupInfo": {
+        "title": "Rent per square metre (heatmap): {address}",
+        "fieldInfos": [
+          {
+            "fieldName": "rent_eur_sqm",
+            "label": "Rent (EUR/sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "district",
+            "label": "District",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "building_type",
+            "label": "Building type",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "id",
+            "label": "ID",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "address",
+            "label": "Address",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "latitude",
+            "label": "Latitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "label": "Longitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "x_3857",
+            "label": "X (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "y_3857",
+            "label": "Y (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "living_area_sqm",
+            "label": "Living area (sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rooms",
+            "label": "Rooms",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "median_age",
+            "label": "Median age (years)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "household_size",
+            "label": "Household size",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "year_built",
+            "label": "Year built",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": false
+            }
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": []
+      }
+    },
+    {
+      "id": "rent_breaks",
+      "title": "Rent per square metre (class breaks)",
+      "layerType": "ArcGISFeatureLayer",
+      "url": "{{FEATURE_SERVICE_URL}}/0",
+      "itemId": "{{FEATURE_LAYER_ITEM_ID}}",
+      "visibility": true,
+      "opacity": 1,
+      "mode": 1,
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "classBreaks",
+            "field": "rent_eur_sqm",
+            "minValue": 4,
+            "classificationMethod": "esriClassifyQuantile",
+            "classBreakInfos": [
+              {
+                "classMaxValue": 8.4,
+                "label": "4 - 8.4 EUR/sqm",
+                "description": "98 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    255,
+                    255,
+                    178,
+                    210
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 11.1,
+                "label": "8.4 - 11.1 EUR/sqm",
+                "description": "101 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    254,
+                    217,
+                    118,
+                    215
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 13.7,
+                "label": "11.1 - 13.7 EUR/sqm",
+                "description": "99 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    254,
+                    178,
+                    76,
+                    225
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 16.7,
+                "label": "13.7 - 16.7 EUR/sqm",
+                "description": "98 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    253,
+                    141,
+                    60,
+                    235
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 23,
+                "label": "16.7 - 23 EUR/sqm",
+                "description": "104 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    227,
+                    26,
+                    28,
+                    245
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              }
+            ]
+          },
+          "transparency": 0
+        }
+      },
+      "popupInfo": {
+        "title": "Rent per square metre (class breaks): {address}",
+        "fieldInfos": [
+          {
+            "fieldName": "rent_eur_sqm",
+            "label": "Rent (EUR/sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "district",
+            "label": "District",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "living_area_sqm",
+            "label": "Living area (sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "id",
+            "label": "ID",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "address",
+            "label": "Address",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "latitude",
+            "label": "Latitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "label": "Longitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "x_3857",
+            "label": "X (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "y_3857",
+            "label": "Y (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rooms",
+            "label": "Rooms",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "median_age",
+            "label": "Median age (years)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "household_size",
+            "label": "Household size",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "building_type",
+            "label": "Building type",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "year_built",
+            "label": "Year built",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": false
+            }
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": []
+      }
+    },
+    {
+      "id": "age_breaks",
+      "title": "Median age (class breaks)",
+      "layerType": "ArcGISFeatureLayer",
+      "url": "{{FEATURE_SERVICE_URL}}/0",
+      "itemId": "{{FEATURE_LAYER_ITEM_ID}}",
+      "visibility": false,
+      "opacity": 1,
+      "mode": 1,
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "classBreaks",
+            "field": "median_age",
+            "minValue": 16,
+            "classificationMethod": "esriClassifyQuantile",
+            "classBreakInfos": [
+              {
+                "classMaxValue": 29.5,
+                "label": "16 - 29.5 years",
+                "description": "101 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    239,
+                    243,
+                    255,
+                    200
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 34.6,
+                "label": "29.5 - 34.6 years",
+                "description": "101 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    189,
+                    215,
+                    231,
+                    210
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 39.1,
+                "label": "34.6 - 39.1 years",
+                "description": "98 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    107,
+                    174,
+                    214,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 44.1,
+                "label": "39.1 - 44.1 years",
+                "description": "100 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    49,
+                    130,
+                    189,
+                    230
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "classMaxValue": 65,
+                "label": "44.1 - 65 years",
+                "description": "100 of 500 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    8,
+                    81,
+                    156,
+                    240
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              }
+            ]
+          },
+          "transparency": 0
+        }
+      },
+      "popupInfo": {
+        "title": "Median age (class breaks): {address}",
+        "fieldInfos": [
+          {
+            "fieldName": "median_age",
+            "label": "Median age (years)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "district",
+            "label": "District",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "year_built",
+            "label": "Year built",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": false
+            }
+          },
+          {
+            "fieldName": "id",
+            "label": "ID",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "address",
+            "label": "Address",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "latitude",
+            "label": "Latitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "label": "Longitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "x_3857",
+            "label": "X (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "y_3857",
+            "label": "Y (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rent_eur_sqm",
+            "label": "Rent (EUR/sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "living_area_sqm",
+            "label": "Living area (sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rooms",
+            "label": "Rooms",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "household_size",
+            "label": "Household size",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "building_type",
+            "label": "Building type",
+            "isEditable": false,
+            "visible": true
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": []
+      }
+    },
+    {
+      "id": "building_type",
+      "title": "Building type (unique values)",
+      "layerType": "ArcGISFeatureLayer",
+      "url": "{{FEATURE_SERVICE_URL}}/0",
+      "itemId": "{{FEATURE_LAYER_ITEM_ID}}",
+      "visibility": false,
+      "opacity": 1,
+      "mode": 1,
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "uniqueValue",
+            "field1": "building_type",
+            "fieldDelimiter": ",",
+            "defaultLabel": "Other building type",
+            "defaultSymbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                140,
+                140,
+                140,
+                200
+              ],
+              "size": 7.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            },
+            "uniqueValueInfos": [
+              {
+                "value": "Nachkriegsbau",
+                "label": "Nachkriegsbau (145)",
+                "description": "145 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    230,
+                    159,
+                    0,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "value": "Altbau",
+                "label": "Altbau (118)",
+                "description": "118 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    86,
+                    180,
+                    233,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "value": "Neubau",
+                "label": "Neubau (94)",
+                "description": "94 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    0,
+                    158,
+                    115,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "value": "Plattenbau",
+                "label": "Plattenbau (84)",
+                "description": "84 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    0,
+                    114,
+                    178,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              },
+              {
+                "value": "Reihenhaus",
+                "label": "Reihenhaus (59)",
+                "description": "59 features",
+                "symbol": {
+                  "type": "esriSMS",
+                  "style": "esriSMSCircle",
+                  "color": [
+                    204,
+                    121,
+                    167,
+                    220
+                  ],
+                  "size": 9.0,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0,
+                  "outline": {
+                    "type": "esriSLS",
+                    "style": "esriSLSSolid",
+                    "color": [
+                      255,
+                      255,
+                      255,
+                      120
+                    ],
+                    "width": 0.5
+                  }
+                }
+              }
+            ]
+          },
+          "transparency": 0
+        }
+      },
+      "popupInfo": {
+        "title": "Building type (unique values): {address}",
+        "fieldInfos": [
+          {
+            "fieldName": "building_type",
+            "label": "Building type",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "year_built",
+            "label": "Year built",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": false
+            }
+          },
+          {
+            "fieldName": "district",
+            "label": "District",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "id",
+            "label": "ID",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "address",
+            "label": "Address",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "latitude",
+            "label": "Latitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "label": "Longitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "x_3857",
+            "label": "X (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "y_3857",
+            "label": "Y (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rent_eur_sqm",
+            "label": "Rent (EUR/sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "living_area_sqm",
+            "label": "Living area (sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rooms",
+            "label": "Rooms",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "median_age",
+            "label": "Median age (years)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "household_size",
+            "label": "Household size",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": []
+      }
+    },
+    {
+      "id": "area_size",
+      "title": "Living area (graduated size)",
+      "layerType": "ArcGISFeatureLayer",
+      "url": "{{FEATURE_SERVICE_URL}}/0",
+      "itemId": "{{FEATURE_LAYER_ITEM_ID}}",
+      "visibility": false,
+      "opacity": 1,
+      "mode": 1,
+      "layerDefinition": {
+        "drawingInfo": {
+          "renderer": {
+            "type": "simple",
+            "label": "Dwelling",
+            "description": "Symbol size scales with living area",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                120,
+                120,
+                120,
+                200
+              ],
+              "size": 10.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            },
+            "visualVariables": [
+              {
+                "type": "sizeInfo",
+                "field": "living_area_sqm",
+                "valueUnit": "unknown",
+                "minSize": 5.0,
+                "maxSize": 26.0,
+                "minDataValue": 24.0,
+                "maxDataValue": 170.6
+              }
+            ]
+          },
+          "transparency": 0
+        }
+      },
+      "popupInfo": {
+        "title": "Living area (graduated size): {address}",
+        "fieldInfos": [
+          {
+            "fieldName": "living_area_sqm",
+            "label": "Living area (sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rooms",
+            "label": "Rooms",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "household_size",
+            "label": "Household size",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "id",
+            "label": "ID",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "address",
+            "label": "Address",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "district",
+            "label": "District",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "latitude",
+            "label": "Latitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "longitude",
+            "label": "Longitude (EPSG:4326)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 5,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "x_3857",
+            "label": "X (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "y_3857",
+            "label": "Y (EPSG:3857, m)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 4,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "rent_eur_sqm",
+            "label": "Rent (EUR/sqm)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "median_age",
+            "label": "Median age (years)",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            }
+          },
+          {
+            "fieldName": "building_type",
+            "label": "Building type",
+            "isEditable": false,
+            "visible": true
+          },
+          {
+            "fieldName": "year_built",
+            "label": "Year built",
+            "isEditable": false,
+            "visible": true,
+            "format": {
+              "places": 0,
+              "digitSeparator": false
+            }
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": []
+      }
+    }
+  ],
+  "baseMap": {
+    "title": "Topographic",
+    "baseMapLayers": [
+      {
+        "id": "basemap_0",
+        "title": "Topographic",
+        "layerType": "ArcGISTiledMapServiceLayer",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+        "visibility": true,
+        "opacity": 1
+      }
+    ]
+  },
+  "spatialReference": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "initialState": {
+    "viewpoint": {
+      "targetGeometry": {
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        },
+        "xmin": 841456.88,
+        "ymin": 6784966.49,
+        "xmax": 858421.8,
+        "ymax": 6799407.51
+      }
+    }
+  },
+  "authoringApp": "portal_publish/scripts/build_portal_items.py",
+  "authoringAppVersion": "1.0.0",
+  "version": "2.27",
+  "_item": {
+    "note": "Not part of the web map. An ArcGIS item's `extent` property is documented as decimal degrees (WGS84), while this map's own viewpoint is EPSG:3857 metres - two numbers in two units for two different properties. publish_to_portal.py reads the degrees from here for the item and the metres from initialState for the map.",
+    "extent_4326": [
+      [
+        7.55894,
+        51.91609
+      ],
+      [
+        7.71133,
+        51.99603
+      ]
+    ]
+  },
+  "_note": {
+    "underscore_keys_are_not_uploaded": "Every top-level key starting with an underscore is documentation for a reader of this file and is stripped before the body is handed to content.add. Otherwise this commentary would end up inside the live web map, where the portal would tolerate it and nobody would want it.",
+    "one_service_five_layers": "All five operational layers carry the same url and itemId and differ only in layerDefinition.drawingInfo. One copy of the data, five renderers - that is the architecture of this use case. classBreaks appears twice on purpose: rent_eur_sqm and median_age are classified the same way, and the rent layer exists to be compared against the heatmap drawn from the very same column.",
+    "placeholders": "{{FEATURE_SERVICE_URL}} and {{FEATURE_LAYER_ITEM_ID}} are substituted by publish_to_portal.py. A portal item id does not exist until the item is created and changes on every run, so it cannot be committed to output/. An unsubstituted token yields a web map that loads, draws its frame and shows no data, which is why the publisher asserts that no double-brace marker survives before uploading anything. That sentence cannot spell the marker out: the assertion greps the serialised payload as text, so a note quoting the token literally trips the check on its own documentation - which is how this note came to be worded this way.",
+    "hand_built": "arcgis 2.4.1.1 has no arcgis.map module and arcgis.mapping no longer exports WebMap, so there is no Web Map class to build this with. content.add with a text body is the only route, not a workaround.",
+    "basemap_attribution": "The basemap is somebody else's data and carries their attribution. Never crop the provider notice out of a published screenshot, and record it as text in the README as well (CLAUDE.md section 3)."
+  }
+}

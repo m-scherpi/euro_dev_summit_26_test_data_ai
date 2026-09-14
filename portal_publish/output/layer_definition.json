@@ -1,0 +1,298 @@
+{
+  "_note": "Only `update_definition` is POSTed by publish_to_portal.py --stage layerdef. `field_length_update` is POSTed by the same stage only with --retrofit-field-lengths, as an experiment whose result is recorded in the run record. `declared_fields` is a reference copy for review and is never sent.",
+  "update_definition": {
+    "drawingInfo": {
+      "renderer": {
+        "type": "classBreaks",
+        "field": "rent_eur_sqm",
+        "minValue": 4,
+        "classificationMethod": "esriClassifyQuantile",
+        "classBreakInfos": [
+          {
+            "classMaxValue": 8.4,
+            "label": "4 - 8.4 EUR/sqm",
+            "description": "98 of 500 features",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                255,
+                255,
+                178,
+                210
+              ],
+              "size": 9.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            }
+          },
+          {
+            "classMaxValue": 11.1,
+            "label": "8.4 - 11.1 EUR/sqm",
+            "description": "101 of 500 features",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                254,
+                217,
+                118,
+                215
+              ],
+              "size": 9.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            }
+          },
+          {
+            "classMaxValue": 13.7,
+            "label": "11.1 - 13.7 EUR/sqm",
+            "description": "99 of 500 features",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                254,
+                178,
+                76,
+                225
+              ],
+              "size": 9.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            }
+          },
+          {
+            "classMaxValue": 16.7,
+            "label": "13.7 - 16.7 EUR/sqm",
+            "description": "98 of 500 features",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                253,
+                141,
+                60,
+                235
+              ],
+              "size": 9.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            }
+          },
+          {
+            "classMaxValue": 23,
+            "label": "16.7 - 23 EUR/sqm",
+            "description": "104 of 500 features",
+            "symbol": {
+              "type": "esriSMS",
+              "style": "esriSMSCircle",
+              "color": [
+                227,
+                26,
+                28,
+                245
+              ],
+              "size": 9.0,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0,
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  255,
+                  255,
+                  255,
+                  120
+                ],
+                "width": 0.5
+              }
+            }
+          }
+        ]
+      },
+      "transparency": 0,
+      "labelingInfo": null
+    }
+  },
+  "field_length_update": {
+    "fields": [
+      {
+        "name": "address",
+        "alias": "Address",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 80
+      },
+      {
+        "name": "district",
+        "alias": "District",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 40
+      },
+      {
+        "name": "building_type",
+        "alias": "Building type",
+        "type": "esriFieldTypeString",
+        "nullable": false,
+        "editable": true,
+        "length": 40
+      }
+    ]
+  },
+  "declared_fields": [
+    {
+      "name": "id",
+      "alias": "ID",
+      "type": "esriFieldTypeInteger",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "address",
+      "alias": "Address",
+      "type": "esriFieldTypeString",
+      "nullable": false,
+      "editable": true,
+      "length": 80
+    },
+    {
+      "name": "district",
+      "alias": "District",
+      "type": "esriFieldTypeString",
+      "nullable": false,
+      "editable": true,
+      "length": 40
+    },
+    {
+      "name": "latitude",
+      "alias": "Latitude (EPSG:4326)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "longitude",
+      "alias": "Longitude (EPSG:4326)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "x_3857",
+      "alias": "X (EPSG:3857, m)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "y_3857",
+      "alias": "Y (EPSG:3857, m)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "rent_eur_sqm",
+      "alias": "Rent (EUR/sqm)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "living_area_sqm",
+      "alias": "Living area (sqm)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "rooms",
+      "alias": "Rooms",
+      "type": "esriFieldTypeInteger",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "median_age",
+      "alias": "Median age (years)",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "household_size",
+      "alias": "Household size",
+      "type": "esriFieldTypeDouble",
+      "nullable": false,
+      "editable": true
+    },
+    {
+      "name": "building_type",
+      "alias": "Building type",
+      "type": "esriFieldTypeString",
+      "nullable": false,
+      "editable": true,
+      "length": 40
+    },
+    {
+      "name": "year_built",
+      "alias": "Year built",
+      "type": "esriFieldTypeInteger",
+      "nullable": false,
+      "editable": true
+    }
+  ]
+}
