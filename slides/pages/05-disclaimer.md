@@ -13,6 +13,11 @@ was built with **Claude Code**, an agent working in a local repository.
 <div><b>Everything ran locally</b> — right up to the moment something was published.</div>
 </div>
 
+<div class="pt-6 text-sm opacity-80">
+These slides are part of it: written as Markdown with <b>Slidev</b>, in the same
+repository, built and deployed by CI.
+</div>
+
 <!--
 40s. Say this once, plainly, so nobody has to wonder later how the code and the
 data came about. The prompt log is the reason this talk can show the failures as

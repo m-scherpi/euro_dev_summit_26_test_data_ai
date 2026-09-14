@@ -68,30 +68,56 @@ Alternate last line, if the room is more sceptical than curious:
 -->
 
 ---
-layout: center
-class: text-center
+layout: default
+class: close-slide
 ---
 
-# Thank you
+<div class="close-left">
 
-<div class="pt-2">
+<div class="close-thanks">Thank you very much!</div>
 
-Everything — code, data, every prompt, every failed attempt —
+<div class="close-name">Martin Scherpinski<br/>
+m.scherpinski@conterra.de
+</div>
+
+
+<div class="close-address">
+con terra<br/>
+Martin-Luther-King-Weg 20<br/>
+48155 M&uuml;nster<br/>
+Germany
+<div class="close-contact">
+T&nbsp; +49 251 59689 300<br/>
+info@conterra.de<br/>
+con-terra.com
+</div>
+</div>
+
+</div>
+
+<div class="close-right">
+
+<div class="close-repo-line">
+Everything &mdash; code, data, every prompt, every failed attempt &mdash;
 is in the repository.
-
 </div>
 
-<img src="/qr-repo.svg" class="mx-auto mt-6 h-40 w-40" />
+<img src="/qr-repo.svg" class="close-qr" alt="QR code linking to the repository" />
 
-<div class="pt-3 text-sm">
-github.com/m-scherpi/euro_dev_summit_26_test_data_ai · CC BY 4.0
+<div class="close-repo-url">
+github.com/m-scherpi/euro_dev_summit_26_test_data_ai<br/>
+<span class="opacity-70">CC BY 4.0</span>
 </div>
 
-<div class="pt-1 text-xs opacity-70">
-Martin Scherpinski · con terra GmbH · m.scherpinski@conterra.de
 </div>
 
 <!--
 Leave this up for questions. The prompt log is the part people ask about: every
 prompt, including the ones that went nowhere.
+
+Layout follows the master's `Schlussfolie`: "Thank you very much!" top left, the
+speaker and the postal address underneath at the template's own positions, and
+the grid structure across the slide. Where the master puts the logo strip, this
+one puts the QR code -- the logos belong to the template and stay out of the
+repository.
 -->

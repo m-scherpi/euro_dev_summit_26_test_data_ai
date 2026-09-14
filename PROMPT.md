@@ -2119,3 +2119,50 @@ Follow-up, after the plan was presented:
   plainly, and putting it on its own beat means the talk agrees with its own
   advertisement out loud before qualifying it.
 - Rendered and checked: three lines, no wrapping, the bold line one line long.
+
+---
+
+## [033] 2026-09-14 — The closing slide, after the master  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> versuche noch die abschlussfolie aus dem Folienmaster zu imitieren mit addresse usw. (und trotzdem dem QR code). zudem schreibe mal noch irgendwo mit drauf, vielleich auf die disclaimer folie, dass die slides mit slidev gemacht sind
+
+**Prompt (translation, EN)**
+> also try to imitate the closing slide from the slide master with address etc. (and still with the QR code). additionally write somewhere on it, maybe on the disclaimer slide, that the slides are made with slidev
+
+**What happened**
+- Read the master's `Schlussfolie` (`slideLayout27`/`28`) out of the `.potx`:
+  *Thank you very much!* bold 24 pt at 11.3 % height, speaker at 40.6 %, the
+  postal address block at 56.3 %, everything 4.5 % from the left edge, and a
+  961-point light-blue freeform ("Gitterstruktur") across the slide.
+- Rebuilt that slide: the address is reproduced in full, the speaker's own mail
+  address replaces the template's `x.xxx@conterra.de`, and the QR code takes the
+  place of the master's logo strip — the logos belong to the template, and the
+  repository link is what the room needs anyway.
+- The grid is **redrawn, not extracted**: `scripts/make_close_grid.mjs` writes
+  `public/close-grid.svg` from a seeded PRNG (mulberry32, seed 20260914),
+  verified byte-identical across three runs, output committed like the QR code.
+- Cover and closing slide now carry no footer, matching the master, which has
+  neither.
+- Disclaimer slide gained one line naming **Slidev** as what the deck itself is
+  written in.
+
+**Artifacts**
+- `slides/pages/60-close.md` — the closing slide rebuilt
+- `slides/pages/05-disclaimer.md` — the Slidev line
+- `slides/scripts/make_close_grid.mjs` — seeded generator for the grid
+- `slides/public/close-grid.svg` — its committed output
+- `slides/global-bottom.vue`, `slides/style.css` — footer rule and the new blocks
+
+**Result / Iteration**
+- The PNG export earned its keep for the fifth time. First attempt: the address
+  blocks are positioned in per cent inside a container of zero height, so every
+  one of them collapsed onto the title — an unreadable pile of overlapping text
+  on a build that reported success. Second attempt: with the container given a
+  height, "Germany" printed on top of the phone number, because two absolutely
+  placed boxes overlap as soon as a line wraps. Address and contact are now one
+  block, as they are in the master.
+- Not imitated: the logo strip, and the template's spelling *Muenster* — the
+  address reads *Münster*, since this repository writes German characters
+  correctly wherever German text appears.
+

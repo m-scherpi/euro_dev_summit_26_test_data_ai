@@ -90,10 +90,12 @@ slides/
 ├── global-bottom.vue      # footer on every slide but the cover
 ├── scripts/
 │   ├── sync_assets.mjs    # screenshots -> public/img (runs via pre* hooks)
-│   └── make_qr.mjs        # one-off, output committed
+│   ├── make_qr.mjs        # one-off, output committed
+│   └── make_close_grid.mjs # one-off, seeded, output committed
 ├── public/
 │   ├── qr-repo.svg        # committed: text, tiny, changes only on a rename
 │   ├── cover-deco.svg     # low-poly corner graphic, drawn from the palette
+│   ├── close-grid.svg     # grid structure of the closing slide, generated
 │   └── img/               # generated, gitignored
 └── input/                 # gitignored: the corporate .potx, never committed
 ```
@@ -124,6 +126,24 @@ it is an imitation of the master's low-poly motif, not a copy of it.
 | title 28 pt bold, left aligned, 90 % line spacing | `h1`, at 2.1 rem — a projected deck gets a little more than a printed one |
 | copyright bottom left, slide number bottom right | `global-bottom.vue`, hidden on the cover |
 | `Titelfolie_hell` | the cover: white, title block at the left edge, graphic top right |
+| `Schlussfolie` | the closing slide: *Thank you very much!*, speaker and postal address at the template's own vertical positions (11.3 %, 40.6 %, 53 %), grid structure across the slide |
+
+**The closing slide.** The master's `Schlussfolie` carries the full postal
+address and a strip of logos bottom right. The address is reproduced; the logos
+are not — they are the template's, and this deck puts the repository's QR code
+there instead, which is what an audience actually needs. The grid structure
+behind it (a 961-point freeform in the `.potx`) is likewise redrawn rather than
+extracted: `scripts/make_close_grid.mjs` writes `public/close-grid.svg` from a
+seeded PRNG, so re-running it produces a byte-identical file, and the output is
+committed like the QR code:
+
+```bash
+node scripts/make_close_grid.mjs 20260914 public/close-grid.svg
+```
+
+Neither the cover nor the closing slide gets the footer, because the master's
+`Titelfolie` and `Schlussfolie` carry none — the closing slide states the company
+in full instead.
 
 **One Slidev trap, measured.** The cover was first written as `layout: cover`,
 which is seriph's own layout and paints its own background — the custom
@@ -160,7 +180,7 @@ is checked against its consumer:
 | a CSV with 10k points for a hosted feature service | slides 5–6, with the hosted-feature-layer target named on the idea slide |
 | an OpenSearch-DB … view layer in ArcGIS Pro … based on just a GeoJSON | slides 9–10: the index, ArcGIS Pro, and the source handed over as "a GeoJSON" |
 | import data into your EGDB with a … Python script | slides 11–12 |
-| with e.g. Claude Code | slide 2, the disclaimer slide |
+| with e.g. Claude Code | slide 2, the disclaimer slide — which also names Slidev as what the deck itself is written in |
 | **how easy it is** | every result slide shows the thing working *first*; the finding is the closing line, not the subject |
 
 That last row is the one worth re-reading before a rehearsal. The abstract sells
@@ -222,7 +242,7 @@ rehearsing rather than on stage.
 | 15 | Take home, part 1 | 40 s |
 | 16 | Take home, part 2 | 45 s |
 | 17 | *Knowing that the content is valid still is* | 25 s |
-| 18 | Thank you (QR stays up for questions) | — |
+| 18 | Thank you very much — address and QR, stays up for questions | — |
 
 Total ≈ 11.5 minutes against ~12 available. The disclaimer slide is the one to
 drop if a session overruns before the talk starts — it is the only slide whose
