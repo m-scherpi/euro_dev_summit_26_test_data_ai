@@ -349,3 +349,35 @@
 .steps-airy > div {
   @apply py-3;
 }
+
+/* FAQ slides. Not part of the talk: they sit behind the closing slide and are
+   reached with `f` (see `setup/shortcuts.ts`). Three question/answer pairs per
+   slide, so the block is denser than `.steps` -- the audience reads these while
+   a question is being answered, rather than listening to them.
+
+   Sized in rem against Slidev's 980x552 canvas, never in vh: Slidev scales the
+   whole slide with a transform, so a viewport unit inside a slide is not a
+   fraction of that slide. */
+.faq {
+  @apply mt-6 space-y-5;
+}
+.faq > div {
+  @apply pl-5 py-1 text-base leading-snug;
+  border-left: 6px solid var(--ct-lightblue);
+}
+.faq b {
+  @apply text-lg;
+  color: var(--ct-teal);
+}
+
+/* The index slide in front of them -- four jump targets, clickable on stage. */
+.faq-index {
+  @apply mt-8 space-y-6;
+}
+.faq-index > div {
+  @apply pl-5 py-1 text-xl leading-snug;
+  border-left: 6px solid var(--ct-lightblue);
+}
+.faq-index b {
+  color: var(--ct-teal);
+}

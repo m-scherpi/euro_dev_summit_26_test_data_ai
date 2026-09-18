@@ -89,3 +89,9 @@ src: ./pages/50-portal.md
 ---
 src: ./pages/60-close.md
 ---
+
+---
+src: ./pages/70-faq.md
+hideInToc: true
+faq: true
+---
