@@ -52,7 +52,7 @@ npm run dev          # opens http://localhost:3030
 
 | Command | Purpose |
 |---|---|
-| `npm run dev` | live deck with hot reload; `o` for overview, `p` for presenter mode |
+| `npm run dev` | live deck with hot reload; `o` for overview, `p` for presenter mode, `f` for the FAQ slides |
 | `npm run build` | static SPA into `dist/` (gitignored) |
 | `npm run build -- --base /euro_dev_summit_26_test_data_ai/` | production build as CI does it — a wrong base path only ever fails in the deployed build, never in `dev` |
 | `npm run sync-assets` | copy the result screenshots into `public/img/` |
@@ -85,9 +85,12 @@ slides/
 │   ├── 30-opensearch.md   # use case 3 -- idea slide + result slide
 │   ├── 40-egdb.md         # use case 4 -- idea slide + result slide
 │   ├── 50-portal.md       # use case 5 -- idea slide + result slide
-│   └── 60-close.md        # six takeaways over three slides, closing line, thanks
+│   ├── 60-close.md        # six takeaways over three slides, closing line, thanks
+│   └── 70-faq.md          # five Q&A slides behind the close -- reached with `f`
+├── setup/
+│   └── shortcuts.ts       # the `f` key: jump to the FAQ slides and back
 ├── style.css              # palette and typography, auto-loaded by Slidev
-├── global-bottom.vue      # footer on every slide but the cover
+├── global-bottom.vue      # footer, minus the cover, the close and the FAQ count
 ├── scripts/
 │   ├── sync_assets.mjs    # screenshots -> public/img (runs via pre* hooks)
 │   ├── make_qr.mjs        # one-off, output committed
@@ -256,6 +259,7 @@ rehearsing rather than on stage.
 | 18 | Take home 3 / 3 — what to check | 40 s |
 | 19 | *Knowing that the content is valid still is* | 25 s |
 | 20 | Thank you very much — address and QR, stays up for questions | — |
+| 21–25 | FAQ — reached with `f`, never shown unless somebody asks | — |
 
 Total ≈ 11.8 minutes against ~12 available. The disclaimer slide is the one to
 drop if a session overruns before the talk starts — it is the only slide whose
@@ -309,6 +313,71 @@ more sceptical room is in the slide's presenter notes.
 One deliberate grammar choice: no comma before *still is*. A comma there is the
 spoken pause, and the slide already has it as a line break, so the sentence can
 stay clean for the reader while the speaker takes the pause anyway.
+
+### The FAQ slides, and why they are not a backup section
+
+Five slides sit **behind** the closing slide (21–25) and are never shown during
+the talk. Pressing **`f`** from any slide jumps to them; pressing `f` again
+returns to the slide it was pressed on. They exist for the question round, which
+is inside the 15-minute slot and was the one part of the talk with no material.
+
+| Slide | Block | The three questions |
+|---|---|---|
+| 21 | index | the four blocks, and how to get back |
+| 22 | Why an agent at all? | Faker/GeoPandas · what did I save · how much work was this |
+| 23 | Can I trust the result? | right the first time · who verifies the verifier · do green checks mean anything |
+| 24 | Data, licences, privacy | what left the machine · why not OpenStreetMap · production data |
+| 25 | ArcGIS specifics | only points · domains and subtypes · without ArcGIS Pro |
+
+Each slide's presenter notes carry the numbers that are deliberately *not* on the
+slide — the seven checked sources with their verdicts, the four outcomes of one
+unchanged line of code, the 1,343 single-space values, `{"success": true}`
+without a write.
+
+**This is a deliberate exception to "do not write a backup section"** (CLAUDE.md
+§8), and the difference is the consumer. A backup slide shows a *finding* that
+did not fit the slot, which is a way of refusing to cut. These answer a
+*question from the room*. They are capped at five and at three questions each, so
+they do not grow with the repository, and they carry no time budget. A finding
+that does not fit still belongs in the use-case README, not here.
+
+They are part of the PDF export and of the deployed build. That is on purpose:
+the deck on GitHub Pages is read rather than presented, and a reader has the same
+questions.
+
+### Three defects the export found, and one it did not
+
+Same lesson as everywhere else, and it took four rounds to get five slides right.
+
+**`routeAlias` is unusable in this deck.** The obvious design was
+`routeAlias: faq` plus `<Link to="faq-a">` buttons on the index slide. Measured:
+an alias declared in the frontmatter of a slide **inside a `src:`-included file
+never resolves at all** — `/faq-a` renders slide 1, silently — and an alias on the
+`src:` block itself, which does resolve, **breaks forward navigation off that
+slide**: pressing → on slide 21 left the URL on `/faq` and the deck on slide 21,
+every time. It is not the hyphen in the name; `faqa` fails the same way. So the
+FAQ start is marked with a plain custom frontmatter field, `faq: true`, which
+both `setup/shortcuts.ts` and `global-bottom.vue` look up by scanning the slides
+— never a hard-coded slide number, which would be silently wrong the next time a
+slide is inserted before it.
+
+**The footer was written as a position, and adding slides behind the deck moved
+it.** `currentPage > 1 && currentPage < total` means "not the cover, not the
+closing slide" only while the closing slide is last. With the FAQ slides behind
+it, the closing slide got a footer it must not have and the last FAQ slide lost
+one. The condition now names the two slides — page 1, and the slide whose class
+is `close-slide` — rather than their positions. The count on the right is the
+count of *talk* slides, so the audience still reads `7 | 20`; the FAQ slides say
+`FAQ` instead of a number.
+
+**And the check that found neither of those was the browser.** The PNG export was
+green through all of it: 25 slides, correct order, no overflow, attribution
+intact. Navigation is not a property of a rendered image. What found it was
+driving the deck with a headless browser and reading the *footer* after each key
+press — and the first attempt at that read the slide title instead, which was
+wrong, because Slidev keeps neighbouring slides in the DOM for its transitions.
+A wrong instrument reported two defects that did not exist and hid the one that
+did.
 
 ### Language
 
@@ -422,6 +491,15 @@ visibility, not a broken workflow.
   rather than on the picture, a white slab around every screenshot. The image
   needs its own frame (`.shot-frame`) that takes the leftover height while the
   image keeps its aspect ratio inside it.
+- **A verifier can be wrong about the thing it is verifying.** Checking the FAQ
+  navigation with a headless browser, the first probe read each slide's `<h1>`
+  after every key press. Slidev keeps neighbouring slides in the DOM for its
+  transitions, so the first `<h1>` is often not the current slide's: the probe
+  reported a duplicated slide and a shifted deck, neither of which existed, while
+  the real defect — forward navigation dead on a slide with a `routeAlias` — was
+  sitting in the same output being read as something else. Reading the footer,
+  which exists once, answered in one run. Same shape as the projection formula:
+  the instrument needed checking before its finding did.
 - **A convention caught its own violation.** The obvious cover design is the
   10,000-point map full-bleed behind the title. It renders with the basemap
   attribution cropped off — so the repository's own licence rule ruled out its

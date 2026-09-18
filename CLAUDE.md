@@ -1021,6 +1021,52 @@ saw a slide of it. Findings belong in the use-case README, which is where a
 question during Q&A gets answered properly anyway. Never leave a finding
 undocumented because it did not fit the deck — but the deck is not where it goes.
 
+**A FAQ section is not a backup section, and the difference is the consumer.**
+The rule above stands: findings that did not fit the slot belong in the
+use-case README. What does not fall under it is material for the **question
+round**, which is inside the slot and otherwise has nothing prepared. Measured
+here: five slides behind the closing slide, four blocks of three questions, each
+answer a number the repository already measured, with the supporting figures in
+the presenter notes rather than on the slide. What keeps this from becoming the
+backup section again is the cap - five slides, three questions each, no time
+budget - and the test for each entry: a question somebody in the room would ask,
+not a result that did not fit. Do not delete such a set by citing the backup
+rule, and do not let it grow into one.
+
+**A deck that hides slides behind a key has a second consumer, and the PNG
+export cannot see it.** Exporting every slide proves what is drawn; it says
+nothing about whether a key press gets there. Measured here: 25 slides exported
+green - right order, no overflow, attribution intact - while forward navigation
+was dead on the slide the shortcut jumped to. Drive the built deck with a
+headless browser and assert the slide number after each key press. **And check
+the instrument before its finding**: the first probe read each slide's `<h1>`
+and reported a duplicated slide and a shifted deck, neither of which existed,
+because Slidev keeps neighbouring slides in the DOM for its transitions. The
+footer exists once per page and answered in one run. Same shape as the
+projection formula - a checker that shares its subject's assumptions confirms
+them.
+
+**Slidev's `routeAlias` is worse than a hard-coded number here, twice over.**
+Measured: an alias declared in the frontmatter of a slide inside a
+`src:`-included file **never resolves** - the URL renders slide 1, silently -
+and it is not the hyphen in the name, an alias without one fails identically. An
+alias on the `src:` block itself does resolve and then **breaks forward
+navigation off that slide**: the arrow key leaves the URL on the alias path and
+the deck on the same slide, every time, on a build that reports success. Mark
+such a slide with a plain custom frontmatter field instead (`faq: true`) and
+have the code scan the slide list for it, so nothing depends on a slide number
+that the next inserted slide would silently invalidate.
+
+**A footer condition written as a position breaks when the deck grows at the
+end.** `currentPage > 1 && currentPage < total` is a way of saying "not the
+cover, not the closing slide" that is only true while the closing slide is last.
+Measured: adding slides behind it gave the closing slide a footer the corporate
+master forbids and took one off the new last slide. Name the slides the rule is
+about - page 1, and the slide carrying the closing class - not their positions.
+And where a slide set sits outside the talk, keep the visible count the count of
+*talk* slides: an audience reading `7 | 25` on a twenty-slide talk has been told
+something untrue.
+
 **Verify a deck the way you verify data: against its consumer.** A green Slidev
 build says nothing about whether a slide is readable. Render the slides to PNG
 (`npm install --no-save playwright-chromium`, then

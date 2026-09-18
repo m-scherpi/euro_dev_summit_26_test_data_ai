@@ -2261,3 +2261,60 @@ Follow-up, after the plan was presented:
   fixed into doing.
 - Not changed: the speaker's voice. The rewrite's wording stands wherever it was
   not a spelling mistake or a slide carrying two thoughts.
+
+---
+
+## [036] 2026-09-18 — FAQ slides behind a switch  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> Unter slides ist der aktuelle Stand des Vortrags. Was könnten potentielle Fragen sein, die eine Audience stellen könnte, wenn sie diesen Vortrag hört? Brainstorme ein bisschen mit mir, biete Fragen und mögliche Antworten an, die ich bestätigen oder verfeinern kann. Lass uns am Ende vielleicht daraus noch FAQ Folien machen. vielleicht kann man diese auch irgendwie nicht standard-mäßig, sondern nur über einen Schalter anzeigen?
+
+**Prompt (translation, EN)**
+> Under slides is the current state of the talk. What could be potential questions an audience might ask when hearing this talk? Brainstorm a bit with me, offer questions and possible answers that I can confirm or refine. Maybe at the end let us make FAQ slides out of it. maybe these can somehow be shown not by default, but only via a switch?
+
+**What happened**
+- Brainstormed ~21 likely questions in five groups against the finished 20-slide
+  deck, then grounded every candidate answer in measured numbers from the
+  use-case READMEs and `PROMPT.md` rather than in plausible-sounding claims.
+- Chosen with the speaker: a shortcut jump (works *during* the question round,
+  unlike a second deck), five slides of one block each, and four of the five
+  brainstormed groups — practice/organisation was dropped as something to say
+  rather than project.
+- Three designs for the switch were considered and the choice is recorded: a
+  second entry file cannot be reached once the talk has started, and an overlay
+  component would be invisible to the PNG-export check this deck relies on.
+- The obvious implementation — `routeAlias` plus `<Link>` buttons — was built,
+  measured and thrown away; see below. The marker is now a plain `faq: true`
+  frontmatter field, scanned at runtime by both the shortcut and the footer.
+- Verified by driving the built deck with a headless browser, because navigation
+  is not visible in a rendered image, plus the usual PNG export of all 25 slides.
+
+**Artifacts**
+- `slides/pages/70-faq.md` — five slides: an index and four Q&A blocks, each with
+  presenter notes carrying the numbers deliberately left off the slide
+- `slides/setup/shortcuts.ts` — the `f` key, toggling to the FAQ slides and back
+- `slides/global-bottom.vue` — footer rewritten to name the slides it skips
+- `slides/slides.md`, `slides/style.css` — include, `faq: true` marker, `.faq` styles
+- `slides/README.md`, `README.md`, `CLAUDE.md` — the section, the log, the conventions
+
+**Result / Iteration**
+- **`routeAlias` is unusable here, measured twice.** An alias declared inside a
+  `src:`-included file never resolves — `/faq-a` silently renders slide 1 — and
+  the hyphen is innocent, `faqa` fails identically. An alias on the `src:` block
+  itself does resolve and then **breaks forward navigation off that slide**:
+  pressing → on slide 21 left the URL on `/faq` and the deck on 21, every time.
+- **The footer was a position, not a rule.** `currentPage > 1 && currentPage <
+  total` means "not the cover, not the close" only while the close is last;
+  adding slides behind it put a footer on the closing slide and took one off the
+  last FAQ slide. It now names the two slides, and the count on the right stays
+  the count of *talk* slides so the audience still reads `7 | 20`.
+- **The PNG export was green through all of it** — 25 slides, right order, no
+  overflow, attribution intact. It cannot see navigation. What found the defects
+  was a headless browser reading the footer after each key press, and the first
+  version of *that* read the slide title instead and reported two defects that
+  did not exist: Slidev keeps neighbouring slides in the DOM, so the first `<h1>`
+  is often not the current slide's. The instrument needed checking first.
+- These are a deliberate exception to "do not write a backup section": they
+  answer questions from the room rather than showing findings that did not fit,
+  they are capped at five, and they carry no time budget. Written into
+  `CLAUDE.md` so a later session does not remove them by citing that rule.
