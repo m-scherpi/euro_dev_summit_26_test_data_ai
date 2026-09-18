@@ -1044,6 +1044,28 @@ in `vh`. Note the shape: the rule was known, written down and still broken,
 because it was broken by a unit conversion rather than by a decision — the same
 family as the two "extent" properties in §4.
 
+**A recurring slide template must give its elastic element the leftover space,
+not a fixed size.** Capping a screenshot in pixels fixes the `vh` failure above
+and produces the next one: the finding box under it grows when the text runs to
+three lines, and a fixed cap has no height to give back, so the box lands on the
+footer. Measured here: two of five result slides, on a green build, after the
+rule about exporting a repeated template had already been written down. Make the
+slide one flex column of known height with exactly one elastic child, and let
+the fixed parts push it. **And do not make the elastic element the `<img>`
+itself**: stretching it and letting `object-fit: contain` letterbox it puts the
+rounded corners and the drop shadow on the *box* rather than on the picture — a
+white slab framing every screenshot, which looks like a rendering fault and is
+CSS doing exactly what it was told. Give the image a frame that flexes and let
+the image keep its own aspect ratio inside it.
+
+**When the speaker rewrites the deck in their own words, the layout breaks where
+the words got longer — and the fix is a slide, not a smaller font.** Measured
+here: a rewritten opening carried both *what a test actually needs* and *where
+the data comes from* on one slide, at seven lines of lead plus three steps.
+Splitting it into two slides and a two-item takeaway into three cost nothing in
+the budget (§8 above) and removed every overfull slide. Resist shrinking type or
+tightening line height to rescue a slide that is carrying two thoughts.
+
 **A trademark in a CC BY repository needs a written carve-out, and it should be
 exactly one file.** A logo is the one asset that cannot be reconstructed -
 imitating it *is* the infringement - so where it is genuinely wanted it goes in

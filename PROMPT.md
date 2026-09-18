@@ -2201,3 +2201,63 @@ Follow-up, after the plan was presented:
   palette, the typography and both decorative graphics are reconstructions, the
   carve-out is **one file** and a reuser can act on it. Lifting the template's
   graphics would have turned that into a list.
+
+---
+
+## [035] 2026-09-18 — The speaker's own wording, and the layout it broke  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> Ich habe die Slides überarbeitet, damit sie mehr meinem eigenen WOrding entsprechen und die Inhalte noch etwas schärfer rüberbringen, wie ich sie gerne hätte. Nun ist an einigen stellen das Layout kaputt und einige FOlien sind sehr voll ("We build products" zum beispiel). Helfe mir hier noch mal mit dem Styling. Füge zu not noch ein paar extra folien ein, um das ganze zu entzerren, damit es ein rundes bild ergibt
+
+**Prompt (translation, EN)**
+> I have reworked the slides so they match my own wording more and put the content across a bit more sharply, the way I would like it. Now the layout is broken in some places and some slides are very full ("We build products" for example). Help me with the styling again here. If need be add a few extra slides to spread the whole thing out, so it gives a rounded picture.
+
+**What happened**
+- Exported all 18 slides to PNG first and looked at every one, rather than
+  reading the diff. Four defects, three of which the Slidev build reported as
+  success.
+- **We build products** was carrying two thoughts: seven lines of lead plus
+  three steps. Split into *We build products, not data sets* (what a test needs)
+  and *So where does that data come from?* (real / hand-made / generated).
+- **Two result slides overflowed onto the footer** — `egdb_import` and
+  `portal_publish`, whose findings run to three lines. Cause: the screenshot is
+  capped at a fixed 300 px, so a growing finding box has no height to take from.
+  The result slide became one flex column of known height (`.result`) with the
+  image as its only elastic part.
+- First attempt at that stretched the `<img>` and let `object-fit: contain`
+  letterbox it, which put the rounded corners and the drop shadow on the box
+  rather than on the picture — a white slab around every screenshot. Fixed with
+  a `.shot-frame` that takes the leftover height while the image keeps its
+  aspect ratio.
+- **The takeaways** were two slides of three; the first bullet ran to three
+  lines and orphaned the word "up" onto a fourth. Rebuilt as three slides — *There
+  is more than one way*, *What to ask for*, *What to check* — with a `.kicker`
+  numbering them 1 / 3 … 3 / 3, and a `.steps-airy` variant so a two-item slide
+  does not huddle under its title.
+- Typos from the rewrite corrected in place, and nothing else touched:
+  *builts → builds*, *Sametimes → Sometimes*, *Everyprompt → Every prompt*,
+  *Genrated → Generated*, *safe → save*, *so see, whats posssible → to see what
+  is possible*.
+- Three leads tightened to two lines each (`csv_data`, `egdb_import`,
+  `portal_publish`) and the ad-hoc `pt-4 text-sm opacity-80` small print on every
+  idea slide replaced by one `.note` class — two of them had drifted to
+  different top margins.
+
+**Artifacts**
+- `slides/pages/00-intro.md` — the opening, now two slides plus the chain
+- `slides/pages/60-close.md` — six takeaways over three slides
+- `slides/pages/{10,20,30,40,50}-*.md` — `.result`/`.shot-frame` wrappers, typos
+- `slides/style.css` — `.result`, `.shot-frame`, `.kicker`, `.note`, `.steps-airy`
+- `slides/README.md`, `README.md`, `CLAUDE.md` — budget, takeaway table, findings
+
+**Result / Iteration**
+- 18 slides became **20**, budget ≈ 11.8 minutes against ~12 available. Adding
+  slides was cheaper than cutting sentences, which is the rule this deck already
+  had and had not applied to the rewrite.
+- The PNG export earned its keep for the sixth time, and the finding is that
+  **the previous fix caused this one**: capping the image in pixels solved the
+  cropped basemap attribution and created the overflowing finding box. A
+  template repeats whatever it does five times, including the thing it was just
+  fixed into doing.
+- Not changed: the speaker's voice. The rewrite's wording stands wherever it was
+  not a spelling mistake or a slide carrying two thoughts.

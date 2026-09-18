@@ -85,7 +85,7 @@ slides/
 │   ├── 30-opensearch.md   # use case 3 -- idea slide + result slide
 │   ├── 40-egdb.md         # use case 4 -- idea slide + result slide
 │   ├── 50-portal.md       # use case 5 -- idea slide + result slide
-│   └── 60-close.md        # six takeaways, the closing line, thanks
+│   └── 60-close.md        # six takeaways over three slides, closing line, thanks
 ├── style.css              # palette and typography, auto-loaded by Slidev
 ├── global-bottom.vue      # footer on every slide but the cover
 ├── scripts/
@@ -243,36 +243,41 @@ rehearsing rather than on stage.
 |---|---|---|
 | 1 | Title | 10 s |
 | 2 | How all of this was made — agent, prompt log, local | 40 s |
-| 3 | We build products, not data sets | 40 s |
-| 4 | Five use cases, one chain | 30 s |
-| 5–6 | `csv_data` — nobody clicks 10,000 points by hand / 10,000 points, one command | 40 + 55 s |
-| 7–8 | `open_data_search` — finding the data is the work / 449 real railway stations | 40 + 55 s |
-| 9–10 | `opensearch` — test data for a technology we are new to / the index, live in ArcGIS | 40 + 55 s |
-| 11–12 | `egdb_import` — the one we need most / a FeatureClass, in a real geodatabase | 40 + 55 s |
-| 13–14 | `portal_publish` — all the way / a web map, published | 40 + 55 s |
-| 15 | Take home, part 1 | 40 s |
-| 16 | Take home, part 2 | 45 s |
-| 17 | *Knowing that the content is valid still is* | 25 s |
-| 18 | Thank you very much — address and QR, stays up for questions | — |
+| 3 | We build products, not data sets | 30 s |
+| 4 | So where does that data come from? | 30 s |
+| 5 | Five use cases, one chain | 30 s |
+| 6–7 | `csv_data` — nobody clicks 10,000 points by hand / 10,000 points, one command | 35 + 55 s |
+| 8–9 | `open_data_search` — finding the data is the work / 449 real railway stations | 35 + 55 s |
+| 10–11 | `opensearch` — test data for a technology we are new to / the index, live in ArcGIS | 35 + 55 s |
+| 12–13 | `egdb_import` — the one we need most / a FeatureClass, in a real geodatabase | 35 + 55 s |
+| 14–15 | `portal_publish` — all the way / a web map, published | 35 + 55 s |
+| 16 | Take home 1 / 3 — there is more than one way | 35 s |
+| 17 | Take home 2 / 3 — what to ask for | 35 s |
+| 18 | Take home 3 / 3 — what to check | 40 s |
+| 19 | *Knowing that the content is valid still is* | 25 s |
+| 20 | Thank you very much — address and QR, stays up for questions | — |
 
-Total ≈ 11.5 minutes against ~12 available. The disclaimer slide is the one to
+Total ≈ 11.8 minutes against ~12 available. The disclaimer slide is the one to
 drop if a session overruns before the talk starts — it is the only slide whose
 content is also on the closing slide.
 
-### The seven takeaways
+### The six takeaways, over three slides
 
 Written to be repeatable rather than precise — each one is a sentence someone
-could say to a colleague the next morning.
+could say to a colleague the next morning. They were two slides of three, and
+the first bullet ran to three lines with an orphan word on the fourth; three
+slides of two, two and three cost no speaking time and read as three thoughts
+rather than one list.
 
-| Takeaway | Comes from |
-|---|---|
-| There is more than one way to get to data. | all five — it is the talk in one line |
-| Ask for the generator, not for the data. | `csv_data` |
-| Let code own every number that has a formula. | `csv_data` |
-| Finding the data costs more than converting it. | `open_data_search` |
-| Not the data — the consumer decides. | `opensearch` |
-| "Success" is not a result. | `egdb_import` |
-| A green check cannot see a blank map. | `portal_publish` |
+| Slide | Takeaway | Comes from |
+|---|---|---|
+| 1 / 3 · *There is more than one way* | Write it, find it, index it, load it, publish it. | all five — it is the talk in one line |
+| 1 / 3 | An agent saves real time here. | all five |
+| 2 / 3 · *What to ask for* | Ask for the generator, not for the data. | `csv_data` |
+| 2 / 3 | Let code own every number that has a formula. | `csv_data` |
+| 3 / 3 · *What to check* | Not the data — the consumer decides. | `opensearch` |
+| 3 / 3 | "Success" in a pipeline is not a result. | `egdb_import`, `portal_publish` |
+| 3 / 3 | Generated data may be wrong. | the caveat the audience brings with them |
 
 The first one leads because it answers the abstract's own claim: the agent is
 not one trick that happens to fit one target, it is a way of working that fitted
@@ -405,6 +410,18 @@ visibility, not a broken workflow.
   transform, so a viewport unit inside a slide is not a fraction of that slide.
   A licence obligation was broken by a unit conversion, and the build said
   success. Cap image height in pixels against Slidev's 980 × 552 canvas.
+- **A fixed image cap is the same defect one layer up, and it repeats itself
+  five times.** Capping the screenshot in pixels fixed the cropping, and it left
+  the *finding box* free to overflow instead: two result slides shipped with the
+  teal box sitting on top of the footer, because the box grows when the finding
+  runs to three lines and a fixed cap does not give any height back. The result
+  slide is now one flex column of known height (`.result`) in which the image is
+  the only elastic part, so the finding sizes the screenshot rather than the
+  slide. First attempt at that stretched the `<img>` itself and let `object-fit`
+  letterbox it — which puts the rounded corners and the drop shadow on the *box*
+  rather than on the picture, a white slab around every screenshot. The image
+  needs its own frame (`.shot-frame`) that takes the leftover height while the
+  image keeps its aspect ratio inside it.
 - **A convention caught its own violation.** The obvious cover design is the
   10,000-point map full-bleed behind the title. It renders with the basemap
   attribution cropped off — so the repository's own licence rule ruled out its
