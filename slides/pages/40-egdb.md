@@ -1,10 +1,10 @@
 <div class="eyebrow">Use case 4 / 5 · egdb_import</div>
 
-# The one we need most: the geodatabase
+# The one we need most: the Enterprise Geodatabase
 
 <div class="lead">
 
-This is our everyday case. An Enterprise Geodatabase is where we really need
+The experiments stop here. An Enterprise Geodatabase is where we really need
 test data — and where the schema matters as much as the rows.
 
 </div>
@@ -15,14 +15,14 @@ test data — and where the schema matters as much as the rows.
 <div><b>Then load it</b>: create the FeatureClass and insert the rows, exactly as the schema says.</div>
 </div>
 
-<div class="pt-4 text-sm opacity-80">
-Our services are <b>referenced</b> feature layers on an Enterprise Geodatabase —
-the portal reads through to the database. So the data has to be in there, and
+<div class="note">
+Our actual services are <b>Referenced</b> Feature Layers on an Enterprise Geodatabase —
+published on a Portal, served by ArcGIS Server, secured via SOI. So the data has to be in there, and
 writing it in is the step that decides everything after it.
 </div>
 
 <!--
-40s. Say why this one matters at work: a CSV is easy, a geodatabase is where
+35s. Say why this one matters at work: a CSV is easy, a geodatabase is where
 colleagues actually ask for test data, and getting the schema right is most of
 the job. The split is the useful idea — the decisions live in a document a human
 can read and edit, and the part that needs a licence, a database and Windows
@@ -35,15 +35,19 @@ layout: default
 
 <div class="eyebrow">Use case 4 / 5 · egdb_import</div>
 
-# A FeatureClass, in a real geodatabase
+# A FeatureClass, in a real EGDB
 
-<img src="/img/csv_to_egdb_pro.png" class="shot-big" />
+<div class="result">
+
+<div class="shot-frame"><img src="/img/csv_to_egdb_pro.png" class="shot-big" /></div>
 <div class="credit text-center">FeatureClass in a PostgreSQL geodatabase · ArcGIS Pro · Esri, TomTom, Garmin, FAO, NOAA, USGS, © OpenStreetMap contributors</div>
 
 <div class="rule">
-The library we were told to use cannot do this — and does not say so. It
-reported success and quietly wrote a shapefile instead, with four field names
-cut short.
+The library we assumed (ArcGIS API for Python) cannot do this — and does not
+say so. It reported success and quietly wrote a shapefile instead, four field
+names cut short.
+</div>
+
 </div>
 
 <!--

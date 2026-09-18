@@ -4,24 +4,24 @@
 
 <div class="lead">
 
-The last step is not more data. It is the whole flow — and a demo you can put in
-front of someone.
+A bonus round. The next step is not <b>more</b> data — it is the whole flow, and a
+demo you can put in front of someone.
 
 </div>
 
 <div class="steps">
-<div><b>Generate</b> a small city data set with values that make a map worth looking at.</div>
+<div><b>Generate</b> a small city data set with fake values that make a map worth looking at.</div>
 <div><b>Build the portal content offline</b>: the layer, the symbols, the map — all as files.</div>
 <div><b>Publish</b> it, then read it back and check what the portal actually stored.</div>
 </div>
 
-<div class="pt-4 text-sm opacity-80">
+<div class="note">
 Everything up to the upload was built and reviewed without a portal, a licence
-or a password in the loop.
+or a password in the loop. <br/> All this data is a fake census for our home town.
 </div>
 
 <!--
-40s. This is the "think further" slide. It is the same pipeline as before with
+35s. This is the "think further" slide. It is the same pipeline as before with
 one more step, and suddenly the output is not a file but something a colleague
 can open in a browser. Worth saying: the map, the symbols and the classification
 were designed as plain files, so the whole design could be reviewed before any
@@ -34,14 +34,19 @@ layout: default
 
 <div class="eyebrow">Use case 5 / 5 · portal_publish</div>
 
-# A web map, published
+# A Web Map, published to a Portal
 
-<img src="/img/muenster_rent_class_breaks.png" class="shot-big" />
+<div class="result">
+
+<div class="shot-frame"><img src="/img/muenster_rent_class_breaks.png" class="shot-big" /></div>
 <div class="credit text-center">Rent per m², five classes · ArcGIS Enterprise · Land NRW, Esri, TomTom, Garmin, USGS, FAO, NOAA</div>
 
 <div class="rule">
-All four checks green — over a map layer that drew nothing at all. Our checks
-read what the portal stored. Whether it draws is not something you can read.
+All checks were green — on a map layer that drew nothing at all. Our checks
+read what the portal stored. Whether it <b>draws</b> is not something you can read.
+You have to look.
+</div>
+
 </div>
 
 <!--

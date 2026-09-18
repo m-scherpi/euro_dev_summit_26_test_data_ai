@@ -281,3 +281,71 @@
   width: 13.4%;
   height: auto;
 }
+
+/* A result slide as one flex column: title, then image, credit and finding box
+   in a box of known height. The image is the only flexible part, so a finding
+   that runs to three lines shrinks the screenshot instead of pushing the box
+   past the bottom edge. Measured before this existed: two of five result slides
+   had the finding box sitting on top of the footer. A fixed image cap is the
+   version that repeats its defect across every slide using the template. */
+.result {
+  @apply flex flex-col items-stretch;
+  height: 415px;
+}
+/* The image sits in a frame that takes the leftover height; the image itself
+   keeps its own aspect ratio inside it. Stretching the <img> instead and
+   letting object-fit letterbox it puts the rounded corners and the drop shadow
+   on the *box* rather than on the picture -- a white slab around the
+   screenshot, which is what the first version of this did. */
+.result .shot-frame {
+  @apply flex justify-center items-start;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.result .shot-big {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+.result .credit,
+.result .rule {
+  flex: 0 0 auto;
+}
+
+/* A short label under a slide title for a second slide of the same thought
+   ("What to take home 1 / 3"). Smaller than the eyebrow, and grey rather than
+   turquoise, so it does not compete with the use-case marker. */
+.kicker {
+  @apply mb-1 text-xs font-semibold uppercase tracking-widest;
+  color: var(--ct-dark);
+  opacity: 0.45;
+}
+
+/* The small print under the steps. Was an ad-hoc utility stack on every idea
+   slide, which is how two of them ended up with different top margins. */
+.note {
+  @apply mt-6 text-sm leading-snug;
+  opacity: 0.8;
+}
+
+/* Idea slides carry a lead paragraph of one to three lines. Cap it so a longer
+   one does not push the steps down the slide -- the paragraph is context, the
+   steps are the content. */
+.lead p {
+  margin-top: 0.6rem;
+}
+.lead p:first-child {
+  margin-top: 0;
+}
+
+/* Two-item variant of the steps list. A takeaway slide carrying two statements
+   instead of three leaves the lower half of the slide empty at the default
+   spacing; this spreads the same two items over the same area rather than
+   letting them huddle under the title. */
+.steps-airy {
+  @apply mt-12 space-y-16;
+}
+.steps-airy > div {
+  @apply py-3;
+}

@@ -1,44 +1,67 @@
-# What to take home
+<div class="kicker">What to take home · 1 / 3</div>
 
-<div class="steps">
-<div><b>There is more than one way to get to data.</b><br/>
-Write it, find it, index it, load it, publish it. Five routes, one agent, and none of them exotic.</div>
+# There is more than one way
+
+<div class="steps steps-airy">
+
+<div><b>Write it, find it, index it, load it, publish it.</b><br/>
+Five routes, one agent, and none of them exotic.</div>
+
+<div><b>An agent saves real time here.</b><br/>
+Whether it is the amount of data, or setting up the system around it.</div>
+
+</div>
+
+<!--
+35s. Read the bold lines, add one sentence each. This is the summary of the
+whole talk: the model is not one trick, it is a way of working that fits five
+very different targets.
+-->
+
+---
+
+<div class="kicker">What to take home · 2 / 3</div>
+
+# What to ask for
+
+<div class="steps steps-airy">
 
 <div><b>Ask for the generator, not for the data.</b><br/>
 A script with a fixed seed runs again tomorrow, and for a different number of rows.</div>
 
 <div><b>Let code own every number that has a formula.</b><br/>
-The text the model wrote was good. The maths was wrong the same way in every row.</div>
+The text the model wrote was good. The math was wrong the same way in every row.</div>
+
 </div>
 
 <!--
-40s. Read the bold lines, add one sentence each, do not read the small text. The
-first one is the summary of the whole talk: the model is not one trick, it is a
-way of working that fits five very different targets.
+35s. Two habits, and both of them cost nothing. The seed is what makes a demo
+survive to the next rehearsal; the second one is the csv_data slide again, in
+one sentence.
 -->
 
 ---
 
-# What to take home
+<div class="kicker">What to take home · 3 / 3</div>
+
+# What to check
 
 <div class="steps">
-<div><b>Finding the data costs more than converting it.</b><br/>
-And the licence decides before the quality does.</div>
 
 <div><b>Not the data — the consumer decides.</b><br/>
-Eleven checks said yes. The layer still would not open.</div>
+Eleven checks on OpenSearch said "OK". The layer still would not open.</div>
 
-<div><b>“Success” is not a result.</b><br/>
-One call reported success and wrote the wrong file format.</div>
+<div><b>"Success" in a pipeline is not a result.</b><br/>
+Always look at the real output. Our generated heatmap was unreadable.</div>
 
-<div><b>A green check cannot see a blank map.</b><br/>
-Look at it once anyway.</div>
+<div><b>Generated data may be wrong.</b><br/>
+That was not our concern in these use cases — it may well be yours.</div>
+
 </div>
 
 <!--
-45s. These four are from the second half of the talk and they build on each
-other: the consumer decides, the API lies to you about it, and neither is
-visible in a report. Land on the last one and move on.
+40s. These build on each other: the consumer decides, the API lies to you about
+it, and neither is visible in a report. Land on the last one and move on.
 -->
 
 ---

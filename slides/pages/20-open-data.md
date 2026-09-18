@@ -1,11 +1,11 @@
 <div class="eyebrow">Use case 2 / 5 · open_data_search</div>
 
-# Finding the data is the work
+# Finding the right data is the actual work
 
 <div class="lead">
 
-Sometimes generated points are not enough and you want real ones. Then the
-expensive part is not the transformation — it is the search.
+Sometimes generated points are not enough and you want real ones. 
+<br/> Then the expensive part is not the transformation — it is the search.
 
 </div>
 
@@ -15,8 +15,13 @@ expensive part is not the transformation — it is the search.
 <div><b>Then</b> write the transformation, and prove every coordinate came from the source.</div>
 </div>
 
+<div class="note">
+This one was an experiment, to see what is possible. The target format was a
+CSV for a Hosted Feature Layer again.
+</div>
+
 <!--
-40s. This inverts use case 1. The model does no inventing here at all: it
+35s. This inverts use case 1. The model does no inventing here at all: it
 searches, reads licence pages, checks whether download links still work, and
 writes the converter. That search is hours of clicking through portals, and it
 is the half a model is genuinely good at.
@@ -30,13 +35,17 @@ layout: default
 
 # 449 real railway stations
 
-<img src="/img/nrw_stations.png" class="shot-big" />
+<div class="result">
+
+<div class="shot-frame"><img src="/img/nrw_stations.png" class="shot-big" /></div>
 <div class="credit text-center">449 DB InfraGO stations · ArcGIS Pro · Esri, TomTom, Garmin, USGS, FAO, NOAA, Land NRW</div>
 
 <div class="rule">
 Seven sources were checked, one was usable. OpenStreetMap was the best of them
 — and we still could not take it, because its licence does not fit our
 repository.
+</div>
+
 </div>
 
 <!--
