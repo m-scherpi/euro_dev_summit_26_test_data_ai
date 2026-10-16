@@ -38,7 +38,7 @@ layout: default
 <div class="result">
 
 <div class="shot-frame"><img src="/img/nrw_stations.png" class="shot-big" /></div>
-<div class="credit text-center">449 DB InfraGO stations · ArcGIS Pro · Esri, TomTom, Garmin, USGS, FAO, NOAA, Land NRW</div>
+<div class="credit text-center">449 DB InfraGO stations · ArcGIS Enterprise · Esri, TomTom, Garmin, USGS, FAO, NOAA, Land NRW</div>
 
 <div class="rule">
 Seven sources were checked, one was usable. OpenStreetMap was the best of them

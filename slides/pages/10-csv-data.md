@@ -38,7 +38,7 @@ layout: default
 <div class="result">
 
 <div class="shot-frame"><img src="/img/germany_points_10k.png" class="shot-big" /></div>
-<div class="credit text-center">10,000 generated points · ArcGIS Pro · Esri, TomTom, Garmin, USGS, FAO, NOAA</div>
+<div class="credit text-center">10,000 generated points · ArcGIS Enterprise · Esri, TomTom, Garmin, USGS, FAO, NOAA</div>
 
 <div class="rule">
 The model also wrote the Web Mercator values — and every single one was wrong,
