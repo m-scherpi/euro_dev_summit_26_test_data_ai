@@ -10,9 +10,9 @@ test data — and where the schema matters as much as the rows.
 </div>
 
 <div class="steps">
-<div><b>Measure</b> the source file and write down a schema: every field, its type, its length.</div>
+<div><b>Analyze</b> the source file and write down a schema: every field, its type, its length.</div>
 <div><b>Review that document</b> — it is readable, and you can change it before anything is created.</div>
-<div><b>Then load it</b>: create the FeatureClass and insert the rows, exactly as the schema says.</div>
+<div><b>Then load it</b>: create the FeatureClass and insert the rows, exactly as the schema says.<br/>Use Python against an actual database.</div>
 </div>
 
 <div class="note">

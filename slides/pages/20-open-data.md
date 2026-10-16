@@ -12,7 +12,7 @@ Sometimes generated points are not enough and you want real ones.
 <div class="steps">
 <div><b>Search</b> open data portals for something current, complete and with coordinates.</div>
 <div><b>Check the licence first</b> — before looking at the data quality at all.</div>
-<div><b>Then</b> write the transformation, and prove every coordinate came from the source.</div>
+<div><b>Then</b> write the transformation, and prove every coordinate came from the source. <br/>But do not get caught in details!</div>
 </div>
 
 <div class="note">

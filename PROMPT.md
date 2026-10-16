@@ -2318,3 +2318,72 @@ Follow-up, after the plan was presented:
   answer questions from the room rather than showing findings that did not fit,
   they are capped at five, and they carry no time budget. Written into
   `CLAUDE.md` so a later session does not remove them by citing that rule.
+
+## [037] 2026-10-16 — Bonus slide: test systems beyond geodata  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> lege mir zwischen der Endfolie mit dem QR code und der FAQ noch eine einzelne Bonus-Folie an: diese soll den Horizont erweitern und Beispiele zeigen, in denen ich ebenfalls mit LLMs testdaten erzeugt habe, die sich aber vom Geo-Aspekt abgrenzen, aber in die selbe richtung wie der eigentliche VOrtrag gehen: 
+>
+> Zielstellung: Infrastrukturkomponenten mit wenig Aufwand erstellen und für temporäre Tests nutzen 
+>
+> Persistenz: Wegwerf-Komponenten für einmalige Nutzung 
+>
+> Weitere umgesetzte Use Cases, insb. Basierend auf Docker Images 
+>
+> Geoserver , WFS mit Stored Queries inkl. Curl – Test Suite 
+>
+> SAML 2 Integrationsszenario mit Keycloak und SimpleSamlPhp als externe IDP und fake Test-Nutzern 
+>
+> Docker basiertes LDAP mit Testnutzern 
+>
+> SMTP Server 
+>
+>  .. die folie soll ruhig "Bonus: ..." in der Überschrift tragen
+
+**Prompt (translation, EN)**
+> put in one more single bonus slide for me between the end slide with the QR code and the FAQ: it should broaden the horizon and show examples in which I also generated test data with LLMs, which however are set apart from the geo aspect, but go in the same direction as the actual talk:
+>
+> Objective: create infrastructure components with little effort and use them for temporary tests
+>
+> Persistence: throwaway components for one-time use
+>
+> Further implemented use cases, esp. based on Docker images
+>
+> Geoserver, WFS with stored queries incl. curl test suite
+>
+> SAML 2 integration scenario with Keycloak and SimpleSamlPhp as external IDP and fake test users
+>
+> Docker-based LDAP with test users
+>
+> SMTP server
+>
+> .. the slide may well carry "Bonus: ..." in the heading
+
+**What happened**
+- New `slides/pages/65-bonus.md`, included between `60-close.md` and `70-faq.md`:
+  title *Bonus: Test systems, not just test data*, goal and lifetime as a two-line
+  lead, the four examples as a 2x2 grid (`.bonus-grid` in `style.css`, same left
+  bar as `.steps`), and a note that none of it is in this repository — the closing
+  slide just told the audience that *everything* is.
+- The speaker's notes were translated faithfully; "SMTP Server" carries the only
+  added gloss ("a mail endpoint for tests").
+- `global-bottom.vue`: the talk total was computed as "first FAQ slide minus one",
+  which would have counted the bonus slide as talk slide 21 of 21. It is now the
+  number of the slide with class `close-slide`; everything behind it that is not
+  FAQ shows `Bonus` in the footer.
+- Verified by PNG export of all 26 slides: bonus slide fits with room to spare,
+  closing line still reads `19 | 20`, FAQ index still `FAQ`. The `f` shortcut was
+  not re-driven in a browser — it still keys on the unchanged `faq: true` marker.
+
+**Artifacts**
+- `slides/pages/65-bonus.md` — the bonus slide, with presenter notes
+- `slides/slides.md`, `slides/style.css` — include and `.bonus-grid`
+- `slides/global-bottom.vue` — total anchored on the closing slide, `Bonus` label
+- `slides/README.md`, `README.md`, `CLAUDE.md` — layout, time budget, log, convention
+
+**Result / Iteration**
+- Worked first time on the slide itself. The finding is the footer: the previous
+  fix replaced one positional assumption ("the close is last") with another
+  ("the close sits directly in front of the FAQ"), and the first slide inserted
+  in that gap would have broken it. Caught by reading the code before the export,
+  not by the export — `21 | 21` would have looked plausible.

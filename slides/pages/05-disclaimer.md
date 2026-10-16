@@ -9,7 +9,7 @@ slides —<br/> was built with **Claude Code**, agentic, in a local repository.
 
 <div class="steps">
 <div><b>Every prompt was logged</b>, word for word, with what worked and what did not.</div>
-<div><b>A lot of work went into verifying</b> the results, not just into generating them.</div>
+<div><b>A lot of work went into verifying</b> the results, not just into generating them. <br/>The Agent wrote the tests to verify itself.</div>
 <div><b>Everything ran locally</b> — right up to the point where something actually needed to be published.</div>
 </div>
 

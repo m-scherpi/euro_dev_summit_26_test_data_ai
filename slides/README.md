@@ -86,11 +86,12 @@ slides/
 │   ├── 40-egdb.md         # use case 4 -- idea slide + result slide
 │   ├── 50-portal.md       # use case 5 -- idea slide + result slide
 │   ├── 60-close.md        # six takeaways over three slides, closing line, thanks
-│   └── 70-faq.md          # five Q&A slides behind the close -- reached with `f`
+│   ├── 65-bonus.md        # one bonus slide behind the close: test systems beyond geodata
+│   └── 70-faq.md          # five Q&A slides behind the bonus slide -- reached with `f`
 ├── setup/
 │   └── shortcuts.ts       # the `f` key: jump to the FAQ slides and back
 ├── style.css              # palette and typography, auto-loaded by Slidev
-├── global-bottom.vue      # footer, minus the cover, the close and the FAQ count
+├── global-bottom.vue      # footer, minus the cover, the close, the bonus and the FAQ count
 ├── scripts/
 │   ├── sync_assets.mjs    # screenshots -> public/img (runs via pre* hooks)
 │   ├── make_qr.mjs        # one-off, output committed
@@ -259,7 +260,8 @@ rehearsing rather than on stage.
 | 18 | Take home 3 / 3 — what to check | 40 s |
 | 19 | *Knowing that the content is valid still is* | 25 s |
 | 20 | Thank you very much — address and QR, stays up for questions | — |
-| 21–25 | FAQ — reached with `f`, never shown unless somebody asks | — |
+| 21 | *Bonus: Test systems, not just test data* — other throwaway test infrastructure built the same way, outside this repository | — |
+| 22–26 | FAQ — reached with `f`, never shown unless somebody asks | — |
 
 Total ≈ 11.8 minutes against ~12 available. The disclaimer slide is the one to
 drop if a session overruns before the talk starts — it is the only slide whose
@@ -369,6 +371,14 @@ one. The condition now names the two slides — page 1, and the slide whose clas
 is `close-slide` — rather than their positions. The count on the right is the
 count of *talk* slides, so the audience still reads `7 | 20`; the FAQ slides say
 `FAQ` instead of a number.
+
+**The total was then anchored on the wrong slide, and a bonus slide showed it.**
+The count was first derived as "the FAQ marker minus one", which is the closing
+slide only while nothing sits between the two. Inserting the bonus slide there
+would have made the talk read `7 | 21` with a closing slide that is not the
+last talk slide. The total is now the number of the `close-slide`, found by its
+class like the footer rule above, and anything behind it that is not FAQ says
+`Bonus`. Same mistake as the position rule, one slide later.
 
 **And the check that found neither of those was the browser.** The PNG export was
 green through all of it: 25 slides, correct order, no overflow, attribution

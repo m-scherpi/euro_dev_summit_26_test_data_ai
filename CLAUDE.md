@@ -1065,7 +1065,10 @@ master forbids and took one off the new last slide. Name the slides the rule is
 about - page 1, and the slide carrying the closing class - not their positions.
 And where a slide set sits outside the talk, keep the visible count the count of
 *talk* slides: an audience reading `7 | 25` on a twenty-slide talk has been told
-something untrue.
+something untrue. Derive that total from the closing slide too, not from
+whatever comes after it: "first FAQ slide minus one" is the same positional
+assumption one slide later, and a bonus slide inserted between the two would have
+made the talk read `21 | 21`.
 
 **Verify a deck the way you verify data: against its consumer.** A green Slidev
 build says nothing about whether a slide is readable. Render the slides to PNG
