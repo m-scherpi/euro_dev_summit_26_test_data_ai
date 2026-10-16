@@ -2,8 +2,10 @@
 
 <div class="lead">
 
-<b>con terra </b>builds software products: a Web Mapping Framework (based on the
-ArcGIS Maps SDK for JS) and Access Control via ArcGIS Enterprise SOIs.
+<b>con terra </b>builds software products: <br/>
+<b>map.apps</b>: a Web Mapping Framework (based on the
+ArcGIS Maps SDK for JS)<br/>
+<b>security.manager</b>: Access Control via ArcGIS Enterprise SOIs.
 
 </div>
 
