@@ -2387,3 +2387,32 @@ Follow-up, after the plan was presented:
   ("the close sits directly in front of the FAQ"), and the first slide inserted
   in that gap would have broken it. Caught by reading the code before the export,
   not by the export — `21 | 21` would have looked plausible.
+
+## [038] 2026-10-16 — More line spacing in the lead paragraph  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> kannst du noch etwas mehr space zwischen den Lines in der Klasse "lead" schaffen? Das sieht zum teil sehr eng und gedrungen aus. Danach noch mal exportieren und prüfen
+
+**Prompt (translation, EN)**
+> can you create a bit more space between the lines in the class "lead"? In places it looks very tight and squat. Then export again and check
+
+**What happened**
+- First attempt: replaced `leading-relaxed` on `.lead` with an explicit
+  `line-height: 1.55`, on the theory that `text-2xl`'s own line-height won the
+  utility ordering. Exported — **nothing changed**.
+- Cause found in Slidev's base stylesheet (`@slidev/client/styles/layouts-base.css`):
+  every `.slidev-layout p` gets `leading-6`, a **fixed 1.5rem**. The lead text is
+  a `<p>` inside the `.lead` div and 24 px tall, so its line spacing was exactly
+  1.0, and no line-height on the container could reach it.
+- Fix: `line-height: 1.45` on `.lead p`. Re-exported all 26 slides and looked at
+  every slide carrying a lead (2, 3, 6, 8, 10, 12, 14, 21), including the three
+  slides the speaker had just lengthened by one line each: all fit, the tightest
+  (10, `opensearch`) still clears the footer.
+
+**Artifacts**
+- `slides/style.css` — `.lead p` line-height, with the reason in a comment
+
+**Result / Iteration**
+- One wasted iteration, and the export is what showed it: the first fix built
+  green and changed nothing. A property set on a container is only a property of
+  the text if nothing closer to the text sets it too.

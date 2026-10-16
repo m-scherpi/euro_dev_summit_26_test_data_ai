@@ -1115,6 +1115,13 @@ Splitting it into two slides and a two-item takeaway into three cost nothing in
 the budget (§8 above) and removed every overfull slide. Resist shrinking type or
 tightening line height to rescue a slide that is carrying two thoughts.
 
+**Slidev fixes the line height of every paragraph, so set it on the `p`.** Its
+base stylesheet gives each `.slidev-layout p` a fixed `leading-6` (1.5rem) - at
+24 px type that is a spacing of exactly 1.0. Measured here: a line height set on
+the `.lead` container built green and changed nothing in the export, because the
+text inside it is a `<p>`. Style the element that holds the text, and export to
+confirm the change is visible before calling it done.
+
 **A trademark in a CC BY repository needs a written carve-out, and it should be
 exactly one file.** A logo is the one asset that cannot be reconstructed -
 imitating it *is* the infringement - so where it is genuinely wanted it goes in

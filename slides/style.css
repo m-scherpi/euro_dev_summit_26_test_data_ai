@@ -162,8 +162,16 @@
 /* One short sentence under a slide title, set larger than body copy. The idea
    slides carry one of these instead of a paragraph. */
 .lead {
-  @apply mt-5 text-2xl leading-relaxed;
+  @apply mt-5 text-2xl;
   color: var(--ct-dark);
+}
+/* The line height has to sit on the paragraph, not on `.lead`: Slidev's base
+   stylesheet gives every `.slidev-layout p` a FIXED `leading-6` (1.5rem), which
+   at the lead's 24 px is a line spacing of exactly 1.0. `leading-relaxed` on the
+   container never reached the text, and the lead read cramped on every idea
+   slide. */
+.lead p {
+  line-height: 1.45;
 }
 
 /* The workflow of a use case, as steps. Deliberately short lines -- this is
