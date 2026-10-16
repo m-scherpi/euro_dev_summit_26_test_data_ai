@@ -381,3 +381,18 @@
 .faq-index b {
   color: var(--ct-teal);
 }
+
+/* The bonus slide between the closing slide and the FAQ: four examples beyond
+   geodata, as a 2x2 grid so four items fit under a two-line lead without the
+   spacing of `.steps`. Same left bar as the steps, so it reads as one family. */
+.bonus-grid {
+  @apply mt-7 grid grid-cols-2 gap-x-10 gap-y-6;
+}
+.bonus-grid > div {
+  @apply pl-5 py-1 text-lg leading-snug;
+  border-left: 6px solid var(--ct-lightblue);
+}
+.bonus-grid b {
+  @apply text-xl;
+  color: var(--ct-teal);
+}

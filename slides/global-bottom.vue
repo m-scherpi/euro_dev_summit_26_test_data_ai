@@ -14,11 +14,18 @@
 
      The count on the right is the count of *talk* slides: the FAQ slides sit
      behind the closing slide and are not part of the 15-minute slot, so counting
-     them would tell the audience the talk is five slides longer than it is. -->
+     them would tell the audience the talk is five slides longer than it is.
+
+     The same goes for the bonus slide between the closing slide and the FAQ, so
+     the total is anchored on the closing slide (found by its class, like
+     `isClose`) rather than on the FAQ marker: anchoring it on the FAQ would have
+     counted the bonus slide into the talk. Everything behind the close that is
+     not FAQ is labelled `Bonus`. -->
 <template>
   <footer v-if="showFooter" class="ct-footer">
     <span>&copy; con terra GmbH</span>
     <span v-if="isFaq">FAQ</span>
+    <span v-else-if="isBonus">Bonus</span>
     <span v-else>{{ page }} | {{ talkTotal }}</span>
   </footer>
 </template>
@@ -37,8 +44,15 @@ const faqStart = computed(() => {
 })
 
 const page = computed(() => currentSlideNo.value)
+// The closing slide, found by its class -- never by position.
+const closeNo = computed(() => {
+  const found = slides.value.find(s => String(s.meta?.slide?.frontmatter?.class ?? '').includes('close-slide'))
+  return found ? found.no : faqStart.value - 1
+})
+
 const isFaq = computed(() => page.value >= faqStart.value)
-const talkTotal = computed(() => faqStart.value - 1)
+const isBonus = computed(() => page.value > closeNo.value && !isFaq.value)
+const talkTotal = computed(() => closeNo.value)
 const isClose = computed(() => String(currentFrontmatter.value?.class ?? '').includes('close-slide'))
 const showFooter = computed(() => page.value > 1 && !isClose.value)
 </script>

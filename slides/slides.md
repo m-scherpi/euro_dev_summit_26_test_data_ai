@@ -91,6 +91,11 @@ src: ./pages/60-close.md
 ---
 
 ---
+src: ./pages/65-bonus.md
+hideInToc: true
+---
+
+---
 src: ./pages/70-faq.md
 hideInToc: true
 faq: true
