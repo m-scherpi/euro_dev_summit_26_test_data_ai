@@ -2416,3 +2416,30 @@ Follow-up, after the plan was presented:
 - One wasted iteration, and the export is what showed it: the first fix built
   green and changed nothing. A property set on a container is only a property of
   the text if nothing closer to the text sets it too.
+
+## [039] 2026-10-16 — Which client the screenshots came from  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> die screenshots sind aus enterprise. pro war an der stelle falsch, wo ich es geändert habe
+
+**Prompt (translation, EN)**
+> the screenshots are from enterprise. pro was wrong at the place where I changed it
+
+**What happened**
+- Context: the speaker had changed the credit lines on the `csv_data` and
+  `open_data_search` result slides from *ArcGIS Pro* to *ArcGIS Enterprise*
+  (committed as `dee3153`); asked whether the READMEs said otherwise.
+- Searched the use-case READMEs, `slides/README.md` and `CLAUDE.md`: no document
+  attributes those two captures to ArcGIS Pro. The wrong client existed only on
+  the slides, so nothing else had to be corrected.
+- Added a *Captured in* column to the screenshot table in `slides/README.md`
+  (four Enterprise, one Pro — the geodatabase capture), so the credit lines have
+  something to be checked against. The same table's slide numbers were off by
+  one since the disclaimer slide went in; corrected.
+
+**Artifacts**
+- `slides/README.md` — screenshot table with client and corrected slide numbers
+
+**Result / Iteration**
+- A credit line is a factual claim like any other, and here it had no source to
+  be checked against — the client of a hand-made capture was recorded nowhere.

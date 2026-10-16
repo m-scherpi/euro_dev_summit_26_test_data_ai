@@ -403,13 +403,18 @@ explaining before it means something was cut.
 The deck shows one capture per use case, on that use case's result slide,
 referenced from where each already lives:
 
-| Screenshot | Source | Shown on |
-|---|---|---|
-| `csv_data/input/germany_points_10k.png` | 10,000 generated points | slide 6 |
-| `open_data_search/input/nrw_stations.png` | 449 real DB InfraGO stations | slide 8 |
-| `opensearch/input/nrw_stations_opensearch_service.png` | web feature layer over the index | slide 10 |
-| `egdb_import/input/csv_to_egdb_pro.png` | FeatureClass in the PostgreSQL geodatabase | slide 12 |
-| `portal_publish/input/class_breaks.png` | published web map, class-breaks layer | slide 14 |
+| Screenshot | Source | Captured in | Shown on |
+|---|---|---|---|
+| `csv_data/input/germany_points_10k.png` | 10,000 generated points | ArcGIS Enterprise | slide 7 |
+| `open_data_search/input/nrw_stations.png` | 449 real DB InfraGO stations | ArcGIS Enterprise | slide 9 |
+| `opensearch/input/nrw_stations_opensearch_service.png` | web feature layer over the index | ArcGIS Enterprise | slide 11 |
+| `egdb_import/input/csv_to_egdb_pro.png` | FeatureClass in the PostgreSQL geodatabase | ArcGIS Pro | slide 13 |
+| `portal_publish/input/class_breaks.png` | published web map, class-breaks layer | ArcGIS Enterprise | slide 15 |
+
+The client is recorded because the credit line on each result slide names it,
+and two of those lines said *ArcGIS Pro* for captures made in Enterprise until
+the speaker corrected them. The slide numbers here had also drifted by one since
+the disclaimer slide was added.
 
 `scripts/sync_assets.mjs` copies them into `public/img/`, which is gitignored —
 Vite only serves assets from inside the project root, and there is no reason for
