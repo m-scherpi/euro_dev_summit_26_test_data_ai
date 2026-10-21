@@ -1,9 +1,11 @@
-// One-off generator for the QR code on the closing slide.
+// One-off generator for the QR codes on the *Want to know more?* slide.
 //
 // Output is an SVG in `public/` and it IS committed: it is a few kilobytes of
-// text, it never changes unless the repository URL changes, and committing it
-// keeps `npm run build` free of a code-generation step. Re-run by hand after a
-// rename:  node scripts/make_qr.mjs
+// text, it never changes unless the URL changes, and committing it keeps
+// `npm run build` free of a code-generation step. Re-run by hand after a
+// rename:
+//   node scripts/make_qr.mjs                                                  (repository)
+//   node scripts/make_qr.mjs https://www.conterra.de/newsletter public/qr-newsletter.svg
 //
 // Usage: node scripts/make_qr.mjs [url] [outfile]
 

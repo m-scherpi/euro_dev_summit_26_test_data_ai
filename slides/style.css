@@ -213,8 +213,9 @@
    vertical positions, and the grid structure across the whole slide. The blocks
    are placed in per cent of the slide so they sit where the master puts them
    (title 11.3 %, name 40.6 %, address 56.3 %, all 4.5 % from the left edge).
-   Where the master carries a strip of logos, this one carries the QR code --
-   the logos belong to the template and stay out of this repository. */
+   The master's strip of logos is left out -- the logos belong to the template
+   and stay out of this repository. The QR code that used to sit there moved to
+   the slide before (`.qr-pair`). */
 .close-slide {
   position: relative;
   background-color: #fff;
@@ -258,24 +259,32 @@
 .close-contact {
   @apply mt-3;
 }
-.close-right {
-  @apply absolute text-center;
-  right: 5%;
-  top: 11.3%;
-  width: 40%;
+/* Two QR codes side by side on the slide before the close: the repository and
+   the company newsletter. Same size on purpose, so neither reads as the
+   footnote of the other. Sized in pixels against the 980x552 canvas, like
+   every other image here. */
+.qr-pair {
+  @apply grid grid-cols-2 gap-10 mt-6;
 }
-.close-repo-line {
-  @apply text-base leading-snug;
-  color: var(--ct-dark);
+.qr-card {
+  @apply text-center px-4 py-4 rounded;
+  background: var(--ct-teal-pale);
 }
-.close-qr {
-  @apply mx-auto mt-5;
-  width: 190px;
-  height: 190px;
+.qr-card-head {
+  @apply text-xl font-bold;
+  color: var(--ct-teal);
 }
-.close-repo-url {
-  @apply mt-3 text-sm leading-snug;
-  color: var(--ct-dark);
+.qr-card-line {
+  @apply mt-1 text-base leading-snug;
+  min-height: 2.75em; /* two lines at leading-snug, so both QR codes sit level */
+}
+.qr-card-img {
+  @apply mx-auto mt-3;
+  width: 180px;
+  height: 180px;
+}
+.qr-card-url {
+  @apply mt-2 text-sm;
 }
 
 /* The company logo, at the master's own place on `Titelfolie` and

@@ -2443,3 +2443,108 @@ Follow-up, after the plan was presented:
 **Result / Iteration**
 - A credit line is a factual claim like any other, and here it had no source to
   be checked against — the client of a hand-made capture was recorded nowhere.
+
+## [040] 2026-10-21 — Newsletter QR code before the closing slide  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> ich muss kurzfristig noch ein paar änderungen an den slides vornehmen. ich wurde gebeten noch einen weiteren QR Code einzufügen, welcher auf unseren firmennewsletter verweist. https://www.conterra.de/newsletter . nach dem motto, wenn ihr interessiert seid, welche services und produkte wir anbieten, schaut in unseren newsletter. vermutlich macht sich dafür eine extra folie gut, die vor der thank you folie ist und beide QR codes enthält.
+
+**Prompt (translation, EN)**
+> at short notice I need to make a few more changes to the slides. I was asked to add another QR code that points to our company newsletter. https://www.conterra.de/newsletter . along the lines of: if you are interested in which services and products we offer, have a look at our newsletter. probably a separate slide works well for this, placed before the thank you slide and containing both QR codes.
+
+**What happened**
+- Checked that the URL resolves (HTTP 200) before encoding it.
+- Generated `public/qr-newsletter.svg` with the existing one-off
+  `scripts/make_qr.mjs` (URL and output path as arguments), so both codes come
+  from the same generator with the same settings.
+- New slide 20, *Want to know more?*, at the top of `pages/60-close.md`: two
+  equal cards side by side — repository and newsletter — each with a one-line
+  reason, the QR code and the readable URL. The closing slide keeps its own
+  repository QR code, since it stays up for questions.
+- No navigation code touched: the footer finds the closing slide by its class,
+  so it now reads `20 | 21` without a change, and the `f` shortcut finds the FAQ
+  by its marker.
+- Exported slides 19–22 to PNG. First export: the newsletter code sat a few
+  pixels lower than the repository code, because its text runs to two lines;
+  fixed with a two-line minimum height on the card text. Then decoded both QR
+  codes **from the rendered PNG** with OpenCV (in a throwaway venv in the
+  scratchpad): left → the repository URL, right → the newsletter URL.
+
+**Artifacts**
+- `slides/public/qr-newsletter.svg` — QR code for conterra.de/newsletter
+- `slides/pages/60-close.md` — new slide before the closing slide
+- `slides/style.css` — `.qr-pair` / `.qr-card` styles
+- `slides/scripts/make_qr.mjs` — header documents both invocations
+- `slides/README.md` — time budget, file tree, FAQ slide numbers
+
+**Result / Iteration**
+- The talk is now ≈ 12.1 minutes against ~12 available; the disclaimer slide
+  remains the documented cut.
+- The FAQ slide numbers in `slides/README.md` had already been off by one since
+  the bonus slide went in; corrected along the way.
+- A QR code is checked the way it is consumed: decoded from the rendered slide,
+  not from the SVG source. `detectAndDecodeMulti` returned only one of the two
+  codes on the full slide, which would have read as a broken code — decoding each
+  half separately found both. Same lesson as elsewhere: check the instrument
+  before believing its finding.
+
+## [041] 2026-10-21 — Closing slide without a QR code  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> der zweite QR code auf der Thank you folie kann entfernt werden. Diese lasse ich vermutlich auch nur maximal kurz aufliegen, erzähle eher was bei der da vor, aber sie ist mit allen kontaktdaten für github pages noch verfügbar
+
+**Prompt (translation, EN)**
+> the second QR code on the thank you slide can be removed. I will probably only leave that one up briefly at most, I'll rather talk over the one before it, but it is still available with all the contact details for github pages
+
+**What happened**
+- Removed the repository QR code from the closing slide; the sentence about the
+  repository, its URL and the licence stay as text, so the GitHub Pages version
+  still names where everything is.
+- Removed the now unused `.close-qr` style and rewrote every note that described
+  the QR code as the replacement for the master's logo strip (slide notes,
+  `style.css`, `slides/README.md`, `make_qr.mjs` header).
+- Presenter notes now say it the speaker's way round: the *Want to know more?*
+  slide stays up while people scan, the closing slide only briefly.
+- Exported slides 20–21 to PNG: the right column moves up cleanly, with no gap
+  and nothing overlapping the logo.
+
+**Artifacts**
+- `slides/pages/60-close.md` — closing slide without QR code, notes updated
+- `slides/style.css` — `.close-qr` removed
+- `slides/README.md` — closing slide description and time budget row
+
+**Result / Iteration**
+- The deck now has exactly one place with QR codes, and it is the slide that is
+  meant to stay up. The previous entry's reason for keeping the duplicate —
+  the closing slide stays up for questions — was an assumption from the old
+  notes, and the speaker's actual plan contradicted it.
+
+## [042] 2026-10-21 — Licence line moves to the QR slide  ·  scope: `slides`
+
+**Prompt (original, DE)**
+> die zum qr gehörenden bildunterschriften zur lizenz und das es auf github ist, bitte auch aus der thank you folien entfernen. die lizenz zum andern QR hinzufügen
+
+**Prompt (translation, EN)**
+> the captions belonging to the qr about the licence and that it is on github, please also remove from the thank you slides. add the licence to the other QR
+
+**What happened**
+- Removed the whole right column of the closing slide: the sentence about the
+  repository, the GitHub URL and the `CC BY 4.0` line. The slide now carries
+  only the thanks, the speaker and the address, as the master's `Schlussfolie`
+  does.
+- Added `CC BY 4.0` under the repository URL on the repository card of slide 20,
+  in the same muted style it had on the closing slide.
+- Deleted the now unused `.close-right`, `.close-repo-line` and
+  `.close-repo-url` styles; updated `slides/README.md`.
+- Exported slides 20–21 to PNG: the licence line fits inside the card, and the
+  closing slide has no empty frame where the column used to be.
+
+**Artifacts**
+- `slides/pages/60-close.md` — closing slide text only; licence on the QR card
+- `slides/style.css` — closing-slide right-column styles removed
+- `slides/README.md` — closing slide description and time budget row
+
+**Result / Iteration**
+- The previous step kept URL and licence on the closing slide as a remnant of
+  the QR code; the speaker read them as captions of a code that was no longer
+  there. Removing a component means removing its labels too.

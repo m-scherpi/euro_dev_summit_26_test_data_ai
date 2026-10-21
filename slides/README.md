@@ -27,7 +27,7 @@ in the same file as the slide it applies to.
 | `@slidev/cli` | the presentation engine |
 | `@slidev/theme-seriph` | light background — projector contrast over aesthetics; its serif headings are overridden, see *Corporate look* |
 | `vue` | Slidev peer dependency |
-| `qrcode` | one-off generator for the closing slide's QR code |
+| `qrcode` | one-off generator for the two QR codes (repository, newsletter) |
 
 `npm audit` reports findings in this build tooling. They are all in dev-only
 dependencies of the build chain — nothing here serves traffic — and fixing them
@@ -98,6 +98,7 @@ slides/
 │   └── make_close_grid.mjs # one-off, seeded, output committed
 ├── public/
 │   ├── qr-repo.svg        # committed: text, tiny, changes only on a rename
+│   ├── qr-newsletter.svg  # committed: the same, for conterra.de/newsletter
 │   ├── cover-deco.svg     # low-poly corner graphic, drawn from the palette
 │   ├── close-grid.svg     # grid structure of the closing slide, generated
 │   ├── logo-conterra.png  # the word mark -- committed, NOT under CC BY
@@ -135,12 +136,13 @@ it is an imitation of the master's low-poly motif, not a copy of it.
 
 **The closing slide.** The master's `Schlussfolie` carries the full postal
 address and a strip of logos bottom right. The address is reproduced; the logos
-are not — they are the template's, and this deck puts the repository's QR code
-there instead, which is what an audience actually needs. The grid structure
+are not — they are the template's. The repository's QR code first stood there
+instead; it has since moved to the slide before, next to the newsletter code, so
+the closing slide carries only the speaker and the address. The grid structure
 behind it (a 961-point freeform in the `.potx`) is likewise redrawn rather than
 extracted: `scripts/make_close_grid.mjs` writes `public/close-grid.svg` from a
 seeded PRNG, so re-running it produces a byte-identical file, and the output is
-committed like the QR code:
+committed like the QR codes:
 
 ```bash
 node scripts/make_close_grid.mjs 20260914 public/close-grid.svg
@@ -259,13 +261,22 @@ rehearsing rather than on stage.
 | 17 | Take home 2 / 3 — what to ask for | 35 s |
 | 18 | Take home 3 / 3 — what to check | 40 s |
 | 19 | *Knowing that the content is valid still is* | 25 s |
-| 20 | Thank you very much — address and QR, stays up for questions | — |
-| 21 | *Bonus: Test systems, not just test data* — other throwaway test infrastructure built the same way, outside this repository | — |
-| 22–26 | FAQ — reached with `f`, never shown unless somebody asks | — |
+| 20 | *Want to know more?* — two QR codes: the repository and the con terra newsletter | 15 s |
+| 21 | Thank you very much — contact details only; up only briefly, mainly for the GitHub Pages version | — |
+| 22 | *Bonus: Test systems, not just test data* — other throwaway test infrastructure built the same way, outside this repository | — |
+| 23–27 | FAQ — reached with `f`, never shown unless somebody asks | — |
 
-Total ≈ 11.8 minutes against ~12 available. The disclaimer slide is the one to
-drop if a session overruns before the talk starts — it is the only slide whose
-content is also on the closing slide.
+Total ≈ 12.1 minutes against ~12 available — the newsletter slide, added at
+short notice, moved the budget from 11.8 to just past the line. The disclaimer
+slide is the one to drop if a session overruns before the talk starts — it is
+the only slide whose content is also on the closing slide.
+
+The newsletter slide carries both QR codes at equal size, so neither reads as a
+footnote, and it is the slide that stays up while people scan. The closing slide
+lost its repository QR code, URL and licence line with it — the licence now sits
+under the repository code on slide 20. The closing slide is up only briefly on
+stage and exists mainly for the GitHub Pages version, where the contact details
+are what a reader needs.
 
 ### The six takeaways, over three slides
 
@@ -318,18 +329,18 @@ stay clean for the reader while the speaker takes the pause anyway.
 
 ### The FAQ slides, and why they are not a backup section
 
-Five slides sit **behind** the closing slide (21–25) and are never shown during
+Five slides sit **behind** the closing slide and the bonus slide (23–27) and are never shown during
 the talk. Pressing **`f`** from any slide jumps to them; pressing `f` again
 returns to the slide it was pressed on. They exist for the question round, which
 is inside the 15-minute slot and was the one part of the talk with no material.
 
 | Slide | Block | The three questions |
 |---|---|---|
-| 21 | index | the four blocks, and how to get back |
-| 22 | Why an agent at all? | Faker/GeoPandas · what did I save · how much work was this |
-| 23 | Can I trust the result? | right the first time · who verifies the verifier · do green checks mean anything |
-| 24 | Data, licences, privacy | what left the machine · why not OpenStreetMap · production data |
-| 25 | ArcGIS specifics | only points · domains and subtypes · without ArcGIS Pro |
+| 23 | index | the four blocks, and how to get back |
+| 24 | Why an agent at all? | Faker/GeoPandas · what did I save · how much work was this |
+| 25 | Can I trust the result? | right the first time · who verifies the verifier · do green checks mean anything |
+| 26 | Data, licences, privacy | what left the machine · why not OpenStreetMap · production data |
+| 27 | ArcGIS specifics | only points · domains and subtypes · without ArcGIS Pro |
 
 Each slide's presenter notes carry the numbers that are deliberately *not* on the
 slide — the seven checked sources with their verdicts, the four outcomes of one
